@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f9fbf5" />
+<title>职业与属性 · 风行物语官方攻略</title>
+<meta name="description" content="认识每个职业的战斗特点，理解属性与护甲的收益。" />
+<link rel="icon" type="image/png" href="../icons/windward-64.png" />
+<style>
+:root {
+  --surface-page: #e3eddd;
+  --surface-hollow: #eaf0e1;
+  --surface-sunken: #deead5;
+  --surface-soft: #f2f6eb;
+  --surface-paper: #f9fbf5;
+  --surface-raised: #ffffff;
+  --surface-warm: #f1eddc;
+  --surface-cool: #e6e9f4;
+  --line-soft: #d1ddc8;
+  --line-mid: #c1d1b4;
+  --line-strong: #b3c39d;
+  --ink: #304638;
+  --ink-muted: #5d6d5f;
+  --ink-soft: #7d8a72;
+  --ink-invert: #ffffff;
+  --accent-deep: #42603b;
+  --accent: #547246;
+  --accent-mid: #63824e;
+  --accent-light: #7d9d6c;
+  --accent-pale: #9db68b;
+  --mint: #397052;
+  --sage-deep: #617654;
+  --sage-mid: #879779;
+  --gold: #866225;
+  --gold-deep: #8a662a;
+  --gold-mid: #92713c;
+  --gold-light: #ab915c;
+  --gold-pale: #b3975a;
+  --gold-tint: #eee4c9;
+  --gold-bright: #8a5c15;
+  --gold-sand: #d7c495;
+  --surface-cream: #faf0e6;
+  --danger: #a34f3b;
+  --clay-soft: #a1634d;
+  --info: #3b6983;
+  --info-soft: #507a89;
+  --abyss-tint: #e3e7f5;
+  --abyss-pale: #c9cee3;
+  --abyss-line: #b7bdd6;
+  --abyss-mid: #7f8cbf;
+  --abyss: #4d5a86;
+  --abyss-deep: #3f4a75;
+  --shade-tint: #ebe7f1;
+  --shade: #5a4d70;
+  --shade-deep: #3b3150;
+  --rarity-common: #52634d;
+  --rarity-rare: #356982;
+  --rarity-epic: #79549a;
+  --rarity-legendary: #a8681c;
+  --rarity-trophy: #b23a2e;
+}
+/* 与游戏共用鼠尾草绿和米白；正文保持纸面阅读感，颜色用于导航与状态。 */
+* { box-sizing: border-box; }
+:root { --header-height: 76px; --reading-offset: 104px; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; --serif: "Songti SC", "Noto Serif SC", "SimSun", serif; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
+body { margin: 0; background: var(--surface-paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 4px; }
+button, summary, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s; }
+a:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+svg, img { flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+[hidden] { display: none !important; }
+.skip-link { position: fixed; z-index: 30; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.skip-link:focus { top: 10px; }
+
+.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: var(--surface-paper); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1500px; height: 100%; margin: auto; padding: 0 32px; }
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 11px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.35; letter-spacing: 2px; }
+.brand small { display: block; margin-top: 2px; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.play-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 8px 17px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-soft); color: var(--accent-deep); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--surface-sunken); }
+
+.docs-layout { display: grid; grid-template-columns: 184px minmax(0, 1fr) 204px; grid-template-areas: "navigation content outline"; align-items: start; gap: 34px; max-width: 1500px; margin: 0 auto; padding: 32px 32px 0; }
+.site-sidebar { grid-area: navigation; }
+.toc-sidebar { grid-area: outline; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 28px); min-width: 0; }
+.site-nav > summary { display: none; }
+.nav-panel { max-height: calc(100dvh - 136px); overflow-y: auto; overscroll-behavior: contain; }
+.sidebar-label { margin: 0 10px 12px; color: var(--ink-muted); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.site-nav nav { display: grid; gap: 4px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 11px; border-radius: 7px; color: var(--ink-muted); font-size: 13px; text-decoration: none; }
+.site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-sunken); font-weight: 600; }
+.nav-current-dot { width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: var(--accent); }
+.sidebar-caption { margin: 22px 10px 0; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 10px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+.page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
+.toc-current { display: none; }
+.toc-panel { max-height: calc(100dvh - 188px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.page-toc ol { margin: 0; padding: 0; list-style: none; }
+.page-toc li { margin: 0; }
+.page-toc nav a { display: flex; align-items: center; min-height: 35px; padding: 6px 9px 6px 12px; border-left: 2px solid var(--line-soft); border-radius: 0 5px 5px 0; color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11px; }
+.page-toc nav a:hover { background: var(--surface-soft); color: var(--ink); }
+.page-toc nav a[aria-current="location"] { background: var(--surface-hollow); color: var(--accent-deep); border-color: var(--accent); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 44px; margin: 10px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+
+.guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
+.guide-heading { padding: 4px 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--ink-muted); font-size: 11px; letter-spacing: 1px; }
+.eyebrow span { color: var(--sage-mid); }
+.guide-heading h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: 2px; line-height: 1.35; }
+.page-description { margin: 12px 0 16px; color: var(--ink-muted); font-size: 14px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-muted); font-size: 11px; }
+.version-badge { padding: 2px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-soft); font-variant-numeric: tabular-nums; }
+.guide-article { overflow-wrap: anywhere; }
+.guide-article h2 { margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); font-family: var(--serif); font-size: 25px; font-weight: 600; line-height: 1.45; letter-spacing: 1px; }
+.guide-article > h2:first-child { margin-top: 0; }
+.guide-article h3 { margin: 30px 0 12px; font-size: 19px; line-height: 1.5; }
+.guide-article h4 { margin: 28px 0 8px; font-size: 15px; }
+.lead { margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 20px 0 26px; padding: 14px 17px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 9px 9px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 8px 0; }
+.note p:first-child { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+.muted { color: var(--ink-muted); }
+.variant { color: var(--gold); font-weight: 600; }
+.tag { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: 4px; background: var(--surface-hollow); color: var(--ink-muted); font-family: var(--sans); font-size: 11px; font-weight: 400; line-height: 1.6; }
+code { padding: 2px 5px; border-radius: 4px; background: var(--surface-hollow); font-size: .9em; white-space: normal; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; margin: 16px 0 28px; }
+.card { min-width: 0; padding: 20px; border: 1px solid var(--line-soft); border-radius: 12px; background: var(--surface-raised); }
+.card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 18px; }
+.card p { margin: 8px 0 0; font-size: 13px; color: var(--ink-muted); }
+.card dl { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 6px 12px; margin: 16px 0 0; font-size: 13px; }
+.card dt { color: var(--ink-muted); }
+.card dd { min-width: 0; margin: 0; }
+.portrait { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; background: var(--surface-soft); }
+ul.plain { margin: 0; padding: 0; list-style: none; }
+ul.plain li { margin: 0 0 3px; }
+
+.table-scroll { max-width: 100%; margin: 16px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); scrollbar-width: thin; }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
+.data-table th, .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { background: var(--surface-soft); color: var(--ink-muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.data-table tr:last-child td { border-bottom: 0; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.data-table td.num .muted { font-size: 11px; }
+.cell-content { min-width: 0; }
+.data-table tr.is-chosen td { background: var(--surface-hollow); }
+.data-table tr.is-chosen td:first-child { box-shadow: inset 3px 0 var(--accent); }
+.table-compare { min-width: 530px; }
+.table-compare td:first-child, .table-compare th:first-child { position: sticky; left: 0; z-index: 1; min-width: 150px; max-width: 230px; border-right: 1px solid var(--line-soft); background: var(--surface-raised); }
+.table-compare th:first-child { background: var(--surface-soft); }
+.table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
+.class-link { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; text-decoration: none; white-space: nowrap; }
+.class-link img { width: 28px; height: 28px; border-radius: 7px; }
+.class-link:hover { text-decoration: underline; }
+
+.tier-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0 28px; }
+.tier-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; padding: 18px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-soft); color: var(--ink); text-decoration: none; }
+.tier-link strong { font-size: 17px; }
+.tier-link small { grid-column: 1; color: var(--ink-muted); font-size: 11px; }
+.tier-link svg { grid-column: 2; grid-row: 1 / 3; color: var(--accent); }
+.tier-link:hover { border-color: var(--accent); background: var(--surface-hollow); }
+.build-section { margin-top: 38px; }
+.build-section > h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.build-class-name { display: flex; flex-direction: column; gap: 2px; }
+.build-class-name small { color: var(--ink-muted); font-size: 11px; font-weight: 400; }
+.build-ceiling { display: flex; align-items: baseline; gap: 5px; margin-left: auto; color: var(--ink-muted); font-size: 11px; font-weight: 400; white-space: nowrap; }
+.build-ceiling strong { color: var(--accent); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-card { padding: 0; border: 1px solid var(--line-mid); border-radius: 11px; background: var(--surface-raised); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--line-soft); background: var(--surface-hollow); font-size: 13px; font-weight: 600; }
+.build-card-heading > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-deep); }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 5px 18px 12px; }
+.build-specs > div { min-width: 0; padding: 12px 12px 4px 0; }
+.build-specs .wide { grid-column: 1 / -1; }
+.build-specs dt { margin-bottom: 5px; color: var(--ink-muted); font-size: 11px; }
+.build-specs dd { margin: 0; font-size: 13px; line-height: 1.75; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 6px; padding: 4px 8px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface-soft); }
+.skill-chips strong { font-size: 12px; font-weight: 600; }
+.skill-chips .variant, .skill-chips .muted { font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { min-width: 0; }
+.gear-list small { margin-right: 6px; color: var(--ink-muted); font-size: 11px; }
+.build-analysis { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 9px; background: var(--surface-soft); }
+.build-analysis > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; min-height: 48px; padding: 8px 0; font-size: 12px; color: var(--ink-muted); }
+.build-analysis > summary > span { color: var(--ink); font-weight: 600; }
+.build-analysis > summary small { font-size: 11px; }
+.build-analysis > summary svg { margin-left: auto; }
+.build-analysis[open] > summary svg { transform: rotate(90deg); }
+.build-analysis[open] > summary { border-bottom: 1px solid var(--line-soft); }
+.build-analysis .lead { font-size: 12px; }
+.build-analysis .table-scroll { margin-bottom: 22px; }
+
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 48px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 9px; color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { background: var(--surface-soft); }
+.page-pagination small { color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13px; }
+.page-pagination .previous svg { transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
+.site-footer p { max-width: 540px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; }
+
+/* 手机与平板：导航和目录并列，展开后使用整行宽度；正文不被侧栏挤压。 */
+@media (max-width: 1100px) {
+  :root { --header-height: 66px; --reading-offset: 136px; }
+  .header-inner { padding: 0 24px; }
+  .docs-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 20px 12px; max-width: 880px; padding: 12px 24px 0; }
+  .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 46px; margin: 0; padding: 10px 13px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-paper); color: var(--ink); font-size: 12px; font-weight: 500; box-shadow: 0 4px 14px #526c3c0a; }
+  .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+  .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
+  .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 12px); max-height: min(62dvh, 520px); padding: 12px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 12px 32px #526c3c1a; }
+  .nav-panel { left: 0; }
+  .toc-panel { right: 0; }
+  .site-nav nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 1px 10px 8px; }
+  .sidebar-caption { margin: 8px 10px 0; padding-top: 10px; }
+  .page-toc nav a { min-height: 44px; font-size: 13px; }
+  .page-toc .toc-level-3 a { font-size: 12px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10px; }
+  .guide-heading { padding-top: 4px; }
+}
+
+@media (max-width: 640px) {
+  :root { --header-height: 64px; --reading-offset: 132px; }
+  body { font-size: 14px; }
+  .header-inner { padding: 0 16px; gap: 10px; }
+  .brand { gap: 8px; }
+  .brand img { width: 34px; height: 34px; }
+  .brand strong { font-size: 19px; }
+  .brand small { font-size: 9px; letter-spacing: 1px; }
+  .play-link { min-height: 40px; padding: 7px 10px; gap: 5px; font-size: 12px; }
+  .docs-layout { padding: 10px 16px 0; gap: 18px 8px; }
+  .site-nav > summary, .page-toc > summary { gap: 6px; padding: 9px 10px; min-height: 44px; }
+  .nav-panel, .toc-panel { width: calc(200% + 8px); }
+  .toc-current { display: none; }
+  .guide-heading { margin-bottom: 24px; padding-bottom: 22px; }
+  .eyebrow { margin-bottom: 9px; font-size: 10px; }
+  .guide-heading h1 { font-size: 31px; }
+  .page-description { margin: 10px 0 13px; font-size: 13px; }
+  .page-meta { gap: 5px 8px; font-size: 10px; }
+  .guide-article h2 { margin-top: 36px; font-size: 22px; }
+  .guide-article h3 { font-size: 17px; }
+  .lead { font-size: 14px; line-height: 1.8; }
+  .cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .card { padding: 16px; }
+  .note { padding: 12px 13px; font-size: 12px; }
+  .tier-links { gap: 9px; }
+  .tier-link { padding: 13px 11px; gap: 5px 4px; }
+  .tier-link strong { font-size: 14px; }
+  .tier-link small { font-size: 10px; }
+  .tier-link svg { width: 15px; }
+  .table-hint { display: block; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; overflow: visible; }
+  .table-cards { display: block; width: 100%; }
+  .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .table-cards tbody { display: grid; gap: 12px; }
+  .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+  .table-cards td { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; padding: 7px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td.num { white-space: normal; text-align: left; }
+  .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink); font-size: 15px; }
+  .table-cards td:first-child::before { display: none; }
+  .table-cards .cell-content { overflow-wrap: anywhere; }
+  .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
+  .table-compare td:first-child, .table-compare th:first-child { min-width: 135px; max-width: 175px; }
+  .build-section { margin-top: 30px; }
+  .build-section > h3 { gap: 9px; }
+  .build-ceiling { gap: 3px; font-size: 10px; }
+  .build-ceiling strong { font-size: 22px; }
+  .build-card-heading { padding: 10px 13px; font-size: 12px; }
+  .build-specs { padding: 3px 13px 12px; gap: 0 10px; }
+  .build-specs > div { padding-right: 0; }
+  .build-specs dd { font-size: 13px; }
+  .gear-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .build-analysis { padding: 0 11px; }
+  .build-analysis > summary small { display: none; }
+  .page-pagination { gap: 8px; margin-top: 36px; }
+  .page-pagination a { padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, summary { transition: none; }
+}
+@media print {
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link { display: none; }
+  .docs-layout { display: block; max-width: none; padding: 0; }
+  .table-scroll { overflow: visible; }
+  .guide-article h2, .guide-article h3 { break-after: avoid; }
+  .build-card, .card, .table-cards tr { break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#guide-content">跳到正文</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>官方攻略与图鉴</small></span></a>
+  <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div></header>
+<div class="docs-layout">
+  <aside class="site-sidebar"><details class="site-nav" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>攻略导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><p class="sidebar-label">冒险指南</p><nav aria-label="攻略分类"><a href="index.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>职业与属性</span><span class="nav-current-dot" aria-hidden="true"></span></a><a href="skills.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg><span>技能</span></a><a href="passives.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C9 2 2 7 5 15c8 5 16-1 15-12ZM3 21 15 9"/></svg><span>职业被动</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐</span></a><a href="builds.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></svg><span>推荐配置</span></a></nav><p class="sidebar-caption">一人一程，自在生长。</p></div>
+  </details></aside>
+  <aside class="toc-sidebar"><details class="page-toc" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#section-七个职业" data-toc-id="section-七个职业" title="七个职业"><span>七个职业</span></a></li><li class="toc-level-3"><a href="#section-战士" data-toc-id="section-战士" title="战士"><span>战士</span></a></li><li class="toc-level-3"><a href="#section-游侠" data-toc-id="section-游侠" title="游侠"><span>游侠</span></a></li><li class="toc-level-3"><a href="#section-法师" data-toc-id="section-法师" title="法师"><span>法师</span></a></li><li class="toc-level-3"><a href="#section-召唤师" data-toc-id="section-召唤师" title="召唤师"><span>召唤师</span></a></li><li class="toc-level-3"><a href="#section-刺客" data-toc-id="section-刺客" title="刺客"><span>刺客</span></a></li><li class="toc-level-3"><a href="#section-德鲁伊" data-toc-id="section-德鲁伊" title="德鲁伊"><span>德鲁伊</span></a></li><li class="toc-level-3"><a href="#section-死灵法师" data-toc-id="section-死灵法师" title="死灵法师"><span>死灵法师</span></a></li><li class="toc-level-2"><a href="#section-属性收益" data-toc-id="section-属性收益" title="属性收益"><span>属性收益</span></a></li><li class="toc-level-2"><a href="#section-护甲材质" data-toc-id="section-护甲材质" title="护甲材质"><span>护甲材质</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+  </details></aside>
+  <main class="guide-main" id="guide-content" tabindex="-1">
+    <header class="guide-heading"><p class="eyebrow">冒险指南 <span>/</span> 职业与属性</p><h1>职业与属性</h1><p class="page-description">认识每个职业的战斗特点，理解属性与护甲的收益。</p><div class="page-meta"><span class="version-badge">v0.5.1-ota1</span><span>与游戏版本同步更新</span></div></header>
+    <article class="guide-article"><h2 id="section-七个职业" tabindex="-1">七个职业</h2>
+<p class="lead">每个角色只专精一个职业。主属性每点提供更多攻击，其余三项也有少量贡献。</p>
+<div class="cards"><div class="card">
+  <h3 data-toc-label="战士" id="section-战士" tabindex="-1"><img class="portrait" src="../portraits/warrior.png" alt="" width="42" height="42" loading="lazy" />战士 <span class="tag">主属性 力量 · 射程 1 格</span></h3>
+  <p>近战。靠力量和体质硬吃伤害，喜欢卡口和护盾。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 8，敏捷 4，智力 2，体质 8</dd>
+    <dt>武器</dt><dd>剑刃、战斧、长枪</dd>
+    <dt>护甲精通</dt><dd>重甲（生命与护甲更高，体质增强生存和回复。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="游侠" id="section-游侠" tabindex="-1"><img class="portrait" src="../portraits/ranger.png" alt="" width="42" height="42" loading="lazy" />游侠 <span class="tag">主属性 敏捷 · 射程 3 格</span></h3>
+  <p>远程 3 格。靠敏捷堆暴击和闪避，喜欢开阔地和拉扯。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 4，敏捷 9，智力 3，体质 5</dd>
+    <dt>武器</dt><dd>猎弓、弩机</dd>
+    <dt>护甲精通</dt><dd>轻甲（防护适中，敏捷提高暴击和闪避。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="法师" id="section-法师" tabindex="-1"><img class="portrait" src="../portraits/mage.png" alt="" width="42" height="42" loading="lazy" />法师 <span class="tag">主属性 智力 · 射程 2 格</span></h3>
+  <p>远程 2 格。靠智力放大技能、缩短冷却，喜欢敌人扎堆。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 2，敏捷 4，智力 10，体质 5</dd>
+    <dt>武器</dt><dd>法杖、魔杖</dd>
+    <dt>护甲精通</dt><dd>布甲（生命与护甲较低，智力提高攻击、护盾与治疗。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="召唤师" id="section-召唤师" tabindex="-1"><img class="portrait" src="../portraits/summoner.png" alt="" width="42" height="42" loading="lazy" />召唤师 <span class="tag">主属性 智力 · 射程 2 格</span></h3>
+  <p>远程 2 格。自己输出不高，靠召唤物顶在前面挡刀与输出；场上帮手越多，你越强。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 3，敏捷 3，智力 9，体质 6</dd>
+    <dt>武器</dt><dd>符杖、灵典</dd>
+    <dt>护甲精通</dt><dd>祭袍（护甲很低但生命偏高，智力提高攻击、护盾与治疗。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="刺客" id="section-刺客" tabindex="-1"><img class="portrait" src="../portraits/assassin.png" alt="" width="42" height="42" loading="lazy" />刺客 <span class="tag">主属性 敏捷 · 射程 1 格</span></h3>
+  <p>近战 1 格。体质最低、最怕被围，靠偷袭满血目标起手，用流血叠伤害，再引爆收割。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 5，敏捷 10，智力 3，体质 6</dd>
+    <dt>武器</dt><dd>短刃、爪刃</dd>
+    <dt>护甲精通</dt><dd>夜行衣（生命与护甲都很低，敏捷提高攻击、暴击与闪避。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="德鲁伊" id="section-德鲁伊" tabindex="-1"><img class="portrait" src="../portraits/druid.png" alt="" width="42" height="42" loading="lazy" />德鲁伊 <span class="tag">主属性 体质 · 射程 2 格</span></h3>
+  <p>远程 2 格。唯一以体质为主属性，靠中毒、反伤和持续回复把战斗拖长，熬赢而不是秒杀。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 3，敏捷 4，智力 4，体质 10</dd>
+    <dt>武器</dt><dd>藤杖、月镰</dd>
+    <dt>护甲精通</dt><dd>藤甲（生命很高、护甲偏低，体质提高攻击、生命与回复。）</dd>
+  </dl>
+</div>
+<div class="card">
+  <h3 data-toc-label="死灵法师" id="section-死灵法师" tabindex="-1"><img class="portrait" src="../portraits/necromancer.png" alt="" width="42" height="42" loading="lazy" />死灵法师 <span class="tag">主属性 智力 · 射程 2 格</span></h3>
+  <p>远程 2 格。本体最弱，靠把打倒的敌人提取成影子、存进影子池慢慢壮大；影子越多、阶位越高，你越强。</p>
+  <dl>
+    <dt>初始属性</dt><dd>力量 2，敏捷 3，智力 5，体质 4</dd>
+    <dt>武器</dt><dd>魂杖、冥灯</dd>
+    <dt>护甲精通</dt><dd>冥纱（生命与护甲都偏低，智力提高攻击、护盾与治疗。）</dd>
+  </dl>
+</div></div>
+<h2 id="section-属性收益" tabindex="-1">属性收益</h2>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">属性</th><th scope="col">每点收益</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>力量</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+0.7 护甲；主属性时 +2.2 攻击，否则 +0.4</div></td></tr>
+<tr class="" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>敏捷</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+0.7 暴击值、+0.7 闪避值（都按递减曲线换算），提高先攻，先攻到 65 移动 2 格；主属性时 +2.2 攻击，否则 +0.4</div></td></tr>
+<tr class="" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>智力</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+1% 护盾量与治疗量；主属性时 +2.2 攻击、+0.4% 技能伤害，否则 +0.4 攻击、+0.1% 技能伤害</div></td></tr>
+<tr class="" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>体质</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+7 生命，每 7 点每回合回复 1；主属性时 +1.4 攻击</div></td></tr>
+</tbody></table></div>
+<div class="note">护甲减伤为 <code>护甲 ÷ (护甲 + 40 + 等级)</code>。分母随等级增长，所以同样的护甲值在高等级不会越来越强——
+减伤和血量是相乘的，不压住的话职业差距会随等级无上限拉大。闪避同理走递减曲线，堆多少都有收益但越来越少。</div>
+<h2 id="section-护甲材质" tabindex="-1">护甲材质</h2>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">材质</th><th scope="col">精通职业</th><th scope="col">固有属性</th><th scope="col">说明</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">战士</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲更高，体质增强生存和回复。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">防护适中，敏捷提高暴击和闪避。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">法师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲较低，智力提高攻击、护盾与治疗。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>夜行衣</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>祭袍</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>冥纱</strong></div></td><td data-label="精通职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td></tr>
+</tbody></table></div>
+<div class="note">穿其他职业能穿的材质时保留固有特性，但拿不到精通加成。头盔与护甲各自独立生效。</div></article>
+    <nav class="page-pagination" aria-label="相邻页面"><span></span><a class="next" href="skills.html"><small>下一篇</small><span>技能<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 官方攻略</span><p>数据与搭配分析随游戏版本更新。推荐配置用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+  </main>
+</div>
+<script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
+(() => {
+  const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
+  const mobile = window.matchMedia('(max-width: 1100px)');
+  const toc = document.querySelector('.page-toc');
+  const links = [...document.querySelectorAll('[data-toc-id]')];
+  const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
+  const currentLabel = document.querySelector('.toc-current');
+  let currentId = '';
+  let scheduled = false;
+
+  function updateCurrent() {
+    scheduled = false;
+    const offset = mobile.matches ? 142 : 110;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.heading.getBoundingClientRect().top > offset) break;
+      current = section;
+    }
+    if (!current) return;
+    if (currentId !== current.heading.id) {
+      currentId = current.heading.id;
+      for (const { link } of sections) {
+        if (link === current.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      if (currentLabel) currentLabel.textContent = current.link.textContent.trim();
+    }
+    // 只滚动目录自身，避免目录定位带动正文跳动。
+    const panel = toc?.querySelector('.toc-panel');
+    if (panel && toc.open) {
+      const itemRect = current.link.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      if (itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom) {
+        panel.scrollTop += itemRect.top - panelRect.top - panel.clientHeight / 3;
+      }
+    }
+  }
+
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrent);
+  }
+
+  function fitMenus() {
+    for (const menu of menus) menu.open = !mobile.matches;
+    scheduleUpdate();
+  }
+  fitMenus();
+  mobile.addEventListener('change', fitMenus);
+  for (const menu of menus) {
+    menu.addEventListener('toggle', () => {
+      if (mobile.matches && menu.open) {
+        for (const other of menus) if (other !== menu) other.open = false;
+      }
+    });
+  }
+  document.addEventListener('click', event => {
+    if (mobile.matches && !menus.some(menu => menu.contains(event.target))) {
+      for (const menu of menus) menu.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobile.matches) return;
+    const open = menus.find(menu => menu.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+    }
+  });
+
+  function revealHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
+    target.scrollIntoView({ block: 'start' });
+    if (target.hasAttribute('tabindex')) target.focus({ preventScroll: true });
+    scheduleUpdate();
+  }
+  for (const link of document.querySelectorAll('.page-toc a, .tier-link, .class-link')) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (mobile.matches) for (const menu of menus) menu.open = false;
+      // 保留浏览器原生 hash 历史；重复点击当前锚点也能重新定位。
+      requestAnimationFrame(revealHash);
+    });
+  }
+  window.addEventListener('hashchange', revealHash);
+  window.addEventListener('load', () => { if (location.hash) revealHash(); else scheduleUpdate(); });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  document.addEventListener('toggle', scheduleUpdate, true);
+  scheduleUpdate();
+})();
+</script>
+</body>
+</html>

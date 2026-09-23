@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f9fbf5" />
+<title>技能 · 风行物语官方攻略</title>
+<meta name="description" content="查阅技能效果、精通分支与升级收益，找到你的技能组合。" />
+<link rel="icon" type="image/png" href="../icons/windward-64.png" />
+<style>
+:root {
+  --surface-page: #e3eddd;
+  --surface-hollow: #eaf0e1;
+  --surface-sunken: #deead5;
+  --surface-soft: #f2f6eb;
+  --surface-paper: #f9fbf5;
+  --surface-raised: #ffffff;
+  --surface-warm: #f1eddc;
+  --surface-cool: #e6e9f4;
+  --line-soft: #d1ddc8;
+  --line-mid: #c1d1b4;
+  --line-strong: #b3c39d;
+  --ink: #304638;
+  --ink-muted: #5d6d5f;
+  --ink-soft: #7d8a72;
+  --ink-invert: #ffffff;
+  --accent-deep: #42603b;
+  --accent: #547246;
+  --accent-mid: #63824e;
+  --accent-light: #7d9d6c;
+  --accent-pale: #9db68b;
+  --mint: #397052;
+  --sage-deep: #617654;
+  --sage-mid: #879779;
+  --gold: #866225;
+  --gold-deep: #8a662a;
+  --gold-mid: #92713c;
+  --gold-light: #ab915c;
+  --gold-pale: #b3975a;
+  --gold-tint: #eee4c9;
+  --gold-bright: #8a5c15;
+  --gold-sand: #d7c495;
+  --surface-cream: #faf0e6;
+  --danger: #a34f3b;
+  --clay-soft: #a1634d;
+  --info: #3b6983;
+  --info-soft: #507a89;
+  --abyss-tint: #e3e7f5;
+  --abyss-pale: #c9cee3;
+  --abyss-line: #b7bdd6;
+  --abyss-mid: #7f8cbf;
+  --abyss: #4d5a86;
+  --abyss-deep: #3f4a75;
+  --shade-tint: #ebe7f1;
+  --shade: #5a4d70;
+  --shade-deep: #3b3150;
+  --rarity-common: #52634d;
+  --rarity-rare: #356982;
+  --rarity-epic: #79549a;
+  --rarity-legendary: #a8681c;
+  --rarity-trophy: #b23a2e;
+}
+/* 与游戏共用鼠尾草绿和米白；正文保持纸面阅读感，颜色用于导航与状态。 */
+* { box-sizing: border-box; }
+:root { --header-height: 76px; --reading-offset: 104px; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; --serif: "Songti SC", "Noto Serif SC", "SimSun", serif; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
+body { margin: 0; background: var(--surface-paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 4px; }
+button, summary, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s; }
+a:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+svg, img { flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+[hidden] { display: none !important; }
+.skip-link { position: fixed; z-index: 30; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.skip-link:focus { top: 10px; }
+
+.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: var(--surface-paper); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1500px; height: 100%; margin: auto; padding: 0 32px; }
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 11px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.35; letter-spacing: 2px; }
+.brand small { display: block; margin-top: 2px; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.play-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 8px 17px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-soft); color: var(--accent-deep); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--surface-sunken); }
+
+.docs-layout { display: grid; grid-template-columns: 184px minmax(0, 1fr) 204px; grid-template-areas: "navigation content outline"; align-items: start; gap: 34px; max-width: 1500px; margin: 0 auto; padding: 32px 32px 0; }
+.site-sidebar { grid-area: navigation; }
+.toc-sidebar { grid-area: outline; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 28px); min-width: 0; }
+.site-nav > summary { display: none; }
+.nav-panel { max-height: calc(100dvh - 136px); overflow-y: auto; overscroll-behavior: contain; }
+.sidebar-label { margin: 0 10px 12px; color: var(--ink-muted); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.site-nav nav { display: grid; gap: 4px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 11px; border-radius: 7px; color: var(--ink-muted); font-size: 13px; text-decoration: none; }
+.site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-sunken); font-weight: 600; }
+.nav-current-dot { width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: var(--accent); }
+.sidebar-caption { margin: 22px 10px 0; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 10px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+.page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
+.toc-current { display: none; }
+.toc-panel { max-height: calc(100dvh - 188px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.page-toc ol { margin: 0; padding: 0; list-style: none; }
+.page-toc li { margin: 0; }
+.page-toc nav a { display: flex; align-items: center; min-height: 35px; padding: 6px 9px 6px 12px; border-left: 2px solid var(--line-soft); border-radius: 0 5px 5px 0; color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11px; }
+.page-toc nav a:hover { background: var(--surface-soft); color: var(--ink); }
+.page-toc nav a[aria-current="location"] { background: var(--surface-hollow); color: var(--accent-deep); border-color: var(--accent); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 44px; margin: 10px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+
+.guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
+.guide-heading { padding: 4px 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--ink-muted); font-size: 11px; letter-spacing: 1px; }
+.eyebrow span { color: var(--sage-mid); }
+.guide-heading h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: 2px; line-height: 1.35; }
+.page-description { margin: 12px 0 16px; color: var(--ink-muted); font-size: 14px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-muted); font-size: 11px; }
+.version-badge { padding: 2px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-soft); font-variant-numeric: tabular-nums; }
+.guide-article { overflow-wrap: anywhere; }
+.guide-article h2 { margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); font-family: var(--serif); font-size: 25px; font-weight: 600; line-height: 1.45; letter-spacing: 1px; }
+.guide-article > h2:first-child { margin-top: 0; }
+.guide-article h3 { margin: 30px 0 12px; font-size: 19px; line-height: 1.5; }
+.guide-article h4 { margin: 28px 0 8px; font-size: 15px; }
+.lead { margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 20px 0 26px; padding: 14px 17px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 9px 9px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 8px 0; }
+.note p:first-child { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+.muted { color: var(--ink-muted); }
+.variant { color: var(--gold); font-weight: 600; }
+.tag { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: 4px; background: var(--surface-hollow); color: var(--ink-muted); font-family: var(--sans); font-size: 11px; font-weight: 400; line-height: 1.6; }
+code { padding: 2px 5px; border-radius: 4px; background: var(--surface-hollow); font-size: .9em; white-space: normal; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; margin: 16px 0 28px; }
+.card { min-width: 0; padding: 20px; border: 1px solid var(--line-soft); border-radius: 12px; background: var(--surface-raised); }
+.card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 18px; }
+.card p { margin: 8px 0 0; font-size: 13px; color: var(--ink-muted); }
+.card dl { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 6px 12px; margin: 16px 0 0; font-size: 13px; }
+.card dt { color: var(--ink-muted); }
+.card dd { min-width: 0; margin: 0; }
+.portrait { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; background: var(--surface-soft); }
+ul.plain { margin: 0; padding: 0; list-style: none; }
+ul.plain li { margin: 0 0 3px; }
+
+.table-scroll { max-width: 100%; margin: 16px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); scrollbar-width: thin; }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
+.data-table th, .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { background: var(--surface-soft); color: var(--ink-muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.data-table tr:last-child td { border-bottom: 0; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.data-table td.num .muted { font-size: 11px; }
+.cell-content { min-width: 0; }
+.data-table tr.is-chosen td { background: var(--surface-hollow); }
+.data-table tr.is-chosen td:first-child { box-shadow: inset 3px 0 var(--accent); }
+.table-compare { min-width: 530px; }
+.table-compare td:first-child, .table-compare th:first-child { position: sticky; left: 0; z-index: 1; min-width: 150px; max-width: 230px; border-right: 1px solid var(--line-soft); background: var(--surface-raised); }
+.table-compare th:first-child { background: var(--surface-soft); }
+.table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
+.class-link { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; text-decoration: none; white-space: nowrap; }
+.class-link img { width: 28px; height: 28px; border-radius: 7px; }
+.class-link:hover { text-decoration: underline; }
+
+.tier-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0 28px; }
+.tier-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; padding: 18px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-soft); color: var(--ink); text-decoration: none; }
+.tier-link strong { font-size: 17px; }
+.tier-link small { grid-column: 1; color: var(--ink-muted); font-size: 11px; }
+.tier-link svg { grid-column: 2; grid-row: 1 / 3; color: var(--accent); }
+.tier-link:hover { border-color: var(--accent); background: var(--surface-hollow); }
+.build-section { margin-top: 38px; }
+.build-section > h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.build-class-name { display: flex; flex-direction: column; gap: 2px; }
+.build-class-name small { color: var(--ink-muted); font-size: 11px; font-weight: 400; }
+.build-ceiling { display: flex; align-items: baseline; gap: 5px; margin-left: auto; color: var(--ink-muted); font-size: 11px; font-weight: 400; white-space: nowrap; }
+.build-ceiling strong { color: var(--accent); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-card { padding: 0; border: 1px solid var(--line-mid); border-radius: 11px; background: var(--surface-raised); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--line-soft); background: var(--surface-hollow); font-size: 13px; font-weight: 600; }
+.build-card-heading > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-deep); }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 5px 18px 12px; }
+.build-specs > div { min-width: 0; padding: 12px 12px 4px 0; }
+.build-specs .wide { grid-column: 1 / -1; }
+.build-specs dt { margin-bottom: 5px; color: var(--ink-muted); font-size: 11px; }
+.build-specs dd { margin: 0; font-size: 13px; line-height: 1.75; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 6px; padding: 4px 8px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface-soft); }
+.skill-chips strong { font-size: 12px; font-weight: 600; }
+.skill-chips .variant, .skill-chips .muted { font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { min-width: 0; }
+.gear-list small { margin-right: 6px; color: var(--ink-muted); font-size: 11px; }
+.build-analysis { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 9px; background: var(--surface-soft); }
+.build-analysis > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; min-height: 48px; padding: 8px 0; font-size: 12px; color: var(--ink-muted); }
+.build-analysis > summary > span { color: var(--ink); font-weight: 600; }
+.build-analysis > summary small { font-size: 11px; }
+.build-analysis > summary svg { margin-left: auto; }
+.build-analysis[open] > summary svg { transform: rotate(90deg); }
+.build-analysis[open] > summary { border-bottom: 1px solid var(--line-soft); }
+.build-analysis .lead { font-size: 12px; }
+.build-analysis .table-scroll { margin-bottom: 22px; }
+
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 48px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 9px; color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { background: var(--surface-soft); }
+.page-pagination small { color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13px; }
+.page-pagination .previous svg { transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
+.site-footer p { max-width: 540px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; }
+
+/* 手机与平板：导航和目录并列，展开后使用整行宽度；正文不被侧栏挤压。 */
+@media (max-width: 1100px) {
+  :root { --header-height: 66px; --reading-offset: 136px; }
+  .header-inner { padding: 0 24px; }
+  .docs-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 20px 12px; max-width: 880px; padding: 12px 24px 0; }
+  .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 46px; margin: 0; padding: 10px 13px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-paper); color: var(--ink); font-size: 12px; font-weight: 500; box-shadow: 0 4px 14px #526c3c0a; }
+  .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+  .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
+  .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 12px); max-height: min(62dvh, 520px); padding: 12px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 12px 32px #526c3c1a; }
+  .nav-panel { left: 0; }
+  .toc-panel { right: 0; }
+  .site-nav nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 1px 10px 8px; }
+  .sidebar-caption { margin: 8px 10px 0; padding-top: 10px; }
+  .page-toc nav a { min-height: 44px; font-size: 13px; }
+  .page-toc .toc-level-3 a { font-size: 12px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10px; }
+  .guide-heading { padding-top: 4px; }
+}
+
+@media (max-width: 640px) {
+  :root { --header-height: 64px; --reading-offset: 132px; }
+  body { font-size: 14px; }
+  .header-inner { padding: 0 16px; gap: 10px; }
+  .brand { gap: 8px; }
+  .brand img { width: 34px; height: 34px; }
+  .brand strong { font-size: 19px; }
+  .brand small { font-size: 9px; letter-spacing: 1px; }
+  .play-link { min-height: 40px; padding: 7px 10px; gap: 5px; font-size: 12px; }
+  .docs-layout { padding: 10px 16px 0; gap: 18px 8px; }
+  .site-nav > summary, .page-toc > summary { gap: 6px; padding: 9px 10px; min-height: 44px; }
+  .nav-panel, .toc-panel { width: calc(200% + 8px); }
+  .toc-current { display: none; }
+  .guide-heading { margin-bottom: 24px; padding-bottom: 22px; }
+  .eyebrow { margin-bottom: 9px; font-size: 10px; }
+  .guide-heading h1 { font-size: 31px; }
+  .page-description { margin: 10px 0 13px; font-size: 13px; }
+  .page-meta { gap: 5px 8px; font-size: 10px; }
+  .guide-article h2 { margin-top: 36px; font-size: 22px; }
+  .guide-article h3 { font-size: 17px; }
+  .lead { font-size: 14px; line-height: 1.8; }
+  .cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .card { padding: 16px; }
+  .note { padding: 12px 13px; font-size: 12px; }
+  .tier-links { gap: 9px; }
+  .tier-link { padding: 13px 11px; gap: 5px 4px; }
+  .tier-link strong { font-size: 14px; }
+  .tier-link small { font-size: 10px; }
+  .tier-link svg { width: 15px; }
+  .table-hint { display: block; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; overflow: visible; }
+  .table-cards { display: block; width: 100%; }
+  .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .table-cards tbody { display: grid; gap: 12px; }
+  .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+  .table-cards td { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; padding: 7px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td.num { white-space: normal; text-align: left; }
+  .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink); font-size: 15px; }
+  .table-cards td:first-child::before { display: none; }
+  .table-cards .cell-content { overflow-wrap: anywhere; }
+  .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
+  .table-compare td:first-child, .table-compare th:first-child { min-width: 135px; max-width: 175px; }
+  .build-section { margin-top: 30px; }
+  .build-section > h3 { gap: 9px; }
+  .build-ceiling { gap: 3px; font-size: 10px; }
+  .build-ceiling strong { font-size: 22px; }
+  .build-card-heading { padding: 10px 13px; font-size: 12px; }
+  .build-specs { padding: 3px 13px 12px; gap: 0 10px; }
+  .build-specs > div { padding-right: 0; }
+  .build-specs dd { font-size: 13px; }
+  .gear-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .build-analysis { padding: 0 11px; }
+  .build-analysis > summary small { display: none; }
+  .page-pagination { gap: 8px; margin-top: 36px; }
+  .page-pagination a { padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, summary { transition: none; }
+}
+@media print {
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link { display: none; }
+  .docs-layout { display: block; max-width: none; padding: 0; }
+  .table-scroll { overflow: visible; }
+  .guide-article h2, .guide-article h3 { break-after: avoid; }
+  .build-card, .card, .table-cards tr { break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#guide-content">跳到正文</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>官方攻略与图鉴</small></span></a>
+  <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div></header>
+<div class="docs-layout">
+  <aside class="site-sidebar"><details class="site-nav" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>攻略导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><p class="sidebar-label">冒险指南</p><nav aria-label="攻略分类"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>职业与属性</span></a><a href="skills.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg><span>技能</span><span class="nav-current-dot" aria-hidden="true"></span></a><a href="passives.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C9 2 2 7 5 15c8 5 16-1 15-12ZM3 21 15 9"/></svg><span>职业被动</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐</span></a><a href="builds.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></svg><span>推荐配置</span></a></nav><p class="sidebar-caption">一人一程，自在生长。</p></div>
+  </details></aside>
+  <aside class="toc-sidebar"><details class="page-toc" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#section-技能" data-toc-id="section-技能" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#section-战士" data-toc-id="section-战士" title="战士"><span>战士</span></a></li><li class="toc-level-3"><a href="#section-游侠" data-toc-id="section-游侠" title="游侠"><span>游侠</span></a></li><li class="toc-level-3"><a href="#section-法师" data-toc-id="section-法师" title="法师"><span>法师</span></a></li><li class="toc-level-3"><a href="#section-召唤师" data-toc-id="section-召唤师" title="召唤师"><span>召唤师</span></a></li><li class="toc-level-3"><a href="#section-刺客" data-toc-id="section-刺客" title="刺客"><span>刺客</span></a></li><li class="toc-level-3"><a href="#section-德鲁伊" data-toc-id="section-德鲁伊" title="德鲁伊"><span>德鲁伊</span></a></li><li class="toc-level-3"><a href="#section-死灵法师" data-toc-id="section-死灵法师" title="死灵法师"><span>死灵法师</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+  </details></aside>
+  <main class="guide-main" id="guide-content" tabindex="-1">
+    <header class="guide-heading"><p class="eyebrow">冒险指南 <span>/</span> 技能</p><h1>技能</h1><p class="page-description">查阅技能效果、精通分支与升级收益，找到你的技能组合。</p><div class="page-meta"><span class="version-badge">v0.5.1-ota1</span><span>与游戏版本同步更新</span></div></header>
+    <article class="guide-article"><h2 id="section-技能" tabindex="-1">技能</h2>
+<p class="lead">每个职业十二个技能，按 1、1、1、4、8、12、16、20、25、30、35、50 级开放。学习消耗 1 技能点，携带栏 3 个起步，12 级和 25 级各多 1 个。
+5 级起可花 1 点选择技能精通（二选一，切换免费），已学技能还能逐级升级，上限每 20 级开放一级、最高 5 级。</p>
+<h3 id="section-战士" tabindex="-1">战士</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>重击</strong><br /><span class="muted">单体 · 重创</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 200% 攻击伤害。命中易伤目标时造成重创：伤害再提高 50%，并消耗易伤。<br /><span class="muted">战吼或冲锋造成的易伤，交给重击收割。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">破甲重击</span>：命中后目标破甲 2 回合。<br /><span class="variant">震荡重击</span>：命中后目标眩晕，跳过 1 次行动。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>旋风斩</strong><br /><span class="muted">群攻 · 破甲</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对所有相邻敌人各造成 130% 伤害，并使其破甲 2 回合：护甲视为 0。<br /><span class="muted">先破甲，再让所有攻击打满伤害，适合兽人、巨魔和首领。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">血旋</span>：每次命中回复造成伤害的 20%。<br /><span class="variant">飓风</span>：攻击 2 格内所有敌人，伤害 110%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>战吼</strong><br /><span class="muted">护盾 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">获得相当于 35% 最大生命的护盾，并震慑相邻敌人：易伤 2 回合，受到的所有伤害提高 30%。<br /><span class="muted">震慑之后接重击，打出重创。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">铁壁</span>：护盾提高到最大生命的 50%。<br /><span class="variant">咆哮</span>：震慑范围扩大到 2 格。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>冲锋</strong><br /><span class="muted">突进 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">冲向 2–4 格外最近的敌人并造成 170% 伤害，命中后目标易伤 2 回合：受到的所有伤害提高 30%。对首领必定命中。<br /><span class="muted">接敌即上易伤，下一回合的重击会造成重创。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">猛冲</span>：伤害提高到 220%。<br /><span class="variant">践踏</span>：同时对目标相邻的敌人造成 100% 伤害。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>处决</strong><br /><span class="muted">斩杀 · 重置</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内生命低于 40% 的敌人造成 300% 伤害。若因此击杀目标，冷却立即结束。<br /><span class="muted">旋风斩削弱一群敌人后，用处决逐个收割。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">血偿</span>：处决击杀后回复 15% 最大生命。<br /><span class="variant">审判</span>：生命低于 55% 的敌人即可处决。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>震地</strong><br /><span class="muted">群攻 · 眩晕</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对所有相邻敌人造成 100% 伤害并眩晕：跳过 1 次行动。<br /><span class="muted">被包围时先震地，再用旋风斩和重击处理。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">余震</span>：眩晕延长到 2 次行动。<br /><span class="variant">裂地</span>：范围扩大到 2 格，伤害 80%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>盾击</strong><br /><span class="muted">眩晕 · 盾伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名敌人造成 120% 伤害并眩晕：跳过 1 次行动，再把它击退 1 格。若自身有护盾，消耗护盾，伤害追加护盾量的 50%。击退撞上岩石或场地边缘再受 60% 攻击伤害，撞上别的敌人两边各受 40%；推进浅水、熔岩或冰面照样吃地形。<br /><span class="muted">背靠岩石或边缘的敌人最怕盾击；被包夹时也能用它推开一个缺口。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">盾墙</span>：不消耗护盾，伤害改为追加护盾量的 30%。<br /><span class="variant">震慑</span>：眩晕延长到 2 次行动。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>嗜血斩</strong><br /><span class="muted">单体 · 吸血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内生命最高的敌人造成 150% 伤害，并回复造成伤害的 40%。<br /><span class="muted">对着首领或巨魔挥砍，把它的血量变成你的。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">饮血</span>：回复提高到造成伤害的 60%。<br /><span class="variant">撕裂</span>：命中后目标流血 3 回合：每回合受到 35% 攻击的伤害，它每次攻击时再流血一次。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>战意</strong><br /><span class="muted">专注 · 破甲</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">瞬发：放完还能接着行动，每回合限一个瞬发技。进入专注，下一次技能攻击必定暴击；相邻敌人破甲 2 回合。<br /><span class="muted">先战意，再用重击或处决打出必定暴击。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">破阵</span>：破甲范围扩大到 2 格。<br /><span class="variant">怒意</span>：同时获得相当于 15% 最大生命的护盾。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>不屈</strong><br /><span class="muted">回复 · 闪避</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于 60% 时可用：回复 25% 最大生命，并闪避下一次攻击。<br /><span class="muted">把喝药规则放后面，先靠不屈撑住。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">顽强</span>：回复提高到 35% 最大生命。<br /><span class="variant">反震</span>：同时眩晕相邻敌人：跳过 1 次行动。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">治疗</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>破军斩</strong><br /><span class="muted">破甲 · 护盾</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合；按造成伤害的 30% 获得护盾，目标原本就破甲或易伤时提高到 60%。<br /><span class="muted">旋风斩、冲锋先挂上破甲或易伤，破军斩砍下去，护盾跟着满上。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">断岳</span>：伤害提高到 280%。<br /><span class="variant">坚城</span>：护盾比例翻倍：60%，目标破甲或易伤时 120%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>战神</strong><br /><span class="muted">增伤 · 吸血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">射程内有敌人时可用：立刻获得 30% 最大生命的护盾，之后 3 回合你的所有攻击（含普攻）伤害提高 35%，并回复造成伤害的 15%。<br /><span class="muted">留给首领和最凶的一波：开了战神再接重击、处决，边打边回。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">战狂</span>：伤害提高改为 55%。<br /><span class="variant">嗜战</span>：回复改为造成伤害的 30%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾 / 增伤 / 吸血</div></td></tr>
+</tbody></table></div>
+<h3 id="section-游侠" tabindex="-1">游侠</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>多重射击</strong><br /><span class="muted">多目标 · 引爆</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">射击射程内最多 3 名敌人，各造成 90% 伤害。优先射击中毒目标并引爆：立即造成剩余的全部毒伤。<br /><span class="muted">毒箭之后接多重射击，把持续伤害一次结清。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">连珠</span>：射击 4 名敌人。<br /><span class="variant">穿甲箭雨</span>：无视护甲，伤害 80%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>穿刺箭</strong><br /><span class="muted">贯穿 · 破甲</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内护甲最高的敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合：护甲视为 0。箭会沿直线贯穿到射程尽头，路线上的其他敌人各受 110% 伤害，同样无视护甲；岩石会挡住箭。<br /><span class="muted">敌人排成一列时一箭穿一串；翻滚获得专注后再射出，必定暴击。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">重矢</span>：主目标伤害提高到 300%。<br /><span class="variant">弱点</span>：命中后主目标易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>翻滚</strong><br /><span class="muted">后撤 · 专注</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">远离最近的敌人一格并射击，闪避下一次攻击，并进入专注：下一次技能攻击必定暴击。<br /><span class="muted">翻滚后接穿刺箭或多重射击，打出必定暴击。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">影步</span>：闪避接下来 2 次攻击。<br /><span class="variant">回马箭</span>：翻滚时的射击伤害提高到 180%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>毒箭</strong><br /><span class="muted">单体 · 中毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">造成 80% 伤害，并让目标 3 回合内每回合受到 35% 攻击的毒伤。中毒目标可被多重射击引爆。<br /><span class="muted">给最高生命的敌人上毒，再用多重射击引爆。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">剧毒</span>：毒伤提高到 55% 攻击。<br /><span class="variant">蔓延</span>：目标相邻的敌人也会中毒。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>狙击</strong><br /><span class="muted">远射 · 必中</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">射程增加 2 格，对其中生命最高的敌人造成 250% 伤害，必定命中。<br /><span class="muted">翻滚进入专注后狙击，暴击一箭带走远处的弓手或萨满。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">穿云</span>：伤害提高到 320%。<br /><span class="variant">猎杀</span>：命中后目标易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>毒雾箭</strong><br /><span class="muted">群攻 · 中毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人及其相邻敌人造成 60% 伤害，并全部中毒 3 回合。<br /><span class="muted">一次给一群敌人上毒，再用多重射击连环引爆。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">浓毒</span>：毒伤提高到 55% 攻击。<br /><span class="variant">弥漫</span>：波及目标 2 格内的敌人，伤害 50%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>陷阱箭</strong><br /><span class="muted">单体 · 冻结</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对最近的敌人造成 100% 伤害并冻结：跳过 1 次行动，冻结标记保留 2 回合。<br /><span class="muted">冻住冲上来的狼或狂战士，再从容拉开距离。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">寒霜陷阱</span>：冻结 2 次行动。<br /><span class="variant">荆棘陷阱</span>：目标相邻的敌人也被冻结 1 次行动。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>急射</strong><br /><span class="muted">连射 · 普攻</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对最近的敌人连续射击 3 次，每次造成 55% 伤害；每一箭都按普通攻击命中结算。<br /><span class="muted">喂给逐风旅途、追风连击、霜刃和吸血：命中次数就是收益。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">连发</span>：射击 4 次。<br /><span class="variant">精准</span>：每次 45% 伤害，但必定命中。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>猎人印记</strong><br /><span class="muted">易伤 · 破甲</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">瞬发：放完还能接着行动，每回合限一个瞬发技。使射程内生命最高的敌人易伤 3 回合、破甲 2 回合；它倒下时，印记连同剩下的回合转到离它最近的敌人身上。<br /><span class="muted">开场标记首领，之后每一箭都打满；清杂时印记一个接一个往下传。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">深印</span>：易伤延长到 4 回合。<br /><span class="variant">群印</span>：目标相邻的敌人也易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>爆炸箭</strong><br /><span class="muted">群攻 · 引爆</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对最近的敌人造成 150% 伤害，其相邻敌人各受 100%。命中中毒目标时引爆毒伤，并把中毒扩散到相邻敌人。<br /><span class="muted">毒箭或毒雾箭先铺毒，再一箭引爆整群。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">猛爆</span>：中心伤害提高到 200%。<br /><span class="variant">毒云</span>：扩散出去的中毒多持续 1 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>追命箭</strong><br /><span class="muted">单体 · 叠状态</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 200% 伤害，必定命中；目标身上每有一种异常状态（冻结、中毒、流血、燃烧、破甲、易伤），伤害再提高 35%，最多算 4 种。命中后目标易伤 2 回合，你闪避下一次攻击；击杀目标则进入专注。<br /><span class="muted">穿刺箭破甲、毒箭上毒、弱点上易伤，状态挂得越全，这一箭越疼。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">穿心</span>：每种状态改为提高 50%。<br /><span class="variant">连猎</span>：击杀目标后冷却立即结束。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>万箭齐发</strong><br /><span class="muted">群攻 · 中毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">向射程内所有敌人倾泻箭雨，各造成 140% 伤害，并使其中毒 3 回合、破甲 2 回合；射完后撤 1 格，闪避下一次攻击。<br /><span class="muted">一轮给全场铺上毒和破甲，多重射击、爆炸箭和追命箭接着收。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">暴雨</span>：伤害提高到 180%。<br /><span class="variant">毒雨</span>：毒伤提高到 55% 攻击，命中的敌人同时易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+</tbody></table></div>
+<h3 id="section-法师" tabindex="-1">法师</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>火球术</strong><br /><span class="muted">群攻 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">轰击射程内一名敌人及其相邻的敌人，各造成 160% 伤害，并使命中目标易伤 2 回合：受到的所有伤害提高 30%。<br /><span class="muted">先烧出易伤，再用闪电链或普攻扩大战果。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">燃烧</span>：命中的敌人燃烧 3 回合：每回合受到 30% 攻击的伤害，每次递增 50%。<br /><span class="variant">余波</span>：波及目标 2 格内的敌人，伤害 120%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>冰霜新星</strong><br /><span class="muted">群攻 · 冻结</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对 2 格内所有敌人造成 110% 伤害并冻结：跳过 1 次行动，冻结标记保留 2 回合，可被闪电链导电或碎冰击碎。贴身的敌人还会被寒气冲开 1 格，撞上岩石、边缘或别的敌人会受撞击伤害。<br /><span class="muted">冻住一群敌人并拉开距离，再用闪电链或碎冰收割；把冻住的敌人冲进浅水，它会多停一回合。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">深冻</span>：冻结 2 次行动。<br /><span class="variant">霜环</span>：范围扩大到 3 格。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>奥术护盾</strong><br /><span class="muted">防护 · 护盾</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">7 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">获得相当于 35% 最大生命的护盾，直到被打碎。<br /><span class="muted">为近距离释放冰霜新星争取安全。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">厚盾</span>：护盾提高到最大生命的 50%。<br /><span class="variant">反射</span>：护盾吸收伤害时，对攻击者造成吸收量 50% 的必中伤害。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>闪电链</strong><br /><span class="muted">连跳 · 导电</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">依次击中最多 3 名相互靠近的敌人，伤害 140%/110%/80%。命中冻结目标时导电：伤害提高 50%，并消耗冻结标记。<br /><span class="muted">冰霜新星之后接闪电链，每一跳都能导电。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">长链</span>：最多跳 5 次，第 4、5 跳伤害 80%。<br /><span class="variant">过载</span>：只击中一个目标，伤害 240%，仍可导电。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>碎冰</strong><br /><span class="muted">群攻 · 碎冰</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对 2 格内所有带冻结标记的敌人造成 180% 伤害，并击碎标记。<br /><span class="muted">冰霜新星之后接碎冰，一次结清一群敌人。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">寒爆</span>：伤害提高到 240%。<br /><span class="variant">霜封</span>：击碎后目标再次冻结 1 次行动。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>闪现</strong><br /><span class="muted">位移 · 专注</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">向远离敌人的方向移动最多 2 格，并进入专注：下一次技能攻击必定暴击。<br /><span class="muted">被近身时闪现拉开距离，再用必定暴击的火球术反击。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">疾影</span>：移动距离提高到 3 格。<br /><span class="variant">幻影</span>：闪现后闪避下一次攻击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>奥术弹</strong><br /><span class="muted">单体 · 增伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">2 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 130% 伤害，冷却只有 2 回合；目标处于冻结或易伤时伤害提高 40%。<br /><span class="muted">刷施放次数：术式屏障、星火回响、过载都按这个结算。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">连珠弹</span>：冷却缩短到 1 回合。<br /><span class="variant">重弹</span>：伤害提高到 200%，冷却 3 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>吸魂</strong><br /><span class="muted">单体 · 吸血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内生命最高的敌人造成 140% 伤害，并回复造成伤害的 50%。<br /><span class="muted">法师的续航：对着最厚的敌人吸。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">深渊之握</span>：回复提高到造成伤害的 70%。<br /><span class="variant">虚弱</span>：命中后目标易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>时滞</strong><br /><span class="muted">眩晕 · 破甲</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">7 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">瞬发：放完还能接着行动，每回合限一个瞬发技。2 格内所有敌人眩晕，跳过 1 次行动，并破甲 2 回合、带上冻结标记 2 回合（可被导电、碎冰或霜火引燃）。<br /><span class="muted">被围时先时滞定住一圈，接霜火把整圈引燃，或者接闪电链、碎冰。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">凝滞</span>：范围扩大到 3 格。<br /><span class="variant">侵蚀</span>：破甲改为易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>陨石</strong><br /><span class="muted">群攻 · 碎裂</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">7 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对 2 格内所有敌人造成 220% 伤害；命中冻结目标时碎裂：伤害再提高 50%，并消耗冻结标记。<br /><span class="muted">冰霜新星之后砸下来，一次结清。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">天火</span>：改为对射程内生命最高的单体造成 300% 伤害。<br /><span class="variant">余烬</span>：命中的敌人易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>霜火</strong><br /><span class="muted">冰火 · 引燃</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人及其相邻敌人各造成 170% 伤害。已冻结的敌人被引燃：伤害再提高 50%、消耗冻结标记，并燃烧 3 回合；没冻结的敌人被冻结 1 次行动。<br /><span class="muted">自己就能接自己：第一发冻住，第二发引燃；接在冰霜新星后面，直接引燃一片。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">炽焰</span>：燃烧伤害提高到 50% 攻击。<br /><span class="variant">寒潮</span>：波及目标 2 格内的敌人，伤害 140%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>元素风暴</strong><br /><span class="muted">群攻 · 冻结</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">召来冰火交织的风暴：射程内所有敌人各受 170% 伤害，冻结 1 次行动并燃烧 3 回合；你获得 30% 最大生命的护盾。<br /><span class="muted">一手同时清场、控场和保命；留下的冻结标记还能交给闪电链、碎冰和霜火。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">极寒</span>：冻结延长到 2 次行动。<br /><span class="variant">护法</span>：护盾提高到 50% 最大生命。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 燃烧 / 护盾</div></td></tr>
+</tbody></table></div>
+<h3 id="section-召唤师" tabindex="-1">召唤师</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>唤狼</strong><br /><span class="muted">召唤 · 近战</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">召唤 1 只灵狼为你作战，持续 8 回合。灵狼近战，生命与攻击按你的属性折算。<br /><span class="muted">狼冲在前面，你退到后排放灵弹。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">狼群</span>：一次召唤 2 只，但每只生命减半。<br /><span class="variant">裂齿</span>：灵狼的攻击会让目标流血。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>唤灵</strong><br /><span class="muted">召唤 · 远程</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">召唤 1 只精怪，持续 8 回合。精怪脆，但能从 2 格外攻击。<br /><span class="muted">精怪站后排持续输出，不用挤在前线。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">远灵</span>：精怪的射程提高到 3 格。<br /><span class="variant">蚀灵</span>：精怪的攻击会让目标破甲。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>魂契</strong><br /><span class="muted">回复 · 群体</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">你和所有召唤物各回复 18% 最大生命。<br /><span class="muted">召唤物是消耗品，但能修就别急着换新的。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">厚契</span>：回复提高到 30% 最大生命。<br /><span class="variant">护契</span>：同时给自己 20% 最大生命的护盾。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">治疗 / 护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>石守</strong><br /><span class="muted">召唤 · 嘲讽</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">召唤 1 尊石守卫，持续 10 回合。它很硬、攻击很低，只要挡在你身前就会吸引敌人的攻击。<br /><span class="muted">把守卫摆在身前，敌人就打不到你。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">磐岩</span>：生命提高到你最大生命的 75%。<br /><span class="variant">棘岩</span>：石守卫被攻击时反弹 50% 伤害。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>附能</strong><br /><span class="muted">召唤 · 催动</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">所有召唤物立刻额外行动一次，这一击的伤害随技能等级提高。<br /><span class="muted">狼群到位后放，等于白打一轮。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">狂涌</span>：额外行动两次。<br /><span class="variant">蚀能</span>：这一轮的攻击会让目标破甲。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物这一击的伤害</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>献祭</strong><br /><span class="muted">引爆 · 群攻</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">引爆生命最低的召唤物，对它 2 格内的所有敌人造成相当于它当前生命 150% 的伤害。<br /><span class="muted">快消散的召唤物别浪费，炸掉换一轮伤害。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">崩裂</span>：范围扩大到 3 格。<br /><span class="variant">回魂</span>：引爆后你回复它当前生命的 50%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">爆炸伤害</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>灵弹</strong><br /><span class="muted">单体 · 叠伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 130% 伤害；每有一个召唤物，伤害再提高 25%。<br /><span class="muted">召唤师自己的输出手段，场上帮手越多打得越疼。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">贯魂</span>：每个召唤物改为提高 40%。<br /><span class="variant">噬魂</span>：命中后目标易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>护魂石</strong><br /><span class="muted">护盾 · 回复</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">获得 25% 最大生命的护盾，并把所有召唤物的生命补满。<br /><span class="muted">守住自己和前排，把一轮集火扛过去。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">坚石</span>：护盾提高到 40% 最大生命。<br /><span class="variant">续石</span>：同时把所有召唤物的持续时间补到 8 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>群召</strong><br /><span class="muted">召唤 · 铺场</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">一次召唤 2 只灵狼和 1 只精怪，持续 6 回合。<br /><span class="muted">开场或清完一波后用，迅速把场面铺满。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">潮涌</span>：改为召唤 3 只灵狼。<br /><span class="variant">久驻</span>：持续时间延长到 10 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>灵体降临</strong><br /><span class="muted">召唤 · 终结</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">召唤一尊灵体，持续 12 回合。它的生命和攻击都接近你本人。<br /><span class="muted">留到首领战，等于多了一个自己。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">不朽</span>：灵体不会到期消散。<br /><span class="variant">战魂</span>：灵体的攻击提高到你的 120%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>统御</strong><br /><span class="muted">召唤 · 强化</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">号令所有召唤物：各回复 30% 生命、持续时间 +3 回合，之后 3 回合攻击提高 30%；场上每有一个召唤物，你获得 6% 最大生命的护盾。<br /><span class="muted">狼群和灵体到位之后放，一手把前排修好、拉长，再狠狠推一把。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">狂潮</span>：攻击提高改为 50%。<br /><span class="variant">永契</span>：持续时间改为 +6 回合，回复提高到 50%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物增伤 / 护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>灵界之门</strong><br /><span class="muted">召唤 · 齐攻</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">打开灵界之门：召唤石守卫、灵狼、精怪各 1 只，持续 8 回合（召唤物已达上限时召不满）；随后场上所有召唤物立刻行动一次。<br /><span class="muted">空场时一手铺满，满场时等于白打一轮；首领战的开场技。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">灵潮</span>：所有召唤物立刻行动两次。<br /><span class="variant">坚门</span>：召唤物持续 12 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">召唤物生命 / 攻击</div></td></tr>
+</tbody></table></div>
+<h3 id="section-刺客" tabindex="-1">刺客</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>背袭</strong><br /><span class="muted">单体 · 偷袭</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">刺向相邻的一名敌人造成 180% 伤害；目标满血时是偷袭，提高到 260%。<br /><span class="muted">每波开场先偷袭最硬的那个，再用裂伤挂上流血。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">割喉</span>：命中后目标流血。<br /><span class="variant">掩袭</span>：对满血目标必定暴击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>裂伤</strong><br /><span class="muted">单体 · 流血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名敌人造成 140% 伤害并使其流血；目标已经流血时，流血伤害重新按当前攻击结算。<br /><span class="muted">流血是刺客的本钱，剜心和刺杀都要吃它。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">深割</span>：流血伤害提高到 55% 攻击。<br /><span class="variant">扩创</span>：目标相邻的敌人也会流血。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 流血</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>烟雾弹</strong><br /><span class="muted">闪避 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">闪避接下来 2 次攻击，并使相邻敌人易伤 2 回合。<br /><span class="muted">体质最低的职业靠它躲过一轮集火，顺手把伤害放大。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">浓烟</span>：闪避次数提高到 3 次。<br /><span class="variant">毒烟</span>：相邻敌人同时破甲 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>刀扇</strong><br /><span class="muted">群攻 · 流血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">甩出一圈飞刀，对 2 格内所有敌人造成 90% 伤害并使其流血。<br /><span class="muted">被围住时反而是好事：一次给所有人挂上流血。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">环刃</span>：范围扩大到 3 格。<br /><span class="variant">淬毒刃</span>：命中的敌人同时中毒。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 流血</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>影袭</strong><br /><span class="muted">位移 · 接近</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">闪到场上生命最低的敌人身旁并造成 150% 伤害。<br /><span class="muted">射程只有 1 格，靠它接近后排，也靠它换位脱离包夹。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">潜行</span>：落地后进入专注。<br /><span class="variant">夺命</span>：伤害提高到 220%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>剜心</strong><br /><span class="muted">血爆 · 收割</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名流血的敌人造成 120% 伤害，并立刻结清它身上剩余的流血。<br /><span class="muted">先用裂伤和刀扇把流血堆满，再一次性收掉。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">抽髓</span>：结清流血时回复等量 40% 的生命。<br /><span class="variant">碎心</span>：结清后目标易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>锁喉</strong><br /><span class="muted">眩晕 · 流血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">勒住相邻一名敌人：造成 130% 伤害、使其流血，并跳过一次行动。<br /><span class="muted">先锁住最疼的那个，再从容处理别人。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">窒息</span>：跳过两次行动。<br /><span class="variant">绞杀</span>：流血伤害翻倍。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 流血</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>放血</strong><br /><span class="muted">单体 · 吸血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名流血的敌人造成 200% 伤害，并回复造成伤害的 30%。<br /><span class="muted">刺客唯一的稳定续航，血线低时先打流血目标。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">饱饮</span>：回复提高到 50%。<br /><span class="variant">裂创</span>：伤害提高到 260%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>夜幕</strong><br /><span class="muted">群体 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">夜色笼罩全场：所有敌人易伤 2 回合，你进入专注并闪避接下来 1 次攻击。<br /><span class="muted">开团前先放，把整波敌人的承伤一起拉高。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">长夜</span>：易伤延长到 3 回合。<br /><span class="variant">暗影</span>：闪避次数提高到 2 次。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>刺杀</strong><br /><span class="muted">终结 · 重置</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名流血的敌人造成 350% 伤害，目标生命低于一半时再提高 50%；出手后闪避下一次攻击。若因此击杀，冷却立刻结束。<br /><span class="muted">流血铺好后的终结技，残血的那个一刀带走，连杀时可以连着放。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">绝杀</span>：伤害提高到 430%。<br /><span class="variant">影遁</span>：击杀后进入专注，闪避接下来 2 次攻击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>连影</strong><br /><span class="muted">连击 · 流血</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">在 2 格内最多 3 名敌人之间依次闪击，各造成 150% 伤害：没流血的挂上流血，已经流血的立刻结清剩余流血。最后停在其中生命最低的敌人身旁，并闪避下一次攻击。<br /><span class="muted">刀扇铺完流血再放，一轮收掉三个人的流血，顺便换到最好下刀的位置。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">千刃</span>：最多闪击 4 名敌人。<br /><span class="variant">隐踪</span>：结束后进入专注，闪避改为接下来 2 次攻击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 流血</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>死兆</strong><br /><span class="muted">单体 · 印记</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对相邻一名敌人造成 300% 伤害并留下死兆 3 回合：它受到你的攻击伤害提高 40%，身上的流血伤害翻倍。出手后你闪避下一次攻击；它带着死兆倒下时，你回复 20% 最大生命并再闪避一次。<br /><span class="muted">首领战先挂死兆，再用裂伤、刺杀把它压下去；清杂时挂在最硬的那个身上。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">宿命</span>：受到的伤害改为提高 60%。<br /><span class="variant">收魂</span>：倒下时的回复提高到 35%，并闪避接下来 2 次攻击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+</tbody></table></div>
+<h3 id="section-德鲁伊" tabindex="-1">德鲁伊</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>荆棘缚</strong><br /><span class="muted">单体 · 缠绕</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 130% 伤害并缠绕，使其跳过一次行动。<br /><span class="muted">先缚住冲在最前的敌人，再让孢子云和反伤慢慢磨。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">尖刺缚</span>：命中后目标破甲 2 回合。<br /><span class="variant">蔓生缚</span>：同时缠绕目标相邻的敌人。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>孢子云</strong><br /><span class="muted">群攻 · 中毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对 2 格内所有敌人造成 60% 伤害并使其中毒。<br /><span class="muted">中毒的人越多，自然之怒和野蛮生长越强，是德鲁伊的开场。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">浓孢</span>：毒伤提高到 60% 攻击。<br /><span class="variant">弥散</span>：范围扩大到 3 格。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>树皮术</strong><br /><span class="muted">护盾 · 棘刺</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">获得相当于 35% 最大生命的护盾，并立刻让相邻敌人撞上尖刺，受到护盾量 50% 的伤害。<br /><span class="muted">顶着打，让敌人自己撞在刺上。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">硬木</span>：护盾提高到最大生命的 50%。<br /><span class="variant">棘皮</span>：尖刺伤害提高到护盾量的 100%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾 / 尖刺</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>回春</strong><br /><span class="muted">回复 · 持续</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">立刻回复 15% 最大生命，并在之后 3 回合每回合再回复 8%。<br /><span class="muted">受伤后垫一手，配合常青和自然回复把血线拉回来。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">速效</span>：立刻回复提高到 30% 最大生命。<br /><span class="variant">长青</span>：持续回复延长到 5 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">治疗</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>藤鞭</strong><br /><span class="muted">单体 · 引毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">抽打射程内一名敌人造成 170% 伤害；目标已中毒时提高到 240%。<br /><span class="muted">孢子云铺完毒，用藤鞭点掉最碍事的那个。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">撕裂</span>：命中后目标流血。<br /><span class="variant">绞缠</span>：命中后目标缠绕。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>自然之怒</strong><br /><span class="muted">毒爆 · 群攻</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对场上所有中毒的敌人各造成 110% 伤害。<br /><span class="muted">先用孢子云或虫群把毒铺满，再一次收割。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">震怒</span>：伤害提高到 130%。<br /><span class="variant">续毒</span>：伤害结算后把中毒回合数补满。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>根须牢笼</strong><br /><span class="muted">群控 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">2 格内所有敌人缠绕并易伤 2 回合：受到的所有伤害提高 30%。<br /><span class="muted">把一群敌人同时定住，再用自然之怒一口气清掉。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">荆笼</span>：同时造成 100% 伤害。<br /><span class="variant">深根</span>：范围扩大到 3 格。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>共生</strong><br /><span class="muted">回复 · 专注</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">从毒素里汲取生机：每有一名中毒的敌人回复 8% 最大生命，并进入专注。<br /><span class="muted">毒铺得越广，这一手回得越多。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">汲取</span>：每名中毒敌人回复 12% 最大生命。<br /><span class="variant">共鸣</span>：同时获得 20% 最大生命的护盾。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">治疗 / 护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>虫群</strong><br /><span class="muted">多目标 · 中毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">放出虫群扑向 3 格内最多 3 名敌人，各造成 90% 伤害并使其中毒。<br /><span class="muted">补齐孢子云够不到的散兵，把毒铺满全场。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">蜂拥</span>：目标数提高到 5 名。<br /><span class="variant">蛰刺</span>：命中的敌人同时易伤 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>世界树</strong><br /><span class="muted">群控 · 终结</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">唤醒古树：回复 40% 最大生命，场上所有敌人缠绕，并对每个中毒的敌人造成 150% 伤害。<br /><span class="muted">留到最险的时候，一次同时解决血线和场面。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">回归</span>：回复提高到 60% 最大生命。<br /><span class="variant">降临</span>：对中毒敌人的伤害提高到 200%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">治疗 / 伤害</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>噬毒藤</strong><br /><span class="muted">群攻 · 引毒</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">毒藤扫过射程内一名敌人及其相邻敌人：各造成 150% 伤害并缠绕，使其跳过一次行动。已中毒的先结清剩余毒伤再重新染毒，没中毒的直接染毒。每命中一名敌人，你回复 3% 最大生命。<br /><span class="muted">敌人越扎堆越赚：一手控住一片、把毒刷新一遍，自然之怒和共生跟着吃满。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">猛毒</span>：伤害提高到 190%。<br /><span class="variant">汲毒</span>：每命中一名敌人回复 6% 最大生命。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>古树化身</strong><br /><span class="muted">减伤 · 回复</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">射程内有敌人时可用：化身古树，之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命，你的每次攻击都让目标中毒（45% 攻击）。<br /><span class="muted">顶在敌群中间开：挨得少、回得多，普攻和技能顺手把毒铺满，自然之怒跟着收。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">磐根</span>：受到的伤害改为降低 45%。<br /><span class="variant">刺藤</span>：期间每次被攻击，对攻击者造成 60% 攻击的反伤。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">回复 / 毒伤</div></td></tr>
+</tbody></table></div>
+<h3 id="section-死灵法师" tabindex="-1">死灵法师</h3>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">技能</th><th scope="col" class="num">解锁</th><th scope="col" class="num">冷却</th><th scope="col">效果</th><th scope="col">精通二选一</th><th scope="col">升级提升</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>暗影召唤</strong><br /><span class="muted">召唤 · 影子</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">3 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">按影子池的顺序召出 1 个还没上场的影子，它一直作战到被击倒为止；池子里的都已经在场、或者池子还是空的时，召出一个无名之影。<br /><span class="muted">开场先铺影子。池子越满、阶位越高，这一手越值钱。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">双影</span>：一次召出 2 个，但每个生命降低 30%。<br /><span class="variant">影袭</span>：召出的影子立刻行动一次。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">影子生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>起来</strong><br /><span class="muted">召唤 · 尸骸</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对本场倒下的敌人下令「起来」：最多 2 具尸骸化作普通阶的影子为你作战，直到本场结束或被击倒。被拉起过的敌人，战后提取成影子的几率翻倍。<br /><span class="muted">先打倒几个，再把它们拉起来反咬同伴；影子池还空着的时候，这是你唯一的帮手。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">群起</span>：最多拉起 3 具。<br /><span class="variant">厉魂</span>：拉起的影子攻击提高 40%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">影子生命 / 攻击</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>暗蚀箭</strong><br /><span class="muted">单体 · 印记</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">1 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">2 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">对射程内一名敌人造成 150% 伤害，并打上君王印记 2 回合：影子攻击它时伤害提高 30%。<br /><span class="muted">点住最该先倒的那个，让影子一拥而上。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">蚀骨</span>：伤害提高到 200%。<br /><span class="variant">汲魂</span>：回复造成伤害的 40%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>影子交换</strong><br /><span class="muted">换位 · 替身</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">4 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">被贴身时可用：和离敌人最远的一个影子互换位置，并闪避下一次攻击；换过去的影子嘲讽 1 回合，替你挡在前面。<br /><span class="muted">本体最怕被围，换出去之后让影子去扛。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">替身</span>：换过去的影子嘲讽 2 回合。<br /><span class="variant">影遁</span>：闪避接下来 2 次攻击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>统治者之手</strong><br /><span class="muted">单体 · 击退</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">8 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">4 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">用无形之手攫住射程内一名敌人：造成 180% 伤害并把它击退 2 格；撞上岩石、场地边缘会受撞击伤害并眩晕，撞上别的敌人两边都受伤。<br /><span class="muted">把冲上来的近战推回影子堆里，或者直接推进熔岩。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">碾压</span>：不再击退，改为眩晕 1 次行动，伤害提高到 240%。<br /><span class="variant">掷飞</span>：击退 3 格。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">伤害 / 护盾 / 毒伤</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>君王领域</strong><br /><span class="muted">影子 · 强化</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">12 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">6 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">展开君王领域：之后 3 回合，所有影子造成的伤害提高 30%，每回合回复 8% 生命。<br /><span class="muted">影子铺开之后放，一手把整支军队抬一截。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">统治</span>：伤害提高改为 50%。<br /><span class="variant">庇护</span>：影子受到的伤害同时降低 30%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">影子增伤 / 回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>吞噬</strong><br /><span class="muted">回复 · 吞噬</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">16 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">吞下生命比例最低的一个影子：你回复它当前生命的 80%。<br /><span class="muted">快要倒下的影子别浪费，吞回来续命，再召新的。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">反哺</span>：同时获得等量的护盾。<br /><span class="variant">灵爆</span>：被吞的影子先炸开，对它 2 格内的敌人造成它当前生命 100% 的伤害。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">回复</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>隐匿</strong><br /><span class="muted">隐匿 · 闪避</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">20 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">7 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">隐入影子：之后 2 回合，只要有影子在敌人够得着的地方，敌人就只打影子；并闪避下一次攻击。<br /><span class="muted">影子站在前面时放，本体就能安心输出。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">长隐</span>：隐匿延长到 3 回合。<br /><span class="variant">暗袭</span>：同时进入专注：下一次技能必定暴击。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>军令</strong><br /><span class="muted">影子 · 齐攻</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">25 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">瞬发：放完还能接着行动，每回合限一个瞬发技。所有影子立刻行动一次，这一击的伤害随技能等级提高。<br /><span class="muted">影子铺满之后下令，等于白打一轮。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">破阵</span>：这一轮的攻击让目标破甲 2 回合。<br /><span class="variant">猛攻</span>：这一击伤害再提高 40%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">影子这一击的伤害</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>龙之恐惧</strong><br /><span class="muted">群控 · 易伤</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">30 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">7 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">放出君王的威压：2 格内所有敌人眩晕，跳过 1 次行动，并易伤 2 回合：受到的所有伤害提高 30%，影子的攻击也算。<br /><span class="muted">被围时先吼一声，影子趁机把定住的敌人撕开。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">威压</span>：范围扩大到 3 格。<br /><span class="variant">裂魂</span>：同时破甲 2 回合。</div></td><td data-label="升级提升" role="cell"><div class="cell-content"><span class="muted">不随等级变化</span></div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>暗影军团</strong><br /><span class="muted">召唤 · 铺场</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">35 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">5 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">号令影子军团：场上原有的影子各回复 30% 生命，再按影子池的顺序召出最多 3 个还没上场的影子（受影子上限约束，池子不够时补无名之影）；之后场上每有一个影子，你获得 5% 最大生命的护盾。<br /><span class="muted">空场时一手铺满，满场时把整支军队修好再套一层盾。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">大军</span>：最多召出 4 个。<br /><span class="variant">铁军</span>：原有影子回复 50%，并在之后 3 回合伤害提高 20%。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">影子生命 / 攻击 / 护盾</div></td></tr>
+<tr class="" role="row"><td data-label="技能" role="cell"><div class="cell-content"><strong>影之君王</strong><br /><span class="muted">增伤 · 复生</span></div></td><td data-label="解锁" role="cell" class="num"><div class="cell-content">50 级</div></td><td data-label="冷却" role="cell" class="num"><div class="cell-content">8 回合</div></td><td data-label="效果" role="cell"><div class="cell-content">射程内有敌人时可用：君王降临，立刻获得 30% 最大生命的护盾；之后 4 回合你和所有影子造成的伤害提高 40%，这期间倒下的影子立刻以 50% 生命重新站起（每个一次），倒下的敌人立刻化作普通阶的影子（受影子上限约束）。<br /><span class="muted">首领战和最凶的一波留给它：军队打不垮，杀一个还多一个。</span></div></td><td data-label="精通二选一" role="cell"><div class="cell-content"><span class="variant">君临</span>：伤害提高改为 60%。<br /><span class="variant">不灭</span>：重新站起时回满生命。</div></td><td data-label="升级提升" role="cell"><div class="cell-content">护盾 / 增伤</div></td></tr>
+</tbody></table></div></article>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="index.html"><small>上一篇</small><span>职业与属性<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="passives.html"><small>下一篇</small><span>职业被动<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 官方攻略</span><p>数据与搭配分析随游戏版本更新。推荐配置用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+  </main>
+</div>
+<script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
+(() => {
+  const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
+  const mobile = window.matchMedia('(max-width: 1100px)');
+  const toc = document.querySelector('.page-toc');
+  const links = [...document.querySelectorAll('[data-toc-id]')];
+  const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
+  const currentLabel = document.querySelector('.toc-current');
+  let currentId = '';
+  let scheduled = false;
+
+  function updateCurrent() {
+    scheduled = false;
+    const offset = mobile.matches ? 142 : 110;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.heading.getBoundingClientRect().top > offset) break;
+      current = section;
+    }
+    if (!current) return;
+    if (currentId !== current.heading.id) {
+      currentId = current.heading.id;
+      for (const { link } of sections) {
+        if (link === current.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      if (currentLabel) currentLabel.textContent = current.link.textContent.trim();
+    }
+    // 只滚动目录自身，避免目录定位带动正文跳动。
+    const panel = toc?.querySelector('.toc-panel');
+    if (panel && toc.open) {
+      const itemRect = current.link.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      if (itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom) {
+        panel.scrollTop += itemRect.top - panelRect.top - panel.clientHeight / 3;
+      }
+    }
+  }
+
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrent);
+  }
+
+  function fitMenus() {
+    for (const menu of menus) menu.open = !mobile.matches;
+    scheduleUpdate();
+  }
+  fitMenus();
+  mobile.addEventListener('change', fitMenus);
+  for (const menu of menus) {
+    menu.addEventListener('toggle', () => {
+      if (mobile.matches && menu.open) {
+        for (const other of menus) if (other !== menu) other.open = false;
+      }
+    });
+  }
+  document.addEventListener('click', event => {
+    if (mobile.matches && !menus.some(menu => menu.contains(event.target))) {
+      for (const menu of menus) menu.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobile.matches) return;
+    const open = menus.find(menu => menu.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+    }
+  });
+
+  function revealHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
+    target.scrollIntoView({ block: 'start' });
+    if (target.hasAttribute('tabindex')) target.focus({ preventScroll: true });
+    scheduleUpdate();
+  }
+  for (const link of document.querySelectorAll('.page-toc a, .tier-link, .class-link')) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (mobile.matches) for (const menu of menus) menu.open = false;
+      // 保留浏览器原生 hash 历史；重复点击当前锚点也能重新定位。
+      requestAnimationFrame(revealHash);
+    });
+  }
+  window.addEventListener('hashchange', revealHash);
+  window.addEventListener('load', () => { if (location.hash) revealHash(); else scheduleUpdate(); });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  document.addEventListener('toggle', scheduleUpdate, true);
+  scheduleUpdate();
+})();
+</script>
+</body>
+</html>

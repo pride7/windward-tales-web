@@ -1,0 +1,18 @@
+{
+  "name": "风行物语",
+  "short_name": "风行物语",
+  "description": "单主角深度养成，六边形自动战斗。",
+  "lang": "zh-CN",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e8f0df",
+  "theme_color": "#e8f0df",
+  "icons": [
+    { "src": "icons/windward-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/windward-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/windward-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
