@@ -8,19 +8,19 @@
  * or when the player presses 立即更新. Without that message the waiting worker would sit there forever:
  * reloading the page does not release the old worker, so "takes over next launch" was never actually true.
  */
-const CACHE = 'windward-0.5.1-ota6-65bad8faf584';
+const CACHE = 'windward-0.5.1-ota7-a8e49d69297f';
 const ASSETS = [
-  "./assets/ArenaScene-ByXVwef1.js",
-  "./assets/index-Bp36ujYI.css",
-  "./assets/index-DB9C1CsG.js",
-  "./assets/index-DBtwqMzQ.js",
-  "./assets/index-JgmxjW5U.js",
+  "./assets/ArenaScene-B38oFHE3.js",
+  "./assets/index-BP1ZZ-I3.js",
+  "./assets/index-Bs7Zyhes.js",
+  "./assets/index-btWnsce2.css",
+  "./assets/index-s2vsuw5s.js",
   "./assets/phaser-B8p8Giq7.js",
   "./assets/phaser-DFK5Ua9d.js",
-  "./assets/web-BTNs746s.js",
-  "./assets/web-CT73WfM2.js",
-  "./assets/web-CmWuwlW1.js",
-  "./assets/web-CnJjKf9f.js",
+  "./assets/web-CQknsaXV.js",
+  "./assets/web-DWN4-Kvt.js",
+  "./assets/web-DpI6x8Bw.js",
+  "./assets/web-Dr1SKrCI.js",
   "./favicon.svg",
   "./guide/builds.html",
   "./guide/endgame.html",
