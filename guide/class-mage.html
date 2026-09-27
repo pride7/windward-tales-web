@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f9fbf5" />
+<title>法师 · 风行物语图鉴</title>
+<meta name="description" content="远程 2 格。靠智力放大技能、缩短冷却，喜欢敌人扎堆。" />
+<link rel="icon" type="image/png" href="../icons/windward-64.png" />
+<style>
+:root {
+  --surface-page: #e3eddd;
+  --surface-hollow: #eaf0e1;
+  --surface-sunken: #deead5;
+  --surface-soft: #f2f6eb;
+  --surface-paper: #f9fbf5;
+  --surface-raised: #ffffff;
+  --surface-warm: #f1eddc;
+  --surface-cool: #e6e9f4;
+  --line-soft: #d1ddc8;
+  --line-mid: #c1d1b4;
+  --line-strong: #b3c39d;
+  --ink: #304638;
+  --ink-muted: #5d6d5f;
+  --ink-soft: #7d8a72;
+  --ink-invert: #ffffff;
+  --accent-deep: #42603b;
+  --accent-edge: #45683f;
+  --focus-ring: #718d5e;
+  --hero-mark: #3c7167;
+  --accent: #547246;
+  --accent-mid: #63824e;
+  --accent-light: #7d9d6c;
+  --accent-pale: #9db68b;
+  --mint: #397052;
+  --sage-deep: #617654;
+  --sage-mid: #879779;
+  --gold: #866225;
+  --gold-deep: #8a662a;
+  --gold-mid: #92713c;
+  --gold-light: #ab915c;
+  --gold-pale: #b3975a;
+  --gold-tint: #eee4c9;
+  --gold-bright: #8a5c15;
+  --gold-sand: #d7c495;
+  --surface-cream: #faf0e6;
+  --danger: #a34f3b;
+  --clay-soft: #a1634d;
+  --info: #3b6983;
+  --info-soft: #507a89;
+  --abyss-tint: #e3e7f5;
+  --abyss-pale: #c9cee3;
+  --abyss-line: #b7bdd6;
+  --abyss-mid: #7f8cbf;
+  --abyss: #4d5a86;
+  --abyss-deep: #3f4a75;
+  --shade-tint: #ebe7f1;
+  --shade: #5a4d70;
+  --shade-deep: #3b3150;
+  --rarity-common: #52634d;
+  --rarity-rare: #356982;
+  --rarity-epic: #79549a;
+  --rarity-legendary: #a8681c;
+  --rarity-trophy: #b23a2e;
+}
+/* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
+* { box-sizing: border-box; }
+:root {
+  --header-height: 68px; --reading-offset: 96px;
+  --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  --radius: 12px; --shadow: 0 1px 2px #304a3a0d, 0 6px 18px #304a3a0a; --shadow-lift: 0 2px 4px #304a3a12, 0 14px 32px #304a3a14;
+}
+html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
+body { margin: 0; background: var(--surface-page); background-image: linear-gradient(180deg, var(--surface-paper) 0, var(--surface-page) 520px); background-repeat: no-repeat; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 3px; }
+button, summary, a, input { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .16s; }
+a:focus-visible, summary:focus-visible, input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+svg, img { flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: fixed; z-index: 40; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.skip-link:focus { top: 10px; }
+
+/* ---------- 顶栏与搜索 ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: color-mix(in srgb, var(--surface-paper) 92%, transparent); backdrop-filter: blur(10px); }
+.header-inner { display: flex; align-items: center; gap: 20px; max-width: 1480px; height: 100%; margin: auto; padding: 0 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 10px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: 2px; }
+.brand small { display: block; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.site-search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
+.search-box { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink-soft); }
+.search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+.search-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.search-box input::placeholder { color: var(--ink-soft); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; background: var(--surface-soft); color: var(--ink-soft); font: 11px/18px var(--sans); }
+.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: min(70dvh, 480px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); box-shadow: var(--shadow-lift); }
+.search-results a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 8px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.search-results a strong { font-size: 14px; }
+.search-results a mark { background: var(--gold-tint); color: inherit; border-radius: 2px; }
+.search-results a small { grid-column: 1; color: var(--ink-muted); font-size: 12px; }
+.search-results a .kind { grid-column: 2; grid-row: 1 / 3; padding: 1px 7px; border-radius: 5px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 11px; }
+.search-results a[aria-selected="true"], .search-results a:hover { background: var(--surface-soft); }
+.search-empty { margin: 0; padding: 14px 10px; color: var(--ink-muted); font-size: 13px; }
+.play-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 15px; border: 1px solid var(--accent-edge); border-radius: 10px; background: var(--accent); color: var(--ink-invert); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--accent-deep); }
+
+/* ---------- 版面 ---------- */
+.docs-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr) 196px; grid-template-areas: "navigation content outline"; align-items: start; gap: 36px; max-width: 1480px; margin: 0 auto; padding: 28px 28px 0; }
+.docs-layout.no-toc { grid-template-columns: 212px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+.site-sidebar { grid-area: navigation; }
+.toc-sidebar { grid-area: outline; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 24px); min-width: 0; }
+.site-nav > summary { display: none; }
+.nav-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidebar-label { margin: 18px 10px 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.nav-group { display: grid; gap: 2px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 10px; border-radius: 9px; color: var(--ink-muted); font-size: 13.5px; text-decoration: none; }
+.site-nav nav a img { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-soft); }
+.site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-raised); box-shadow: inset 3px 0 var(--accent), var(--shadow); font-weight: 600; }
+
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 34px; margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+.page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
+.toc-current { display: none; }
+.toc-panel { max-height: calc(100dvh - 170px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.page-toc ol { margin: 0; padding: 0; list-style: none; }
+.page-toc nav a { display: flex; align-items: center; min-height: 32px; padding: 5px 9px 5px 12px; border-left: 2px solid var(--line-soft); color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11.5px; }
+.page-toc nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.page-toc nav a[aria-current="location"] { color: var(--accent-deep); border-color: var(--accent); background: var(--surface-hollow); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 40px; margin: 8px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+
+/* ---------- 正文 ---------- */
+.guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
+.guide-heading { padding: 6px 0 26px; margin-bottom: 30px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink-soft); font-size: 11px; letter-spacing: 1px; }
+.eyebrow span { color: var(--sage-mid); }
+.guide-heading h1, .class-hero h1, .home-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: 3px; line-height: 1.3; }
+.page-description { max-width: 720px; margin: 10px 0 14px; color: var(--ink-muted); font-size: 14.5px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-soft); font-size: 11px; }
+.version-badge { padding: 1px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-raised); font-variant-numeric: tabular-nums; }
+.guide-article { overflow-wrap: anywhere; }
+.guide-article h2 { display: flex; align-items: center; gap: 10px; margin: 56px 0 14px; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.4; letter-spacing: 2px; }
+.guide-article h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--accent-light), var(--accent)); }
+.guide-article > h2:first-child { margin-top: 0; }
+.guide-article h3 { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+.guide-article h4 { margin: 0; font-size: 16px; }
+.lead { max-width: 820px; margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 18px 0 24px; padding: 13px 16px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 10px 10px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 6px 0; }
+.note p:first-child { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+.muted { color: var(--ink-muted); }
+.variant { color: var(--gold); font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
+.tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
+.tag-gold { background: var(--gold-tint); color: var(--gold-bright); }
+.tag-link { text-decoration: none; background: var(--surface-raised); border: 1px solid var(--line-mid); color: var(--accent-deep); }
+.tag-link:hover { border-color: var(--accent); }
+code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); font-size: .92em; white-space: normal; }
+.block-label { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+
+/* ---------- 首页 ---------- */
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-bottom: 36px; padding: 30px 32px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 85% 20%, var(--surface-warm), transparent 55%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.home-hint { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink-muted); font-size: 13px; }
+.home-portraits { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; }
+.home-portraits img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--surface-raised); box-shadow: var(--shadow); background: var(--surface-soft); }
+.home-portraits img:nth-child(n+5) { transform: translateX(36px); }
+.class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.class-card { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.class-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.class-card img { width: 72px; height: 72px; border-radius: 14px; background: var(--surface-soft); }
+.class-card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-card-body strong { font-family: var(--serif); font-size: 19px; letter-spacing: 2px; }
+.class-card-body .tags { gap: 4px; }
+.class-card-intro { color: var(--ink-muted); font-size: 12.5px; line-height: 1.7; }
+.spec-names { display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-names span { padding: 0 7px; border: 1px solid var(--line-mid); border-radius: 6px; color: var(--accent-deep); font-size: 11.5px; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.ref-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.ref-card strong { font-size: 15px; }
+.ref-card span { grid-column: 1; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.ref-card svg { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--accent); }
+.ref-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); }
+
+.strength-chart { display: grid; gap: 4px; padding: 14px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.strength-group { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+.strength-group:last-child { border-bottom: 0; }
+.strength-class { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.strength-class img { width: 28px; height: 28px; border-radius: 7px; }
+.strength-bars { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.strength-bars li { display: grid; grid-template-columns: 58px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font-size: 12px; }
+.strength-label { color: var(--ink-muted); white-space: nowrap; }
+.strength-track { height: 10px; border-radius: 5px; background: var(--surface-hollow); overflow: hidden; }
+.strength-fill { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--accent-pale), var(--accent)); }
+.strength-bars li:first-child .strength-fill { background: linear-gradient(90deg, var(--accent-light), var(--accent-deep)); }
+.strength-value { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.axis-note { margin: 8px 2px 0; color: var(--ink-soft); font-size: 11.5px; }
+
+/* ---------- 职业页 ---------- */
+.class-hero { display: flex; align-items: center; gap: 26px; margin-bottom: 34px; padding: 26px 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 12% 30%, var(--surface-warm), transparent 50%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.class-hero-portrait { width: 132px; height: 132px; border-radius: 22px; border: 3px solid var(--surface-raised); box-shadow: var(--shadow-lift); background: var(--surface-soft); }
+.class-hero .page-description { margin-bottom: 12px; }
+.fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.fact-grid > div { padding: 12px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+.fact-grid .wide { grid-column: 1 / -1; }
+.fact-grid dt, .spec-facts dt, .build-specs dt { margin-bottom: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; }
+.fact-grid dd, .spec-facts dd, .build-specs dd { margin: 0; font-size: 13.5px; line-height: 1.75; }
+
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.spec-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line-soft); border-top: 3px solid var(--accent-light); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.guide-article .spec-card h3 { display: flex; flex-direction: column; margin: 0; font-family: var(--serif); font-size: 21px; letter-spacing: 2px; }
+.spec-card h3 small { font-family: var(--sans); color: var(--gold); font-size: 11.5px; font-weight: 500; letter-spacing: 0; }
+.spec-pitch { margin: 0; color: var(--ink-muted); font-size: 13px; }
+.spec-strength { align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; text-decoration: none; }
+.spec-strength strong { font-size: 14px; }
+.spec-facts { display: grid; gap: 10px; margin: 0; }
+.spec-facts dd { font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 9px; border: 1px solid var(--line-mid); border-radius: 7px; background: var(--surface-soft); color: var(--ink); font-size: 12.5px; font-weight: 600; text-decoration: none; }
+.chip small { color: var(--ink-soft); font-size: 10.5px; font-weight: 500; }
+.chip:hover { border-color: var(--accent); }
+.spec-rewrites { border-top: 1px dashed var(--line-mid); padding-top: 8px; }
+.spec-rewrites summary { display: flex; align-items: center; gap: 6px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.spec-rewrites summary svg { transform: rotate(90deg); }
+.spec-rewrites[open] summary svg { transform: rotate(-90deg); }
+.spec-rewrites ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-muted); font-size: 12.5px; }
+.spec-rewrites li { margin-bottom: 4px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: start; }
+.skill-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scroll-margin-top: var(--reading-offset); }
+.skill-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.skill-card.is-ascend { border-color: var(--gold-sand); background: linear-gradient(180deg, var(--surface-cream), var(--surface-raised) 90px); }
+.skill-card > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; }
+.skill-card h4 { font-family: var(--serif); font-size: 18px; letter-spacing: 1px; }
+.skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.skill-desc { margin: 0; font-size: 13.5px; }
+.skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
+.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
+.variant-box strong { color: var(--gold); font-size: 13px; }
+.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
+.rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
+.rewrites strong { color: var(--accent-deep); }
+.skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
+.level-control { display: flex; align-items: center; gap: 12px; }
+.level-control label { display: flex; flex: 1; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.level-slider { flex: 1; min-width: 0; accent-color: var(--accent); }
+.level-value { min-width: 42px; padding: 0 7px; border-radius: 6px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.level-total { margin: 6px 0 4px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.level-gains { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--ink-muted); }
+.level-gains li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px; }
+.level-gains b { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
+.level-gains li.is-locked { opacity: .38; }
+
+.passive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passive-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.passive-card:target { border-color: var(--accent); }
+.passive-card h4 { font-family: var(--serif); font-size: 17px; letter-spacing: 1px; }
+.passive-card p { margin: 0; font-size: 13px; }
+.passive-card p.muted { font-size: 12.5px; }
+.passive-card .tag { align-self: flex-start; }
+
+.build-card { margin: 14px 0 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); background: linear-gradient(90deg, var(--surface-hollow), var(--surface-raised)); }
+.guide-article .build-card h3 { margin: 0; font-family: var(--serif); font-size: 20px; letter-spacing: 2px; }
+.build-score { display: flex; align-items: baseline; gap: 10px; color: var(--ink-muted); font-size: 12.5px; }
+.build-score strong { color: var(--accent-deep); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-score small { color: var(--ink-soft); font-size: 11.5px; }
+.curve { margin: 0; padding: 12px 18px 4px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve text { fill: var(--ink-soft); font: 10px var(--sans); }
+.curve .grid { stroke: var(--line-soft); stroke-width: 1; }
+.curve .half { stroke: var(--gold-light); stroke-width: 1; stroke-dasharray: 4 4; }
+.curve .area { fill: color-mix(in srgb, var(--accent-pale) 35%, transparent); }
+.curve .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.curve figcaption { color: var(--ink-soft); font-size: 11px; text-align: right; }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 12px 18px 18px; }
+.build-specs .wide { grid-column: 1 / -1; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
+.skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
+.skill-chips strong { font-size: 12.5px; }
+.skill-chips .variant { font-size: 11.5px; }
+.skill-chips small { color: var(--ink-soft); font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
+.gear-list small { display: block; color: var(--ink-soft); font-size: 10.5px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-muted); }
+.stat-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.method-note { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); font-size: 12.5px; }
+.method-note summary { display: flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-weight: 600; }
+.method-note summary svg { margin-left: auto; transform: rotate(90deg); }
+.method-note[open] summary svg { transform: rotate(-90deg); }
+
+/* ---------- 资料页 ---------- */
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.formula { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.formula code { align-self: flex-start; font-size: 13px; }
+.formula p { margin: 0; color: var(--ink-muted); font-size: 12.5px; }
+.rule-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rule-list li { position: relative; padding: 10px 14px 10px 32px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); font-size: 13.5px; }
+.rule-list li::before { content: ""; position: absolute; left: 14px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
+.enemy-name { display: inline-flex; align-items: center; gap: 10px; }
+.enemy-name strong { white-space: nowrap; }
+.enemy-thumb { width: 40px; height: 40px; border-radius: 9px; object-fit: cover; background: var(--surface-hollow); }
+.enemy-thumb.is-empty { display: inline-block; }
+
+.table-scroll { max-width: 100%; margin: 14px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scrollbar-width: thin; }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
+.data-table th, .data-table td { padding: 11px 13px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { position: sticky; top: 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.data-table tbody tr:hover td { background: color-mix(in srgb, var(--surface-soft) 60%, transparent); }
+.data-table tr:target td { background: var(--gold-tint); }
+.data-table tr:last-child td { border-bottom: 0; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cell-content { min-width: 0; }
+.table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
+
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { border-color: var(--accent-pale); box-shadow: var(--shadow); }
+.page-pagination .next { text-align: right; }
+.page-pagination small { color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13.5px; font-weight: 600; }
+.page-pagination .previous svg { order: -1; transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11.5px; }
+.site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
+.site-footer p { max-width: 600px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: none; }
+
+/* ---------- 窄屏 ---------- */
+@media (max-width: 1240px) {
+  .docs-layout { grid-template-columns: 196px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+  .toc-sidebar { display: none; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 手机与平板：导航和目录收成两个下拉按钮并列，展开后占满整行；正文不被侧栏挤压。 */
+@media (max-width: 1000px) {
+  :root { --header-height: 60px; --reading-offset: 124px; }
+  .header-inner { gap: 12px; padding: 0 18px; }
+  .brand small { display: none; }
+  .site-search { max-width: none; }
+  kbd { display: none; }
+  .docs-layout, .docs-layout.no-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 16px 10px; max-width: 900px; padding: 12px 18px 0; }
+  .docs-layout.no-toc { grid-template-areas: "navigation navigation" "content content"; }
+  .toc-sidebar { display: block; }
+  .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; padding: 9px 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink); font-size: 12.5px; font-weight: 500; box-shadow: var(--shadow); }
+  .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+  .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
+  .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 10px); max-height: min(64dvh, 540px); padding: 10px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; box-shadow: var(--shadow-lift); }
+  .no-toc .nav-panel { width: 100%; }
+  .nav-panel { left: 0; }
+  .toc-panel { right: 0; }
+  .nav-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 10px 10px 4px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10.5px; }
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .home-portraits { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .home-portraits img { width: 100%; height: auto; aspect-ratio: 1; }
+  .home-portraits img:nth-child(n+5) { transform: none; }
+  .formula-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .header-inner { padding: 0 12px; gap: 8px; }
+  .brand span { display: none; }
+  .brand img { width: 34px; height: 34px; }
+  .play-link { padding: 7px 10px; font-size: 12px; }
+  .play-link svg { display: none; }
+  .docs-layout, .docs-layout.no-toc { padding: 10px 14px 0; gap: 14px 8px; }
+  .toc-current { display: none; }
+  .guide-article h2 { margin-top: 42px; font-size: 22px; }
+  .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
+  .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
+  .variants { grid-template-columns: minmax(0, 1fr); }
+  .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .skill-card { padding: 14px; }
+  .table-hint { display: block; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
+  .table-cards { display: block; width: 100%; }
+  .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .table-cards tbody { display: grid; gap: 10px; }
+  .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+  .table-cards td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 6px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td.num { white-space: normal; text-align: left; }
+  .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+  .table-cards td:first-child::before { display: none; }
+  .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
+  .page-pagination { gap: 8px; margin-top: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, summary { transition: none; }
+  .class-card:hover { transform: none; }
+}
+@media print {
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link, .level-control { display: none; }
+  .docs-layout { display: block; max-width: none; padding: 0; }
+  .table-scroll { overflow: visible; box-shadow: none; }
+  .guide-article h2, .guide-article h3 { break-after: avoid; }
+  .skill-card, .spec-card, .build-card, .table-cards tr { break-inside: avoid; box-shadow: none; }
+}
+
+</style>
+</head>
+<body class="page-class-mage">
+<a class="skip-link" href="#guide-content">跳到正文</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>图鉴与攻略</small></span></a>
+  <div class="site-search" role="search">
+    <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="visually-hidden">搜索图鉴</span><input id="guide-search" type="search" placeholder="搜索技能、被动、装备、敌人…" autocomplete="off" spellcheck="false" aria-controls="guide-search-results" aria-expanded="false" /><kbd>/</kbd></label>
+    <div class="search-results" id="guide-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+  </div>
+  <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div></header>
+<div class="docs-layout">
+  <aside class="site-sidebar"><details class="site-nav" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html" aria-current="page"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+  </details></aside>
+  <aside class="toc-sidebar"><details class="page-toc" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-glacier" data-toc-id="spec-glacier" title="冰结师"><span>冰结师</span></a></li><li class="toc-level-3"><a href="#spec-pyro" data-toc-id="spec-pyro" title="爆炎师"><span>爆炎师</span></a></li><li class="toc-level-3"><a href="#spec-thunder" data-toc-id="spec-thunder" title="雷霆使"><span>雷霆使</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-glacier" data-toc-id="skills-glacier" title="冰结师专属"><span>冰结师专属</span></a></li><li class="toc-level-3"><a href="#skills-pyro" data-toc-id="skills-pyro" title="爆炎师专属"><span>爆炎师专属</span></a></li><li class="toc-level-3"><a href="#skills-thunder" data-toc-id="skills-thunder" title="雷霆使专属"><span>雷霆使专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-glacier" data-toc-id="build-glacier" title="冰结师配置"><span>冰结师配置</span></a></li><li class="toc-level-3"><a href="#build-pyro" data-toc-id="build-pyro" title="爆炎师配置"><span>爆炎师配置</span></a></li><li class="toc-level-3"><a href="#build-thunder" data-toc-id="build-thunder" title="雷霆使配置"><span>雷霆使配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+  </details></aside>
+  <main class="guide-main" id="guide-content" tabindex="-1">
+    <header class="class-hero">
+<img class="class-hero-portrait" src="../portraits/mage.png" alt="" width="132" height="132" />
+<div>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<h1>法师</h1>
+<p class="page-description">远程 2 格。靠智力放大技能、缩短冷却，喜欢敌人扎堆。</p>
+<p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-glacier">冰结师</a><a class="tag tag-link" href="#spec-pyro">爆炎师</a><a class="tag tag-link" href="#spec-thunder">雷霆使</a></p>
+</div>
+</header>
+    <article class="guide-article"><h2 id="overview" tabindex="-1">概况</h2>
+<dl class="fact-grid">
+<div><dt>初始属性</dt><dd>力量 2，敏捷 4，智力 10，体质 5</dd></div>
+<div><dt>可用武器</dt><dd>法杖、魔杖</dd></div>
+<div class="wide"><dt>护甲精通 · 布甲</dt><dd>生命与护甲较低，智力提高攻击、护盾与治疗。</dd></div>
+</dl>
+<h2 id="specs" tabindex="-1">转职</h2>
+<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和两个专属技能（45 级与 50 级开放），并强化若干本职业技能。60 级且深渊到达第 40 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。</p>
+<div class="spec-grid"><section class="spec-card">
+<h3 id="spec-glacier" data-toc-label="冰结师" tabindex="-1">冰结师<small>觉醒后称「永冻贤者」</small></h3>
+<p class="spec-pitch">以冻结连锁控场，敌人被冻住便无法出手。</p>
+<a class="spec-strength" href="#build-glacier">终局参考 · 等效第 <strong>122</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>带冻结标记的敌人被碎冰、导电、碎裂或引燃消耗标记时，寒气溅出，冻结其相邻的一名敌人 1 次行动，每回合至多触发 2 次。</dd></div>
+<div><dt>觉醒提升</dt><dd>连锁冻结每回合至多触发的次数由 2 次提高至 4 次。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-iceArmor"><small>45 级</small>冰甲</a><a class="chip" href="#skill-frostDomain"><small>50 级</small>极寒领域</a><a class="chip" href="#skill-absoluteZero"><small>觉醒</small>绝对零度</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-mage-frostVein">「冻脉」</a>、<a href="#passive-mage-afterchill">「余寒」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-shatter">「碎冰」</a>冷却时间由 4 回合缩短为 3 回合，范围由 2 格扩大至 3 格。</li><li><a href="#skill-frostring">「冰霜新星」</a>寒气冲开的距离由 1 格增加至 2 格。</li><li><a href="#skill-slowField">「时滞」</a>眩晕延长至 2 次行动。</li><li><a href="#skill-arcaneshield">「奥术护盾」</a>护盾被击破时，冻结攻击者 1 次行动。</li><li><a href="#skill-tempest">「元素风暴」</a>冻结延长 1 次行动，与「极寒」叠加。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-pyro" data-toc-label="爆炎师" tabindex="-1">爆炎师<small>觉醒后称「焚天者」</small></h3>
+<p class="spec-pitch">燃烧层层叠加，燃烧的敌人倒下时引发连环爆炸。</p>
+<a class="spec-strength" href="#build-pyro">终局参考 · 等效第 <strong>117</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>燃烧可以叠层，上限 3 层，重新施加时增加 1 层并刷新回合数。燃烧的敌人对你造成的伤害降低 20%；死亡时爆炸，对相邻敌人各造成 80% 攻击的伤害，并使其燃烧 1 层。</dd></div>
+<div><dt>觉醒提升</dt><dd>燃烧层数上限由 3 层提高至 5 层。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-emberGuard"><small>45 级</small>余烬护体</a><a class="chip" href="#skill-razeCity"><small>50 级</small>焚城</a><a class="chip" href="#skill-redLotus"><small>觉醒</small>红莲</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-mage-kindle">「引燃」</a>、<a href="#passive-mage-ember">「余烬」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-fireball">「火球术」</a>命中必定燃烧 1 层；已燃烧的目标再增加 1 层。</li><li><a href="#skill-frostfire">「霜火」</a>未冻结的敌人改为燃烧 1 层，不再冻结。</li><li><a href="#skill-meteor">「陨石」</a>对燃烧目标的伤害提高 50%，与碎裂加成分别计算。</li><li><a href="#skill-drain">「吸魂」</a>对燃烧目标的回复比例提高 20 个百分点。</li><li><a href="#skill-tempest">「元素风暴」</a>燃烧改为直接叠加 2 层。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-thunder" data-toc-label="雷霆使" tabindex="-1">雷霆使<small>觉醒后称「雷霆君主」</small></h3>
+<p class="spec-pitch">高频施法积累静电，以闪电链与雷殛一次释放。</p>
+<a class="spec-strength" href="#build-thunder">终局参考 · 等效第 <strong>117</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>每施放一次技能，获得 1 层静电，上限 5 层，每层使受到的伤害降低 3%。闪电链或雷殛消耗全部静电，每层回复 3% 最大生命：闪电链每层多跳 1 次、伤害提高 10%；雷殛每层伤害提高 20%。</dd></div>
+<div><dt>觉醒提升</dt><dd>静电上限由 5 层提高至 8 层。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-staticBarrier"><small>45 级</small>静电屏障</a><a class="chip" href="#skill-thunderStrike"><small>50 级</small>雷殛</a><a class="chip" href="#skill-thunderGod"><small>觉醒</small>雷神</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-mage-surge">「法力涌动」</a>、<a href="#passive-mage-spellWard">「术式屏障」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-chain">「闪电链」</a>导电时不再消耗冻结标记。</li><li><a href="#skill-arcaneBolt">「奥术弹」</a>命中后额外弹向最近的另一名敌人，造成 60% 伤害。</li><li><a href="#skill-blink">「闪现」</a>获得 2 层静电。</li><li><a href="#skill-slowField">「时滞」</a>命中的敌人之后 2 回合受到闪电链的伤害提高 40%。</li><li><a href="#skill-tempest">「元素风暴」</a>施放后 2 回合内，闪电链的冷却时间为 1 回合。</li></ul></details>
+</section></div>
+<h2 id="skills" tabindex="-1">技能</h2>
+<p class="lead">职业技能共 12 个，学习消耗 1 技能点；携带栏 3 个起步，10 级和 25 级各增加 1 个。5 级起可以为已学技能选择精通（二选一，切换免费）。技能可以逐级升级，等级上限每 20 级开放一级，最高 5 级；拖动卡片下方的滑块可查看各等级的提升。</p>
+<h3 id="skills-class" data-toc-label="职业技能" tabindex="-1">职业技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-fireball">
+<header><h4>火球术</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">易伤</span></p>
+<p class="skill-desc">轰击射程内一名敌人及其相邻的敌人，各造成 160% 伤害，并使命中目标易伤 2 回合：受到的所有伤害提高 30%。</p>
+<p class="skill-synergy">先烧出易伤，再用闪电链或普攻扩大战果。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>燃烧</strong><p>命中的敌人燃烧 3 回合：每回合受到 30% 攻击的伤害，每次递增 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余波</strong><p>波及目标 2 格内的敌人，伤害 120%。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：命中必定燃烧 1 层；已燃烧的目标再增加 1 层。</li></ul></div>
+<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="火球术的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 40%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-frostring">
+<header><h4>冰霜新星</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
+<p class="skill-desc">对 2 格内所有敌人造成 110% 伤害并冻结：跳过 1 次行动，冻结标记保留 2 回合，可被闪电链导电或碎冰击碎。贴身的敌人还会被寒气冲开 1 格，撞上岩石、边缘或别的敌人会受撞击伤害。</p>
+<p class="skill-synergy">冻住一群敌人并拉开距离，再用闪电链或碎冰收割；把冻住的敌人冲进浅水，它会多停一回合。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深冻</strong><p>冻结 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜环</strong><p>范围扩大到 3 格。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：寒气冲开的距离由 1 格增加至 2 格。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="冰霜新星的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-arcaneshield">
+<header><h4>奥术护盾</h4><span class="skill-meta">1 级开放 · 冷却 7 回合</span></header>
+<p class="tags"><span class="tag">防护</span><span class="tag">护盾</span></p>
+<p class="skill-desc">获得相当于 35% 最大生命的护盾，直到被打碎。</p>
+<p class="skill-synergy">为近距离释放冰霜新星争取安全。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚盾</strong><p>护盾提高到最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反射</strong><p>护盾吸收伤害时，对攻击者造成吸收量 50% 的必中伤害。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：护盾被击破时，冻结攻击者 1 次行动。</li></ul></div>
+<div class="skill-levels" data-rate="0.15" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="奥术护盾的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +15%</li><li data-level="3"><b>Lv.3</b>护盾 +15%</li><li data-level="4"><b>Lv.4</b>护盾 +15%</li><li data-level="5"><b>Lv.5</b>护盾 +15%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-chain">
+<header><h4>闪电链</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">连跳</span><span class="tag">导电</span></p>
+<p class="skill-desc">依次击中最多 3 名相互靠近的敌人，伤害 140%/110%/80%。命中冻结目标时导电：伤害提高 50%，并消耗冻结标记。</p>
+<p class="skill-synergy">冰霜新星之后接闪电链，每一跳都能导电。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长链</strong><p>最多跳 5 次，第 4、5 跳伤害 80%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>过载</strong><p>只击中一个目标，伤害 240%，仍可导电。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：导电时不再消耗冻结标记。</li></ul></div>
+<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="闪电链的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 40%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%，多跳 1 次（过载除外）</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-shatter">
+<header><h4>碎冰</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">碎冰</span></p>
+<p class="skill-desc">对 2 格内所有带冻结标记的敌人造成 180% 伤害，并击碎标记。</p>
+<p class="skill-synergy">冰霜新星之后接碎冰，一次结清一群敌人。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>寒爆</strong><p>伤害提高到 240%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜封</strong><p>击碎后目标再次冻结 1 次行动。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：冷却时间由 4 回合缩短为 3 回合，范围由 2 格扩大至 3 格。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="碎冰的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-blink">
+<header><h4>闪现</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">位移</span><span class="tag">专注</span></p>
+<p class="skill-desc">向远离敌人的方向移动最多 2 格，并进入专注：下一次技能攻击必定暴击。</p>
+<p class="skill-synergy">被近身时闪现拉开距离，再用必定暴击的火球术反击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>疾影</strong><p>移动距离提高到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>幻影</strong><p>闪现后闪避下一次攻击。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：获得 2 层静电。</li></ul></div>
+<div class="skill-levels" data-rate="0" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="闪现的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">升级不提高百分比数值</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>移动 +1 格</li><li data-level="3"><b>Lv.3</b>闪现后闪避 1 次攻击</li><li data-level="4"><b>Lv.4</b>移动再 +1 格</li><li data-level="5"><b>Lv.5</b>闪避再 +1 次</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-arcaneBolt">
+<header><h4>奥术弹</h4><span class="skill-meta">15 级开放 · 冷却 2 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">增伤</span></p>
+<p class="skill-desc">对射程内一名敌人造成 130% 伤害，冷却只有 2 回合；目标处于冻结或易伤时伤害提高 40%。</p>
+<p class="skill-synergy">刷施放次数：术式屏障、星火回响、过载都按这个结算。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连珠弹</strong><p>冷却缩短到 1 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>重弹</strong><p>伤害提高到 200%，冷却 3 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：命中后额外弹向最近的另一名敌人，造成 60% 伤害。</li></ul></div>
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="奥术弹的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 32%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +8%</li><li data-level="3"><b>Lv.3</b>伤害 +8%</li><li data-level="4"><b>Lv.4</b>伤害 +8%</li><li data-level="5"><b>Lv.5</b>伤害 +8%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-drain">
+<header><h4>吸魂</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
+<p class="skill-desc">对射程内生命最高的敌人造成 140% 伤害，并回复造成伤害的 50%。</p>
+<p class="skill-synergy">法师的续航：对着最厚的敌人吸。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深渊之握</strong><p>回复提高到造成伤害的 70%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>虚弱</strong><p>命中后目标易伤 2 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：对燃烧目标的回复比例提高 20 个百分点。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="吸魂的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害 / 回复累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-slowField">
+<header><h4>时滞</h4><span class="skill-meta">25 级开放 · 冷却 7 回合</span></header>
+<p class="tags"><span class="tag">眩晕</span><span class="tag">破甲</span></p>
+<p class="skill-desc">瞬发：放完还能接着行动，每回合限一个瞬发技。2 格内所有敌人眩晕，跳过 1 次行动，并破甲 2 回合、带上冻结标记 2 回合（可被导电、碎冰或霜火引燃）。</p>
+<p class="skill-synergy">被围时先时滞定住一圈，接霜火把整圈引燃，或者接闪电链、碎冰。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>凝滞</strong><p>范围扩大到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>侵蚀</strong><p>破甲改为易伤 2 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：眩晕延长至 2 次行动。</li><li><strong>雷霆使</strong>：命中的敌人之后 2 回合受到闪电链的伤害提高 40%。</li></ul></div>
+<div class="skill-levels" data-rate="0" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="时滞的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">升级不提高百分比数值</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>破甲 / 易伤 +1 回合</li><li data-level="3"><b>Lv.3</b>冻结标记 +1 回合</li><li data-level="4"><b>Lv.4</b>破甲 / 易伤再 +1 回合</li><li data-level="5"><b>Lv.5</b>冻结标记再 +1 回合</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-meteor">
+<header><h4>陨石</h4><span class="skill-meta">30 级开放 · 冷却 7 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">碎裂</span></p>
+<p class="skill-desc">对 2 格内所有敌人造成 220% 伤害；命中冻结目标时碎裂：伤害再提高 50%，并消耗冻结标记。</p>
+<p class="skill-synergy">冰霜新星之后砸下来，一次结清。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>天火</strong><p>改为对射程内生命最高的单体造成 300% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余烬</strong><p>命中的敌人易伤 2 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：对燃烧目标的伤害提高 50%，与碎裂加成分别计算。</li></ul></div>
+<div class="skill-levels" data-rate="0.15" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="陨石的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +15%</li><li data-level="3"><b>Lv.3</b>伤害 +15%</li><li data-level="4"><b>Lv.4</b>伤害 +15%</li><li data-level="5"><b>Lv.5</b>伤害 +15%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-frostfire">
+<header><h4>霜火</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">冰火</span><span class="tag">引燃</span></p>
+<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 170% 伤害。已冻结的敌人被引燃：伤害再提高 50%、消耗冻结标记，并燃烧 3 回合；没冻结的敌人被冻结 1 次行动。</p>
+<p class="skill-synergy">自己就能接自己：第一发冻住，第二发引燃；接在冰霜新星后面，直接引燃一片。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>炽焰</strong><p>燃烧伤害提高到 50% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>寒潮</strong><p>波及目标 2 格内的敌人，伤害 140%。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：未冻结的敌人改为燃烧 1 层，不再冻结。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="霜火的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-tempest">
+<header><h4>元素风暴</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
+<p class="skill-desc">射程内有敌人时可用：召来冰火交织的风暴，席卷到射程外 2 格，其中所有敌人各受 200% 伤害，冻结 1 次行动并燃烧 3 回合；你获得 30% 最大生命的护盾。</p>
+<p class="skill-synergy">一手同时清场、控场和保命；留下的冻结标记还能交给闪电链、碎冰和霜火。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>极寒</strong><p>冻结延长到 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护法</strong><p>护盾提高到 50% 最大生命。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：冻结延长 1 次行动，与「极寒」叠加。</li><li><strong>爆炎师</strong>：燃烧改为直接叠加 2 层。</li><li><strong>雷霆使</strong>：施放后 2 回合内，闪电链的冷却时间为 1 回合。</li></ul></div>
+<div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 燃烧 / 护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="元素风暴的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害 / 燃烧 / 护盾累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 燃烧 / 护盾 +15%</li><li data-level="3"><b>Lv.3</b>伤害 / 燃烧 / 护盾 +15%</li><li data-level="4"><b>Lv.4</b>伤害 / 燃烧 / 护盾 +15%</li><li data-level="5"><b>Lv.5</b>伤害 / 燃烧 / 护盾 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-glacier" data-toc-label="冰结师专属" tabindex="-1">冰结师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-iceArmor">
+<header><h4>冰甲</h4><span class="skill-meta">45 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">冻结</span></p>
+<p class="skill-desc">获得 30% 最大生命的护盾；之后 3 回合，攻击你的敌人被冻结 1 次行动。</p>
+<p class="skill-synergy">冰结师的防护手段：每一次被攻击都会留下冻结标记，交给碎冰与闪电链。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>寒甲</strong><p>护盾提高至 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜噬</strong><p>攻击者同时破甲 2 回合。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="冰甲的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-frostDomain">
+<header><h4>极寒领域</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">冻结</span></p>
+<p class="skill-desc">对 2 格内所有敌人造成 100% 伤害，使其冻结 2 次行动，并带上冻结标记 3 回合。</p>
+<p class="skill-synergy">冰结师的控场核心：冻住一圈之后，碎冰、闪电链逐个消耗标记，寒气再溅向下一名敌人。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>永冻</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>碎域</strong><p>伤害提高至 180%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="控制">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="极寒领域的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时控制累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>控制 +12%</li><li data-level="3"><b>Lv.3</b>控制 +12%</li><li data-level="4"><b>Lv.4</b>控制 +12%</li><li data-level="5"><b>Lv.5</b>控制 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-absoluteZero">
+<header><h4>绝对零度</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">冰封</span></p>
+<p class="skill-desc">使场上所有敌人冻结 2 次行动；之后 3 回合，被冻结的敌人受到的伤害提高 50%。</p>
+<p class="skill-synergy">冰结师的觉醒技：冻住全场之后集中输出，趁敌人无法行动时结束战斗。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长冬</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>冰爆</strong><p>施放时对所有敌人造成 100% 伤害。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="冻结增伤">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="绝对零度的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时冻结增伤累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>冻结增伤 +15%</li><li data-level="3"><b>Lv.3</b>冻结增伤 +15%</li><li data-level="4"><b>Lv.4</b>冻结增伤 +15%</li><li data-level="5"><b>Lv.5</b>冻结增伤 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-pyro" data-toc-label="爆炎师专属" tabindex="-1">爆炎师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-emberGuard">
+<header><h4>余烬护体</h4><span class="skill-meta">45 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">护盾</span></p>
+<p class="skill-desc">场上每有 1 层燃烧，回复 3% 最大生命（至多 30%），并获得 30% 最大生命的护盾。</p>
+<p class="skill-synergy">爆炎师的防护手段：燃烧铺得越多，回复越多。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>炽心</strong><p>回复上限提高至 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>焰甲</strong><p>护盾提高至 40% 最大生命。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="回复 / 护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="余烬护体的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时回复 / 护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>回复 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>回复 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>回复 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>回复 / 护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-razeCity">
+<header><h4>焚城</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
+<p class="skill-desc">对 2 格内所有敌人造成 260% 伤害，并使其燃烧 2 层。</p>
+<p class="skill-synergy">爆炎师的铺场手段：先焚城叠满燃烧，燃烧的敌人倒下时再连环爆炸。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>燎原</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>灼骨</strong><p>伤害提高至 320%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 燃烧">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="焚城的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害 / 燃烧累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 燃烧 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 燃烧 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 燃烧 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 燃烧 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-redLotus">
+<header><h4>红莲</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">引燃</span></p>
+<p class="skill-desc">结清场上所有燃烧，按 150% 结算；随后使所有敌人燃烧 3 层。</p>
+<p class="skill-synergy">爆炎师的觉醒技：燃烧叠满之后施放，一次结清并重新点燃全场。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>业火</strong><p>结算比例提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>莲华</strong><p>施放时获得 30% 最大生命的护盾。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="燃烧">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="红莲的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时燃烧累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>燃烧 +15%</li><li data-level="3"><b>Lv.3</b>燃烧 +15%</li><li data-level="4"><b>Lv.4</b>燃烧 +15%</li><li data-level="5"><b>Lv.5</b>燃烧 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-thunder" data-toc-label="雷霆使专属" tabindex="-1">雷霆使专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-staticBarrier">
+<header><h4>静电屏障</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">电击</span></p>
+<p class="skill-desc">获得相当于静电层数 × 8% 最大生命的护盾（至少 25%）；护盾存在期间，攻击你的敌人受到 60% 攻击的电击伤害。不消耗静电。</p>
+<p class="skill-synergy">雷霆使的防护手段：静电越多，护盾越厚。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>电壳</strong><p>每层静电的护盾提高至 10% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反电</strong><p>电击伤害提高至 100% 攻击。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="静电屏障的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-thunderStrike">
+<header><h4>雷殛</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">眩晕</span></p>
+<p class="skill-desc">对射程内一名敌人造成 300% 伤害，并使其与相邻的敌人眩晕 1 次行动；消耗全部静电，每层伤害提高 20%。</p>
+<p class="skill-synergy">雷霆使的收尾手段：静电积满之后一击释放。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>天雷</strong><p>伤害提高至 380%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>连殛</strong><p>目标相邻的敌人同时受到 80% 伤害。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="雷殛的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-thunderGod">
+<header><h4>雷神</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">连锁</span></p>
+<p class="skill-desc">之后 3 回合，每次施放技能都自动追加一次 3 跳的闪电链。</p>
+<p class="skill-synergy">雷霆使的觉醒技：之后连续施放短冷却的技能，每一次都带出一道闪电链。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>雷鸣</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>雷涌</strong><p>施放时静电叠满。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="雷神的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +15%</li><li data-level="3"><b>Lv.3</b>伤害 +15%</li><li data-level="4"><b>Lv.4</b>伤害 +15%</li><li data-level="5"><b>Lv.5</b>伤害 +15%</li></ol>
+</div>
+</article></div>
+<h2 id="passives" tabindex="-1">职业被动</h2>
+<p class="lead">5 级起可以花费 1 技能点学习，最多同时携带 2 项，随时可以免费退还。被动不占用技能携带栏。</p>
+<div class="passive-grid"><div class="passive-card" id="passive-mage-spellWard">
+<h4>术式屏障</h4><p>每次施放技能获得 8% 最大生命的护盾，不叠加。</p><p class="muted">高频施法。</p>
+<span class="tag">雷霆使推荐</span>
+</div>
+<div class="passive-card" id="passive-mage-frostVein">
+<h4>冻脉</h4><p>技能对冻结目标的伤害提高 30%。</p><p class="muted">冰霜新星接碎冰或闪电链。</p>
+<span class="tag">冰结师推荐</span>
+</div>
+<div class="passive-card" id="passive-mage-ember">
+<h4>余烬</h4><p>易伤目标死亡时，对其相邻敌人造成 100% 攻击伤害。</p><p class="muted">火球术清群。</p>
+<span class="tag">爆炎师推荐</span>
+</div>
+<div class="passive-card" id="passive-mage-kindle">
+<h4>引燃</h4><p>技能命中易伤目标时使其燃烧 2 回合：每回合受到 30% 攻击的伤害。</p><p class="muted">火球术上易伤，再用任何技能点燃。</p>
+<span class="tag">爆炎师推荐</span>
+</div>
+<div class="passive-card" id="passive-mage-afterchill">
+<h4>余寒</h4><p>冻结标记的持续时间 +1 回合。</p><p class="muted">冰霜新星、陷阱箭之后接碎冰或闪电链。</p>
+<span class="tag">冰结师推荐</span>
+</div>
+<div class="passive-card" id="passive-mage-surge">
+<h4>法力涌动</h4><p>每施放 3 次技能，下一次技能命中的伤害提高 50%。</p><p class="muted">奥术弹刷次数，把加成留给陨石或火球。</p>
+<span class="tag">雷霆使推荐</span>
+</div></div>
+<h2 id="builds" tabindex="-1">推荐配置</h2>
+<p class="lead">每个转职分别搜索出的最优配置：200 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～151 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-glacier" data-toc-label="冰结师配置" tabindex="-1">冰结师</h3>
+<span class="build-score"><span>等效第 <strong>122</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 9.9 L120.3 9.9 L141.9 13.6 L163.5 8.0 L185.1 32.4 L206.7 8.0 L228.3 32.4 L249.8 49.3 L271.4 17.4 L293.0 47.4 L314.6 28.6 L336.2 51.1 L357.8 73.6 L379.3 66.1 L400.9 77.4 L422.5 64.3 L444.1 73.6 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 90.5 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 9.9 L120.3 9.9 L141.9 13.6 L163.5 8.0 L185.1 32.4 L206.7 8.0 L228.3 32.4 L249.8 49.3 L271.4 17.4 L293.0 47.4 L314.6 28.6 L336.2 51.1 L357.8 73.6 L379.3 66.1 L400.9 77.4 L422.5 64.3 L444.1 73.6 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 90.5 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><span class="variant">幻影</span><small>Lv.5</small></li><li><strong>冰霜新星</strong><span class="variant">深冻</span><small>Lv.5</small></li><li><strong>碎冰</strong><span class="variant">寒爆</span><small>Lv.5</small></li><li><strong>霜火</strong><span class="variant">寒潮</span><small>Lv.5</small></li><li><strong>元素风暴</strong><span class="variant">护法</span><small>Lv.5</small></li><li class="is-ascend"><strong>绝对零度</strong><span class="variant">冰爆</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「冻脉」、「余烬」</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>饰品</small>吊坠</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2341</b></span><span>生命 <b>5264</b></span><span>护甲 <b>270</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-pyro" data-toc-label="爆炎师配置" tabindex="-1">爆炎师</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 118 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 19.3 L55.6 19.3 L77.2 13.6 L98.8 11.7 L120.3 19.3 L141.9 9.9 L163.5 34.3 L185.1 43.6 L206.7 23.0 L228.3 51.1 L249.8 62.4 L271.4 28.6 L293.0 51.1 L314.6 36.1 L336.2 64.3 L357.8 62.4 L379.3 53.0 L400.9 84.9 L422.5 64.3 L444.1 64.3 L465.7 98.0 L487.3 96.1 L508.8 98.0 L530.4 94.3 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 19.3 L55.6 19.3 L77.2 13.6 L98.8 11.7 L120.3 19.3 L141.9 9.9 L163.5 34.3 L185.1 43.6 L206.7 23.0 L228.3 51.1 L249.8 62.4 L271.4 28.6 L293.0 51.1 L314.6 36.1 L336.2 64.3 L357.8 62.4 L379.3 53.0 L400.9 84.9 L422.5 64.3 L444.1 64.3 L465.7 98.0 L487.3 96.1 L508.8 98.0 L530.4 94.3 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>火球术</strong><span class="variant">余波</span><small>Lv.5</small></li><li><strong>奥术护盾</strong><span class="variant">厚盾</span><small>Lv.5</small></li><li><strong>吸魂</strong><span class="variant">虚弱</span><small>Lv.5</small></li><li><strong>闪现</strong><span class="variant">幻影</span><small>Lv.5</small></li><li><strong>元素风暴</strong><span class="variant">护法</span><small>Lv.5</small></li><li class="is-ascend"><strong>红莲</strong><span class="variant">莲华</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「余烬」、「术式屏障」</dd></div>
+<div><dt>属性加点</dt><dd>智力 3 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魔杖</li><li><small>头盔</small>祭冠</li><li><small>护甲</small>祭袍</li><li><small>饰品</small>吊坠</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2433</b></span><span>生命 <b>4439</b></span><span>护甲 <b>280</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-thunder" data-toc-label="雷霆使配置" tabindex="-1">雷霆使</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 115 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 13.6 L141.9 13.6 L163.5 11.7 L185.1 39.9 L206.7 23.0 L228.3 41.8 L249.8 53.0 L271.4 34.3 L293.0 53.0 L314.6 54.9 L336.2 62.4 L357.8 68.0 L379.3 62.4 L400.9 90.5 L422.5 62.4 L444.1 92.4 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 13.6 L141.9 13.6 L163.5 11.7 L185.1 39.9 L206.7 23.0 L228.3 41.8 L249.8 53.0 L271.4 34.3 L293.0 53.0 L314.6 54.9 L336.2 62.4 L357.8 68.0 L379.3 62.4 L400.9 90.5 L422.5 62.4 L444.1 92.4 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>火球术</strong><span class="variant">燃烧</span><small>Lv.5</small></li><li><strong>奥术护盾</strong><span class="variant">厚盾</span><small>Lv.5</small></li><li><strong>时滞</strong><span class="variant">凝滞</span><small>Lv.5</small></li><li><strong>霜火</strong><span class="variant">炽焰</span><small>Lv.5</small></li><li><strong>元素风暴</strong><span class="variant">护法</span><small>Lv.5</small></li><li class="is-ascend"><strong>雷神</strong><span class="variant">雷鸣</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「引燃」、「冻脉」</dd></div>
+<div><dt>属性加点</dt><dd>智力 2 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魔杖</li><li><small>头盔</small>祭冠</li><li><small>护甲</small>祭袍</li><li><small>饰品</small>吊坠</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2325</b></span><span>生命 <b>4789</b></span><span>护甲 <b>280</b></span></dd></div>
+</dl>
+</section>
+<details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+<p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
+<p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
+</details></article>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-ranger.html"><small>上一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-summoner.html"><small>下一篇</small><span>召唤师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+  </main>
+</div>
+<script src="search-index.js" defer></script>
+<script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
+(() => {
+  const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
+  const mobile = window.matchMedia('(max-width: 1000px)');
+  const toc = document.querySelector('.page-toc');
+  const links = [...document.querySelectorAll('[data-toc-id]')];
+  const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
+  const currentLabel = document.querySelector('.toc-current');
+  let currentId = '';
+  let scheduled = false;
+
+  function updateCurrent() {
+    scheduled = false;
+    const offset = mobile.matches ? 142 : 110;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.heading.getBoundingClientRect().top > offset) break;
+      current = section;
+    }
+    if (!current) return;
+    if (currentId !== current.heading.id) {
+      currentId = current.heading.id;
+      for (const { link } of sections) {
+        if (link === current.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      if (currentLabel) currentLabel.textContent = current.link.textContent.trim();
+    }
+    // 只滚动目录自身，避免目录定位带动正文跳动。
+    const panel = toc?.querySelector('.toc-panel');
+    if (panel && toc.open) {
+      const itemRect = current.link.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      if (itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom) {
+        panel.scrollTop += itemRect.top - panelRect.top - panel.clientHeight / 3;
+      }
+    }
+  }
+
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrent);
+  }
+
+  function fitMenus() {
+    for (const menu of menus) menu.open = !mobile.matches;
+    scheduleUpdate();
+  }
+  fitMenus();
+  mobile.addEventListener('change', fitMenus);
+  for (const menu of menus) {
+    menu.addEventListener('toggle', () => {
+      if (mobile.matches && menu.open) {
+        for (const other of menus) if (other !== menu) other.open = false;
+      }
+    });
+  }
+  document.addEventListener('click', event => {
+    if (mobile.matches && !menus.some(menu => menu.contains(event.target))) {
+      for (const menu of menus) menu.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobile.matches) return;
+    const open = menus.find(menu => menu.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+    }
+  });
+
+  function revealHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
+    target.scrollIntoView({ block: 'start' });
+    if (target.hasAttribute('tabindex')) target.focus({ preventScroll: true });
+    scheduleUpdate();
+  }
+  for (const link of document.querySelectorAll('.page-toc a, .tier-link, .class-link')) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (mobile.matches) for (const menu of menus) menu.open = false;
+      // 保留浏览器原生 hash 历史；重复点击当前锚点也能重新定位。
+      requestAnimationFrame(revealHash);
+    });
+  }
+  window.addEventListener('hashchange', revealHash);
+  window.addEventListener('load', () => { if (location.hash) revealHash(); else scheduleUpdate(); });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  document.addEventListener('toggle', scheduleUpdate, true);
+  scheduleUpdate();
+})();
+
+/* 全站搜索：索引在 search-index.js（window.GUIDE_SEARCH），按名称与所属做子串匹配；没有索引时搜索框什么也不做。 */
+(() => {
+  const input = document.querySelector('#guide-search');
+  const panel = document.querySelector('#guide-search-results');
+  if (!input || !panel) return;
+  const entries = () => window.GUIDE_SEARCH ?? [];
+  const escape = text => String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const mark = (text, query) => {
+    const at = text.toLowerCase().indexOf(query);
+    return at < 0 ? escape(text) : `${escape(text.slice(0, at))}<mark>${escape(text.slice(at, at + query.length))}</mark>${escape(text.slice(at + query.length))}`;
+  };
+  let results = [];
+  let active = -1;
+
+  function close() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(index) {
+    active = index;
+    [...panel.querySelectorAll('a')].forEach((link, i) => link.setAttribute('aria-selected', String(i === index)));
+    panel.querySelectorAll('a')[index]?.scrollIntoView({ block: 'nearest' });
+  }
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { close(); return; }
+    // 名称开头匹配排最前，其次名称包含，再次只有所属匹配。
+    const score = entry => {
+      const name = entry.n.toLowerCase();
+      if (name.startsWith(query)) return 0;
+      if (name.includes(query)) return 1;
+      return `${entry.c} ${entry.k}`.toLowerCase().includes(query) ? 2 : -1;
+    };
+    results = entries().map(entry => ({ entry, rank: score(entry) })).filter(item => item.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entry.n.length - b.entry.n.length).slice(0, 12).map(item => item.entry);
+    panel.innerHTML = results.length
+      ? results.map((entry, i) => `<a href="${escape(entry.u)}" role="option" id="guide-search-${i}" aria-selected="false"><strong>${mark(entry.n, query)}</strong>${entry.c ? `<small>${escape(entry.c)}</small>` : ''}<span class="kind">${escape(entry.k)}</span></a>`).join('')
+      : '<p class="search-empty">没有找到相关条目。</p>';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(results.length ? 0 : -1);
+  }
+  input.addEventListener('input', render);
+  input.addEventListener('focus', () => { if (input.value.trim()) render(); });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      if (!results.length) return;
+      event.preventDefault();
+      highlight((active + (event.key === 'ArrowDown' ? 1 : results.length - 1)) % results.length);
+    } else if (event.key === 'Enter' && results[active]) {
+      event.preventDefault();
+      location.href = results[active].u;
+      close();
+    } else if (event.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+  panel.addEventListener('click', () => close());
+  document.addEventListener('click', event => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== input) close();
+  });
+  // 按 / 聚焦搜索框（输入框里除外）。
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    event.preventDefault();
+    input.focus();
+  });
+})();
+
+/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+(() => {
+  if (!document.querySelector('.level-slider')) return;
+  for (const box of document.querySelectorAll('.skill-levels')) {
+    const slider = box.querySelector('.level-slider');
+    const output = box.querySelector('.level-value');
+    const total = box.querySelector('.level-total');
+    const rate = Number(box.dataset.rate) || 0;
+    const scaling = box.dataset.scaling || '伤害';
+    const update = () => {
+      const level = Number(slider.value);
+      output.textContent = `Lv.${level}`;
+      for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
+      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
+})();
+</script>
+</body>
+</html>

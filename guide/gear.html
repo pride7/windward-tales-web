@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#f9fbf5" />
-<title>装备 · 风行物语官方攻略</title>
-<meta name="description" content="从装备类型到套装与词条，逐步完善你的冒险行装。" />
+<title>装备 · 风行物语图鉴</title>
+<meta name="description" content="装备类型、品质、词条、套装与传奇规则词条。" />
 <link rel="icon" type="image/png" href="../icons/windward-64.png" />
 <style>
 :root {
@@ -63,309 +63,424 @@
   --rarity-legendary: #a8681c;
   --rarity-trophy: #b23a2e;
 }
-/* 与游戏共用鼠尾草绿和米白；正文保持纸面阅读感，颜色用于导航与状态。 */
+/* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
 * { box-sizing: border-box; }
-:root { --header-height: 76px; --reading-offset: 104px; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; --serif: "Songti SC", "Noto Serif SC", "SimSun", serif; }
+:root {
+  --header-height: 68px; --reading-offset: 96px;
+  --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  --radius: 12px; --shadow: 0 1px 2px #304a3a0d, 0 6px 18px #304a3a0a; --shadow-lift: 0 2px 4px #304a3a12, 0 14px 32px #304a3a14;
+}
 html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
-body { margin: 0; background: var(--surface-paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
-a { color: var(--mint); text-underline-offset: 4px; }
-button, summary, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-a, summary { transition: background .16s, color .16s, border-color .16s; }
-a:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body { margin: 0; background: var(--surface-page); background-image: linear-gradient(180deg, var(--surface-paper) 0, var(--surface-page) 520px); background-repeat: no-repeat; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 3px; }
+button, summary, a, input { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .16s; }
+a:focus-visible, summary:focus-visible, input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 [tabindex="-1"]:focus { outline: none; }
 svg, img { flex-shrink: 0; }
 img { display: block; max-width: 100%; }
 summary { cursor: pointer; list-style: none; }
 summary::-webkit-details-marker { display: none; }
 [hidden] { display: none !important; }
-.skip-link { position: fixed; z-index: 30; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: fixed; z-index: 40; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
 .skip-link:focus { top: 10px; }
 
-.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: var(--surface-paper); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1500px; height: 100%; margin: auto; padding: 0 32px; }
-.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
-.brand img { border-radius: 11px; }
-.brand strong { display: block; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.35; letter-spacing: 2px; }
-.brand small { display: block; margin-top: 2px; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
-.play-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 8px 17px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-soft); color: var(--accent-deep); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
-.play-link:hover { background: var(--surface-sunken); }
+/* ---------- 顶栏与搜索 ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: color-mix(in srgb, var(--surface-paper) 92%, transparent); backdrop-filter: blur(10px); }
+.header-inner { display: flex; align-items: center; gap: 20px; max-width: 1480px; height: 100%; margin: auto; padding: 0 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 10px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: 2px; }
+.brand small { display: block; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.site-search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
+.search-box { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink-soft); }
+.search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+.search-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.search-box input::placeholder { color: var(--ink-soft); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; background: var(--surface-soft); color: var(--ink-soft); font: 11px/18px var(--sans); }
+.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: min(70dvh, 480px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); box-shadow: var(--shadow-lift); }
+.search-results a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 8px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.search-results a strong { font-size: 14px; }
+.search-results a mark { background: var(--gold-tint); color: inherit; border-radius: 2px; }
+.search-results a small { grid-column: 1; color: var(--ink-muted); font-size: 12px; }
+.search-results a .kind { grid-column: 2; grid-row: 1 / 3; padding: 1px 7px; border-radius: 5px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 11px; }
+.search-results a[aria-selected="true"], .search-results a:hover { background: var(--surface-soft); }
+.search-empty { margin: 0; padding: 14px 10px; color: var(--ink-muted); font-size: 13px; }
+.play-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 15px; border: 1px solid var(--accent-edge); border-radius: 10px; background: var(--accent); color: var(--ink-invert); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--accent-deep); }
 
-.docs-layout { display: grid; grid-template-columns: 184px minmax(0, 1fr) 204px; grid-template-areas: "navigation content outline"; align-items: start; gap: 34px; max-width: 1500px; margin: 0 auto; padding: 32px 32px 0; }
+/* ---------- 版面 ---------- */
+.docs-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr) 196px; grid-template-areas: "navigation content outline"; align-items: start; gap: 36px; max-width: 1480px; margin: 0 auto; padding: 28px 28px 0; }
+.docs-layout.no-toc { grid-template-columns: 212px minmax(0, 1fr); grid-template-areas: "navigation content"; }
 .site-sidebar { grid-area: navigation; }
 .toc-sidebar { grid-area: outline; }
-.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 28px); min-width: 0; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 24px); min-width: 0; }
 .site-nav > summary { display: none; }
-.nav-panel { max-height: calc(100dvh - 136px); overflow-y: auto; overscroll-behavior: contain; }
-.sidebar-label { margin: 0 10px 12px; color: var(--ink-muted); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
-.site-nav nav { display: grid; gap: 4px; }
-.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 11px; border-radius: 7px; color: var(--ink-muted); font-size: 13px; text-decoration: none; }
+.nav-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidebar-label { margin: 18px 10px 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.nav-group { display: grid; gap: 2px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 10px; border-radius: 9px; color: var(--ink-muted); font-size: 13.5px; text-decoration: none; }
+.site-nav nav a img { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-soft); }
 .site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
-.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-sunken); font-weight: 600; }
-.nav-current-dot { width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: var(--accent); }
-.sidebar-caption { margin: 22px 10px 0; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-raised); box-shadow: inset 3px 0 var(--accent), var(--shadow); font-weight: 600; }
 
-.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 10px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 34px; margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
 .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
 .page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
 .toc-current { display: none; }
-.toc-panel { max-height: calc(100dvh - 188px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.toc-panel { max-height: calc(100dvh - 170px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .page-toc ol { margin: 0; padding: 0; list-style: none; }
-.page-toc li { margin: 0; }
-.page-toc nav a { display: flex; align-items: center; min-height: 35px; padding: 6px 9px 6px 12px; border-left: 2px solid var(--line-soft); border-radius: 0 5px 5px 0; color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a { display: flex; align-items: center; min-height: 32px; padding: 5px 9px 5px 12px; border-left: 2px solid var(--line-soft); color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
 .page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11px; }
-.page-toc nav a:hover { background: var(--surface-soft); color: var(--ink); }
-.page-toc nav a[aria-current="location"] { background: var(--surface-hollow); color: var(--accent-deep); border-color: var(--accent); font-weight: 600; }
-.toc-top { display: inline-flex; align-items: center; min-height: 44px; margin: 10px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11.5px; }
+.page-toc nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.page-toc nav a[aria-current="location"] { color: var(--accent-deep); border-color: var(--accent); background: var(--surface-hollow); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 40px; margin: 8px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
 
+/* ---------- 正文 ---------- */
 .guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
-.guide-heading { padding: 4px 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line-mid); }
-.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--ink-muted); font-size: 11px; letter-spacing: 1px; }
+.guide-heading { padding: 6px 0 26px; margin-bottom: 30px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink-soft); font-size: 11px; letter-spacing: 1px; }
 .eyebrow span { color: var(--sage-mid); }
-.guide-heading h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: 2px; line-height: 1.35; }
-.page-description { margin: 12px 0 16px; color: var(--ink-muted); font-size: 14px; }
-.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-muted); font-size: 11px; }
-.version-badge { padding: 2px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-soft); font-variant-numeric: tabular-nums; }
+.guide-heading h1, .class-hero h1, .home-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: 3px; line-height: 1.3; }
+.page-description { max-width: 720px; margin: 10px 0 14px; color: var(--ink-muted); font-size: 14.5px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-soft); font-size: 11px; }
+.version-badge { padding: 1px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-raised); font-variant-numeric: tabular-nums; }
 .guide-article { overflow-wrap: anywhere; }
-.guide-article h2 { margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); font-family: var(--serif); font-size: 25px; font-weight: 600; line-height: 1.45; letter-spacing: 1px; }
+.guide-article h2 { display: flex; align-items: center; gap: 10px; margin: 56px 0 14px; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.4; letter-spacing: 2px; }
+.guide-article h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--accent-light), var(--accent)); }
 .guide-article > h2:first-child { margin-top: 0; }
-.guide-article h3 { margin: 30px 0 12px; font-size: 19px; line-height: 1.5; }
-.guide-article h4 { margin: 28px 0 8px; font-size: 15px; }
-.lead { margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
-.note { margin: 20px 0 26px; padding: 14px 17px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 9px 9px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
-.note p { margin: 8px 0; }
+.guide-article h3 { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+.guide-article h4 { margin: 0; font-size: 16px; }
+.lead { max-width: 820px; margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 18px 0 24px; padding: 13px 16px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 10px 10px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 6px 0; }
 .note p:first-child { margin-top: 0; }
 .note p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-muted); }
 .variant { color: var(--gold); font-weight: 600; }
-.tag { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: 4px; background: var(--surface-hollow); color: var(--ink-muted); font-family: var(--sans); font-size: 11px; font-weight: 400; line-height: 1.6; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
 .tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
-code { padding: 2px 5px; border-radius: 4px; background: var(--surface-hollow); font-size: .9em; white-space: normal; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; margin: 16px 0 28px; }
-.card { min-width: 0; padding: 20px; border: 1px solid var(--line-soft); border-radius: 12px; background: var(--surface-raised); }
-.card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 18px; }
-.card p { margin: 8px 0 0; font-size: 13px; color: var(--ink-muted); }
-.card dl { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 6px 12px; margin: 16px 0 0; font-size: 13px; }
-.card dt { color: var(--ink-muted); }
-.card dd { min-width: 0; margin: 0; }
-.portrait { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; background: var(--surface-soft); }
-ul.plain { margin: 0; padding: 0; list-style: none; }
-ul.plain li { margin: 0 0 3px; }
+.tag-gold { background: var(--gold-tint); color: var(--gold-bright); }
+.tag-link { text-decoration: none; background: var(--surface-raised); border: 1px solid var(--line-mid); color: var(--accent-deep); }
+.tag-link:hover { border-color: var(--accent); }
+code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); font-size: .92em; white-space: normal; }
+.block-label { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
 
-.table-scroll { max-width: 100%; margin: 16px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); scrollbar-width: thin; }
+/* ---------- 首页 ---------- */
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-bottom: 36px; padding: 30px 32px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 85% 20%, var(--surface-warm), transparent 55%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.home-hint { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink-muted); font-size: 13px; }
+.home-portraits { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; }
+.home-portraits img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--surface-raised); box-shadow: var(--shadow); background: var(--surface-soft); }
+.home-portraits img:nth-child(n+5) { transform: translateX(36px); }
+.class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.class-card { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.class-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.class-card img { width: 72px; height: 72px; border-radius: 14px; background: var(--surface-soft); }
+.class-card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-card-body strong { font-family: var(--serif); font-size: 19px; letter-spacing: 2px; }
+.class-card-body .tags { gap: 4px; }
+.class-card-intro { color: var(--ink-muted); font-size: 12.5px; line-height: 1.7; }
+.spec-names { display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-names span { padding: 0 7px; border: 1px solid var(--line-mid); border-radius: 6px; color: var(--accent-deep); font-size: 11.5px; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.ref-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.ref-card strong { font-size: 15px; }
+.ref-card span { grid-column: 1; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.ref-card svg { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--accent); }
+.ref-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); }
+
+.strength-chart { display: grid; gap: 4px; padding: 14px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.strength-group { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+.strength-group:last-child { border-bottom: 0; }
+.strength-class { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.strength-class img { width: 28px; height: 28px; border-radius: 7px; }
+.strength-bars { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.strength-bars li { display: grid; grid-template-columns: 58px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font-size: 12px; }
+.strength-label { color: var(--ink-muted); white-space: nowrap; }
+.strength-track { height: 10px; border-radius: 5px; background: var(--surface-hollow); overflow: hidden; }
+.strength-fill { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--accent-pale), var(--accent)); }
+.strength-bars li:first-child .strength-fill { background: linear-gradient(90deg, var(--accent-light), var(--accent-deep)); }
+.strength-value { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.axis-note { margin: 8px 2px 0; color: var(--ink-soft); font-size: 11.5px; }
+
+/* ---------- 职业页 ---------- */
+.class-hero { display: flex; align-items: center; gap: 26px; margin-bottom: 34px; padding: 26px 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 12% 30%, var(--surface-warm), transparent 50%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.class-hero-portrait { width: 132px; height: 132px; border-radius: 22px; border: 3px solid var(--surface-raised); box-shadow: var(--shadow-lift); background: var(--surface-soft); }
+.class-hero .page-description { margin-bottom: 12px; }
+.fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.fact-grid > div { padding: 12px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+.fact-grid .wide { grid-column: 1 / -1; }
+.fact-grid dt, .spec-facts dt, .build-specs dt { margin-bottom: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; }
+.fact-grid dd, .spec-facts dd, .build-specs dd { margin: 0; font-size: 13.5px; line-height: 1.75; }
+
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.spec-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line-soft); border-top: 3px solid var(--accent-light); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.guide-article .spec-card h3 { display: flex; flex-direction: column; margin: 0; font-family: var(--serif); font-size: 21px; letter-spacing: 2px; }
+.spec-card h3 small { font-family: var(--sans); color: var(--gold); font-size: 11.5px; font-weight: 500; letter-spacing: 0; }
+.spec-pitch { margin: 0; color: var(--ink-muted); font-size: 13px; }
+.spec-strength { align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; text-decoration: none; }
+.spec-strength strong { font-size: 14px; }
+.spec-facts { display: grid; gap: 10px; margin: 0; }
+.spec-facts dd { font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 9px; border: 1px solid var(--line-mid); border-radius: 7px; background: var(--surface-soft); color: var(--ink); font-size: 12.5px; font-weight: 600; text-decoration: none; }
+.chip small { color: var(--ink-soft); font-size: 10.5px; font-weight: 500; }
+.chip:hover { border-color: var(--accent); }
+.spec-rewrites { border-top: 1px dashed var(--line-mid); padding-top: 8px; }
+.spec-rewrites summary { display: flex; align-items: center; gap: 6px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.spec-rewrites summary svg { transform: rotate(90deg); }
+.spec-rewrites[open] summary svg { transform: rotate(-90deg); }
+.spec-rewrites ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-muted); font-size: 12.5px; }
+.spec-rewrites li { margin-bottom: 4px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: start; }
+.skill-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scroll-margin-top: var(--reading-offset); }
+.skill-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.skill-card.is-ascend { border-color: var(--gold-sand); background: linear-gradient(180deg, var(--surface-cream), var(--surface-raised) 90px); }
+.skill-card > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; }
+.skill-card h4 { font-family: var(--serif); font-size: 18px; letter-spacing: 1px; }
+.skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.skill-desc { margin: 0; font-size: 13.5px; }
+.skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
+.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
+.variant-box strong { color: var(--gold); font-size: 13px; }
+.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
+.rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
+.rewrites strong { color: var(--accent-deep); }
+.skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
+.level-control { display: flex; align-items: center; gap: 12px; }
+.level-control label { display: flex; flex: 1; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.level-slider { flex: 1; min-width: 0; accent-color: var(--accent); }
+.level-value { min-width: 42px; padding: 0 7px; border-radius: 6px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.level-total { margin: 6px 0 4px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.level-gains { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--ink-muted); }
+.level-gains li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px; }
+.level-gains b { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
+.level-gains li.is-locked { opacity: .38; }
+
+.passive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passive-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.passive-card:target { border-color: var(--accent); }
+.passive-card h4 { font-family: var(--serif); font-size: 17px; letter-spacing: 1px; }
+.passive-card p { margin: 0; font-size: 13px; }
+.passive-card p.muted { font-size: 12.5px; }
+.passive-card .tag { align-self: flex-start; }
+
+.build-card { margin: 14px 0 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); background: linear-gradient(90deg, var(--surface-hollow), var(--surface-raised)); }
+.guide-article .build-card h3 { margin: 0; font-family: var(--serif); font-size: 20px; letter-spacing: 2px; }
+.build-score { display: flex; align-items: baseline; gap: 10px; color: var(--ink-muted); font-size: 12.5px; }
+.build-score strong { color: var(--accent-deep); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-score small { color: var(--ink-soft); font-size: 11.5px; }
+.curve { margin: 0; padding: 12px 18px 4px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve text { fill: var(--ink-soft); font: 10px var(--sans); }
+.curve .grid { stroke: var(--line-soft); stroke-width: 1; }
+.curve .half { stroke: var(--gold-light); stroke-width: 1; stroke-dasharray: 4 4; }
+.curve .area { fill: color-mix(in srgb, var(--accent-pale) 35%, transparent); }
+.curve .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.curve figcaption { color: var(--ink-soft); font-size: 11px; text-align: right; }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 12px 18px 18px; }
+.build-specs .wide { grid-column: 1 / -1; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
+.skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
+.skill-chips strong { font-size: 12.5px; }
+.skill-chips .variant { font-size: 11.5px; }
+.skill-chips small { color: var(--ink-soft); font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
+.gear-list small { display: block; color: var(--ink-soft); font-size: 10.5px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-muted); }
+.stat-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.method-note { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); font-size: 12.5px; }
+.method-note summary { display: flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-weight: 600; }
+.method-note summary svg { margin-left: auto; transform: rotate(90deg); }
+.method-note[open] summary svg { transform: rotate(-90deg); }
+
+/* ---------- 资料页 ---------- */
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.formula { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.formula code { align-self: flex-start; font-size: 13px; }
+.formula p { margin: 0; color: var(--ink-muted); font-size: 12.5px; }
+.rule-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rule-list li { position: relative; padding: 10px 14px 10px 32px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); font-size: 13.5px; }
+.rule-list li::before { content: ""; position: absolute; left: 14px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
+.enemy-name { display: inline-flex; align-items: center; gap: 10px; }
+.enemy-name strong { white-space: nowrap; }
+.enemy-thumb { width: 40px; height: 40px; border-radius: 9px; object-fit: cover; background: var(--surface-hollow); }
+.enemy-thumb.is-empty { display: inline-block; }
+
+.table-scroll { max-width: 100%; margin: 14px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scrollbar-width: thin; }
 .data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
-.data-table th, .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
-.data-table th { background: var(--surface-soft); color: var(--ink-muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.data-table th, .data-table td { padding: 11px 13px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { position: sticky; top: 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.data-table tbody tr:hover td { background: color-mix(in srgb, var(--surface-soft) 60%, transparent); }
+.data-table tr:target td { background: var(--gold-tint); }
 .data-table tr:last-child td { border-bottom: 0; }
 .data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.data-table td.num .muted { font-size: 11px; }
 .cell-content { min-width: 0; }
-.data-table tr.is-chosen td { background: var(--surface-hollow); }
-.data-table tr.is-chosen td:first-child { box-shadow: inset 3px 0 var(--accent); }
-.table-compare { min-width: 530px; }
-.table-compare td:first-child, .table-compare th:first-child { position: sticky; left: 0; z-index: 1; min-width: 150px; max-width: 230px; border-right: 1px solid var(--line-soft); background: var(--surface-raised); }
-.table-compare th:first-child { background: var(--surface-soft); }
 .table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
-.class-link { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; text-decoration: none; white-space: nowrap; }
-.class-link img { width: 28px; height: 28px; border-radius: 7px; }
-.class-link:hover { text-decoration: underline; }
 
-.tier-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0 28px; }
-.tier-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; padding: 18px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-soft); color: var(--ink); text-decoration: none; }
-.tier-link strong { font-size: 17px; }
-.tier-link small { grid-column: 1; color: var(--ink-muted); font-size: 11px; }
-.tier-link svg { grid-column: 2; grid-row: 1 / 3; color: var(--accent); }
-.tier-link:hover { border-color: var(--accent); background: var(--surface-hollow); }
-.build-section { margin-top: 38px; }
-.build-section > h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.build-class-name { display: flex; flex-direction: column; gap: 2px; }
-.build-class-name small { color: var(--ink-muted); font-size: 11px; font-weight: 400; }
-.build-ceiling { display: flex; align-items: baseline; gap: 5px; margin-left: auto; color: var(--ink-muted); font-size: 11px; font-weight: 400; white-space: nowrap; }
-.build-ceiling strong { color: var(--accent); font-size: 24px; font-variant-numeric: tabular-nums; }
-.build-card { padding: 0; border: 1px solid var(--line-mid); border-radius: 11px; background: var(--surface-raised); overflow: hidden; }
-.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--line-soft); background: var(--surface-hollow); font-size: 13px; font-weight: 600; }
-.build-card-heading > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-deep); }
-.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 5px 18px 12px; }
-.build-specs > div { min-width: 0; padding: 12px 12px 4px 0; }
-.build-specs .wide { grid-column: 1 / -1; }
-.build-specs dt { margin-bottom: 5px; color: var(--ink-muted); font-size: 11px; }
-.build-specs dd { margin: 0; font-size: 13px; line-height: 1.75; }
-.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.skill-chips li { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 6px; padding: 4px 8px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface-soft); }
-.skill-chips strong { font-size: 12px; font-weight: 600; }
-.skill-chips .variant, .skill-chips .muted { font-size: 11px; }
-.gear-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
-.gear-list li { min-width: 0; }
-.gear-list small { margin-right: 6px; color: var(--ink-muted); font-size: 11px; }
-.build-analysis { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 9px; background: var(--surface-soft); }
-.build-analysis > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; min-height: 48px; padding: 8px 0; font-size: 12px; color: var(--ink-muted); }
-.build-analysis > summary > span { color: var(--ink); font-weight: 600; }
-.build-analysis > summary small { font-size: 11px; }
-.build-analysis > summary svg { margin-left: auto; }
-.build-analysis[open] > summary svg { transform: rotate(90deg); }
-.build-analysis[open] > summary { border-bottom: 1px solid var(--line-soft); }
-.build-analysis .lead { font-size: 12px; }
-.build-analysis .table-scroll { margin-bottom: 22px; }
-
-.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 48px; }
-.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 9px; color: var(--ink); text-decoration: none; }
-.page-pagination a:hover { background: var(--surface-soft); }
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { border-color: var(--accent-pale); box-shadow: var(--shadow); }
+.page-pagination .next { text-align: right; }
 .page-pagination small { color: var(--ink-muted); font-size: 11px; }
-.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13px; }
-.page-pagination .previous svg { transform: rotate(180deg); }
-.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13.5px; font-weight: 600; }
+.page-pagination .previous svg { order: -1; transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11.5px; }
 .site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
-.site-footer p { max-width: 540px; margin: 8px 0; }
-.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; }
+.site-footer p { max-width: 600px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: none; }
 
-/* 手机与平板：导航和目录并列，展开后使用整行宽度；正文不被侧栏挤压。 */
-@media (max-width: 1100px) {
-  :root { --header-height: 66px; --reading-offset: 136px; }
-  .header-inner { padding: 0 24px; }
-  .docs-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 20px 12px; max-width: 880px; padding: 12px 24px 0; }
+/* ---------- 窄屏 ---------- */
+@media (max-width: 1240px) {
+  .docs-layout { grid-template-columns: 196px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+  .toc-sidebar { display: none; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 手机与平板：导航和目录收成两个下拉按钮并列，展开后占满整行；正文不被侧栏挤压。 */
+@media (max-width: 1000px) {
+  :root { --header-height: 60px; --reading-offset: 124px; }
+  .header-inner { gap: 12px; padding: 0 18px; }
+  .brand small { display: none; }
+  .site-search { max-width: none; }
+  kbd { display: none; }
+  .docs-layout, .docs-layout.no-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 16px 10px; max-width: 900px; padding: 12px 18px 0; }
+  .docs-layout.no-toc { grid-template-areas: "navigation navigation" "content content"; }
+  .toc-sidebar { display: block; }
   .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
-  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 46px; margin: 0; padding: 10px 13px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-paper); color: var(--ink); font-size: 12px; font-weight: 500; box-shadow: 0 4px 14px #526c3c0a; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; padding: 9px 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink); font-size: 12.5px; font-weight: 500; box-shadow: var(--shadow); }
   .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
   .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
   .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
-  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 12px); max-height: min(62dvh, 520px); padding: 12px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 12px 32px #526c3c1a; }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 10px); max-height: min(64dvh, 540px); padding: 10px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; box-shadow: var(--shadow-lift); }
+  .no-toc .nav-panel { width: 100%; }
   .nav-panel { left: 0; }
   .toc-panel { right: 0; }
-  .site-nav nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sidebar-label { margin: 1px 10px 8px; }
-  .sidebar-caption { margin: 8px 10px 0; padding-top: 10px; }
-  .page-toc nav a { min-height: 44px; font-size: 13px; }
-  .page-toc .toc-level-3 a { font-size: 12px; }
-  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10px; }
-  .guide-heading { padding-top: 4px; }
+  .nav-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 10px 10px 4px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10.5px; }
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .home-portraits { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .home-portraits img { width: 100%; height: auto; aspect-ratio: 1; }
+  .home-portraits img:nth-child(n+5) { transform: none; }
+  .formula-grid { grid-template-columns: minmax(0, 1fr); }
 }
-
 @media (max-width: 640px) {
-  :root { --header-height: 64px; --reading-offset: 132px; }
   body { font-size: 14px; }
-  .header-inner { padding: 0 16px; gap: 10px; }
-  .brand { gap: 8px; }
+  .header-inner { padding: 0 12px; gap: 8px; }
+  .brand span { display: none; }
   .brand img { width: 34px; height: 34px; }
-  .brand strong { font-size: 19px; }
-  .brand small { font-size: 9px; letter-spacing: 1px; }
-  .play-link { min-height: 40px; padding: 7px 10px; gap: 5px; font-size: 12px; }
-  .docs-layout { padding: 10px 16px 0; gap: 18px 8px; }
-  .site-nav > summary, .page-toc > summary { gap: 6px; padding: 9px 10px; min-height: 44px; }
-  .nav-panel, .toc-panel { width: calc(200% + 8px); }
+  .play-link { padding: 7px 10px; font-size: 12px; }
+  .play-link svg { display: none; }
+  .docs-layout, .docs-layout.no-toc { padding: 10px 14px 0; gap: 14px 8px; }
   .toc-current { display: none; }
-  .guide-heading { margin-bottom: 24px; padding-bottom: 22px; }
-  .eyebrow { margin-bottom: 9px; font-size: 10px; }
-  .guide-heading h1 { font-size: 31px; }
-  .page-description { margin: 10px 0 13px; font-size: 13px; }
-  .page-meta { gap: 5px 8px; font-size: 10px; }
-  .guide-article h2 { margin-top: 36px; font-size: 22px; }
-  .guide-article h3 { font-size: 17px; }
-  .lead { font-size: 14px; line-height: 1.8; }
-  .cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .card { padding: 16px; }
-  .note { padding: 12px 13px; font-size: 12px; }
-  .tier-links { gap: 9px; }
-  .tier-link { padding: 13px 11px; gap: 5px 4px; }
-  .tier-link strong { font-size: 14px; }
-  .tier-link small { font-size: 10px; }
-  .tier-link svg { width: 15px; }
+  .guide-article h2 { margin-top: 42px; font-size: 22px; }
+  .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
+  .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
+  .variants { grid-template-columns: minmax(0, 1fr); }
+  .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .skill-card { padding: 14px; }
   .table-hint { display: block; }
-  .table-scroll:has(.table-cards) { border: 0; background: transparent; overflow: visible; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
   .table-cards { display: block; width: 100%; }
   .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
-  .table-cards tbody { display: grid; gap: 12px; }
+  .table-cards tbody { display: grid; gap: 10px; }
   .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
-  .table-cards td { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; padding: 7px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 6px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
   .table-cards td.num { white-space: normal; text-align: left; }
   .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
-  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink); font-size: 15px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
   .table-cards td:first-child::before { display: none; }
-  .table-cards .cell-content { overflow-wrap: anywhere; }
   .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
-  .table-compare td:first-child, .table-compare th:first-child { min-width: 135px; max-width: 175px; }
-  .build-section { margin-top: 30px; }
-  .build-section > h3 { gap: 9px; }
-  .build-ceiling { gap: 3px; font-size: 10px; }
-  .build-ceiling strong { font-size: 22px; }
-  .build-card-heading { padding: 10px 13px; font-size: 12px; }
-  .build-specs { padding: 3px 13px 12px; gap: 0 10px; }
-  .build-specs > div { padding-right: 0; }
-  .build-specs dd { font-size: 13px; }
-  .gear-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .build-analysis { padding: 0 11px; }
-  .build-analysis > summary small { display: none; }
-  .page-pagination { gap: 8px; margin-top: 36px; }
-  .page-pagination a { padding: 12px; }
+  .page-pagination { gap: 8px; margin-top: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   a, summary { transition: none; }
+  .class-card:hover { transform: none; }
 }
 @media print {
-  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link { display: none; }
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link, .level-control { display: none; }
   .docs-layout { display: block; max-width: none; padding: 0; }
-  .table-scroll { overflow: visible; }
+  .table-scroll { overflow: visible; box-shadow: none; }
   .guide-article h2, .guide-article h3 { break-after: avoid; }
-  .build-card, .card, .table-cards tr { break-inside: avoid; }
+  .skill-card, .spec-card, .build-card, .table-cards tr { break-inside: avoid; box-shadow: none; }
 }
 
 </style>
 </head>
-<body>
+<body class="page-gear">
 <a class="skip-link" href="#guide-content">跳到正文</a>
 <header class="site-header"><div class="header-inner">
-  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>官方攻略与图鉴</small></span></a>
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>图鉴与攻略</small></span></a>
+  <div class="site-search" role="search">
+    <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="visually-hidden">搜索图鉴</span><input id="guide-search" type="search" placeholder="搜索技能、被动、装备、敌人…" autocomplete="off" spellcheck="false" aria-controls="guide-search-results" aria-expanded="false" /><kbd>/</kbd></label>
+    <div class="search-results" id="guide-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+  </div>
   <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
 </div></header>
 <div class="docs-layout">
   <aside class="site-sidebar"><details class="site-nav" open>
-    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>攻略导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="nav-panel"><p class="sidebar-label">冒险指南</p><nav aria-label="攻略分类"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>职业与属性</span></a><a href="skills.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg><span>技能</span></a><a href="passives.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C9 2 2 7 5 15c8 5 16-1 15-12ZM3 21 15 9"/></svg><span>职业被动</span></a><a href="gear.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span><span class="nav-current-dot" aria-hidden="true"></span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a><a href="builds.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></svg><span>推荐配置</span></a></nav><p class="sidebar-caption">一人一程，自在生长。</p></div>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
     <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#section-装备类型" data-toc-id="section-装备类型" title="装备类型"><span>装备类型</span></a></li><li class="toc-level-2"><a href="#section-品质" data-toc-id="section-品质" title="品质"><span>品质</span></a></li><li class="toc-level-2"><a href="#section-随机词条的取值区间" data-toc-id="section-随机词条的取值区间" title="随机词条的取值区间"><span>随机词条的取值区间</span></a></li><li class="toc-level-2"><a href="#section-套装" data-toc-id="section-套装" title="套装"><span>套装</span></a></li><li class="toc-level-3"><a href="#section-职业套装" data-toc-id="section-职业套装" title="职业套装"><span>职业套装</span></a></li><li class="toc-level-2"><a href="#section-传奇规则词条" data-toc-id="section-传奇规则词条" title="传奇规则词条"><span>传奇规则词条</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
-    <header class="guide-heading"><p class="eyebrow">冒险指南 <span>/</span> 装备</p><h1>装备</h1><p class="page-description">从装备类型到套装与词条，逐步完善你的冒险行装。</p><div class="page-meta"><span class="version-badge">v0.7.1</span><span>与游戏版本同步更新</span></div></header>
+    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 装备</p><h1>装备</h1><p class="page-description">装备类型、品质、词条、套装与传奇规则词条。</p><div class="page-meta"><span class="version-badge">v0.7.1-ota1</span><span>与游戏版本同步更新</span></div></header>
     <article class="guide-article"><h2 id="section-装备类型" tabindex="-1">装备类型</h2>
-<p class="lead">四个槽位，掉落会适配当前职业。装备等级统一为 1、5、10、15…，角色只能穿戴不高于自身等级的装备。</p>
+<p class="lead">装备分为武器、头盔、护甲、饰品四个部位，掉落时会适配当前职业。装备等级为 1、5、10、15……，角色只能穿戴不高于自身等级的装备。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">类型</th><th scope="col">部位</th><th scope="col">可用职业</th><th scope="col">特点</th><th scope="col">名称</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>剑刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>均衡</strong>：基础攻击标准，攻击标准，力量提高攻击与护甲。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">长剑、匕首</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>战斧</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>重砍</strong>：基础攻击 1.15×，基础攻击更高，暴击打得更重。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">战斧、巨斧</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>长枪</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>及远</strong>：基础攻击 0.85×，基础攻击最低，换来多一格的攻击射程。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">长枪、戟</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>猎弓</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>轻捷</strong>：基础攻击标准，攻击标准，敏捷提高暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">短弓、长弓</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>弩机</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>贯穿</strong>：基础攻击 1.15×，基础攻击更高，暴击打得更重。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">轻弩、重弩</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>法杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>导流</strong>：基础攻击标准，攻击标准，智力提高技能伤害、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">法杖、长杖</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>魔杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>游身</strong>：基础攻击 0.85×，基础攻击更低，换来闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">魔杖、短杖</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>共生</strong>：基础攻击标准，攻击标准，体质提高生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤杖、橡木杖、鹿角杖</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>月镰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>汲取</strong>：基础攻击 1.15×，基础攻击更高，并按伤害回复生命。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">月镰、骨镰</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>短刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>迅影</strong>：基础攻击标准，攻击标准，暴击更容易触发。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">短刃、袖剑、双刃</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>爪刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>锋爪</strong>：基础攻击 0.85×，基础攻击更低，敏捷同时提高暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">爪刃、钩爪</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>符杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>摄魂</strong>：基础攻击标准，攻击标准，智力提高技能伤害与召唤物强度。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">符杖、灵偶杖、摄魂铃</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>灵典</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>守契</strong>：基础攻击 0.85×，基础攻击更低，换来更厚的生命。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">灵典、契约书</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>魂杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>驭影</strong>：基础攻击标准，攻击标准，智力提高技能伤害，影子也跟着攻击变强。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">魂杖、骨杖</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥灯</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>引魂</strong>：基础攻击 0.85×，基础攻击更低，换来更厚的生命，影子也跟着更硬。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥灯、引魂灯</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>重型头盔</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content">重甲：生命与护甲更高，体质增强生存和回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">铁盔、面甲</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>轻型头盔</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士／游侠</div></td><td data-label="特点" role="cell"><div class="cell-content">轻甲：防护适中，敏捷提高暴击和闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">皮帽</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>布制头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">布甲：生命与护甲较低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">兜帽、冠冕</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤制头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content">藤甲：生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤盔、角冠</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>夜行头巾</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／刺客</div></td><td data-label="特点" role="cell"><div class="cell-content">夜行衣：生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">面罩、夜巾</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>祭冠</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师／召唤师／死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">祭袍：护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">祭冠、骨环</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥纱头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">冥纱：生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥冠、影纱</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content">重甲：生命与护甲更高，体质增强生存和回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">锁甲、板甲</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士／游侠</div></td><td data-label="特点" role="cell"><div class="cell-content">轻甲：防护适中，敏捷提高暴击和闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">皮甲</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">布甲：生命与护甲较低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">法袍、斗篷</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content">藤甲：生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤甲、兽皮衣</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>夜行衣</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／刺客</div></td><td data-label="特点" role="cell"><div class="cell-content">夜行衣：生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">夜行衣、暗影护具</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>祭袍</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师／召唤师／死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">祭袍：护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">祭袍、灵纹袍</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥纱</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">冥纱：生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥纱、尸布袍</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>戒指</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：暴击 / 暴击伤害</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">指环、戒指</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>护符</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：最大生命 / 击杀回复</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">符印、护符</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>吊坠</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：伤害吸血 / 闪避</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">项链、吊坠</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>图腾</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：护甲 / 最大生命</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">木雕、图腾</span></div></td></tr>
-<tr class="" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>徽章</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：暴击伤害 / 护甲</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">勋纹、徽章</span></div></td></tr>
+<tr class="" id="gear-sword" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>剑刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>均衡</strong>：基础攻击标准，攻击标准，力量提高攻击与护甲。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">长剑、匕首</span></div></td></tr>
+<tr class="" id="gear-axe" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>战斧</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>重砍</strong>：基础攻击 1.15×，基础攻击更高，暴击打得更重。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">战斧、巨斧</span></div></td></tr>
+<tr class="" id="gear-spear" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>长枪</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>及远</strong>：基础攻击 0.85×，基础攻击最低，换来多一格的攻击射程。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">长枪、戟</span></div></td></tr>
+<tr class="" id="gear-bow" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>猎弓</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>轻捷</strong>：基础攻击标准，攻击标准，敏捷提高暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">短弓、长弓</span></div></td></tr>
+<tr class="" id="gear-crossbow" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>弩机</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>贯穿</strong>：基础攻击 1.15×，基础攻击更高，暴击打得更重。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">轻弩、重弩</span></div></td></tr>
+<tr class="" id="gear-staff" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>法杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>导流</strong>：基础攻击标准，攻击标准，智力提高技能伤害、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">法杖、长杖</span></div></td></tr>
+<tr class="" id="gear-wand" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>魔杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>游身</strong>：基础攻击 0.85×，基础攻击更低，换来闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">魔杖、短杖</span></div></td></tr>
+<tr class="" id="gear-vinestaff" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>共生</strong>：基础攻击标准，攻击标准，体质提高生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤杖、橡木杖、鹿角杖</span></div></td></tr>
+<tr class="" id="gear-sickle" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>月镰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>汲取</strong>：基础攻击 1.15×，基础攻击更高，并按伤害回复生命。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">月镰、骨镰</span></div></td></tr>
+<tr class="" id="gear-blade" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>短刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>迅影</strong>：基础攻击标准，攻击标准，暴击更容易触发。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">短刃、袖剑、双刃</span></div></td></tr>
+<tr class="" id="gear-claw" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>爪刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>锋爪</strong>：基础攻击 0.85×，基础攻击更低，敏捷同时提高暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">爪刃、钩爪</span></div></td></tr>
+<tr class="" id="gear-talisman" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>符杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>摄魂</strong>：基础攻击标准，攻击标准，智力提高技能伤害与召唤物强度。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">符杖、灵偶杖、摄魂铃</span></div></td></tr>
+<tr class="" id="gear-grimoire" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>灵典</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>守契</strong>：基础攻击 0.85×，基础攻击更低，换来更厚的生命。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">灵典、契约书</span></div></td></tr>
+<tr class="" id="gear-soulstaff" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>魂杖</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>驭影</strong>：基础攻击标准，攻击标准，智力提高技能伤害，影子也跟着攻击变强。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">魂杖、骨杖</span></div></td></tr>
+<tr class="" id="gear-soullamp" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥灯</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content"><strong>引魂</strong>：基础攻击 0.85×，基础攻击更低，换来更厚的生命，影子也跟着更硬。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥灯、引魂灯</span></div></td></tr>
+<tr class="" id="gear-heavyHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>重型头盔</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content">重甲：生命与护甲更高，体质增强生存和回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">铁盔、面甲</span></div></td></tr>
+<tr class="" id="gear-lightHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>轻型头盔</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士／游侠</div></td><td data-label="特点" role="cell"><div class="cell-content">轻甲：防护适中，敏捷提高暴击和闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">皮帽</span></div></td></tr>
+<tr class="" id="gear-clothHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>布制头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">布甲：生命与护甲较低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">兜帽、冠冕</span></div></td></tr>
+<tr class="" id="gear-hideHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤制头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content">藤甲：生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤盔、角冠</span></div></td></tr>
+<tr class="" id="gear-shadowHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>夜行头巾</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／刺客</div></td><td data-label="特点" role="cell"><div class="cell-content">夜行衣：生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">面罩、夜巾</span></div></td></tr>
+<tr class="" id="gear-ritualHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>祭冠</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师／召唤师／死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">祭袍：护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">祭冠、骨环</span></div></td></tr>
+<tr class="" id="gear-shroudHelm" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥纱头饰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">冥纱：生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥冠、影纱</span></div></td></tr>
+<tr class="" id="gear-heavyArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士</div></td><td data-label="特点" role="cell"><div class="cell-content">重甲：生命与护甲更高，体质增强生存和回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">锁甲、板甲</span></div></td></tr>
+<tr class="" id="gear-lightArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">战士／游侠</div></td><td data-label="特点" role="cell"><div class="cell-content">轻甲：防护适中，敏捷提高暴击和闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">皮甲</span></div></td></tr>
+<tr class="" id="gear-robe" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">布甲：生命与护甲较低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">法袍、斗篷</span></div></td></tr>
+<tr class="" id="gear-hideArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／德鲁伊</div></td><td data-label="特点" role="cell"><div class="cell-content">藤甲：生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">藤甲、兽皮衣</span></div></td></tr>
+<tr class="" id="gear-shadowArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>夜行衣</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">游侠／刺客</div></td><td data-label="特点" role="cell"><div class="cell-content">夜行衣：生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">夜行衣、暗影护具</span></div></td></tr>
+<tr class="" id="gear-ritualArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>祭袍</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">法师／召唤师／死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">祭袍：护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">祭袍、灵纹袍</span></div></td></tr>
+<tr class="" id="gear-shroudArmor" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>冥纱</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="可用职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="特点" role="cell"><div class="cell-content">冥纱：生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">冥纱、尸布袍</span></div></td></tr>
+<tr class="" id="gear-ring" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>戒指</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：暴击 / 暴击伤害</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">指环、戒指</span></div></td></tr>
+<tr class="" id="gear-amulet" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>护符</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：最大生命 / 击杀回复</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">符印、护符</span></div></td></tr>
+<tr class="" id="gear-pendant" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>吊坠</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：伤害吸血 / 闪避</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">项链、吊坠</span></div></td></tr>
+<tr class="" id="gear-totem" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>图腾</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：护甲 / 最大生命</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">木雕、图腾</span></div></td></tr>
+<tr class="" id="gear-medal" role="row"><td data-label="类型" role="cell"><div class="cell-content"><strong>徽章</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="可用职业" role="cell"><div class="cell-content">全职业通用</div></td><td data-label="特点" role="cell"><div class="cell-content">基础属性二选一：暴击伤害 / 护甲</div></td><td data-label="名称" role="cell"><div class="cell-content"><span class="muted">勋纹、徽章</span></div></td></tr>
 </tbody></table></div>
 <h2 id="section-品质" tabindex="-1">品质</h2>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">品质</th><th scope="col" class="num">数值系数</th><th scope="col" class="num">随机词条</th><th scope="col" class="num">售价倍率</th></tr></thead><tbody role="rowgroup">
@@ -375,7 +490,7 @@ ul.plain li { margin: 0 0 3px; }
 <tr class="" role="row"><td data-label="品质" role="cell"><div class="cell-content"><strong>传奇</strong></div></td><td data-label="数值系数" role="cell" class="num"><div class="cell-content">1.60</div></td><td data-label="随机词条" role="cell" class="num"><div class="cell-content">3 条</div></td><td data-label="售价倍率" role="cell" class="num"><div class="cell-content">10×</div></td></tr>
 </tbody></table></div>
 <h2 id="section-随机词条的取值区间" tabindex="-1">随机词条的取值区间</h2>
-<p class="lead">百分比词条随等级平方根增长，固定数值词条线性增长，再乘品质系数。</p>
+<p class="lead">百分比词条随等级的平方根增长，固定数值词条随等级线性增长，再乘以品质系数。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">词条</th><th scope="col" class="num">10 级普通</th><th scope="col" class="num">100 级史诗</th></tr></thead><tbody role="rowgroup">
 <tr class="" role="row"><td data-label="词条" role="cell"><div class="cell-content"><strong></strong></div></td><td data-label="10 级普通" role="cell" class="num"><div class="cell-content">1 ~ 3</div></td><td data-label="100 级史诗" role="cell" class="num"><div class="cell-content">7 ~ 16</div></td></tr>
 <tr class="" role="row"><td data-label="词条" role="cell"><div class="cell-content"><strong></strong></div></td><td data-label="10 级普通" role="cell" class="num"><div class="cell-content">1 ~ 3</div></td><td data-label="100 级史诗" role="cell" class="num"><div class="cell-content">7 ~ 16</div></td></tr>
@@ -394,66 +509,67 @@ ul.plain li { margin: 0 0 3px; }
 <tr class="" role="row"><td data-label="词条" role="cell"><div class="cell-content"><strong></strong></div></td><td data-label="10 级普通" role="cell" class="num"><div class="cell-content">1</div></td><td data-label="100 级史诗" role="cell" class="num"><div class="cell-content">1 ~ 4</div></td></tr>
 </tbody></table></div>
 <h2 id="section-套装" tabindex="-1">套装</h2>
-<p class="lead">通用套装凑齐全部部位才生效。两件套覆盖四个槽位的每一种组合，三件套收益更高但更难凑齐。</p>
+<p class="lead">通用套装需要集齐全部部位才会生效。两件套覆盖四个部位的每一种组合；三件套收益更高，但更难集齐。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">套装</th><th scope="col">部位</th><th scope="col">效果</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>守望誓约</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">第 1 回合及之后每 3 回合，获得最大生命 20% 的护盾。与已有护盾取较高值。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>逐风旅途</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每命中 2 次普通攻击，获得专注，使下一次技能命中必定暴击。追加普攻也计数，专注不叠加。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>星火回响</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每成功施放 3 次技能，回复最大生命的 14%。每场战斗重新计数。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>铁潮怒涛</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 护甲<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每受到 3 次攻击，下一次普通攻击造成双倍伤害。被护盾完全吸收的攻击也计数。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>猎者誓言</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 头盔<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，本场战斗的伤害提高 6%，最多叠加 5 层。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>暮纱披风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中生命首次降到 50% 以下时，获得最大生命 30% 的护盾。与已有护盾取较高值。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>世树庇佑</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲 + 饰品<span class="muted">（3 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每回合回复最大生命的 4%；生命低于 50% 时回复加倍。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>风行足迹</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲 + 饰品<span class="muted">（3 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每回合回复最大生命的 4%。站在灌木、高地、浅水或冰面上时，回复翻倍，受到的伤害降低 15%。</div></td></tr>
+<tr class="" id="set-watchman" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>守望誓约</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">第 1 回合及之后每 3 回合，获得最大生命 20% 的护盾。与已有护盾取较高值。</div></td></tr>
+<tr class="" id="set-windrunner" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>逐风旅途</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每命中 2 次普通攻击，获得专注，使下一次技能命中必定暴击。追加普攻也计数，专注不叠加。</div></td></tr>
+<tr class="" id="set-starfire" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>星火回响</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每成功施放 3 次技能，回复最大生命的 14%。每场战斗重新计数。</div></td></tr>
+<tr class="" id="set-ironsurge" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>铁潮怒涛</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 护甲<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每受到 3 次攻击，下一次普通攻击造成双倍伤害。被护盾完全吸收的攻击也计数。</div></td></tr>
+<tr class="" id="set-hunterscreed" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>猎者誓言</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器 + 头盔<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，本场战斗的伤害提高 6%，最多叠加 5 层。</div></td></tr>
+<tr class="" id="set-duskveil" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>暮纱披风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲 + 饰品<span class="muted">（2 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中生命首次降到 50% 以下时，获得最大生命 30% 的护盾。与已有护盾取较高值。</div></td></tr>
+<tr class="" id="set-worldroot" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>世树庇佑</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲 + 饰品<span class="muted">（3 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每回合回复最大生命的 4%；生命低于 50% 时回复加倍。</div></td></tr>
+<tr class="" id="set-windward" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>风行足迹</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔 + 护甲 + 饰品<span class="muted">（3 件）</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每回合回复最大生命的 4%。站在灌木、高地、浅水或冰面上时，回复翻倍，受到的伤害降低 15%。</div></td></tr>
 </tbody></table></div>
 <h3 id="section-职业套装" tabindex="-1">职业套装</h3>
-<p class="lead">每个职业一套，占满四个槽位，只会掉给对应职业。穿 2 件得到一条属性（按已穿戴套装件中最低的物品等级折算），穿满 4 件再加一条机制。巨兽专属装不带套装，换上它就只剩 2 件效果。</p>
+<p class="lead">每个职业各有一套，占满四个部位，只会掉落给对应职业。穿戴 2 件获得一条属性加成（按已穿戴套装件中最低的物品等级折算），穿戴 4 件再获得一条机制效果。巨兽专属装备不属于任何套装，穿戴一件后只能保留 2 件效果。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">套装</th><th scope="col">职业</th><th scope="col">2 件</th><th scope="col">4 件</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>不破军阵</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">战士</div></td><td data-label="2 件" role="cell"><div class="cell-content">力量 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">第 1 回合及之后每 3 回合，获得最大生命 20% 的护盾；拥有护盾时受到的伤害降低 15%。护盾吸收的伤害全部蓄为怒意，下一次攻击（技能也算）额外造成等量伤害，最多为攻击的 3 倍。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>苍穹猎装</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="2 件" role="cell"><div class="cell-content">暴击伤害 +30<span class="muted">（100 级 +42）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">对与你相距 2 格及以上的目标，造成的伤害提高 35%，技能与普通攻击都算。第 1 回合及之后每 3 回合，获得一次必定闪避的翻滚。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>星穹法典</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">法师</div></td><td data-label="2 件" role="cell"><div class="cell-content">智力 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">技能伤害提高 15%，技能伤害的 6% 转为生命回复。每施放 2 次技能，获得专注：下一次技能必定暴击。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>万灵契约</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="2 件" role="cell"><div class="cell-content">最大生命 +121<span class="muted">（100 级 +316）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">召唤物的生命提高 20%。场上每有一个召唤物，你和召唤物造成的伤害提高 10%，最多 5 个。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>无影刃誓</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="2 件" role="cell"><div class="cell-content">闪避 +15<span class="muted">（100 级 +20）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">击杀敌人后，下一次攻击伤害提高 50%，并把翻滚补到 2 次（每次必定闪避一击）。加伤不叠加。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>荒野之心</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="2 件" role="cell"><div class="cell-content">体质 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">毒伤（含引爆）、受击反伤、树皮术的棘刺与古树化身的刺藤提高 50%，毒伤与引爆的 15% 转为生命回复。生命已满时溢出的回复转为护盾，最多为最大生命的 25%。</div></td></tr>
-<tr class="" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>暗影君主</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="2 件" role="cell"><div class="cell-content">智力 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">影子造成的伤害提高 20%。每当一个影子倒下，你获得最大生命 8% 的护盾，与已有护盾取较高值。</div></td></tr>
+<tr class="" id="set-ironlegion" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>不破军阵</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">战士</div></td><td data-label="2 件" role="cell"><div class="cell-content">力量 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">第 1 回合及之后每 3 回合，获得最大生命 20% 的护盾；拥有护盾时受到的伤害降低 15%。护盾吸收的伤害全部蓄为怒意，下一次攻击（技能也算）额外造成等量伤害，最多为攻击的 3 倍。</div></td></tr>
+<tr class="" id="set-skyhunter" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>苍穹猎装</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="2 件" role="cell"><div class="cell-content">暴击伤害 +30<span class="muted">（100 级 +42）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">对与你相距 2 格及以上的目标，造成的伤害提高 35%，技能与普通攻击都算。第 1 回合及之后每 3 回合，获得一次必定闪避的翻滚。</div></td></tr>
+<tr class="" id="set-starcodex" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>星穹法典</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">法师</div></td><td data-label="2 件" role="cell"><div class="cell-content">智力 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">技能伤害提高 15%，技能伤害的 6% 转为生命回复。每施放 2 次技能，获得专注：下一次技能必定暴击。</div></td></tr>
+<tr class="" id="set-soulpact" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>万灵契约</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="2 件" role="cell"><div class="cell-content">最大生命 +121<span class="muted">（100 级 +316）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">召唤物的生命提高 20%。场上每有一个召唤物，你和召唤物造成的伤害提高 10%，最多 5 个。</div></td></tr>
+<tr class="" id="set-shadowblade" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>无影刃誓</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="2 件" role="cell"><div class="cell-content">闪避 +15<span class="muted">（100 级 +20）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">击杀敌人后，下一次攻击伤害提高 50%，并把翻滚补到 2 次（每次必定闪避一击）。加伤不叠加。</div></td></tr>
+<tr class="" id="set-wildheart" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>荒野之心</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="2 件" role="cell"><div class="cell-content">体质 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">毒伤（含引爆）、受击反伤、树皮术的棘刺与古树化身的刺藤提高 50%，毒伤与引爆的 15% 转为生命回复。生命已满时溢出的回复转为护盾，最多为最大生命的 25%。</div></td></tr>
+<tr class="" id="set-nightlord" role="row"><td data-label="套装" role="cell"><div class="cell-content"><strong>暗影君主</strong></div></td><td data-label="职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="2 件" role="cell"><div class="cell-content">智力 +17<span class="muted">（100 级 +36）</span></div></td><td data-label="4 件" role="cell"><div class="cell-content">影子造成的伤害提高 20%。每当一个影子倒下，你获得最大生命 8% 的护盾，与已有护盾取较高值。</div></td></tr>
 </tbody></table></div>
 <h2 id="section-传奇规则词条" tabindex="-1">传奇规则词条</h2>
-<p class="lead">传奇装备除随机词条外额外带一条改变战斗规则的词条，按部位划分。重铸与精炼不会动到它。巨兽专属的四条只从巨兽讨伐掉落：比普通传奇多一条随机词条，词条只在区间上半段摇，不带套装。</p>
+<p class="lead">传奇装备除随机词条外，还带有一条改变战斗规则的词条，按部位划分，重铸与精炼不会改变它。四条巨兽专属词条只能通过巨兽讨伐获得：比普通传奇多一条随机词条，词条数值只在区间上半段随机，且不属于任何套装。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">规则词条</th><th scope="col">部位</th><th scope="col">效果</th><th scope="col">来源</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>连击之刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，有 25% 概率立即追加一次 60% 攻击的普通攻击。<br /><span class="muted">追加的一击同样计入连击、吸血与霜刃的命中次数。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>斩首者</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，立即获得专注：下一次技能必定暴击。<br /><span class="muted">配合范围技能收割，一场战斗可以反复触发。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>壁垒</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第 1 回合获得相当于 25% 最大生命的护盾。<br /><span class="muted">与碎风屏障、术式屏障叠用，开局就能换血。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>复仇甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每次受到攻击后，对攻击者造成 30% 攻击的必中伤害。<br /><span class="muted">护盾吸收伤害时同样触发，适合被围攻的打法。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>先手</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">第 1 回合造成的伤害提高 60%。<br /><span class="muted">配合冲锋、狙击等开场高倍率技能。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>凝神</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">每 4 回合自动获得一次专注：下一次技能必定暴击。<br /><span class="muted">长线战斗里稳定提供暴击，和高倍率技能最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>命悬一线</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于 30% 时，受到的伤害降低 35%。<br /><span class="muted">给吸血和药水争取回血的回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>迅捷</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">所有技能冷却缩短 1 回合（最低 1），但最大生命降低 15%。<br /><span class="muted">以技能为核心的搭配收益最大，需要护盾或闪避补上生存。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>裂伤</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，使目标流血 2 回合，每回合受到 30% 攻击的必中伤害。重复命中会刷新时间，不叠加。<br /><span class="muted">普攻次数越多越稳，和急射、连击之刃、追风连击都搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>渐强</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">每次普通攻击命中后，本场战斗的伤害提高 4%，最多叠加 8 层。<br /><span class="muted">适合拖得动的长线战斗，开场弱、后半段强，和首领战最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>镇岳</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">受到的单次伤害超过最大生命 20% 的部分减半。<br /><span class="muted">专克首领的高额单击和狂暴后的爆发，血越厚越划算。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>回气</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中生命首次降到 35% 以下时，立即回复 30% 最大生命。<br /><span class="muted">相当于半瓶药水，把药水省下来应付第二次危机。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>洞察</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">技能造成的伤害提高 20%，但普通攻击伤害降低 15%。<br /><span class="muted">技能占输出大头的法师、召唤师收益最大，纯普攻搭配反而是亏的。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>鹰眼</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">攻击射程增加 1 格。<br /><span class="muted">让近战也能先手，配合拉扯型战术规则能少挨很多下。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>回响</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中施放的第一个技能不进入冷却，可以立刻再放一次。<br /><span class="muted">开场连放两次高倍率技能，和狙击、陨石、冲锋这类大招最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>不屈之息</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗一次，本会致死的伤害改为让你保留 15% 最大生命。<br /><span class="muted">给吸血、回气和药水留出翻盘的一个回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>熔心</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，对目标周围 1 格的其他敌人各造成 40% 攻击的必中伤害。<br /><span class="muted">敌人越密越赚，正好补上纯单体武器的清场短板。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 熔岩巨像</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>虫群壁垒</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每有一名敌人与你相邻，受到的伤害降低 6%，最多 3 名。<br /><span class="muted">被围住时最硬，和嘲讽召唤物、反伤流的站位思路一致。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 腐沼母巢</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>龙瞳</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">对生命高于 50% 的目标造成的伤害提高 25%。<br /><span class="muted">前半场压血最快，打高生命首领时整条前半段都吃满。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 蚀日龙</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>永夜之誓</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每损失 10% 最大生命，造成的伤害提高 5%，最多 40%。<br /><span class="muted">越残血越强，配合镇岳、命悬一线和吸血能把危险血线变成输出窗口。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 永夜守墓人</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>踏冰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">这一回合挪过位置时，造成的伤害提高 20%。<br /><span class="muted">躲预警、抢高地、后撤再攻击都算挪位，把走位直接换成输出。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 霜渊巨人</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>潮甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于 50% 时，受到的伤害降低 20%。<br /><span class="muted">和命悬一线、回气叠成一道残血防线，给吸血和药水争取回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 棘甲龙龟</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>狂风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">技能每命中一个敌人，对它周围 1 格的其他敌人各造成这一击 35% 的伤害。<br /><span class="muted">技能占输出大头的职业吃得满，敌人扎堆时范围技一招刮好几遍。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>听风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">每回合开始时，2 格内没有敌人就获得一次翻滚：必定闪避下一次攻击，不叠加。<br /><span class="muted">远程拉开距离最稳，和后撤、抢占高地这类战术规则一起用。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>百草囊</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">多带 2 瓶药水；喝药水时，同时获得最大生命 25% 的护盾，与已有护盾取较高值。<br /><span class="muted">药水多两瓶还连着一面盾，残血时一口喝回来。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
-<tr class="" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>借风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每闪开一次攻击（翻滚也算），下一次攻击或技能的伤害提高 80%，不叠加。<br /><span class="muted">闪避越高越赚，和听风、烟雾这类给翻滚的技能最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
+<tr class="" id="rule-doubleStrike" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>连击之刃</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，有 25% 概率立即追加一次 60% 攻击的普通攻击。<br /><span class="muted">追加的一击同样计入连击、吸血与霜刃的命中次数。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-executioner" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>斩首者</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，立即获得专注：下一次技能必定暴击。<br /><span class="muted">配合范围技能收割，一场战斗可以反复触发。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-bulwark" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>壁垒</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第 1 回合获得相当于 25% 最大生命的护盾。<br /><span class="muted">与碎风屏障、术式屏障叠用，开局就能换血。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-retaliate" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>复仇甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每次受到攻击后，对攻击者造成 30% 攻击的必中伤害。<br /><span class="muted">护盾吸收伤害时同样触发，适合被围攻的打法。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-firstStrike" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>先手</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">第 1 回合造成的伤害提高 60%。<br /><span class="muted">配合冲锋、狙击等开场高倍率技能。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-focusFlow" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>凝神</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">每 4 回合自动获得一次专注：下一次技能必定暴击。<br /><span class="muted">长线战斗里稳定提供暴击，和高倍率技能最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-lifeline" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>命悬一线</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于 30% 时，受到的伤害降低 35%。<br /><span class="muted">给吸血和药水争取回血的回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-swiftCast" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>迅捷</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">所有技能冷却缩短 1 回合（最低 1），但最大生命降低 15%。<br /><span class="muted">以技能为核心的搭配收益最大，需要护盾或闪避补上生存。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-rend" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>裂伤</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，使目标流血 2 回合，每回合受到 30% 攻击的必中伤害。重复命中会刷新时间，不叠加。<br /><span class="muted">普攻次数越多越稳，和急射、连击之刃、追风连击都搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-crescendo" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>渐强</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">每次普通攻击命中后，本场战斗的伤害提高 4%，最多叠加 8 层。<br /><span class="muted">适合拖得动的长线战斗，开场弱、后半段强，和首领战最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-aegis" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>镇岳</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">受到的单次伤害超过最大生命 20% 的部分减半。<br /><span class="muted">专克首领的高额单击和狂暴后的爆发，血越厚越划算。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-secondWind" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>回气</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中生命首次降到 35% 以下时，立即回复 30% 最大生命。<br /><span class="muted">相当于半瓶药水，把药水省下来应付第二次危机。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-insight" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>洞察</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">技能造成的伤害提高 20%，但普通攻击伤害降低 15%。<br /><span class="muted">技能占输出大头的法师、召唤师收益最大，纯普攻搭配反而是亏的。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-hunterEye" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>鹰眼</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">攻击射程增加 1 格。<br /><span class="muted">让近战也能先手，配合拉扯型战术规则能少挨很多下。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-echo" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>回响</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗中施放的第一个技能不进入冷却，可以立刻再放一次。<br /><span class="muted">开场连放两次高倍率技能，和狙击、陨石、冲锋这类大招最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-lastBreath" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>不屈之息</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗一次，本会致死的伤害改为让你保留 15% 最大生命。<br /><span class="muted">给吸血、回气和药水留出翻盘的一个回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">随机掉落</div></td></tr>
+<tr class="" id="rule-moltenCore" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>熔心</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，对目标周围 1 格的其他敌人各造成 40% 攻击的必中伤害。<br /><span class="muted">敌人越密越赚，正好补上纯单体武器的清场短板。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 熔岩巨像</div></td></tr>
+<tr class="" id="rule-swarmward" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>虫群壁垒</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">每有一名敌人与你相邻，受到的伤害降低 6%，最多 3 名。<br /><span class="muted">被围住时最硬，和嘲讽召唤物、反伤流的站位思路一致。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 腐沼母巢</div></td></tr>
+<tr class="" id="rule-dragonsight" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>龙瞳</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">对生命高于 50% 的目标造成的伤害提高 25%。<br /><span class="muted">前半场压血最快，打高生命首领时整条前半段都吃满。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 蚀日龙</div></td></tr>
+<tr class="" id="rule-gravebond" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>永夜之誓</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每损失 10% 最大生命，造成的伤害提高 5%，最多 40%。<br /><span class="muted">越残血越强，配合镇岳、命悬一线和吸血能把危险血线变成输出窗口。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 永夜守墓人</div></td></tr>
+<tr class="" id="rule-rimewalk" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>踏冰</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">这一回合挪过位置时，造成的伤害提高 20%。<br /><span class="muted">躲预警、抢高地、后撤再攻击都算挪位，把走位直接换成输出。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 霜渊巨人</div></td></tr>
+<tr class="" id="rule-tideshell" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>潮甲</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于 50% 时，受到的伤害降低 20%。<br /><span class="muted">和命悬一线、回气叠成一道残血防线，给吸血和药水争取回合。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">巨兽 · 棘甲龙龟</div></td></tr>
+<tr class="" id="rule-gale" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>狂风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">武器</div></td><td data-label="效果" role="cell"><div class="cell-content">技能每命中一个敌人，对它周围 1 格的其他敌人各造成这一击 35% 的伤害。<br /><span class="muted">技能占输出大头的职业吃得满，敌人扎堆时范围技一招刮好几遍。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
+<tr class="" id="rule-windSense" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>听风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">头盔</div></td><td data-label="效果" role="cell"><div class="cell-content">每回合开始时，2 格内没有敌人就获得一次翻滚：必定闪避下一次攻击，不叠加。<br /><span class="muted">远程拉开距离最稳，和后撤、抢占高地这类战术规则一起用。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
+<tr class="" id="rule-herbPouch" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>百草囊</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">护甲</div></td><td data-label="效果" role="cell"><div class="cell-content">多带 2 瓶药水；喝药水时，同时获得最大生命 25% 的护盾，与已有护盾取较高值。<br /><span class="muted">药水多两瓶还连着一面盾，残血时一口喝回来。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
+<tr class="" id="rule-tailwind" role="row"><td data-label="规则词条" role="cell"><div class="cell-content"><strong>借风</strong></div></td><td data-label="部位" role="cell"><div class="cell-content">饰品</div></td><td data-label="效果" role="cell"><div class="cell-content">每闪开一次攻击（翻滚也算），下一次攻击或技能的伤害提高 80%，不叠加。<br /><span class="muted">闪避越高越赚，和听风、烟雾这类给翻滚的技能最搭。</span></div></td><td data-label="来源" role="cell"><div class="cell-content">风行大地 · 远古祭坛打造</div></td></tr>
 </tbody></table></div></article>
-    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="passives.html"><small>上一篇</small><span>职业被动<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="enemies.html"><small>下一篇</small><span>敌人与关卡<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 官方攻略</span><p>数据与搭配分析随游戏版本更新。推荐配置用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="rules.html"><small>上一篇</small><span>属性与规则<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="enemies.html"><small>下一篇</small><span>敌人与关卡<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
+<script src="search-index.js" defer></script>
 <script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
 (() => {
   const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
-  const mobile = window.matchMedia('(max-width: 1100px)');
+  const mobile = window.matchMedia('(max-width: 1000px)');
   const toc = document.querySelector('.page-toc');
   const links = [...document.querySelectorAll('[data-toc-id]')];
   const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
@@ -548,6 +664,99 @@ ul.plain li { margin: 0 0 3px; }
   window.addEventListener('resize', scheduleUpdate);
   document.addEventListener('toggle', scheduleUpdate, true);
   scheduleUpdate();
+})();
+
+/* 全站搜索：索引在 search-index.js（window.GUIDE_SEARCH），按名称与所属做子串匹配；没有索引时搜索框什么也不做。 */
+(() => {
+  const input = document.querySelector('#guide-search');
+  const panel = document.querySelector('#guide-search-results');
+  if (!input || !panel) return;
+  const entries = () => window.GUIDE_SEARCH ?? [];
+  const escape = text => String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const mark = (text, query) => {
+    const at = text.toLowerCase().indexOf(query);
+    return at < 0 ? escape(text) : `${escape(text.slice(0, at))}<mark>${escape(text.slice(at, at + query.length))}</mark>${escape(text.slice(at + query.length))}`;
+  };
+  let results = [];
+  let active = -1;
+
+  function close() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(index) {
+    active = index;
+    [...panel.querySelectorAll('a')].forEach((link, i) => link.setAttribute('aria-selected', String(i === index)));
+    panel.querySelectorAll('a')[index]?.scrollIntoView({ block: 'nearest' });
+  }
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { close(); return; }
+    // 名称开头匹配排最前，其次名称包含，再次只有所属匹配。
+    const score = entry => {
+      const name = entry.n.toLowerCase();
+      if (name.startsWith(query)) return 0;
+      if (name.includes(query)) return 1;
+      return `${entry.c} ${entry.k}`.toLowerCase().includes(query) ? 2 : -1;
+    };
+    results = entries().map(entry => ({ entry, rank: score(entry) })).filter(item => item.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entry.n.length - b.entry.n.length).slice(0, 12).map(item => item.entry);
+    panel.innerHTML = results.length
+      ? results.map((entry, i) => `<a href="${escape(entry.u)}" role="option" id="guide-search-${i}" aria-selected="false"><strong>${mark(entry.n, query)}</strong>${entry.c ? `<small>${escape(entry.c)}</small>` : ''}<span class="kind">${escape(entry.k)}</span></a>`).join('')
+      : '<p class="search-empty">没有找到相关条目。</p>';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(results.length ? 0 : -1);
+  }
+  input.addEventListener('input', render);
+  input.addEventListener('focus', () => { if (input.value.trim()) render(); });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      if (!results.length) return;
+      event.preventDefault();
+      highlight((active + (event.key === 'ArrowDown' ? 1 : results.length - 1)) % results.length);
+    } else if (event.key === 'Enter' && results[active]) {
+      event.preventDefault();
+      location.href = results[active].u;
+      close();
+    } else if (event.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+  panel.addEventListener('click', () => close());
+  document.addEventListener('click', event => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== input) close();
+  });
+  // 按 / 聚焦搜索框（输入框里除外）。
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    event.preventDefault();
+    input.focus();
+  });
+})();
+
+/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+(() => {
+  if (!document.querySelector('.level-slider')) return;
+  for (const box of document.querySelectorAll('.skill-levels')) {
+    const slider = box.querySelector('.level-slider');
+    const output = box.querySelector('.level-value');
+    const total = box.querySelector('.level-total');
+    const rate = Number(box.dataset.rate) || 0;
+    const scaling = box.dataset.scaling || '伤害';
+    const update = () => {
+      const level = Number(slider.value);
+      output.textContent = `Lv.${level}`;
+      for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
+      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
 })();
 </script>
 </body>

@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#f9fbf5" />
-<title>远行 · 深渊 · 讨伐 · 大地 · 风行物语官方攻略</title>
-<meta name="description" content="远行强化、深渊词缀、巨兽讨伐等长线玩法的规则。" />
+<title>远行 · 深渊 · 讨伐 · 大地 · 风行物语图鉴</title>
+<meta name="description" content="秘境探险、无尽深渊与巨兽讨伐等长线玩法的规则。" />
 <link rel="icon" type="image/png" href="../icons/windward-64.png" />
 <style>
 :root {
@@ -63,416 +63,532 @@
   --rarity-legendary: #a8681c;
   --rarity-trophy: #b23a2e;
 }
-/* 与游戏共用鼠尾草绿和米白；正文保持纸面阅读感，颜色用于导航与状态。 */
+/* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
 * { box-sizing: border-box; }
-:root { --header-height: 76px; --reading-offset: 104px; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; --serif: "Songti SC", "Noto Serif SC", "SimSun", serif; }
+:root {
+  --header-height: 68px; --reading-offset: 96px;
+  --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  --radius: 12px; --shadow: 0 1px 2px #304a3a0d, 0 6px 18px #304a3a0a; --shadow-lift: 0 2px 4px #304a3a12, 0 14px 32px #304a3a14;
+}
 html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
-body { margin: 0; background: var(--surface-paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
-a { color: var(--mint); text-underline-offset: 4px; }
-button, summary, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-a, summary { transition: background .16s, color .16s, border-color .16s; }
-a:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body { margin: 0; background: var(--surface-page); background-image: linear-gradient(180deg, var(--surface-paper) 0, var(--surface-page) 520px); background-repeat: no-repeat; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 3px; }
+button, summary, a, input { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .16s; }
+a:focus-visible, summary:focus-visible, input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 [tabindex="-1"]:focus { outline: none; }
 svg, img { flex-shrink: 0; }
 img { display: block; max-width: 100%; }
 summary { cursor: pointer; list-style: none; }
 summary::-webkit-details-marker { display: none; }
 [hidden] { display: none !important; }
-.skip-link { position: fixed; z-index: 30; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: fixed; z-index: 40; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
 .skip-link:focus { top: 10px; }
 
-.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: var(--surface-paper); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1500px; height: 100%; margin: auto; padding: 0 32px; }
-.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
-.brand img { border-radius: 11px; }
-.brand strong { display: block; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.35; letter-spacing: 2px; }
-.brand small { display: block; margin-top: 2px; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
-.play-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 8px 17px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-soft); color: var(--accent-deep); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
-.play-link:hover { background: var(--surface-sunken); }
+/* ---------- 顶栏与搜索 ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: color-mix(in srgb, var(--surface-paper) 92%, transparent); backdrop-filter: blur(10px); }
+.header-inner { display: flex; align-items: center; gap: 20px; max-width: 1480px; height: 100%; margin: auto; padding: 0 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 10px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: 2px; }
+.brand small { display: block; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.site-search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
+.search-box { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink-soft); }
+.search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+.search-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.search-box input::placeholder { color: var(--ink-soft); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; background: var(--surface-soft); color: var(--ink-soft); font: 11px/18px var(--sans); }
+.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: min(70dvh, 480px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); box-shadow: var(--shadow-lift); }
+.search-results a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 8px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.search-results a strong { font-size: 14px; }
+.search-results a mark { background: var(--gold-tint); color: inherit; border-radius: 2px; }
+.search-results a small { grid-column: 1; color: var(--ink-muted); font-size: 12px; }
+.search-results a .kind { grid-column: 2; grid-row: 1 / 3; padding: 1px 7px; border-radius: 5px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 11px; }
+.search-results a[aria-selected="true"], .search-results a:hover { background: var(--surface-soft); }
+.search-empty { margin: 0; padding: 14px 10px; color: var(--ink-muted); font-size: 13px; }
+.play-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 15px; border: 1px solid var(--accent-edge); border-radius: 10px; background: var(--accent); color: var(--ink-invert); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--accent-deep); }
 
-.docs-layout { display: grid; grid-template-columns: 184px minmax(0, 1fr) 204px; grid-template-areas: "navigation content outline"; align-items: start; gap: 34px; max-width: 1500px; margin: 0 auto; padding: 32px 32px 0; }
+/* ---------- 版面 ---------- */
+.docs-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr) 196px; grid-template-areas: "navigation content outline"; align-items: start; gap: 36px; max-width: 1480px; margin: 0 auto; padding: 28px 28px 0; }
+.docs-layout.no-toc { grid-template-columns: 212px minmax(0, 1fr); grid-template-areas: "navigation content"; }
 .site-sidebar { grid-area: navigation; }
 .toc-sidebar { grid-area: outline; }
-.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 28px); min-width: 0; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 24px); min-width: 0; }
 .site-nav > summary { display: none; }
-.nav-panel { max-height: calc(100dvh - 136px); overflow-y: auto; overscroll-behavior: contain; }
-.sidebar-label { margin: 0 10px 12px; color: var(--ink-muted); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
-.site-nav nav { display: grid; gap: 4px; }
-.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 11px; border-radius: 7px; color: var(--ink-muted); font-size: 13px; text-decoration: none; }
+.nav-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidebar-label { margin: 18px 10px 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.nav-group { display: grid; gap: 2px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 10px; border-radius: 9px; color: var(--ink-muted); font-size: 13.5px; text-decoration: none; }
+.site-nav nav a img { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-soft); }
 .site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
-.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-sunken); font-weight: 600; }
-.nav-current-dot { width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: var(--accent); }
-.sidebar-caption { margin: 22px 10px 0; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-raised); box-shadow: inset 3px 0 var(--accent), var(--shadow); font-weight: 600; }
 
-.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 10px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 34px; margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
 .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
 .page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
 .toc-current { display: none; }
-.toc-panel { max-height: calc(100dvh - 188px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.toc-panel { max-height: calc(100dvh - 170px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .page-toc ol { margin: 0; padding: 0; list-style: none; }
-.page-toc li { margin: 0; }
-.page-toc nav a { display: flex; align-items: center; min-height: 35px; padding: 6px 9px 6px 12px; border-left: 2px solid var(--line-soft); border-radius: 0 5px 5px 0; color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a { display: flex; align-items: center; min-height: 32px; padding: 5px 9px 5px 12px; border-left: 2px solid var(--line-soft); color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
 .page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11px; }
-.page-toc nav a:hover { background: var(--surface-soft); color: var(--ink); }
-.page-toc nav a[aria-current="location"] { background: var(--surface-hollow); color: var(--accent-deep); border-color: var(--accent); font-weight: 600; }
-.toc-top { display: inline-flex; align-items: center; min-height: 44px; margin: 10px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11.5px; }
+.page-toc nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.page-toc nav a[aria-current="location"] { color: var(--accent-deep); border-color: var(--accent); background: var(--surface-hollow); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 40px; margin: 8px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
 
+/* ---------- 正文 ---------- */
 .guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
-.guide-heading { padding: 4px 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line-mid); }
-.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--ink-muted); font-size: 11px; letter-spacing: 1px; }
+.guide-heading { padding: 6px 0 26px; margin-bottom: 30px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink-soft); font-size: 11px; letter-spacing: 1px; }
 .eyebrow span { color: var(--sage-mid); }
-.guide-heading h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: 2px; line-height: 1.35; }
-.page-description { margin: 12px 0 16px; color: var(--ink-muted); font-size: 14px; }
-.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-muted); font-size: 11px; }
-.version-badge { padding: 2px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-soft); font-variant-numeric: tabular-nums; }
+.guide-heading h1, .class-hero h1, .home-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: 3px; line-height: 1.3; }
+.page-description { max-width: 720px; margin: 10px 0 14px; color: var(--ink-muted); font-size: 14.5px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-soft); font-size: 11px; }
+.version-badge { padding: 1px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-raised); font-variant-numeric: tabular-nums; }
 .guide-article { overflow-wrap: anywhere; }
-.guide-article h2 { margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); font-family: var(--serif); font-size: 25px; font-weight: 600; line-height: 1.45; letter-spacing: 1px; }
+.guide-article h2 { display: flex; align-items: center; gap: 10px; margin: 56px 0 14px; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.4; letter-spacing: 2px; }
+.guide-article h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--accent-light), var(--accent)); }
 .guide-article > h2:first-child { margin-top: 0; }
-.guide-article h3 { margin: 30px 0 12px; font-size: 19px; line-height: 1.5; }
-.guide-article h4 { margin: 28px 0 8px; font-size: 15px; }
-.lead { margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
-.note { margin: 20px 0 26px; padding: 14px 17px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 9px 9px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
-.note p { margin: 8px 0; }
+.guide-article h3 { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+.guide-article h4 { margin: 0; font-size: 16px; }
+.lead { max-width: 820px; margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 18px 0 24px; padding: 13px 16px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 10px 10px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 6px 0; }
 .note p:first-child { margin-top: 0; }
 .note p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-muted); }
 .variant { color: var(--gold); font-weight: 600; }
-.tag { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: 4px; background: var(--surface-hollow); color: var(--ink-muted); font-family: var(--sans); font-size: 11px; font-weight: 400; line-height: 1.6; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
 .tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
-code { padding: 2px 5px; border-radius: 4px; background: var(--surface-hollow); font-size: .9em; white-space: normal; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; margin: 16px 0 28px; }
-.card { min-width: 0; padding: 20px; border: 1px solid var(--line-soft); border-radius: 12px; background: var(--surface-raised); }
-.card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 18px; }
-.card p { margin: 8px 0 0; font-size: 13px; color: var(--ink-muted); }
-.card dl { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 6px 12px; margin: 16px 0 0; font-size: 13px; }
-.card dt { color: var(--ink-muted); }
-.card dd { min-width: 0; margin: 0; }
-.portrait { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; background: var(--surface-soft); }
-ul.plain { margin: 0; padding: 0; list-style: none; }
-ul.plain li { margin: 0 0 3px; }
+.tag-gold { background: var(--gold-tint); color: var(--gold-bright); }
+.tag-link { text-decoration: none; background: var(--surface-raised); border: 1px solid var(--line-mid); color: var(--accent-deep); }
+.tag-link:hover { border-color: var(--accent); }
+code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); font-size: .92em; white-space: normal; }
+.block-label { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
 
-.table-scroll { max-width: 100%; margin: 16px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); scrollbar-width: thin; }
+/* ---------- 首页 ---------- */
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-bottom: 36px; padding: 30px 32px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 85% 20%, var(--surface-warm), transparent 55%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.home-hint { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink-muted); font-size: 13px; }
+.home-portraits { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; }
+.home-portraits img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--surface-raised); box-shadow: var(--shadow); background: var(--surface-soft); }
+.home-portraits img:nth-child(n+5) { transform: translateX(36px); }
+.class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.class-card { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.class-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.class-card img { width: 72px; height: 72px; border-radius: 14px; background: var(--surface-soft); }
+.class-card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-card-body strong { font-family: var(--serif); font-size: 19px; letter-spacing: 2px; }
+.class-card-body .tags { gap: 4px; }
+.class-card-intro { color: var(--ink-muted); font-size: 12.5px; line-height: 1.7; }
+.spec-names { display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-names span { padding: 0 7px; border: 1px solid var(--line-mid); border-radius: 6px; color: var(--accent-deep); font-size: 11.5px; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.ref-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.ref-card strong { font-size: 15px; }
+.ref-card span { grid-column: 1; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.ref-card svg { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--accent); }
+.ref-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); }
+
+.strength-chart { display: grid; gap: 4px; padding: 14px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.strength-group { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+.strength-group:last-child { border-bottom: 0; }
+.strength-class { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.strength-class img { width: 28px; height: 28px; border-radius: 7px; }
+.strength-bars { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.strength-bars li { display: grid; grid-template-columns: 58px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font-size: 12px; }
+.strength-label { color: var(--ink-muted); white-space: nowrap; }
+.strength-track { height: 10px; border-radius: 5px; background: var(--surface-hollow); overflow: hidden; }
+.strength-fill { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--accent-pale), var(--accent)); }
+.strength-bars li:first-child .strength-fill { background: linear-gradient(90deg, var(--accent-light), var(--accent-deep)); }
+.strength-value { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.axis-note { margin: 8px 2px 0; color: var(--ink-soft); font-size: 11.5px; }
+
+/* ---------- 职业页 ---------- */
+.class-hero { display: flex; align-items: center; gap: 26px; margin-bottom: 34px; padding: 26px 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 12% 30%, var(--surface-warm), transparent 50%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.class-hero-portrait { width: 132px; height: 132px; border-radius: 22px; border: 3px solid var(--surface-raised); box-shadow: var(--shadow-lift); background: var(--surface-soft); }
+.class-hero .page-description { margin-bottom: 12px; }
+.fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.fact-grid > div { padding: 12px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+.fact-grid .wide { grid-column: 1 / -1; }
+.fact-grid dt, .spec-facts dt, .build-specs dt { margin-bottom: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; }
+.fact-grid dd, .spec-facts dd, .build-specs dd { margin: 0; font-size: 13.5px; line-height: 1.75; }
+
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.spec-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line-soft); border-top: 3px solid var(--accent-light); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.guide-article .spec-card h3 { display: flex; flex-direction: column; margin: 0; font-family: var(--serif); font-size: 21px; letter-spacing: 2px; }
+.spec-card h3 small { font-family: var(--sans); color: var(--gold); font-size: 11.5px; font-weight: 500; letter-spacing: 0; }
+.spec-pitch { margin: 0; color: var(--ink-muted); font-size: 13px; }
+.spec-strength { align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; text-decoration: none; }
+.spec-strength strong { font-size: 14px; }
+.spec-facts { display: grid; gap: 10px; margin: 0; }
+.spec-facts dd { font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 9px; border: 1px solid var(--line-mid); border-radius: 7px; background: var(--surface-soft); color: var(--ink); font-size: 12.5px; font-weight: 600; text-decoration: none; }
+.chip small { color: var(--ink-soft); font-size: 10.5px; font-weight: 500; }
+.chip:hover { border-color: var(--accent); }
+.spec-rewrites { border-top: 1px dashed var(--line-mid); padding-top: 8px; }
+.spec-rewrites summary { display: flex; align-items: center; gap: 6px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.spec-rewrites summary svg { transform: rotate(90deg); }
+.spec-rewrites[open] summary svg { transform: rotate(-90deg); }
+.spec-rewrites ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-muted); font-size: 12.5px; }
+.spec-rewrites li { margin-bottom: 4px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: start; }
+.skill-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scroll-margin-top: var(--reading-offset); }
+.skill-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.skill-card.is-ascend { border-color: var(--gold-sand); background: linear-gradient(180deg, var(--surface-cream), var(--surface-raised) 90px); }
+.skill-card > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; }
+.skill-card h4 { font-family: var(--serif); font-size: 18px; letter-spacing: 1px; }
+.skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.skill-desc { margin: 0; font-size: 13.5px; }
+.skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
+.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
+.variant-box strong { color: var(--gold); font-size: 13px; }
+.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
+.rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
+.rewrites strong { color: var(--accent-deep); }
+.skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
+.level-control { display: flex; align-items: center; gap: 12px; }
+.level-control label { display: flex; flex: 1; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.level-slider { flex: 1; min-width: 0; accent-color: var(--accent); }
+.level-value { min-width: 42px; padding: 0 7px; border-radius: 6px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.level-total { margin: 6px 0 4px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.level-gains { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--ink-muted); }
+.level-gains li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px; }
+.level-gains b { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
+.level-gains li.is-locked { opacity: .38; }
+
+.passive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passive-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.passive-card:target { border-color: var(--accent); }
+.passive-card h4 { font-family: var(--serif); font-size: 17px; letter-spacing: 1px; }
+.passive-card p { margin: 0; font-size: 13px; }
+.passive-card p.muted { font-size: 12.5px; }
+.passive-card .tag { align-self: flex-start; }
+
+.build-card { margin: 14px 0 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); background: linear-gradient(90deg, var(--surface-hollow), var(--surface-raised)); }
+.guide-article .build-card h3 { margin: 0; font-family: var(--serif); font-size: 20px; letter-spacing: 2px; }
+.build-score { display: flex; align-items: baseline; gap: 10px; color: var(--ink-muted); font-size: 12.5px; }
+.build-score strong { color: var(--accent-deep); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-score small { color: var(--ink-soft); font-size: 11.5px; }
+.curve { margin: 0; padding: 12px 18px 4px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve text { fill: var(--ink-soft); font: 10px var(--sans); }
+.curve .grid { stroke: var(--line-soft); stroke-width: 1; }
+.curve .half { stroke: var(--gold-light); stroke-width: 1; stroke-dasharray: 4 4; }
+.curve .area { fill: color-mix(in srgb, var(--accent-pale) 35%, transparent); }
+.curve .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.curve figcaption { color: var(--ink-soft); font-size: 11px; text-align: right; }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 12px 18px 18px; }
+.build-specs .wide { grid-column: 1 / -1; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
+.skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
+.skill-chips strong { font-size: 12.5px; }
+.skill-chips .variant { font-size: 11.5px; }
+.skill-chips small { color: var(--ink-soft); font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
+.gear-list small { display: block; color: var(--ink-soft); font-size: 10.5px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-muted); }
+.stat-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.method-note { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); font-size: 12.5px; }
+.method-note summary { display: flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-weight: 600; }
+.method-note summary svg { margin-left: auto; transform: rotate(90deg); }
+.method-note[open] summary svg { transform: rotate(-90deg); }
+
+/* ---------- 资料页 ---------- */
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.formula { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.formula code { align-self: flex-start; font-size: 13px; }
+.formula p { margin: 0; color: var(--ink-muted); font-size: 12.5px; }
+.rule-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rule-list li { position: relative; padding: 10px 14px 10px 32px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); font-size: 13.5px; }
+.rule-list li::before { content: ""; position: absolute; left: 14px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
+.enemy-name { display: inline-flex; align-items: center; gap: 10px; }
+.enemy-name strong { white-space: nowrap; }
+.enemy-thumb { width: 40px; height: 40px; border-radius: 9px; object-fit: cover; background: var(--surface-hollow); }
+.enemy-thumb.is-empty { display: inline-block; }
+
+.table-scroll { max-width: 100%; margin: 14px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scrollbar-width: thin; }
 .data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
-.data-table th, .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
-.data-table th { background: var(--surface-soft); color: var(--ink-muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.data-table th, .data-table td { padding: 11px 13px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { position: sticky; top: 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.data-table tbody tr:hover td { background: color-mix(in srgb, var(--surface-soft) 60%, transparent); }
+.data-table tr:target td { background: var(--gold-tint); }
 .data-table tr:last-child td { border-bottom: 0; }
 .data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.data-table td.num .muted { font-size: 11px; }
 .cell-content { min-width: 0; }
-.data-table tr.is-chosen td { background: var(--surface-hollow); }
-.data-table tr.is-chosen td:first-child { box-shadow: inset 3px 0 var(--accent); }
-.table-compare { min-width: 530px; }
-.table-compare td:first-child, .table-compare th:first-child { position: sticky; left: 0; z-index: 1; min-width: 150px; max-width: 230px; border-right: 1px solid var(--line-soft); background: var(--surface-raised); }
-.table-compare th:first-child { background: var(--surface-soft); }
 .table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
-.class-link { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; text-decoration: none; white-space: nowrap; }
-.class-link img { width: 28px; height: 28px; border-radius: 7px; }
-.class-link:hover { text-decoration: underline; }
 
-.tier-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0 28px; }
-.tier-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; padding: 18px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-soft); color: var(--ink); text-decoration: none; }
-.tier-link strong { font-size: 17px; }
-.tier-link small { grid-column: 1; color: var(--ink-muted); font-size: 11px; }
-.tier-link svg { grid-column: 2; grid-row: 1 / 3; color: var(--accent); }
-.tier-link:hover { border-color: var(--accent); background: var(--surface-hollow); }
-.build-section { margin-top: 38px; }
-.build-section > h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.build-class-name { display: flex; flex-direction: column; gap: 2px; }
-.build-class-name small { color: var(--ink-muted); font-size: 11px; font-weight: 400; }
-.build-ceiling { display: flex; align-items: baseline; gap: 5px; margin-left: auto; color: var(--ink-muted); font-size: 11px; font-weight: 400; white-space: nowrap; }
-.build-ceiling strong { color: var(--accent); font-size: 24px; font-variant-numeric: tabular-nums; }
-.build-card { padding: 0; border: 1px solid var(--line-mid); border-radius: 11px; background: var(--surface-raised); overflow: hidden; }
-.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--line-soft); background: var(--surface-hollow); font-size: 13px; font-weight: 600; }
-.build-card-heading > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-deep); }
-.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 5px 18px 12px; }
-.build-specs > div { min-width: 0; padding: 12px 12px 4px 0; }
-.build-specs .wide { grid-column: 1 / -1; }
-.build-specs dt { margin-bottom: 5px; color: var(--ink-muted); font-size: 11px; }
-.build-specs dd { margin: 0; font-size: 13px; line-height: 1.75; }
-.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.skill-chips li { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 6px; padding: 4px 8px; border: 1px solid var(--line-soft); border-radius: 6px; background: var(--surface-soft); }
-.skill-chips strong { font-size: 12px; font-weight: 600; }
-.skill-chips .variant, .skill-chips .muted { font-size: 11px; }
-.gear-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
-.gear-list li { min-width: 0; }
-.gear-list small { margin-right: 6px; color: var(--ink-muted); font-size: 11px; }
-.build-analysis { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 9px; background: var(--surface-soft); }
-.build-analysis > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; min-height: 48px; padding: 8px 0; font-size: 12px; color: var(--ink-muted); }
-.build-analysis > summary > span { color: var(--ink); font-weight: 600; }
-.build-analysis > summary small { font-size: 11px; }
-.build-analysis > summary svg { margin-left: auto; }
-.build-analysis[open] > summary svg { transform: rotate(90deg); }
-.build-analysis[open] > summary { border-bottom: 1px solid var(--line-soft); }
-.build-analysis .lead { font-size: 12px; }
-.build-analysis .table-scroll { margin-bottom: 22px; }
-
-.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 48px; }
-.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 9px; color: var(--ink); text-decoration: none; }
-.page-pagination a:hover { background: var(--surface-soft); }
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { border-color: var(--accent-pale); box-shadow: var(--shadow); }
+.page-pagination .next { text-align: right; }
 .page-pagination small { color: var(--ink-muted); font-size: 11px; }
-.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13px; }
-.page-pagination .previous svg { transform: rotate(180deg); }
-.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13.5px; font-weight: 600; }
+.page-pagination .previous svg { order: -1; transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11.5px; }
 .site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
-.site-footer p { max-width: 540px; margin: 8px 0; }
-.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; }
+.site-footer p { max-width: 600px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: none; }
 
-/* 手机与平板：导航和目录并列，展开后使用整行宽度；正文不被侧栏挤压。 */
-@media (max-width: 1100px) {
-  :root { --header-height: 66px; --reading-offset: 136px; }
-  .header-inner { padding: 0 24px; }
-  .docs-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 20px 12px; max-width: 880px; padding: 12px 24px 0; }
+/* ---------- 窄屏 ---------- */
+@media (max-width: 1240px) {
+  .docs-layout { grid-template-columns: 196px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+  .toc-sidebar { display: none; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 手机与平板：导航和目录收成两个下拉按钮并列，展开后占满整行；正文不被侧栏挤压。 */
+@media (max-width: 1000px) {
+  :root { --header-height: 60px; --reading-offset: 124px; }
+  .header-inner { gap: 12px; padding: 0 18px; }
+  .brand small { display: none; }
+  .site-search { max-width: none; }
+  kbd { display: none; }
+  .docs-layout, .docs-layout.no-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 16px 10px; max-width: 900px; padding: 12px 18px 0; }
+  .docs-layout.no-toc { grid-template-areas: "navigation navigation" "content content"; }
+  .toc-sidebar { display: block; }
   .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
-  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 46px; margin: 0; padding: 10px 13px; border: 1px solid var(--line-mid); border-radius: 8px; background: var(--surface-paper); color: var(--ink); font-size: 12px; font-weight: 500; box-shadow: 0 4px 14px #526c3c0a; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; padding: 9px 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink); font-size: 12.5px; font-weight: 500; box-shadow: var(--shadow); }
   .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
   .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
   .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
-  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 12px); max-height: min(62dvh, 520px); padding: 12px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 12px 32px #526c3c1a; }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 10px); max-height: min(64dvh, 540px); padding: 10px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; box-shadow: var(--shadow-lift); }
+  .no-toc .nav-panel { width: 100%; }
   .nav-panel { left: 0; }
   .toc-panel { right: 0; }
-  .site-nav nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sidebar-label { margin: 1px 10px 8px; }
-  .sidebar-caption { margin: 8px 10px 0; padding-top: 10px; }
-  .page-toc nav a { min-height: 44px; font-size: 13px; }
-  .page-toc .toc-level-3 a { font-size: 12px; }
-  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10px; }
-  .guide-heading { padding-top: 4px; }
+  .nav-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 10px 10px 4px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10.5px; }
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .home-portraits { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .home-portraits img { width: 100%; height: auto; aspect-ratio: 1; }
+  .home-portraits img:nth-child(n+5) { transform: none; }
+  .formula-grid { grid-template-columns: minmax(0, 1fr); }
 }
-
 @media (max-width: 640px) {
-  :root { --header-height: 64px; --reading-offset: 132px; }
   body { font-size: 14px; }
-  .header-inner { padding: 0 16px; gap: 10px; }
-  .brand { gap: 8px; }
+  .header-inner { padding: 0 12px; gap: 8px; }
+  .brand span { display: none; }
   .brand img { width: 34px; height: 34px; }
-  .brand strong { font-size: 19px; }
-  .brand small { font-size: 9px; letter-spacing: 1px; }
-  .play-link { min-height: 40px; padding: 7px 10px; gap: 5px; font-size: 12px; }
-  .docs-layout { padding: 10px 16px 0; gap: 18px 8px; }
-  .site-nav > summary, .page-toc > summary { gap: 6px; padding: 9px 10px; min-height: 44px; }
-  .nav-panel, .toc-panel { width: calc(200% + 8px); }
+  .play-link { padding: 7px 10px; font-size: 12px; }
+  .play-link svg { display: none; }
+  .docs-layout, .docs-layout.no-toc { padding: 10px 14px 0; gap: 14px 8px; }
   .toc-current { display: none; }
-  .guide-heading { margin-bottom: 24px; padding-bottom: 22px; }
-  .eyebrow { margin-bottom: 9px; font-size: 10px; }
-  .guide-heading h1 { font-size: 31px; }
-  .page-description { margin: 10px 0 13px; font-size: 13px; }
-  .page-meta { gap: 5px 8px; font-size: 10px; }
-  .guide-article h2 { margin-top: 36px; font-size: 22px; }
-  .guide-article h3 { font-size: 17px; }
-  .lead { font-size: 14px; line-height: 1.8; }
-  .cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .card { padding: 16px; }
-  .note { padding: 12px 13px; font-size: 12px; }
-  .tier-links { gap: 9px; }
-  .tier-link { padding: 13px 11px; gap: 5px 4px; }
-  .tier-link strong { font-size: 14px; }
-  .tier-link small { font-size: 10px; }
-  .tier-link svg { width: 15px; }
+  .guide-article h2 { margin-top: 42px; font-size: 22px; }
+  .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
+  .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
+  .variants { grid-template-columns: minmax(0, 1fr); }
+  .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .skill-card { padding: 14px; }
   .table-hint { display: block; }
-  .table-scroll:has(.table-cards) { border: 0; background: transparent; overflow: visible; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
   .table-cards { display: block; width: 100%; }
   .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
-  .table-cards tbody { display: grid; gap: 12px; }
+  .table-cards tbody { display: grid; gap: 10px; }
   .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
-  .table-cards td { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; padding: 7px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 6px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
   .table-cards td.num { white-space: normal; text-align: left; }
   .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
-  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink); font-size: 15px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
   .table-cards td:first-child::before { display: none; }
-  .table-cards .cell-content { overflow-wrap: anywhere; }
   .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
-  .table-compare td:first-child, .table-compare th:first-child { min-width: 135px; max-width: 175px; }
-  .build-section { margin-top: 30px; }
-  .build-section > h3 { gap: 9px; }
-  .build-ceiling { gap: 3px; font-size: 10px; }
-  .build-ceiling strong { font-size: 22px; }
-  .build-card-heading { padding: 10px 13px; font-size: 12px; }
-  .build-specs { padding: 3px 13px 12px; gap: 0 10px; }
-  .build-specs > div { padding-right: 0; }
-  .build-specs dd { font-size: 13px; }
-  .gear-list { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .build-analysis { padding: 0 11px; }
-  .build-analysis > summary small { display: none; }
-  .page-pagination { gap: 8px; margin-top: 36px; }
-  .page-pagination a { padding: 12px; }
+  .page-pagination { gap: 8px; margin-top: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   a, summary { transition: none; }
+  .class-card:hover { transform: none; }
 }
 @media print {
-  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link { display: none; }
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link, .level-control { display: none; }
   .docs-layout { display: block; max-width: none; padding: 0; }
-  .table-scroll { overflow: visible; }
+  .table-scroll { overflow: visible; box-shadow: none; }
   .guide-article h2, .guide-article h3 { break-after: avoid; }
-  .build-card, .card, .table-cards tr { break-inside: avoid; }
+  .skill-card, .spec-card, .build-card, .table-cards tr { break-inside: avoid; box-shadow: none; }
 }
 
 </style>
 </head>
-<body>
+<body class="page-endgame">
 <a class="skip-link" href="#guide-content">跳到正文</a>
 <header class="site-header"><div class="header-inner">
-  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>官方攻略与图鉴</small></span></a>
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>图鉴与攻略</small></span></a>
+  <div class="site-search" role="search">
+    <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="visually-hidden">搜索图鉴</span><input id="guide-search" type="search" placeholder="搜索技能、被动、装备、敌人…" autocomplete="off" spellcheck="false" aria-controls="guide-search-results" aria-expanded="false" /><kbd>/</kbd></label>
+    <div class="search-results" id="guide-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+  </div>
   <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
 </div></header>
 <div class="docs-layout">
   <aside class="site-sidebar"><details class="site-nav" open>
-    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>攻略导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="nav-panel"><p class="sidebar-label">冒险指南</p><nav aria-label="攻略分类"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>职业与属性</span></a><a href="skills.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg><span>技能</span></a><a href="passives.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C9 2 2 7 5 15c8 5 16-1 15-12ZM3 21 15 9"/></svg><span>职业被动</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span><span class="nav-current-dot" aria-hidden="true"></span></a><a href="builds.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></svg><span>推荐配置</span></a></nav><p class="sidebar-caption">一人一程，自在生长。</p></div>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#section-秘境探险" data-toc-id="section-秘境探险" title="秘境探险"><span>秘境探险</span></a></li><li class="toc-level-3"><a href="#section-起程锦囊" data-toc-id="section-起程锦囊" title="起程锦囊"><span>起程锦囊</span></a></li><li class="toc-level-2"><a href="#section-无尽深渊" data-toc-id="section-无尽深渊" title="无尽深渊"><span>无尽深渊</span></a></li><li class="toc-level-3"><a href="#section-深渊专属的敌人" data-toc-id="section-深渊专属的敌人" title="深渊专属的敌人"><span>深渊专属的敌人</span></a></li><li class="toc-level-2"><a href="#section-巨兽讨伐" data-toc-id="section-巨兽讨伐" title="巨兽讨伐"><span>巨兽讨伐</span></a></li><li class="toc-level-2"><a href="#section-风行大地" data-toc-id="section-风行大地" title="风行大地"><span>风行大地</span></a></li><li class="toc-level-3"><a href="#section-偷师" data-toc-id="section-偷师" title="偷师"><span>偷师</span></a></li><li class="toc-level-3"><a href="#section-护符" data-toc-id="section-护符" title="护符"><span>护符</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#section-秘境探险" data-toc-id="section-秘境探险" title="秘境探险"><span>秘境探险</span></a></li><li class="toc-level-3"><a href="#section-起程锦囊" data-toc-id="section-起程锦囊" title="起程锦囊"><span>起程锦囊</span></a></li><li class="toc-level-2"><a href="#section-无尽深渊" data-toc-id="section-无尽深渊" title="无尽深渊"><span>无尽深渊</span></a></li><li class="toc-level-3"><a href="#section-深渊专属敌人" data-toc-id="section-深渊专属敌人" title="深渊专属敌人"><span>深渊专属敌人</span></a></li><li class="toc-level-2"><a href="#section-巨兽讨伐" data-toc-id="section-巨兽讨伐" title="巨兽讨伐"><span>巨兽讨伐</span></a></li><li class="toc-level-2"><a href="#section-风行大地" data-toc-id="section-风行大地" title="风行大地"><span>风行大地</span></a></li><li class="toc-level-3"><a href="#section-偷师" data-toc-id="section-偷师" title="偷师"><span>偷师</span></a></li><li class="toc-level-3"><a href="#section-护符" data-toc-id="section-护符" title="护符"><span>护符</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
-    <header class="guide-heading"><p class="eyebrow">冒险指南 <span>/</span> 远行 · 深渊 · 讨伐 · 大地</p><h1>远行 · 深渊 · 讨伐 · 大地</h1><p class="page-description">远行强化、深渊词缀、巨兽讨伐等长线玩法的规则。</p><div class="page-meta"><span class="version-badge">v0.7.1</span><span>与游戏版本同步更新</span></div></header>
+    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 远行 · 深渊 · 讨伐 · 大地</p><h1>远行 · 深渊 · 讨伐 · 大地</h1><p class="page-description">秘境探险、无尽深渊与巨兽讨伐等长线玩法的规则。</p><div class="page-meta"><span class="version-badge">v0.7.1-ota1</span><span>与游戏版本同步更新</span></div></header>
     <article class="guide-article"><h2 id="section-秘境探险" tabindex="-1">秘境探险</h2>
-<p class="lead">一趟固定四个区域、二十四个节点。每个区域是一张十二节点的小地图，开头是遭遇、尽头是区域首领，中间由你在图上走——一趟只走得到六个节点，选了这条就到不了那条。
-图里除了三种战斗，还藏着旧日商队、无人营地和遗迹低语；它们花的是只在本趟流通的盘缠，跨趟累积的金币买不动。
-名册共 6 套（晨风林缘、苔岩幽径、雾隐林沼、霜叶密林、余烬枯林、古木遗庭），每趟只走其中四套，首尾固定、中间按种子抽。
-重玩的轴是难度：每通关一档解锁下一档，越高的难度多一条明说的规则——更多区域威胁、更强的首领护卫、更少的藏品选项、更稀薄的药水。
-藏品只在本次远行内生效，等级、金币和装备长期保留。</p>
+<p class="lead">每趟远行固定经过四个区域、共二十四个节点。每个区域是一张十二个节点的小地图，起点为遭遇战，终点为区域首领，中间的路线由玩家自行选择；每个区域只能经过六个节点，选择一条路线就无法经过另一条。
+地图上除三种战斗外，还有旧日商队、无人营地和遗迹低语等事件。这些事件使用只在本趟远行中流通的盘缠，无法使用跨趟累积的金币。
+区域名册共 6 套（晨风林缘、苔岩幽径、雾隐林沼、霜叶密林、余烬枯林、古木遗庭），每趟使用其中四套，首尾固定，中间两套按种子抽取。
+远行的难度逐档解锁：每通关一档即可挑战下一档，难度越高，附加的规则越多，包括更多区域威胁、更强的首领护卫、更少的藏品选项和更少的药水。
+藏品只在本趟远行中生效，等级、金币和装备则长期保留。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">藏品</th><th scope="col">路线</th><th scope="col">效果</th><th scope="col">配合</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>猎手印记</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">收割</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击和技能命中生命不高于 35% 的目标时，伤害提高 40%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">适合收割高生命的首领。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>术式屏障</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">施法</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次成功施放技能后，获得 8% 最大生命的护盾，不叠加。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">搭配碎风屏障，让小护盾反复触发爆发。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>长风之力</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的攻击提高 10%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">同时增强普攻、攻击技能与反伤。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>常青之躯</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的最大生命提高 12%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">同时增强按生命计算的护盾和药水。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>灵风感悟</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的技能伤害提高 15%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">强化主动技能，适合以技能为核心的搭配。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>锋锐</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的暴击伤害提高 25%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专注、斩首者这类「必定暴击」的效果会一起变强。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>坚壁</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的护甲提高 8 点，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">对付数量多、单次伤害低的敌群最划算。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>过载</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能冷却缩短 1 回合（最低 1），但每次施放技能失去 6% 最大生命，不会因此倒下。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">配合术式屏障或常青之躯，用生命换出手次数。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>孤注一掷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">攻击提高 50%，最大生命降低 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">适合冻结、眩晕控场或护盾充足的搭配。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>双重打击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，立即对同一目标追加一次 65% 攻击的普通攻击。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">追风连击、吸血和霜刃都按命中次数结算。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>苦修</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行不再携带药水，改为每回合回复 5% 最大生命。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">禁药威胁对你无效；打得越久越占优。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>霜刃</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 3 次普通攻击命中，使目标冻结 1 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">冻住狂徒和首领，法师可接碎冰或闪电链。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>势如破竹</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，本场攻击提高 8%，可累计。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">敌人越多越强，精锐哨卡是它的主场。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>灼烧之种</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能命中的敌人被点燃，之后 3 回合每回合承受 30% 攻击的伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">范围技能一次点燃一片；燃烧不会被闪避。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>裂甲</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 3 次普通攻击命中，使目标破甲 2 回合，期间护甲归零。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专治盾卫、石甲督军和重甲威胁。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>磐石之身</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">受到的伤害降低 15%，但你的攻击降低 8%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">把胜负从抢输出换成熬回合，适合反伤与持续回复。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>饮血</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">吸血提高 15%（总上限仍是 50%）。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">双重打击、追风连击的每一次命中都会回血。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>临危一线</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗生命第一次降到 40% 以下时，立刻回复 25% 最大生命并获得 20% 最大生命的护盾。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">每场一次，等于多带一瓶药；碎风屏障可以接着触发。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>破阵</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">对生命高于 80% 的目标伤害提高 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和猎手印记互补：一个抢开场，一个收尾。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>追风连击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">连击</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 2 次命中的普通攻击，追加 80% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">多用普攻，后撤射击也能积累连击。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>荆棘之心</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">反击</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次受击（含护盾吸收），向攻击者反弹 40% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">护盾吸收伤害时也会触发，适合持久作战。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>风之庇护</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">护盾</span></div></td><td data-label="效果" role="cell"><div class="cell-content">第 1、4、7…回合获得 30% 最大生命的护盾，不叠加。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">三个职业都能获得周期护盾。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回响风暴</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">连击进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">追风连击的追加伤害提高到 140%，并波及目标相邻的敌人。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与追风连击组合，把普攻变成范围输出。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>复苏荆棘</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">反击进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">荆棘之心每次造成伤害后，回复该次伤害 50% 的生命（向上取整）。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与荆棘之心组合，边承受攻击边恢复。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>碎风屏障</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">护盾进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">护盾被击碎时，对自身 2 格内敌人造成 100% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">风之庇护、战吼、奥术护盾均可触发。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>收割仪轨</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">收割进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">猎手印记的阈值提高到 50%，并且每次击杀回复 8% 最大生命。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与猎手印记组合，清场越快活得越久。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>霜蚀</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">霜刃进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">霜刃改为每第 2 次普通攻击触发，并且对冻结目标的伤害提高 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与霜刃组合，控场的同时也是增伤。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>超载回路</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">过载进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">过载的生命消耗减半，并且每次施放技能后本场攻击提高 6%，最多 5 层。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与过载组合，把技能轮转本身变成输出来源。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>旋风斩残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「旋风斩」：对所有相邻敌人各造成 130% 伤害并破甲 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">给远程职业一手贴脸清场，也是对付重甲威胁的答案。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>战吼残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「战吼」：获得 35% 最大生命的护盾，并震慑相邻敌人 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">护盾流的起手；碎风屏障和术式屏障都认它。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>翻滚残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「翻滚」：后撤一格并射击，闪避下一次攻击并进入专注。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">脆皮职业的保命键，专注还能让下一记技能必定暴击。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>狙击残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「狙击」：射程 +2，对其中生命最高的敌人造成 250% 必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专杀后排的巫医和萨满，近战职业靠它够到够不着的目标。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>冰霜新星残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「冰霜新星」：对 2 格内所有敌人造成 110% 伤害并冻结，贴身的敌人被冲开 1 格。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">一次冻住一群；霜蚀、碎冰和闪电链都吃这个。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>奥术护盾残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「奥术护盾」：获得 35% 最大生命的护盾，直到被打碎。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">没有护盾手段的职业靠它开一条护盾流。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>闪电链残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「闪电链」：依次击中最多 3 名靠近的敌人，命中冻结目标时导电增伤。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和冰霜新星是一对；没有范围手段的职业最缺这个。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回春残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「回春」：立刻回复 15% 最大生命，之后 3 回合每回合再回复 8%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">药水之外的第二条续航线；苦修和禁药威胁下尤其值钱。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>烟雾弹残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「烟雾弹」：闪避接下来 2 次攻击，并使相邻敌人易伤 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">躲过一轮集火，顺手把这一轮的输出放大。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>唤狼残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「唤狼」：召唤 1 只灵狼为你作战 8 回合，生命与攻击按你的属性折算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">多一个挡刀的，也多一份输出；独行的职业第一次有了帮手。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>潮涌之冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每 3 个回合额外行动一次，但最大生命降低 15%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">一回合只做得了一个动作，多出来的那次出手比任何百分比都值钱。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>裂空之刃</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能伤害提高 60%，但最大生命降低 12%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">技能流的天花板；血薄了一截，别让自己站在挨打的位置上。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>饮血王冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次击杀回复 12% 最大生命，并让所有技能冷却缩短 1 回合，但此后每场战斗只拿到一半盘缠。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">清得越快滚得越顺；续航做进了战斗里，代价是这一趟逛不起商队。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>孤高之誓</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">攻击提高 55%，但本次远行的药水携带量减半。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">把续航全部换成输出；配苦修或回春才敢这么走。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回响王座</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第一次施放的技能不进冷却，技能伤害提高 20%，但受到的伤害提高 12%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">开场那一记重手白打一次；人更脆了，速战速决才划算。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>逆命之心</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第一次倒下时以 50% 生命站起来，但此后每次收成少一个选项。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">用往后更窄的选择面换一条命；越是硬仗越划算。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>镜甲王冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">受到伤害时反弹 55% 给攻击者，但受到的伤害提高 15%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和荆棘、反击流叠在一起，让挨打本身成为输出。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>千钧一击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击伤害提高 160%，但此后每次收成少一个选项。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">技能用来铺场和保命，伤害交给普攻；双重打击和追风都吃这个。</span></div></td></tr>
-<tr class="" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>雪崩之势</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">势能进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">势如破竹每层改为 13%，并且每次击杀让所有技能冷却缩短 1 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与势如破竹组合，敌人越多滚得越快。</span></div></td></tr>
+<tr class="" id="relic-execution" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>猎手印记</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">收割</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击和技能命中生命不高于 35% 的目标时，伤害提高 40%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">适合收割高生命的首领。</span></div></td></tr>
+<tr class="" id="relic-spellWard" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>术式屏障</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">施法</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次成功施放技能后，获得 8% 最大生命的护盾，不叠加。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">搭配碎风屏障，让小护盾反复触发爆发。</span></div></td></tr>
+<tr class="" id="relic-might" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>长风之力</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的攻击提高 10%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">同时增强普攻、攻击技能与反伤。</span></div></td></tr>
+<tr class="" id="relic-vigor" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>常青之躯</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的最大生命提高 12%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">同时增强按生命计算的护盾和药水。</span></div></td></tr>
+<tr class="" id="relic-insight" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>灵风感悟</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的技能伤害提高 15%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">强化主动技能，适合以技能为核心的搭配。</span></div></td></tr>
+<tr class="" id="relic-edge" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>锋锐</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的暴击伤害提高 25%，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专注、斩首者这类「必定暴击」的效果会一起变强。</span></div></td></tr>
+<tr class="" id="relic-bastion" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>坚壁</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">可叠加</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行的护甲提高 8 点，多次选择加算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">对付数量多、单次伤害低的敌群最划算。</span></div></td></tr>
+<tr class="" id="relic-overload" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>过载</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能冷却缩短 1 回合（最低 1），但每次施放技能失去 6% 最大生命，不会因此倒下。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">配合术式屏障或常青之躯，用生命换出手次数。</span></div></td></tr>
+<tr class="" id="relic-glass" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>孤注一掷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">攻击提高 50%，最大生命降低 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">适合冻结、眩晕控场或护盾充足的搭配。</span></div></td></tr>
+<tr class="" id="relic-twin" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>双重打击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击命中后，立即对同一目标追加一次 65% 攻击的普通攻击。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">追风连击、吸血和霜刃都按命中次数结算。</span></div></td></tr>
+<tr class="" id="relic-ascetic" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>苦修</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行不再携带药水，改为每回合回复 5% 最大生命。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">禁药威胁对你无效；打得越久越占优。</span></div></td></tr>
+<tr class="" id="relic-frost" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>霜刃</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 3 次普通攻击命中，使目标冻结 1 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">冻住狂徒和首领，法师可接碎冰或闪电链。</span></div></td></tr>
+<tr class="" id="relic-momentum" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>势如破竹</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每击杀一名敌人，本场攻击提高 8%，可累计。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">敌人越多越强，精锐哨卡是它的主场。</span></div></td></tr>
+<tr class="" id="relic-kindling" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>灼烧之种</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能命中的敌人被点燃，之后 3 回合每回合承受 30% 攻击的伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">范围技能一次点燃一片；燃烧不会被闪避。</span></div></td></tr>
+<tr class="" id="relic-sunderBlow" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>裂甲</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 3 次普通攻击命中，使目标破甲 2 回合，期间护甲归零。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专治盾卫、石甲督军和重甲威胁。</span></div></td></tr>
+<tr class="" id="relic-granite" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>磐石之身</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">受到的伤害降低 15%，但你的攻击降低 8%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">把胜负从抢输出换成熬回合，适合反伤与持续回复。</span></div></td></tr>
+<tr class="" id="relic-leech" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>饮血</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">吸血提高 15%（总上限仍是 50%）。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">双重打击、追风连击的每一次命中都会回血。</span></div></td></tr>
+<tr class="" id="relic-sentinel" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>临危一线</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗生命第一次降到 40% 以下时，立刻回复 25% 最大生命并获得 20% 最大生命的护盾。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">每场一次，等于多带一瓶药；碎风屏障可以接着触发。</span></div></td></tr>
+<tr class="" id="relic-vanguard" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>破阵</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">构筑</span></div></td><td data-label="效果" role="cell"><div class="cell-content">对生命高于 80% 的目标伤害提高 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和猎手印记互补：一个抢开场，一个收尾。</span></div></td></tr>
+<tr class="" id="relic-echo" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>追风连击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">连击</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每第 2 次命中的普通攻击，追加 80% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">多用普攻，后撤射击也能积累连击。</span></div></td></tr>
+<tr class="" id="relic-thorns" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>荆棘之心</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">反击</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次受击（含护盾吸收），向攻击者反弹 40% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">护盾吸收伤害时也会触发，适合持久作战。</span></div></td></tr>
+<tr class="" id="relic-ward" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>风之庇护</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">护盾</span></div></td><td data-label="效果" role="cell"><div class="cell-content">第 1、4、7…回合获得 30% 最大生命的护盾，不叠加。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">三个职业都能获得周期护盾。</span></div></td></tr>
+<tr class="" id="relic-echoStorm" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回响风暴</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">连击进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">追风连击的追加伤害提高到 140%，并波及目标相邻的敌人。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与追风连击组合，把普攻变成范围输出。</span></div></td></tr>
+<tr class="" id="relic-bloodthorn" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>复苏荆棘</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">反击进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">荆棘之心每次造成伤害后，回复该次伤害 50% 的生命（向上取整）。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与荆棘之心组合，边承受攻击边恢复。</span></div></td></tr>
+<tr class="" id="relic-wardBurst" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>碎风屏障</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">护盾进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">护盾被击碎时，对自身 2 格内敌人造成 100% 攻击的必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">风之庇护、战吼、奥术护盾均可触发。</span></div></td></tr>
+<tr class="" id="relic-reaper" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>收割仪轨</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">收割进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">猎手印记的阈值提高到 50%，并且每次击杀回复 8% 最大生命。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与猎手印记组合，清场越快活得越久。</span></div></td></tr>
+<tr class="" id="relic-frostbite" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>霜蚀</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">霜刃进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">霜刃改为每第 2 次普通攻击触发，并且对冻结目标的伤害提高 30%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与霜刃组合，控场的同时也是增伤。</span></div></td></tr>
+<tr class="" id="relic-overdrive" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>超载回路</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">过载进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">过载的生命消耗减半，并且每次施放技能后本场攻击提高 6%，最多 5 层。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与过载组合，把技能轮转本身变成输出来源。</span></div></td></tr>
+<tr class="" id="relic-tomeWhirl" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>旋风斩残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「旋风斩」：对所有相邻敌人各造成 130% 伤害并破甲 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">给远程职业一手贴脸清场，也是对付重甲威胁的答案。</span></div></td></tr>
+<tr class="" id="relic-tomeWarcry" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>战吼残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「战吼」：获得 35% 最大生命的护盾，并震慑相邻敌人 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">护盾流的起手；碎风屏障和术式屏障都认它。</span></div></td></tr>
+<tr class="" id="relic-tomeRoll" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>翻滚残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「翻滚」：后撤一格并射击，闪避下一次攻击并进入专注。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">脆皮职业的保命键，专注还能让下一记技能必定暴击。</span></div></td></tr>
+<tr class="" id="relic-tomeSnipe" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>狙击残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「狙击」：射程 +2，对其中生命最高的敌人造成 250% 必中伤害。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">专杀后排的巫医和萨满，近战职业靠它够到够不着的目标。</span></div></td></tr>
+<tr class="" id="relic-tomeFrostring" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>冰霜新星残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「冰霜新星」：对 2 格内所有敌人造成 110% 伤害并冻结，贴身的敌人被冲开 1 格。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">一次冻住一群；霜蚀、碎冰和闪电链都吃这个。</span></div></td></tr>
+<tr class="" id="relic-tomeArcaneshield" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>奥术护盾残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「奥术护盾」：获得 35% 最大生命的护盾，直到被打碎。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">没有护盾手段的职业靠它开一条护盾流。</span></div></td></tr>
+<tr class="" id="relic-tomeChain" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>闪电链残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「闪电链」：依次击中最多 3 名靠近的敌人，命中冻结目标时导电增伤。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和冰霜新星是一对；没有范围手段的职业最缺这个。</span></div></td></tr>
+<tr class="" id="relic-tomeRejuvenate" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回春残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「回春」：立刻回复 15% 最大生命，之后 3 回合每回合再回复 8%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">药水之外的第二条续航线；苦修和禁药威胁下尤其值钱。</span></div></td></tr>
+<tr class="" id="relic-tomeSmokebomb" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>烟雾弹残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「烟雾弹」：闪避接下来 2 次攻击，并使相邻敌人易伤 2 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">躲过一轮集火，顺手把这一轮的输出放大。</span></div></td></tr>
+<tr class="" id="relic-tomeCallwolf" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>唤狼残卷</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">残卷</span></div></td><td data-label="效果" role="cell"><div class="cell-content">本次远行额外携带「唤狼」：召唤 1 只灵狼为你作战 8 回合，生命与攻击按你的属性折算。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">多一个挡刀的，也多一份输出；独行的职业第一次有了帮手。</span></div></td></tr>
+<tr class="" id="relic-tideCrown" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>潮涌之冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每 3 个回合额外行动一次，但最大生命降低 15%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">一回合只做得了一个动作，多出来的那次出手比任何百分比都值钱。</span></div></td></tr>
+<tr class="" id="relic-riftblade" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>裂空之刃</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">技能伤害提高 60%，但最大生命降低 12%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">技能流的天花板；血薄了一截，别让自己站在挨打的位置上。</span></div></td></tr>
+<tr class="" id="relic-bloodCrown" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>饮血王冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每次击杀回复 12% 最大生命，并让所有技能冷却缩短 1 回合，但此后每场战斗只拿到一半盘缠。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">清得越快滚得越顺；续航做进了战斗里，代价是这一趟逛不起商队。</span></div></td></tr>
+<tr class="" id="relic-lonevow" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>孤高之誓</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">攻击提高 55%，但本次远行的药水携带量减半。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">把续航全部换成输出；配苦修或回春才敢这么走。</span></div></td></tr>
+<tr class="" id="relic-echoThrone" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>回响王座</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第一次施放的技能不进冷却，技能伤害提高 20%，但受到的伤害提高 12%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">开场那一记重手白打一次；人更脆了，速战速决才划算。</span></div></td></tr>
+<tr class="" id="relic-defiantHeart" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>逆命之心</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">每场战斗第一次倒下时以 50% 生命站起来，但此后每次收成少一个选项。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">用往后更窄的选择面换一条命；越是硬仗越划算。</span></div></td></tr>
+<tr class="" id="relic-mirrorCrown" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>镜甲王冠</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">受到伤害时反弹 55% 给攻击者，但受到的伤害提高 15%。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">和荆棘、反击流叠在一起，让挨打本身成为输出。</span></div></td></tr>
+<tr class="" id="relic-heavyBlow" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>千钧一击</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">首领藏品</span></div></td><td data-label="效果" role="cell"><div class="cell-content">普通攻击伤害提高 160%，但此后每次收成少一个选项。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">技能用来铺场和保命，伤害交给普攻；双重打击和追风都吃这个。</span></div></td></tr>
+<tr class="" id="relic-avalanche" role="row"><td data-label="藏品" role="cell"><div class="cell-content"><strong>雪崩之势</strong></div></td><td data-label="路线" role="cell"><div class="cell-content"><span class="muted">势能进阶</span></div></td><td data-label="效果" role="cell"><div class="cell-content">势如破竹每层改为 13%，并且每次击杀让所有技能冷却缩短 1 回合。</div></td><td data-label="配合" role="cell"><div class="cell-content"><span class="muted">与势如破竹组合，敌人越多滚得越快。</span></div></td></tr>
 </tbody></table></div>
 <h3 id="section-起程锦囊" tabindex="-1">起程锦囊</h3>
-<p class="lead">出发前挑一个带上路，都只管这一趟。每通关更高一档难度就多解锁一种：爬难度换来的是下一趟不一样的开局。</p>
+<p class="lead">出发前选择一个锦囊，效果只在本趟远行中生效。每通关一档更高的难度，就会解锁一种新的锦囊。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">锦囊</th><th scope="col">解锁</th><th scope="col">效果</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>轻装上路</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">一开始就有</div></td><td data-label="效果" role="cell"><div class="cell-content">什么都不带，照常出发。</div></td></tr>
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>行囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 0</div></td><td data-label="效果" role="cell"><div class="cell-content">出发时就带着 50 盘缠，第一个商队就买得起东西。</div></td></tr>
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>药囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 2</div></td><td data-label="效果" role="cell"><div class="cell-content">这一趟每场多带 1 瓶药水。</div></td></tr>
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>旧识</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 4</div></td><td data-label="效果" role="cell"><div class="cell-content">出发时多会一个本职业的起手技能。</div></td></tr>
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>信物</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 6</div></td><td data-label="效果" role="cell"><div class="cell-content">第一场打赢后，白送一件藏品。</div></td></tr>
-<tr class="" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>双囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 8</div></td><td data-label="效果" role="cell"><div class="cell-content">行囊和药囊一起带上：50 盘缠，每场多 1 瓶药水。</div></td></tr>
+<tr class="" id="boon-none" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>轻装上路</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">初始拥有</div></td><td data-label="效果" role="cell"><div class="cell-content">什么都不带，照常出发。</div></td></tr>
+<tr class="" id="boon-purse" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>行囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 0</div></td><td data-label="效果" role="cell"><div class="cell-content">出发时就带着 50 盘缠，第一个商队就买得起东西。</div></td></tr>
+<tr class="" id="boon-potion" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>药囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 2</div></td><td data-label="效果" role="cell"><div class="cell-content">这一趟每场多带 1 瓶药水。</div></td></tr>
+<tr class="" id="boon-tome" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>旧识</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 4</div></td><td data-label="效果" role="cell"><div class="cell-content">出发时多会一个本职业的起手技能。</div></td></tr>
+<tr class="" id="boon-token" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>信物</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 6</div></td><td data-label="效果" role="cell"><div class="cell-content">第一场打赢后，白送一件藏品。</div></td></tr>
+<tr class="" id="boon-double" role="row"><td data-label="锦囊" role="cell"><div class="cell-content"><strong>双囊</strong></div></td><td data-label="解锁" role="cell"><div class="cell-content">通关难度 8</div></td><td data-label="效果" role="cell"><div class="cell-content">行囊和药囊一起带上：50 盘缠，每场多 1 瓶药水。</div></td></tr>
 </tbody></table></div>
 <h2 id="section-无尽深渊" tabindex="-1">无尽深渊</h2>
-<p class="lead">通关第十关后解锁。一层层向下，怪物等级每层 +2，每层带 1～3 条固定词缀，逼你换打法。输了停在本层，赢了记录最深层数。
-每 5 层一只首领，哥布林王、深渊领主、石甲督军、疫沼巨蟾、霜牙母狼、燃烬炉魔依次坐镇，再从头轮起；首领按层数固定，人人面对的都是同一只。</p>
+<p class="lead">通关第十关后解锁。深渊逐层向下，怪物等级每层提高 2 级，每层带有 1～3 条固定词缀，要求玩家调整打法。战斗失败时停留在当前层，获胜则记录最深层数。
+每 5 层出现一只首领，依次为哥布林王、深渊领主、石甲督军、疫沼巨蟾、霜牙母狼、燃烬炉魔，之后按同样的顺序循环。首领按层数固定，所有玩家在同一层遇到的首领相同。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">词缀</th><th scope="col">效果</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>禁药</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">本场无法使用药水。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>迷雾</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的攻击射程减少 1 格，最低 1 格。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>迟滞</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的技能冷却全部延长 1 回合。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>破盾</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的护盾全部失效。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>腐蚀</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">从第 2 回合起，每回合损失 2% 最大生命。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>嗜血</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">敌人每次造成伤害，回复该伤害 30% 的生命。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>荆棘</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你每次命中敌人，承受该敌人攻击 40% 的必中伤害；击杀它的那一击不会被反弹。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>狂暴</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于一半的敌人伤害提高 50%。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>时限</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">必须在限定回合内获胜（30 回合，每层／每区域再加 3），否则视为失败。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">所有敌人护甲 +8。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>疾行</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">近战敌人每次行动多移动 1 格。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>箭雨</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">每一波额外出现 2 名弓手。</div></td></tr>
-<tr class="" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>蛮力</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">所有敌人攻击 +25%。</div></td></tr>
+<tr class="" id="modifier-noPotion" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>禁药</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">本场无法使用药水。</div></td></tr>
+<tr class="" id="modifier-fog" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>迷雾</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的攻击射程减少 1 格，最低 1 格。</div></td></tr>
+<tr class="" id="modifier-slow" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>迟滞</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的技能冷却全部延长 1 回合。</div></td></tr>
+<tr class="" id="modifier-noShield" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>破盾</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你的护盾全部失效。</div></td></tr>
+<tr class="" id="modifier-corrosion" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>腐蚀</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">从第 2 回合起，每回合损失 2% 最大生命。</div></td></tr>
+<tr class="" id="modifier-vampiric" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>嗜血</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">敌人每次造成伤害，回复该伤害 30% 的生命。</div></td></tr>
+<tr class="" id="modifier-thorns" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>荆棘</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">你每次命中敌人，承受该敌人攻击 40% 的必中伤害；击杀它的那一击不会被反弹。</div></td></tr>
+<tr class="" id="modifier-frenzy" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>狂暴</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">生命低于一半的敌人伤害提高 50%。</div></td></tr>
+<tr class="" id="modifier-timer" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>时限</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">必须在限定回合内获胜（30 回合，每层／每区域再加 3），否则视为失败。</div></td></tr>
+<tr class="" id="modifier-heavyArmor" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">所有敌人护甲 +8。</div></td></tr>
+<tr class="" id="modifier-haste" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>疾行</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">近战敌人每次行动多移动 1 格。</div></td></tr>
+<tr class="" id="modifier-archers" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>箭雨</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">每一波额外出现 2 名弓手。</div></td></tr>
+<tr class="" id="modifier-brute" role="row"><td data-label="词缀" role="cell"><div class="cell-content"><strong>蛮力</strong></div></td><td data-label="效果" role="cell"><div class="cell-content">所有敌人攻击 +25%。</div></td></tr>
 </tbody></table></div>
-<h3 id="section-深渊专属的敌人" tabindex="-1">深渊专属的敌人</h3>
-<p class="lead">常规远征的敌人第 8 层就全部见齐了，再往下会陆续混进只在深渊出现的新面孔。</p>
+<h3 id="section-深渊专属敌人" tabindex="-1">深渊专属敌人</h3>
+<p class="lead">常规远征的敌人在第 8 层前会全部出现，此后会陆续加入只在深渊出现的敌人。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">登场</th><th scope="col">敌人</th><th scope="col">特性</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 8 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><strong>裂魂术士</strong></div></td><td data-label="特性" role="cell"><div class="cell-content"><span class="tag tag-danger">无法闪避：咒印</span> 每 3 回合在你脚下画一道咒印，下次行动引爆，站在上面受 180% 攻击的伤害，无法闪避；写一条「避开险地」挪开，冻结或眩晕能打断它</div></td></tr>
-<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 14 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><strong>分裂软泥</strong></div></td><td data-label="特性" role="cell"><div class="cell-content">倒下时分裂成两只小软泥，范围技能一次清得最干净</div></td></tr>
-<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 20 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><strong>战鼓手</strong></div></td><td data-label="特性" role="cell"><div class="cell-content">鼓声让其他敌人的普通攻击伤害提高 25%，几个鼓手也不叠加；它被冻结或眩晕时鼓声停下，用远程或冲锋先解决它</div></td></tr>
-<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 26 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><strong>棘背甲虫</strong></div></td><td data-label="特性" role="cell"><div class="cell-content"><span class="tag tag-danger">无法闪避：棘刺</span> 你每打中它一下，棘刺扎回相当于它一次攻击的伤害，无法闪避；击杀它的那一击、中毒、流血、燃烧和召唤物的伤害不会被扎</div></td></tr>
+<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 8 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/hexcaster.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>裂魂术士</strong></span></span></div></td><td data-label="特性" role="cell"><div class="cell-content"><span class="tag tag-danger">无法闪避：咒印</span> 每 3 回合在你脚下画一道咒印，下次行动引爆，站在上面受 180% 攻击的伤害，无法闪避；写一条「避开险地」挪开，冻结或眩晕能打断它</div></td></tr>
+<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 14 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/slime.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>分裂软泥</strong></span></span></div></td><td data-label="特性" role="cell"><div class="cell-content">倒下时分裂成两只小软泥，范围技能一次清得最干净</div></td></tr>
+<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 20 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/drummer.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>战鼓手</strong></span></span></div></td><td data-label="特性" role="cell"><div class="cell-content">鼓声让其他敌人的普通攻击伤害提高 25%，几个鼓手也不叠加；它被冻结或眩晕时鼓声停下，用远程或冲锋先解决它</div></td></tr>
+<tr class="" role="row"><td data-label="登场" role="cell"><div class="cell-content">第 26 层起</div></td><td data-label="敌人" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/thornback.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>棘背甲虫</strong></span></span></div></td><td data-label="特性" role="cell"><div class="cell-content"><span class="tag tag-danger">无法闪避：棘刺</span> 你每打中它一下，棘刺扎回相当于它一次攻击的伤害，无法闪避；击杀它的那一击、中毒、流血、燃烧和召唤物的伤害不会被扎</div></td></tr>
 </tbody></table></div>
 <h2 id="section-巨兽讨伐" tabindex="-1">巨兽讨伐</h2>
-<p class="lead">通关第 5 关后解锁。一场只有一只巨兽：它占中心加一圈共 7 格、一步不挪，距离按到身体边缘算，贴着外沿就是近战距离。
-因为不会移动，每只都有够得着远处的招——范围技躲不掉，单体技可以闪避。考的是单体输出、破甲和长线续航。
-每只有自己的阶位：打赢一阶永久记录并进入下一阶，按名单顺序击破一只解锁下一只。阶位和等级是两回事——阶位是这只被你打到第几轮，等级是它当下的怪物等级。
-每高一阶，怪物等级 +5，生命按等级的 1.36 次方放大、攻击按生命倍率的 0.75 次方放大——一阶就是一大台阶，推上去要实打实地变强。</p>
+<p class="lead">通关第 5 关后解锁。每场讨伐只有一只巨兽：巨兽占据中心及周围一圈共 7 格，不会移动，距离按到其身体边缘计算，贴近外沿即为近战距离。
+由于巨兽不会移动，每只巨兽都有能够攻击远处的技能：范围技能无法闪避，单体技能可以闪避。讨伐主要考验单体输出、破甲和持续作战能力。
+每只巨兽有独立的阶位：击败当前阶位后永久记录，并进入下一阶；按名单顺序击败一只巨兽后，解锁下一只。阶位表示这只巨兽已被击败的轮次，与怪物等级不同。
+每提高一阶，怪物等级提高 5 级，生命按等级的 1.36 次方提高，攻击按生命倍率的 0.75 次方提高。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">巨兽</th><th scope="col" class="num">第 1 阶</th><th scope="col" class="num">生命</th><th scope="col" class="num">攻击</th><th scope="col" class="num">护甲</th><th scope="col">技能</th><th scope="col">专属掉落</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>腐沼母巢</strong><br><span class="muted">腐沼深处</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.10</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">6480</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">116</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">10</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>产卵</strong><span class="muted">（每 3 回合）</span>在身体外沿产下 2 只沼虫。<br><strong>虫群护卫</strong><span class="muted">（常驻）</span>每有一只沼虫活着，它受到的伤害降低 12%，最多 36%。<br><strong>藤蔓拖拽</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 把 2 格外的你拖回虫群中间，并造成 60% 攻击伤害，无法闪避。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">虫群壁垒<br><span class="muted">每有一名敌人与你相邻，受到的伤害降低 6%，最多 3 名。</span></div></td></tr>
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>熔岩巨像</strong><br><span class="muted">烬火熔场</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.15</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">8345</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">147</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">26</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>震地</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 对 2 格内的你与召唤物造成 120% 攻击伤害，无法闪避。<br><strong>投掷熔岩</strong><span class="muted">（其余回合）</span>朝 2 格外的你砸下熔岩，造成 110% 攻击伤害，可以闪避。<br><strong>外壳崩裂</strong><span class="muted">（生命降到一半）</span>护甲减半，但攻击提高 40%。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">熔心<br><span class="muted">普通攻击命中后，对目标周围 1 格的其他敌人各造成 40% 攻击的必中伤害。</span></div></td></tr>
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>蚀日龙</strong><br><span class="muted">断脊山脊</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.20</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">7700</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">160</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">12</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>烈焰吐息</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 对 3 格内的你与召唤物造成 125% 攻击伤害，无法闪避。<br><strong>烈日</strong><span class="muted">（间隔回合）</span>无视距离落在你头上，造成 100% 攻击伤害，可以闪避。<br><strong>展翼</strong><span class="muted">（生命降到一半）</span>立刻回复 15% 生命、射程 +1，之后 8 回合每回合再回复 2%。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">龙瞳<br><span class="muted">对生命高于 50% 的目标造成的伤害提高 25%。</span></div></td></tr>
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>永夜守墓人</strong><br><span class="muted">无光陵墓</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.25</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">18555</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">206</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">16</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>墓土重压</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 覆盖全场，对你与召唤物造成 70% 攻击伤害，无法闪避。<br><strong>亡者之握</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 把 2 格外的你拽到墓前，并造成 80% 攻击伤害，无法闪避。<br><strong>起身</strong><span class="muted">（第一次被击倒）</span>以 45% 生命重新站起，攻击提高 50%。每场只有一次。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">永夜之誓<br><span class="muted">每损失 10% 最大生命，造成的伤害提高 5%，最多 40%。</span></div></td></tr>
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>霜渊巨人</strong><br><span class="muted">冰封裂谷</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.30</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">20500</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">270</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">14</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>冰裂</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 在你与召唤物脚下标出冰裂，它下一次行动时碎裂：仍站在上面的受到 200% 攻击伤害，无法闪避。挪开一格就能躲过，冻结或眩晕它会打断。<br><strong>寒冰长矛</strong><span class="muted">（其余回合）</span>朝 3 格外的你掷出冰矛，造成 100% 攻击伤害，可以闪避。<br><strong>永冻</strong><span class="muted">（生命降到一半）</span>攻击提高 20%，冰裂改为每 2 回合一次。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">踏冰<br><span class="muted">这一回合挪过位置时，造成的伤害提高 20%。</span></div></td></tr>
-<tr class="" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><strong>棘甲龙龟</strong><br><span class="muted">潮礁浅滩</span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.35</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">31000</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">315</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">18</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>缩壳</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 缩进壳里、这次不出手，直到下一次行动：你的攻击与技能对它的伤害降低 60%，每打中一下，棘刺扎回它 30% 攻击的伤害，无法闪避。冻结或眩晕它会让这次缩壳落空。<br><strong>潮涌</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 掀起浪潮，对 2 格内的你与召唤物造成 110% 攻击伤害，无法闪避。<br><strong>水炮</strong><span class="muted">（其余回合）</span>朝 3 格外的你喷出水炮，造成 100% 攻击伤害，可以闪避。<br><strong>骨刺暴长</strong><span class="muted">（生命降到一半）</span>攻击提高 25%，缩壳时的棘刺反伤提高一半。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">潮甲<br><span class="muted">生命低于 50% 时，受到的伤害降低 20%。</span></div></td></tr>
+<tr class="" id="hunt-broodmother" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/broodmother.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>腐沼母巢</strong><br><span class="muted">腐沼深处</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.10</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">6480</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">116</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">10</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>产卵</strong><span class="muted">（每 3 回合）</span>在身体外沿产下 2 只沼虫。<br><strong>虫群护卫</strong><span class="muted">（常驻）</span>每有一只沼虫活着，它受到的伤害降低 12%，最多 36%。<br><strong>藤蔓拖拽</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 把 2 格外的你拖回虫群中间，并造成 60% 攻击伤害，无法闪避。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">虫群壁垒<br><span class="muted">每有一名敌人与你相邻，受到的伤害降低 6%，最多 3 名。</span></div></td></tr>
+<tr class="" id="hunt-magmaColossus" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/magmaColossus.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>熔岩巨像</strong><br><span class="muted">烬火熔场</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.15</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">8345</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">147</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">26</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>震地</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 对 2 格内的你与召唤物造成 120% 攻击伤害，无法闪避。<br><strong>投掷熔岩</strong><span class="muted">（其余回合）</span>朝 2 格外的你砸下熔岩，造成 110% 攻击伤害，可以闪避。<br><strong>外壳崩裂</strong><span class="muted">（生命降到一半）</span>护甲减半，但攻击提高 40%。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">熔心<br><span class="muted">普通攻击命中后，对目标周围 1 格的其他敌人各造成 40% 攻击的必中伤害。</span></div></td></tr>
+<tr class="" id="hunt-skyWyrm" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/skyWyrm.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>蚀日龙</strong><br><span class="muted">断脊山脊</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.20</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">7700</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">160</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">12</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>烈焰吐息</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 对 3 格内的你与召唤物造成 125% 攻击伤害，无法闪避。<br><strong>烈日</strong><span class="muted">（间隔回合）</span>无视距离落在你头上，造成 100% 攻击伤害，可以闪避。<br><strong>展翼</strong><span class="muted">（生命降到一半）</span>立刻回复 15% 生命、射程 +1，之后 8 回合每回合再回复 2%。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">龙瞳<br><span class="muted">对生命高于 50% 的目标造成的伤害提高 25%。</span></div></td></tr>
+<tr class="" id="hunt-graveWarden" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/graveWarden.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>永夜守墓人</strong><br><span class="muted">无光陵墓</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.25</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">18555</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">206</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">16</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>墓土重压</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 覆盖全场，对你与召唤物造成 70% 攻击伤害，无法闪避。<br><strong>亡者之握</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 把 2 格外的你拽到墓前，并造成 80% 攻击伤害，无法闪避。<br><strong>起身</strong><span class="muted">（第一次被击倒）</span>以 45% 生命重新站起，攻击提高 50%。每场只有一次。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">永夜之誓<br><span class="muted">每损失 10% 最大生命，造成的伤害提高 5%，最多 40%。</span></div></td></tr>
+<tr class="" id="hunt-rimeGiant" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/rimeGiant.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>霜渊巨人</strong><br><span class="muted">冰封裂谷</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.30</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">20500</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">270</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">14</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>冰裂</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 在你与召唤物脚下标出冰裂，它下一次行动时碎裂：仍站在上面的受到 200% 攻击伤害，无法闪避。挪开一格就能躲过，冻结或眩晕它会打断。<br><strong>寒冰长矛</strong><span class="muted">（其余回合）</span>朝 3 格外的你掷出冰矛，造成 100% 攻击伤害，可以闪避。<br><strong>永冻</strong><span class="muted">（生命降到一半）</span>攻击提高 20%，冰裂改为每 2 回合一次。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">踏冰<br><span class="muted">这一回合挪过位置时，造成的伤害提高 20%。</span></div></td></tr>
+<tr class="" id="hunt-reefTurtle" role="row"><td data-label="巨兽" role="cell"><div class="cell-content"><span class="enemy-name"><img class="enemy-thumb" src="../enemies/reefTurtle.jpg" alt="" width="40" height="40" loading="lazy" /><span><strong>棘甲龙龟</strong><br><span class="muted">潮礁浅滩</span></span></span></div></td><td data-label="第 1 阶" role="cell" class="num"><div class="cell-content">Lv.35</div></td><td data-label="生命" role="cell" class="num"><div class="cell-content">31000</div></td><td data-label="攻击" role="cell" class="num"><div class="cell-content">315</div></td><td data-label="护甲" role="cell" class="num"><div class="cell-content">18</div></td><td data-label="技能" role="cell"><div class="cell-content"><strong>缩壳</strong><span class="muted">（每 4 回合）</span> <span class="tag tag-danger">无法闪避</span> 缩进壳里、这次不出手，直到下一次行动：你的攻击与技能对它的伤害降低 60%，每打中一下，棘刺扎回它 30% 攻击的伤害，无法闪避。冻结或眩晕它会让这次缩壳落空。<br><strong>潮涌</strong><span class="muted">（每 3 回合）</span> <span class="tag tag-danger">无法闪避</span> 掀起浪潮，对 2 格内的你与召唤物造成 110% 攻击伤害，无法闪避。<br><strong>水炮</strong><span class="muted">（其余回合）</span>朝 3 格外的你喷出水炮，造成 100% 攻击伤害，可以闪避。<br><strong>骨刺暴长</strong><span class="muted">（生命降到一半）</span>攻击提高 25%，缩壳时的棘刺反伤提高一半。</div></td><td data-label="专属掉落" role="cell"><div class="cell-content">潮甲<br><span class="muted">生命低于 50% 时，受到的伤害降低 20%。</span></div></td></tr>
 </tbody></table></div>
-<div class="note">专属传奇词条不会出现在随机掉落里：只能从对应的巨兽身上拿，首次击破必定掉落，之后每次胜利都有机会。</div>
+<div class="note">巨兽专属传奇词条不会出现在随机掉落中，只能从对应的巨兽身上获得：首次击败必定掉落，之后每次获胜都有机会掉落。</div>
 <h2 id="section-风行大地" tabindex="-1">风行大地</h2>
-<p class="lead">通关第十关后解锁，和无尽深渊同时开放。一片慢慢揭开的六边形大地图，一个角色一个世界，进度一直留着：散开的雾、打过的地点、开过的路、学会的招、采到的材料都不会丢。
-带进去的就是角色现在这一套技能、规则和装备，在别处练强了，回来马上生效。走路不花任何东西；时间只在大地图和家里走，一天 10 分钟，黄昏过后是一段夜里，打仗、离开这里就停着；路过的格子自动采集，过两天又长出来，在家的营火旁能用采来的东西做工具。
-离家越远，怪越强；打输了什么都不丢，同一个地点的战斗种子固定，想赢就在两场之间改规则、换携带的技能，详情卡里的「试打」用另一组种子估个胜率。
+<p class="lead">通关第十关后解锁，与无尽深渊同时开放。这是一张逐步揭开的六边形大地图，每个角色拥有独立的世界，进度会一直保留：驱散的迷雾、完成的地点、开辟的道路、学会的招式和采集的材料都不会丢失。
+进入时使用角色当前的技能、规则和装备，在其他玩法中获得的成长会立即生效。移动不消耗任何资源；时间只在大地图和家园中流逝，一天为 10 分钟，黄昏过后进入夜晚，战斗中和离开玩法时时间暂停。经过的格子会自动采集，资源两天后重新生长；可以在家园的营火旁用采集的材料制作工具。
+离家越远，敌人越强。战斗失败不会失去任何东西；同一地点的战斗种子固定，可以在两次战斗之间调整规则或更换携带的技能，详情卡中的「试打」会用另一组种子估算胜率。
 当前区域：裂谷之风。</p>
 <h3 id="section-偷师" tabindex="-1">偷师</h3>
-<p class="lead">打赢偷师营地、并且做到它的条件，就偷学到那个敌人的一招，记进招式簿永久留着。偷来的招不占携带栏、规则槽和回合，放上偷师栏（3 格）的满足条件时自动生效；开路只要学会就行。没做到条件也能赢，营地留着可以改规则重打，每次攒 1 点领悟，攒满 3 点同样学会，秒杀学不到招的多打几遍也行。</p>
-<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">招</th><th scope="col">战斗效果</th><th scope="col">开路</th><th scope="col">学习条件</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="招" role="cell"><div class="cell-content"><strong>号令</strong><br><span class="muted">哥布林王</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每 3 回合，你的召唤物全部额外行动一次；没有召唤物时，改为获得最大生命 15% 的护盾。</div></td><td data-label="开路" role="cell"><div class="cell-content">号令哥布林搭起吊桥，跨过深涧。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">在哥布林王下一次行动会号令的那一回合击倒它。</div></td></tr>
-<tr class="" role="row"><td data-label="招" role="cell"><div class="cell-content"><strong>巫祝</strong><br><span class="muted">巫医</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">从第 2 回合起，每回合开始回复最大生命的 3%。</div></td><td data-label="开路" role="cell"><div class="cell-content">驱散瘴气，走进林沼。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">让巫医治疗同伴 3 次之后再击倒它。</div></td></tr>
-<tr class="" role="row"><td data-label="招" role="cell"><div class="cell-content"><strong>重拳</strong><br><span class="muted">兽人</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每第 3 次普攻把目标击退 1 格：撞墙眩晕、推上冰面一路滑、推进熔岩。</div></td><td data-label="开路" role="cell"><div class="cell-content">打碎挡路的落石。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">被兽人的重拳击退撞墙之后，仍然赢下这一战。</div></td></tr>
-<tr class="" role="row"><td data-label="招" role="cell"><div class="cell-content"><strong>殉爆</strong><br><span class="muted">爆破小鬼</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">你击倒的敌人原地爆炸，对相邻敌人造成 60% 攻击的伤害，可以连锁。</div></td><td data-label="开路" role="cell"><div class="cell-content">炸开封印石门。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">让一次小鬼的爆炸连锁炸倒 2 个敌人。</div></td></tr>
-<tr class="" role="row"><td data-label="招" role="cell"><div class="cell-content"><strong>寒息</strong><br><span class="muted">霜牙母狼</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每第 4 次普攻冻结目标 1 次行动。</div></td><td data-label="开路" role="cell"><div class="cell-content">冻住湖面。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">母狼治疗同伴不超过 2 次就击倒它。</div></td></tr>
+<p class="lead">击败偷师营地并达成其条件，即可学会该敌人的一个招式，记入招式簿永久保留。偷来的招式不占用携带栏、规则槽和行动回合，放入偷师栏（3 格）后满足条件时自动生效；用于开路时只需学会即可。未达成条件也可以获胜，营地会保留，可以调整规则后再次挑战；每次获胜积累 1 点领悟，积满 3 点同样可以学会。</p>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">招式</th><th scope="col">战斗效果</th><th scope="col">开路</th><th scope="col">学习条件</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="招式" role="cell"><div class="cell-content"><strong>号令</strong><br><span class="muted">哥布林王</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每 3 回合，你的召唤物全部额外行动一次；没有召唤物时，改为获得最大生命 15% 的护盾。</div></td><td data-label="开路" role="cell"><div class="cell-content">号令哥布林搭起吊桥，跨过深涧。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">在哥布林王下一次行动会号令的那一回合击倒它。</div></td></tr>
+<tr class="" role="row"><td data-label="招式" role="cell"><div class="cell-content"><strong>巫祝</strong><br><span class="muted">巫医</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">从第 2 回合起，每回合开始回复最大生命的 3%。</div></td><td data-label="开路" role="cell"><div class="cell-content">驱散瘴气，走进林沼。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">让巫医治疗同伴 3 次之后再击倒它。</div></td></tr>
+<tr class="" role="row"><td data-label="招式" role="cell"><div class="cell-content"><strong>重拳</strong><br><span class="muted">兽人</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每第 3 次普攻把目标击退 1 格：撞墙眩晕、推上冰面一路滑、推进熔岩。</div></td><td data-label="开路" role="cell"><div class="cell-content">打碎挡路的落石。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">被兽人的重拳击退撞墙之后，仍然赢下这一战。</div></td></tr>
+<tr class="" role="row"><td data-label="招式" role="cell"><div class="cell-content"><strong>殉爆</strong><br><span class="muted">爆破小鬼</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">你击倒的敌人原地爆炸，对相邻敌人造成 60% 攻击的伤害，可以连锁。</div></td><td data-label="开路" role="cell"><div class="cell-content">炸开封印石门。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">让一次小鬼的爆炸连锁炸倒 2 个敌人。</div></td></tr>
+<tr class="" role="row"><td data-label="招式" role="cell"><div class="cell-content"><strong>寒息</strong><br><span class="muted">霜牙母狼</span></div></td><td data-label="战斗效果" role="cell"><div class="cell-content">每第 4 次普攻冻结目标 1 次行动。</div></td><td data-label="开路" role="cell"><div class="cell-content">冻住湖面。</div></td><td data-label="学习条件" role="cell"><div class="cell-content">母狼治疗同伴不超过 2 次就击倒它。</div></td></tr>
 </tbody></table></div>
 <h3 id="section-护符" tabindex="-1">护符</h3>
-<p class="lead">拿到就一直生效，只在风行大地的战斗里起作用。巨兽领地打赢拿它的专属战利品，其余的在精英、守关身上和路上的事件里。地形类护符让「在哪一格开打」也成为一种选择。</p>
-<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">护符</th><th scope="col">类</th><th scope="col">效果</th><th scope="col">来源</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>林中猎手</strong></div></td><td data-label="类" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">从灌木里伏击的那一击，伤害再 +50%。林地放大出来的战场灌木最多。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>高处的风</strong></div></td><td data-label="类" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">站在高地上出手，伤害 +15%；远程的射程再 +1。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>冰上舞步</strong></div></td><td data-label="类" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">站在冰面上出手，不再因为打滑减伤。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>焦土战旗</strong></div></td><td data-label="类" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">熔岩不再烫你：站在上面、被推进去都不掉血。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>行脚铃</strong></div></td><td data-label="类" role="cell"><div class="cell-content">路上</div></td><td data-label="效果" role="cell"><div class="cell-content">每走一格，周围 3 格的雾散开（原来是 2 格）。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>旅人护符</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">每场开局，获得最大生命 20% 的护盾。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>熔心余烬</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场开局，对全体敌人造成你攻击 80% 的灼烧伤害。</div></td><td data-label="来源" role="cell"><div class="cell-content">熔岩巨像</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>龙瞳</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">暴击率 +12%。</div></td><td data-label="来源" role="cell"><div class="cell-content">蚀日龙</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>守墓人的灯</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场第一次倒下时，以 30% 生命重新站起来。</div></td><td data-label="来源" role="cell"><div class="cell-content">永夜守墓人</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>狼牙项链</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">攻击 +6%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>石肤护符</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">受到的伤害降低 8%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>金羽</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">暴击率 +8%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
-<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>回春坠</strong></div></td><td data-label="类" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">从第 2 回合起，每回合回复最大生命的 2%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<p class="lead">获得后永久生效，只在风行大地的战斗中起作用。击败巨兽领地可以获得对应的专属战利品，其余护符来自精英、守关敌人和沿途事件。地形类护符使开战位置也成为一种选择。</p>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">护符</th><th scope="col">类别</th><th scope="col">效果</th><th scope="col">来源</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>林中猎手</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">从灌木里伏击的那一击，伤害再 +50%。林地放大出来的战场灌木最多。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>高处的风</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">站在高地上出手，伤害 +15%；远程的射程再 +1。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>冰上舞步</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">站在冰面上出手，不再因为打滑减伤。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>焦土战旗</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">地形</div></td><td data-label="效果" role="cell"><div class="cell-content">熔岩不再烫你：站在上面、被推进去都不掉血。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>行脚铃</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">路上</div></td><td data-label="效果" role="cell"><div class="cell-content">每走一格，周围 3 格的雾散开（原来是 2 格）。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>旅人护符</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">每场开局，获得最大生命 20% 的护盾。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>熔心余烬</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场开局，对全体敌人造成你攻击 80% 的灼烧伤害。</div></td><td data-label="来源" role="cell"><div class="cell-content">熔岩巨像</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>龙瞳</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">暴击率 +12%。</div></td><td data-label="来源" role="cell"><div class="cell-content">蚀日龙</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>守墓人的灯</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战利品</div></td><td data-label="效果" role="cell"><div class="cell-content">每场第一次倒下时，以 30% 生命重新站起来。</div></td><td data-label="来源" role="cell"><div class="cell-content">永夜守墓人</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>狼牙项链</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">攻击 +6%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>石肤护符</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">受到的伤害降低 8%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>金羽</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">暴击率 +8%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
+<tr class="" role="row"><td data-label="护符" role="cell"><div class="cell-content"><strong>回春坠</strong></div></td><td data-label="类别" role="cell"><div class="cell-content">战斗</div></td><td data-label="效果" role="cell"><div class="cell-content">从第 2 回合起，每回合回复最大生命的 2%。</div></td><td data-label="来源" role="cell"><div class="cell-content">精英、守关或事件</div></td></tr>
 </tbody></table></div></article>
-    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="enemies.html"><small>上一篇</small><span>敌人与关卡<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="builds.html"><small>下一篇</small><span>推荐配置<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 官方攻略</span><p>数据与搭配分析随游戏版本更新。推荐配置用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="enemies.html"><small>上一篇</small><span>敌人与关卡<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><span></span></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
+<script src="search-index.js" defer></script>
 <script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
 (() => {
   const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
-  const mobile = window.matchMedia('(max-width: 1100px)');
+  const mobile = window.matchMedia('(max-width: 1000px)');
   const toc = document.querySelector('.page-toc');
   const links = [...document.querySelectorAll('[data-toc-id]')];
   const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
@@ -567,6 +683,99 @@ ul.plain li { margin: 0 0 3px; }
   window.addEventListener('resize', scheduleUpdate);
   document.addEventListener('toggle', scheduleUpdate, true);
   scheduleUpdate();
+})();
+
+/* 全站搜索：索引在 search-index.js（window.GUIDE_SEARCH），按名称与所属做子串匹配；没有索引时搜索框什么也不做。 */
+(() => {
+  const input = document.querySelector('#guide-search');
+  const panel = document.querySelector('#guide-search-results');
+  if (!input || !panel) return;
+  const entries = () => window.GUIDE_SEARCH ?? [];
+  const escape = text => String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const mark = (text, query) => {
+    const at = text.toLowerCase().indexOf(query);
+    return at < 0 ? escape(text) : `${escape(text.slice(0, at))}<mark>${escape(text.slice(at, at + query.length))}</mark>${escape(text.slice(at + query.length))}`;
+  };
+  let results = [];
+  let active = -1;
+
+  function close() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(index) {
+    active = index;
+    [...panel.querySelectorAll('a')].forEach((link, i) => link.setAttribute('aria-selected', String(i === index)));
+    panel.querySelectorAll('a')[index]?.scrollIntoView({ block: 'nearest' });
+  }
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { close(); return; }
+    // 名称开头匹配排最前，其次名称包含，再次只有所属匹配。
+    const score = entry => {
+      const name = entry.n.toLowerCase();
+      if (name.startsWith(query)) return 0;
+      if (name.includes(query)) return 1;
+      return `${entry.c} ${entry.k}`.toLowerCase().includes(query) ? 2 : -1;
+    };
+    results = entries().map(entry => ({ entry, rank: score(entry) })).filter(item => item.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entry.n.length - b.entry.n.length).slice(0, 12).map(item => item.entry);
+    panel.innerHTML = results.length
+      ? results.map((entry, i) => `<a href="${escape(entry.u)}" role="option" id="guide-search-${i}" aria-selected="false"><strong>${mark(entry.n, query)}</strong>${entry.c ? `<small>${escape(entry.c)}</small>` : ''}<span class="kind">${escape(entry.k)}</span></a>`).join('')
+      : '<p class="search-empty">没有找到相关条目。</p>';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(results.length ? 0 : -1);
+  }
+  input.addEventListener('input', render);
+  input.addEventListener('focus', () => { if (input.value.trim()) render(); });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      if (!results.length) return;
+      event.preventDefault();
+      highlight((active + (event.key === 'ArrowDown' ? 1 : results.length - 1)) % results.length);
+    } else if (event.key === 'Enter' && results[active]) {
+      event.preventDefault();
+      location.href = results[active].u;
+      close();
+    } else if (event.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+  panel.addEventListener('click', () => close());
+  document.addEventListener('click', event => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== input) close();
+  });
+  // 按 / 聚焦搜索框（输入框里除外）。
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    event.preventDefault();
+    input.focus();
+  });
+})();
+
+/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+(() => {
+  if (!document.querySelector('.level-slider')) return;
+  for (const box of document.querySelectorAll('.skill-levels')) {
+    const slider = box.querySelector('.level-slider');
+    const output = box.querySelector('.level-value');
+    const total = box.querySelector('.level-total');
+    const rate = Number(box.dataset.rate) || 0;
+    const scaling = box.dataset.scaling || '伤害';
+    const update = () => {
+      const level = Number(slider.value);
+      output.textContent = `Lv.${level}`;
+      for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
+      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
 })();
 </script>
 </body>

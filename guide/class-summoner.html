@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f9fbf5" />
+<title>召唤师 · 风行物语图鉴</title>
+<meta name="description" content="远程 2 格。自己输出不高，靠召唤物顶在前面挡刀与输出；场上帮手越多，你越强。" />
+<link rel="icon" type="image/png" href="../icons/windward-64.png" />
+<style>
+:root {
+  --surface-page: #e3eddd;
+  --surface-hollow: #eaf0e1;
+  --surface-sunken: #deead5;
+  --surface-soft: #f2f6eb;
+  --surface-paper: #f9fbf5;
+  --surface-raised: #ffffff;
+  --surface-warm: #f1eddc;
+  --surface-cool: #e6e9f4;
+  --line-soft: #d1ddc8;
+  --line-mid: #c1d1b4;
+  --line-strong: #b3c39d;
+  --ink: #304638;
+  --ink-muted: #5d6d5f;
+  --ink-soft: #7d8a72;
+  --ink-invert: #ffffff;
+  --accent-deep: #42603b;
+  --accent-edge: #45683f;
+  --focus-ring: #718d5e;
+  --hero-mark: #3c7167;
+  --accent: #547246;
+  --accent-mid: #63824e;
+  --accent-light: #7d9d6c;
+  --accent-pale: #9db68b;
+  --mint: #397052;
+  --sage-deep: #617654;
+  --sage-mid: #879779;
+  --gold: #866225;
+  --gold-deep: #8a662a;
+  --gold-mid: #92713c;
+  --gold-light: #ab915c;
+  --gold-pale: #b3975a;
+  --gold-tint: #eee4c9;
+  --gold-bright: #8a5c15;
+  --gold-sand: #d7c495;
+  --surface-cream: #faf0e6;
+  --danger: #a34f3b;
+  --clay-soft: #a1634d;
+  --info: #3b6983;
+  --info-soft: #507a89;
+  --abyss-tint: #e3e7f5;
+  --abyss-pale: #c9cee3;
+  --abyss-line: #b7bdd6;
+  --abyss-mid: #7f8cbf;
+  --abyss: #4d5a86;
+  --abyss-deep: #3f4a75;
+  --shade-tint: #ebe7f1;
+  --shade: #5a4d70;
+  --shade-deep: #3b3150;
+  --rarity-common: #52634d;
+  --rarity-rare: #356982;
+  --rarity-epic: #79549a;
+  --rarity-legendary: #a8681c;
+  --rarity-trophy: #b23a2e;
+}
+/* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
+* { box-sizing: border-box; }
+:root {
+  --header-height: 68px; --reading-offset: 96px;
+  --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  --radius: 12px; --shadow: 0 1px 2px #304a3a0d, 0 6px 18px #304a3a0a; --shadow-lift: 0 2px 4px #304a3a12, 0 14px 32px #304a3a14;
+}
+html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
+body { margin: 0; background: var(--surface-page); background-image: linear-gradient(180deg, var(--surface-paper) 0, var(--surface-page) 520px); background-repeat: no-repeat; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 3px; }
+button, summary, a, input { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .16s; }
+a:focus-visible, summary:focus-visible, input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+svg, img { flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: fixed; z-index: 40; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.skip-link:focus { top: 10px; }
+
+/* ---------- 顶栏与搜索 ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: color-mix(in srgb, var(--surface-paper) 92%, transparent); backdrop-filter: blur(10px); }
+.header-inner { display: flex; align-items: center; gap: 20px; max-width: 1480px; height: 100%; margin: auto; padding: 0 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 10px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: 2px; }
+.brand small { display: block; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.site-search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
+.search-box { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink-soft); }
+.search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+.search-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.search-box input::placeholder { color: var(--ink-soft); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; background: var(--surface-soft); color: var(--ink-soft); font: 11px/18px var(--sans); }
+.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: min(70dvh, 480px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); box-shadow: var(--shadow-lift); }
+.search-results a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 8px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.search-results a strong { font-size: 14px; }
+.search-results a mark { background: var(--gold-tint); color: inherit; border-radius: 2px; }
+.search-results a small { grid-column: 1; color: var(--ink-muted); font-size: 12px; }
+.search-results a .kind { grid-column: 2; grid-row: 1 / 3; padding: 1px 7px; border-radius: 5px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 11px; }
+.search-results a[aria-selected="true"], .search-results a:hover { background: var(--surface-soft); }
+.search-empty { margin: 0; padding: 14px 10px; color: var(--ink-muted); font-size: 13px; }
+.play-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 15px; border: 1px solid var(--accent-edge); border-radius: 10px; background: var(--accent); color: var(--ink-invert); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--accent-deep); }
+
+/* ---------- 版面 ---------- */
+.docs-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr) 196px; grid-template-areas: "navigation content outline"; align-items: start; gap: 36px; max-width: 1480px; margin: 0 auto; padding: 28px 28px 0; }
+.docs-layout.no-toc { grid-template-columns: 212px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+.site-sidebar { grid-area: navigation; }
+.toc-sidebar { grid-area: outline; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 24px); min-width: 0; }
+.site-nav > summary { display: none; }
+.nav-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidebar-label { margin: 18px 10px 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.nav-group { display: grid; gap: 2px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 10px; border-radius: 9px; color: var(--ink-muted); font-size: 13.5px; text-decoration: none; }
+.site-nav nav a img { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-soft); }
+.site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-raised); box-shadow: inset 3px 0 var(--accent), var(--shadow); font-weight: 600; }
+
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 34px; margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+.page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
+.toc-current { display: none; }
+.toc-panel { max-height: calc(100dvh - 170px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.page-toc ol { margin: 0; padding: 0; list-style: none; }
+.page-toc nav a { display: flex; align-items: center; min-height: 32px; padding: 5px 9px 5px 12px; border-left: 2px solid var(--line-soft); color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11.5px; }
+.page-toc nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.page-toc nav a[aria-current="location"] { color: var(--accent-deep); border-color: var(--accent); background: var(--surface-hollow); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 40px; margin: 8px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+
+/* ---------- 正文 ---------- */
+.guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
+.guide-heading { padding: 6px 0 26px; margin-bottom: 30px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink-soft); font-size: 11px; letter-spacing: 1px; }
+.eyebrow span { color: var(--sage-mid); }
+.guide-heading h1, .class-hero h1, .home-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: 3px; line-height: 1.3; }
+.page-description { max-width: 720px; margin: 10px 0 14px; color: var(--ink-muted); font-size: 14.5px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-soft); font-size: 11px; }
+.version-badge { padding: 1px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-raised); font-variant-numeric: tabular-nums; }
+.guide-article { overflow-wrap: anywhere; }
+.guide-article h2 { display: flex; align-items: center; gap: 10px; margin: 56px 0 14px; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.4; letter-spacing: 2px; }
+.guide-article h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--accent-light), var(--accent)); }
+.guide-article > h2:first-child { margin-top: 0; }
+.guide-article h3 { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+.guide-article h4 { margin: 0; font-size: 16px; }
+.lead { max-width: 820px; margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 18px 0 24px; padding: 13px 16px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 10px 10px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 6px 0; }
+.note p:first-child { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+.muted { color: var(--ink-muted); }
+.variant { color: var(--gold); font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
+.tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
+.tag-gold { background: var(--gold-tint); color: var(--gold-bright); }
+.tag-link { text-decoration: none; background: var(--surface-raised); border: 1px solid var(--line-mid); color: var(--accent-deep); }
+.tag-link:hover { border-color: var(--accent); }
+code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); font-size: .92em; white-space: normal; }
+.block-label { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+
+/* ---------- 首页 ---------- */
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-bottom: 36px; padding: 30px 32px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 85% 20%, var(--surface-warm), transparent 55%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.home-hint { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink-muted); font-size: 13px; }
+.home-portraits { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; }
+.home-portraits img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--surface-raised); box-shadow: var(--shadow); background: var(--surface-soft); }
+.home-portraits img:nth-child(n+5) { transform: translateX(36px); }
+.class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.class-card { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.class-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.class-card img { width: 72px; height: 72px; border-radius: 14px; background: var(--surface-soft); }
+.class-card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-card-body strong { font-family: var(--serif); font-size: 19px; letter-spacing: 2px; }
+.class-card-body .tags { gap: 4px; }
+.class-card-intro { color: var(--ink-muted); font-size: 12.5px; line-height: 1.7; }
+.spec-names { display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-names span { padding: 0 7px; border: 1px solid var(--line-mid); border-radius: 6px; color: var(--accent-deep); font-size: 11.5px; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.ref-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.ref-card strong { font-size: 15px; }
+.ref-card span { grid-column: 1; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.ref-card svg { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--accent); }
+.ref-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); }
+
+.strength-chart { display: grid; gap: 4px; padding: 14px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.strength-group { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+.strength-group:last-child { border-bottom: 0; }
+.strength-class { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.strength-class img { width: 28px; height: 28px; border-radius: 7px; }
+.strength-bars { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.strength-bars li { display: grid; grid-template-columns: 58px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font-size: 12px; }
+.strength-label { color: var(--ink-muted); white-space: nowrap; }
+.strength-track { height: 10px; border-radius: 5px; background: var(--surface-hollow); overflow: hidden; }
+.strength-fill { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--accent-pale), var(--accent)); }
+.strength-bars li:first-child .strength-fill { background: linear-gradient(90deg, var(--accent-light), var(--accent-deep)); }
+.strength-value { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.axis-note { margin: 8px 2px 0; color: var(--ink-soft); font-size: 11.5px; }
+
+/* ---------- 职业页 ---------- */
+.class-hero { display: flex; align-items: center; gap: 26px; margin-bottom: 34px; padding: 26px 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 12% 30%, var(--surface-warm), transparent 50%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.class-hero-portrait { width: 132px; height: 132px; border-radius: 22px; border: 3px solid var(--surface-raised); box-shadow: var(--shadow-lift); background: var(--surface-soft); }
+.class-hero .page-description { margin-bottom: 12px; }
+.fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.fact-grid > div { padding: 12px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+.fact-grid .wide { grid-column: 1 / -1; }
+.fact-grid dt, .spec-facts dt, .build-specs dt { margin-bottom: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; }
+.fact-grid dd, .spec-facts dd, .build-specs dd { margin: 0; font-size: 13.5px; line-height: 1.75; }
+
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.spec-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line-soft); border-top: 3px solid var(--accent-light); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.guide-article .spec-card h3 { display: flex; flex-direction: column; margin: 0; font-family: var(--serif); font-size: 21px; letter-spacing: 2px; }
+.spec-card h3 small { font-family: var(--sans); color: var(--gold); font-size: 11.5px; font-weight: 500; letter-spacing: 0; }
+.spec-pitch { margin: 0; color: var(--ink-muted); font-size: 13px; }
+.spec-strength { align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; text-decoration: none; }
+.spec-strength strong { font-size: 14px; }
+.spec-facts { display: grid; gap: 10px; margin: 0; }
+.spec-facts dd { font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 9px; border: 1px solid var(--line-mid); border-radius: 7px; background: var(--surface-soft); color: var(--ink); font-size: 12.5px; font-weight: 600; text-decoration: none; }
+.chip small { color: var(--ink-soft); font-size: 10.5px; font-weight: 500; }
+.chip:hover { border-color: var(--accent); }
+.spec-rewrites { border-top: 1px dashed var(--line-mid); padding-top: 8px; }
+.spec-rewrites summary { display: flex; align-items: center; gap: 6px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.spec-rewrites summary svg { transform: rotate(90deg); }
+.spec-rewrites[open] summary svg { transform: rotate(-90deg); }
+.spec-rewrites ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-muted); font-size: 12.5px; }
+.spec-rewrites li { margin-bottom: 4px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: start; }
+.skill-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scroll-margin-top: var(--reading-offset); }
+.skill-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.skill-card.is-ascend { border-color: var(--gold-sand); background: linear-gradient(180deg, var(--surface-cream), var(--surface-raised) 90px); }
+.skill-card > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; }
+.skill-card h4 { font-family: var(--serif); font-size: 18px; letter-spacing: 1px; }
+.skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.skill-desc { margin: 0; font-size: 13.5px; }
+.skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
+.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
+.variant-box strong { color: var(--gold); font-size: 13px; }
+.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
+.rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
+.rewrites strong { color: var(--accent-deep); }
+.skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
+.level-control { display: flex; align-items: center; gap: 12px; }
+.level-control label { display: flex; flex: 1; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.level-slider { flex: 1; min-width: 0; accent-color: var(--accent); }
+.level-value { min-width: 42px; padding: 0 7px; border-radius: 6px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.level-total { margin: 6px 0 4px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.level-gains { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--ink-muted); }
+.level-gains li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px; }
+.level-gains b { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
+.level-gains li.is-locked { opacity: .38; }
+
+.passive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passive-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.passive-card:target { border-color: var(--accent); }
+.passive-card h4 { font-family: var(--serif); font-size: 17px; letter-spacing: 1px; }
+.passive-card p { margin: 0; font-size: 13px; }
+.passive-card p.muted { font-size: 12.5px; }
+.passive-card .tag { align-self: flex-start; }
+
+.build-card { margin: 14px 0 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); background: linear-gradient(90deg, var(--surface-hollow), var(--surface-raised)); }
+.guide-article .build-card h3 { margin: 0; font-family: var(--serif); font-size: 20px; letter-spacing: 2px; }
+.build-score { display: flex; align-items: baseline; gap: 10px; color: var(--ink-muted); font-size: 12.5px; }
+.build-score strong { color: var(--accent-deep); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-score small { color: var(--ink-soft); font-size: 11.5px; }
+.curve { margin: 0; padding: 12px 18px 4px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve text { fill: var(--ink-soft); font: 10px var(--sans); }
+.curve .grid { stroke: var(--line-soft); stroke-width: 1; }
+.curve .half { stroke: var(--gold-light); stroke-width: 1; stroke-dasharray: 4 4; }
+.curve .area { fill: color-mix(in srgb, var(--accent-pale) 35%, transparent); }
+.curve .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.curve figcaption { color: var(--ink-soft); font-size: 11px; text-align: right; }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 12px 18px 18px; }
+.build-specs .wide { grid-column: 1 / -1; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
+.skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
+.skill-chips strong { font-size: 12.5px; }
+.skill-chips .variant { font-size: 11.5px; }
+.skill-chips small { color: var(--ink-soft); font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
+.gear-list small { display: block; color: var(--ink-soft); font-size: 10.5px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-muted); }
+.stat-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.method-note { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); font-size: 12.5px; }
+.method-note summary { display: flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-weight: 600; }
+.method-note summary svg { margin-left: auto; transform: rotate(90deg); }
+.method-note[open] summary svg { transform: rotate(-90deg); }
+
+/* ---------- 资料页 ---------- */
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.formula { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.formula code { align-self: flex-start; font-size: 13px; }
+.formula p { margin: 0; color: var(--ink-muted); font-size: 12.5px; }
+.rule-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rule-list li { position: relative; padding: 10px 14px 10px 32px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); font-size: 13.5px; }
+.rule-list li::before { content: ""; position: absolute; left: 14px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
+.enemy-name { display: inline-flex; align-items: center; gap: 10px; }
+.enemy-name strong { white-space: nowrap; }
+.enemy-thumb { width: 40px; height: 40px; border-radius: 9px; object-fit: cover; background: var(--surface-hollow); }
+.enemy-thumb.is-empty { display: inline-block; }
+
+.table-scroll { max-width: 100%; margin: 14px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scrollbar-width: thin; }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
+.data-table th, .data-table td { padding: 11px 13px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { position: sticky; top: 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.data-table tbody tr:hover td { background: color-mix(in srgb, var(--surface-soft) 60%, transparent); }
+.data-table tr:target td { background: var(--gold-tint); }
+.data-table tr:last-child td { border-bottom: 0; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cell-content { min-width: 0; }
+.table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
+
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { border-color: var(--accent-pale); box-shadow: var(--shadow); }
+.page-pagination .next { text-align: right; }
+.page-pagination small { color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13.5px; font-weight: 600; }
+.page-pagination .previous svg { order: -1; transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11.5px; }
+.site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
+.site-footer p { max-width: 600px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: none; }
+
+/* ---------- 窄屏 ---------- */
+@media (max-width: 1240px) {
+  .docs-layout { grid-template-columns: 196px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+  .toc-sidebar { display: none; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 手机与平板：导航和目录收成两个下拉按钮并列，展开后占满整行；正文不被侧栏挤压。 */
+@media (max-width: 1000px) {
+  :root { --header-height: 60px; --reading-offset: 124px; }
+  .header-inner { gap: 12px; padding: 0 18px; }
+  .brand small { display: none; }
+  .site-search { max-width: none; }
+  kbd { display: none; }
+  .docs-layout, .docs-layout.no-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 16px 10px; max-width: 900px; padding: 12px 18px 0; }
+  .docs-layout.no-toc { grid-template-areas: "navigation navigation" "content content"; }
+  .toc-sidebar { display: block; }
+  .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; padding: 9px 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink); font-size: 12.5px; font-weight: 500; box-shadow: var(--shadow); }
+  .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+  .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
+  .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 10px); max-height: min(64dvh, 540px); padding: 10px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; box-shadow: var(--shadow-lift); }
+  .no-toc .nav-panel { width: 100%; }
+  .nav-panel { left: 0; }
+  .toc-panel { right: 0; }
+  .nav-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 10px 10px 4px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10.5px; }
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .home-portraits { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .home-portraits img { width: 100%; height: auto; aspect-ratio: 1; }
+  .home-portraits img:nth-child(n+5) { transform: none; }
+  .formula-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .header-inner { padding: 0 12px; gap: 8px; }
+  .brand span { display: none; }
+  .brand img { width: 34px; height: 34px; }
+  .play-link { padding: 7px 10px; font-size: 12px; }
+  .play-link svg { display: none; }
+  .docs-layout, .docs-layout.no-toc { padding: 10px 14px 0; gap: 14px 8px; }
+  .toc-current { display: none; }
+  .guide-article h2 { margin-top: 42px; font-size: 22px; }
+  .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
+  .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
+  .variants { grid-template-columns: minmax(0, 1fr); }
+  .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .skill-card { padding: 14px; }
+  .table-hint { display: block; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
+  .table-cards { display: block; width: 100%; }
+  .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .table-cards tbody { display: grid; gap: 10px; }
+  .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+  .table-cards td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 6px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td.num { white-space: normal; text-align: left; }
+  .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+  .table-cards td:first-child::before { display: none; }
+  .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
+  .page-pagination { gap: 8px; margin-top: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, summary { transition: none; }
+  .class-card:hover { transform: none; }
+}
+@media print {
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link, .level-control { display: none; }
+  .docs-layout { display: block; max-width: none; padding: 0; }
+  .table-scroll { overflow: visible; box-shadow: none; }
+  .guide-article h2, .guide-article h3 { break-after: avoid; }
+  .skill-card, .spec-card, .build-card, .table-cards tr { break-inside: avoid; box-shadow: none; }
+}
+
+</style>
+</head>
+<body class="page-class-summoner">
+<a class="skip-link" href="#guide-content">跳到正文</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>图鉴与攻略</small></span></a>
+  <div class="site-search" role="search">
+    <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="visually-hidden">搜索图鉴</span><input id="guide-search" type="search" placeholder="搜索技能、被动、装备、敌人…" autocomplete="off" spellcheck="false" aria-controls="guide-search-results" aria-expanded="false" /><kbd>/</kbd></label>
+    <div class="search-results" id="guide-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+  </div>
+  <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div></header>
+<div class="docs-layout">
+  <aside class="site-sidebar"><details class="site-nav" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html" aria-current="page"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+  </details></aside>
+  <aside class="toc-sidebar"><details class="page-toc" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-beastlord" data-toc-id="spec-beastlord" title="兽王"><span>兽王</span></a></li><li class="toc-level-3"><a href="#spec-medium" data-toc-id="spec-medium" title="灵媒"><span>灵媒</span></a></li><li class="toc-level-3"><a href="#spec-puppeteer" data-toc-id="spec-puppeteer" title="傀儡师"><span>傀儡师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-beastlord" data-toc-id="skills-beastlord" title="兽王专属"><span>兽王专属</span></a></li><li class="toc-level-3"><a href="#skills-medium" data-toc-id="skills-medium" title="灵媒专属"><span>灵媒专属</span></a></li><li class="toc-level-3"><a href="#skills-puppeteer" data-toc-id="skills-puppeteer" title="傀儡师专属"><span>傀儡师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-puppeteer" data-toc-id="build-puppeteer" title="傀儡师配置"><span>傀儡师配置</span></a></li><li class="toc-level-3"><a href="#build-beastlord" data-toc-id="build-beastlord" title="兽王配置"><span>兽王配置</span></a></li><li class="toc-level-3"><a href="#build-medium" data-toc-id="build-medium" title="灵媒配置"><span>灵媒配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+  </details></aside>
+  <main class="guide-main" id="guide-content" tabindex="-1">
+    <header class="class-hero">
+<img class="class-hero-portrait" src="../portraits/summoner.png" alt="" width="132" height="132" />
+<div>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<h1>召唤师</h1>
+<p class="page-description">远程 2 格。自己输出不高，靠召唤物顶在前面挡刀与输出；场上帮手越多，你越强。</p>
+<p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-beastlord">兽王</a><a class="tag tag-link" href="#spec-medium">灵媒</a><a class="tag tag-link" href="#spec-puppeteer">傀儡师</a></p>
+</div>
+</header>
+    <article class="guide-article"><h2 id="overview" tabindex="-1">概况</h2>
+<dl class="fact-grid">
+<div><dt>初始属性</dt><dd>力量 3，敏捷 3，智力 9，体质 6</dd></div>
+<div><dt>可用武器</dt><dd>符杖、灵典</dd></div>
+<div class="wide"><dt>护甲精通 · 祭袍</dt><dd>护甲很低但生命偏高，智力提高攻击、护盾与治疗。</dd></div>
+</dl>
+<h2 id="specs" tabindex="-1">转职</h2>
+<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和两个专属技能（45 级与 50 级开放），并强化若干本职业技能。60 级且深渊到达第 40 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。</p>
+<div class="spec-grid"><section class="spec-card">
+<h3 id="spec-beastlord" data-toc-label="兽王" tabindex="-1">兽王<small>觉醒后称「万兽之王」</small></h3>
+<p class="spec-pitch">率领灵狼围猎，召唤物越多，狼群越凶。</p>
+<a class="spec-strength" href="#build-beastlord">终局参考 · 等效第 <strong>120</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>召唤物上限增加 1。灵狼攻击时，目标身边每有另一个召唤物，伤害提高 15%，至多提高 45%。</dd></div>
+<div><dt>觉醒提升</dt><dd>围猎每个召唤物的增伤由 15% 提高至 20%，上限由 45% 提高至 60%。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-howl"><small>45 级</small>狼嚎</a><a class="chip" href="#skill-packHunt"><small>50 级</small>群狼猎杀</a><a class="chip" href="#skill-moonWolf"><small>觉醒</small>月狼</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-summoner-packleader">「群首」</a>、<a href="#passive-summoner-legion">「军团」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-callwolf">「唤狼」</a>冷却时间由 3 回合缩短为 2 回合。</li><li><a href="#skill-empower">「附能」</a>这一轮灵狼的攻击使目标流血 2 回合。</li><li><a href="#skill-sacrifice">「献祭」</a>引爆灵狼后，召回一只持续 3 回合的灵狼。</li><li><a href="#skill-stormcall">「群召」</a>精怪换成第三只灵狼；与「潮涌」同时生效时改为 4 只。</li><li><a href="#skill-spiritGate">「灵界之门」</a>额外召出 2 只灵狼。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-medium" data-toc-label="灵媒" tabindex="-1">灵媒<small>觉醒后称「灵界先知」</small></h3>
+<p class="spec-pitch">召唤物为敌人留下灵痕，灵弹随之弹射。</p>
+<a class="spec-strength" href="#build-medium">终局参考 · 等效第 <strong>111</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>召唤物攻击过的敌人带上灵痕，持续 2 回合。灵弹命中灵痕目标时伤害提高 50%，并弹射到最近的另一名灵痕目标，造成 50% 伤害。</dd></div>
+<div><dt>觉醒提升</dt><dd>灵弹对灵痕目标的增伤由 50% 提高至 80%。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-spiritShield"><small>45 级</small>灵盾</a><a class="chip" href="#skill-soulVolley"><small>50 级</small>万灵弹</a><a class="chip" href="#skill-communion"><small>觉醒</small>通灵</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-summoner-packleader">「群首」</a>、<a href="#passive-summoner-bloodpact">「血契」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-spiritbolt">「灵弹」</a>冷却时间由 3 回合缩短为 2 回合。</li><li><a href="#skill-callsprite">「唤灵」</a>精怪射程增加 1 格；与「远灵」叠加后为 4 格。</li><li><a href="#skill-soulbond">「魂契」</a>施放后灵弹的冷却立即结束。</li><li><a href="#skill-sacrifice">「献祭」</a>伤害改为按你的攻击计算，造成 200% 伤害，不再取决于召唤物剩余生命。</li><li><a href="#skill-spiritGate">「灵界之门」</a>之后 2 回合，灵弹不进入冷却。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-puppeteer" data-toc-label="傀儡师" tabindex="-1">傀儡师<small>觉醒后称「巨像匠神」</small></h3>
+<p class="spec-pitch">操纵坚不可摧的石守，承伤转化为护盾。</p>
+<a class="spec-strength" href="#build-puppeteer">终局参考 · 等效第 <strong>121</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>石守不占召唤物上限，持续到被击倒为止，至多同时存在 2 尊。石守受到的伤害有 20% 转化为你的护盾。</dd></div>
+<div><dt>觉醒提升</dt><dd>石守承伤转化为护盾的比例由 20% 提高至 35%。</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-rockSkin"><small>45 级</small>岩肤</a><a class="chip" href="#skill-colossusStomp"><small>50 级</small>巨像践踏</a><a class="chip" href="#skill-titan"><small>觉醒</small>泰坦</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-summoner-soulforge">「铸魂」</a>、<a href="#passive-summoner-spiritward">「灵护」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-callguard">「石守」</a>石守在比你远 1 格以内时，仍能吸引敌人的攻击。</li><li><a href="#skill-wardstone">「护魂石」</a>石守同时获得同等护盾。</li><li><a href="#skill-soulbond">「魂契」</a>对石守的回复翻倍。</li><li><a href="#skill-avatar">「灵体降临」</a>场上的石守生命补满，12 回合内攻击提高至你本人的 100%。</li><li><a href="#skill-spiritGate">「灵界之门」</a>召出的石守生命翻倍。</li></ul></details>
+</section></div>
+<h2 id="skills" tabindex="-1">技能</h2>
+<p class="lead">职业技能共 12 个，学习消耗 1 技能点；携带栏 3 个起步，10 级和 25 级各增加 1 个。5 级起可以为已学技能选择精通（二选一，切换免费）。技能可以逐级升级，等级上限每 20 级开放一级，最高 5 级；拖动卡片下方的滑块可查看各等级的提升。</p>
+<h3 id="skills-class" data-toc-label="职业技能" tabindex="-1">职业技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-callwolf">
+<header><h4>唤狼</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">近战</span></p>
+<p class="skill-desc">召唤 1 只灵狼为你作战，持续 8 回合。灵狼近战，生命与攻击按你的属性折算。</p>
+<p class="skill-synergy">狼冲在前面，你退到后排放灵弹。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狼群</strong><p>一次召唤 2 只，但每只生命减半。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂齿</strong><p>灵狼的攻击会让目标流血。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
+<div class="skill-levels" data-rate="0.1" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="唤狼的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 40%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +10%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +10%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +10%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +10%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-callsprite">
+<header><h4>唤灵</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">远程</span></p>
+<p class="skill-desc">召唤 1 只精怪，持续 8 回合。精怪脆，但能从 2 格外攻击。</p>
+<p class="skill-synergy">精怪站后排持续输出，不用挤在前线。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>远灵</strong><p>精怪的射程提高到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蚀灵</strong><p>精怪的攻击会让目标破甲。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：精怪射程增加 1 格；与「远灵」叠加后为 4 格。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="唤灵的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +12%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +12%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +12%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-soulbond">
+<header><h4>魂契</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">群体</span></p>
+<p class="skill-desc">你和所有召唤物各回复 18% 最大生命。</p>
+<p class="skill-synergy">召唤物是消耗品，但能修就别急着换新的。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚契</strong><p>回复提高到 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护契</strong><p>同时给自己 20% 最大生命的护盾。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：施放后灵弹的冷却立即结束。</li><li><strong>傀儡师</strong>：对石守的回复翻倍。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="治疗 / 护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="魂契的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时治疗 / 护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>治疗 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>治疗 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>治疗 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>治疗 / 护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-callguard">
+<header><h4>石守</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">嘲讽</span></p>
+<p class="skill-desc">召唤 1 尊石守卫，持续 10 回合。它很硬、攻击很低，只要挡在你身前就会吸引敌人的攻击。</p>
+<p class="skill-synergy">把守卫摆在身前，敌人就打不到你。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>磐岩</strong><p>生命提高到你最大生命的 75%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘岩</strong><p>石守卫被攻击时反弹 50% 伤害。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：石守在比你远 1 格以内时，仍能吸引敌人的攻击。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="石守的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +12%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +12%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +12%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-empower">
+<header><h4>附能</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">催动</span></p>
+<p class="skill-desc">所有召唤物立刻额外行动一次，这一击的伤害随技能等级提高。</p>
+<p class="skill-synergy">狼群到位后放，等于白打一轮。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狂涌</strong><p>额外行动两次。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蚀能</strong><p>这一轮的攻击会让目标破甲。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：这一轮灵狼的攻击使目标流血 2 回合。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物这一击的伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="附能的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物这一击的伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物这一击的伤害 +12%</li><li data-level="3"><b>Lv.3</b>召唤物这一击的伤害 +12%</li><li data-level="4"><b>Lv.4</b>召唤物这一击的伤害 +12%</li><li data-level="5"><b>Lv.5</b>召唤物这一击的伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-sacrifice">
+<header><h4>献祭</h4><span class="skill-meta">10 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
+<p class="skill-desc">引爆生命最低的召唤物，对它 2 格内的所有敌人造成相当于它当前生命 150% 的伤害。</p>
+<p class="skill-synergy">快消散的召唤物别浪费，炸掉换一轮伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>崩裂</strong><p>范围扩大到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回魂</strong><p>引爆后你回复它当前生命的 50%。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：引爆灵狼后，召回一只持续 3 回合的灵狼。</li><li><strong>灵媒</strong>：伤害改为按你的攻击计算，造成 200% 伤害，不再取决于召唤物剩余生命。</li></ul></div>
+<div class="skill-levels" data-rate="0.1" data-scaling="爆炸伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="献祭的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时爆炸伤害累计提高 40%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>爆炸伤害 +10%</li><li data-level="3"><b>Lv.3</b>爆炸伤害 +10%</li><li data-level="4"><b>Lv.4</b>爆炸伤害 +10%</li><li data-level="5"><b>Lv.5</b>爆炸伤害 +10%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-spiritbolt">
+<header><h4>灵弹</h4><span class="skill-meta">15 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">叠伤</span></p>
+<p class="skill-desc">对射程内一名敌人造成 130% 伤害；每有一个召唤物，伤害再提高 25%。</p>
+<p class="skill-synergy">召唤师自己的输出手段，场上帮手越多打得越疼。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>贯魂</strong><p>每个召唤物改为提高 40%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>噬魂</strong><p>命中后目标易伤 2 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
+<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵弹的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 40%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-wardstone">
+<header><h4>护魂石</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">回复</span></p>
+<p class="skill-desc">获得 25% 最大生命的护盾，并把所有召唤物的生命补满。</p>
+<p class="skill-synergy">守住自己和前排，把一轮集火扛过去。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>坚石</strong><p>护盾提高到 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续石</strong><p>同时把所有召唤物的持续时间补到 8 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：石守同时获得同等护盾。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="护魂石的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-stormcall">
+<header><h4>群召</h4><span class="skill-meta">25 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
+<p class="skill-desc">一次召唤 2 只灵狼和 1 只精怪，持续 6 回合。</p>
+<p class="skill-synergy">开场或清完一波后用，迅速把场面铺满。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>潮涌</strong><p>改为召唤 3 只灵狼。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>久驻</strong><p>持续时间延长到 10 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：精怪换成第三只灵狼；与「潮涌」同时生效时改为 4 只。</li></ul></div>
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="群召的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +12%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +12%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +12%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-avatar">
+<header><h4>灵体降临</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">终结</span></p>
+<p class="skill-desc">召唤一尊灵体，持续 12 回合。它的生命和攻击都接近你本人。</p>
+<p class="skill-synergy">留到首领战，等于多了一个自己。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>不朽</strong><p>灵体不会到期消散。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>战魂</strong><p>灵体的攻击提高到你的 120%。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：场上的石守生命补满，12 回合内攻击提高至你本人的 100%。</li></ul></div>
+<div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵体降临的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +15%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +15%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +15%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +15%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-dominion">
+<header><h4>统御</h4><span class="skill-meta">35 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">强化</span></p>
+<p class="skill-desc">号令所有召唤物：各回复 30% 生命、持续时间 +3 回合，之后 3 回合攻击提高 30%；场上每有一个召唤物，你获得 6% 最大生命的护盾。</p>
+<p class="skill-synergy">狼群和灵体到位之后放，一手把前排修好、拉长，再狠狠推一把。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狂潮</strong><p>攻击提高改为 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>永契</strong><p>持续时间改为 +6 回合，回复提高到 50%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物增伤 / 护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="统御的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物增伤 / 护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物增伤 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>召唤物增伤 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>召唤物增伤 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>召唤物增伤 / 护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-spiritGate">
+<header><h4>灵界之门</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">召唤</span><span class="tag">齐攻</span></p>
+<p class="skill-desc">打开灵界之门：召唤石守卫、灵狼、精怪各 1 只，持续 8 回合，不占召唤物上限；随后场上所有召唤物立刻行动一次。</p>
+<p class="skill-synergy">召唤物站满了照样再添三只，首领战和最凶的一波留给它。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>灵潮</strong><p>所有召唤物立刻行动两次。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚门</strong><p>召唤物持续 12 回合。</p></div></div>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：额外召出 2 只灵狼。</li><li><strong>灵媒</strong>：之后 2 回合，灵弹不进入冷却。</li><li><strong>傀儡师</strong>：召出的石守生命翻倍。</li></ul></div>
+<div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵界之门的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +15%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +15%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +15%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-beastlord" data-toc-label="兽王专属" tabindex="-1">兽王专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-howl">
+<header><h4>狼嚎</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">护盾</span></p>
+<p class="skill-desc">所有召唤物回复 30% 生命，并获得相当于其生命 20% 的护盾；场上每有一个召唤物，你回复 4% 最大生命。</p>
+<p class="skill-synergy">兽王的保命手段：狼群越大，回复越多。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>群嚎</strong><p>召唤物的回复提高至 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>血嚎</strong><p>你每只回复提高至 6% 最大生命。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="回复 / 护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="狼嚎的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时回复 / 护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>回复 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>回复 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>回复 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>回复 / 护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-packHunt">
+<header><h4>群狼猎杀</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">集火</span><span class="tag">围猎</span></p>
+<p class="skill-desc">所有灵狼立即扑向同一名敌人各攻击一次，这一击伤害提高 50%。</p>
+<p class="skill-synergy">兽王的收尾手段：围住一名敌人时，每只灵狼都吃满围猎加成。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>撕咬</strong><p>同时使目标流血 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>包抄</strong><p>灵狼先移动到目标身边再攻击。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="召唤物这一击的伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="群狼猎杀的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物这一击的伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物这一击的伤害 +12%</li><li data-level="3"><b>Lv.3</b>召唤物这一击的伤害 +12%</li><li data-level="4"><b>Lv.4</b>召唤物这一击的伤害 +12%</li><li data-level="5"><b>Lv.5</b>召唤物这一击的伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-moonWolf">
+<header><h4>月狼</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">召唤</span></p>
+<p class="skill-desc">召唤一只月狼，持续 12 回合，生命与攻击接近你本人，不占召唤物上限；月狼每次攻击，都让相邻的其他召唤物额外行动一次。</p>
+<p class="skill-synergy">兽王的觉醒技：月狼冲进狼群中间，带着身边的召唤物一起出手。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长夜</strong><p>持续时间延长至 16 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>银月</strong><p>月狼的攻击提高至你的 100%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="月狼的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +15%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +15%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +15%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-medium" data-toc-label="灵媒专属" tabindex="-1">灵媒专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-spiritShield">
+<header><h4>灵盾</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">嘲讽</span></p>
+<p class="skill-desc">获得相当于召唤物数量 × 8% 最大生命的护盾（至少 15%）；所有召唤物嘲讽 1 回合。</p>
+<p class="skill-synergy">灵媒的保命手段：召唤物替你挡下攻击，你专心施放灵弹。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚盾</strong><p>每个召唤物的护盾提高至 10% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>长护</strong><p>嘲讽延长至 2 回合。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵盾的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-soulVolley">
+<header><h4>万灵弹</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">连发</span><span class="tag">弹射</span></p>
+<p class="skill-desc">连续射出 3 枚灵弹，每枚造成 90% 伤害；按灵弹的规则结算，每有一个召唤物伤害提高 25%，并结算灵痕与弹射。</p>
+<p class="skill-synergy">灵媒的输出手段：召唤物打过的敌人越多，弹射越多。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>灵涌</strong><p>增加至 4 枚。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>重灵</strong><p>每枚伤害提高至 120%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="万灵弹的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-communion">
+<header><h4>通灵</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">灵弹</span></p>
+<p class="skill-desc">之后 3 回合，灵弹不进入冷却，且每次命中灵痕目标都弹射到所有其他灵痕目标。</p>
+<p class="skill-synergy">灵媒的觉醒技：召唤物先把灵痕铺开，再连续施放灵弹。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长通</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>遍痕</strong><p>施放时所有敌人带上灵痕。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="通灵的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +15%</li><li data-level="3"><b>Lv.3</b>伤害 +15%</li><li data-level="4"><b>Lv.4</b>伤害 +15%</li><li data-level="5"><b>Lv.5</b>伤害 +15%</li></ol>
+</div>
+</article></div>
+<h3 id="skills-puppeteer" data-toc-label="傀儡师专属" tabindex="-1">傀儡师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-rockSkin">
+<header><h4>岩肤</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">嘲讽</span></p>
+<p class="skill-desc">石守与你各获得 30% 最大生命的护盾；之后 3 回合，石守在比你远 3 格以内时仍能吸引敌人的攻击。</p>
+<p class="skill-synergy">傀儡师的保命手段：让石守把远处的敌人也拉过去。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚岩</strong><p>护盾提高至 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>岩棘</strong><p>石守被攻击时反弹 50% 伤害。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="岩肤的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时护盾累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-colossusStomp">
+<header><h4>巨像践踏</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">眩晕</span></p>
+<p class="skill-desc">石守对其 2 格内所有敌人造成相当于你攻击 250% 的伤害，并使其眩晕 1 次行动。场上没有石守时，先召唤一尊。</p>
+<p class="skill-synergy">傀儡师的输出手段：石守站在敌群中间时收益最高。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震荡</strong><p>眩晕延长至 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>碎地</strong><p>伤害提高至 320%。</p></div></div>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="巨像践踏的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时伤害累计提高 48%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-titan">
+<header><h4>泰坦</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">前排</span></p>
+<p class="skill-desc">石守化身泰坦 5 回合：生命补满，攻击翻倍，每次攻击波及目标周围 1 格。场上没有石守时，先召唤一尊。</p>
+<p class="skill-synergy">傀儡师的觉醒技：前排同时成为主要输出。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>巨神</strong><p>持续时间延长至 7 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚壁</strong><p>施放时你获得 30% 最大生命的护盾。</p></div></div>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="泰坦的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5 时召唤物生命 / 攻击累计提高 60%</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>召唤物生命 / 攻击 +15%</li><li data-level="3"><b>Lv.3</b>召唤物生命 / 攻击 +15%</li><li data-level="4"><b>Lv.4</b>召唤物生命 / 攻击 +15%</li><li data-level="5"><b>Lv.5</b>召唤物生命 / 攻击 +15%</li></ol>
+</div>
+</article></div>
+<h2 id="passives" tabindex="-1">职业被动</h2>
+<p class="lead">5 级起可以花费 1 技能点学习，最多同时携带 2 项，随时可以免费退还。被动不占用技能携带栏。</p>
+<div class="passive-grid"><div class="passive-card" id="passive-summoner-packleader">
+<h4>群首</h4><p>每有一个召唤物，你造成的伤害提高 6%，最多 24%。</p><p class="muted">先铺场再输出，顺序反了就亏。</p>
+<span class="tag">兽王推荐</span> <span class="tag">灵媒推荐</span>
+</div>
+<div class="passive-card" id="passive-summoner-soulforge">
+<h4>铸魂</h4><p>召唤物的生命与攻击提高 20%。</p><p class="muted">召唤流的通用强化。</p>
+<span class="tag">傀儡师推荐</span>
+</div>
+<div class="passive-card" id="passive-summoner-lingering">
+<h4>长驻</h4><p>召唤物的持续时间延长 3 回合。</p><p class="muted">少花技能补场，多腾手放灵弹。</p>
+
+</div>
+<div class="passive-card" id="passive-summoner-spiritward">
+<h4>灵护</h4><p>召唤物倒下时，你获得 10% 最大生命的护盾。</p><p class="muted">前排被清掉时的兜底。</p>
+<span class="tag">傀儡师推荐</span>
+</div>
+<div class="passive-card" id="passive-summoner-bloodpact">
+<h4>血契</h4><p>召唤物命中敌人时，你回复 8% 最大生命。</p><p class="muted">帮手越多，回得越快。</p>
+<span class="tag">灵媒推荐</span>
+</div>
+<div class="passive-card" id="passive-summoner-legion">
+<h4>军团</h4><p>召唤物上限 +1。</p><p class="muted">配合群召把场面彻底铺满。</p>
+<span class="tag">兽王推荐</span>
+</div></div>
+<h2 id="builds" tabindex="-1">推荐配置</h2>
+<p class="lead">每个转职分别搜索出的最优配置：200 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～151 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-puppeteer" data-toc-label="傀儡师配置" tabindex="-1">傀儡师</h3>
+<span class="build-score"><span>等效第 <strong>121</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 15.5 L206.7 8.0 L228.3 9.9 L249.8 11.7 L271.4 21.1 L293.0 79.3 L314.6 19.3 L336.2 51.1 L357.8 64.3 L379.3 81.1 L400.9 98.0 L422.5 81.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 15.5 L206.7 8.0 L228.3 9.9 L249.8 11.7 L271.4 21.1 L293.0 79.3 L314.6 19.3 L336.2 51.1 L357.8 64.3 L379.3 81.1 L400.9 98.0 L422.5 81.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>石守</strong><span class="variant">磐岩</span><small>Lv.5</small></li><li><strong>灵体降临</strong><span class="variant">不朽</span><small>Lv.5</small></li><li><strong>岩肤</strong><span class="variant">厚岩</span><small>Lv.5</small></li><li><strong>灵界之门</strong><span class="variant">坚门</span><small>Lv.5</small></li><li><strong>巨像践踏</strong><span class="variant">碎地</span><small>Lv.5</small></li><li class="is-ascend"><strong>泰坦</strong><span class="variant">坚壁</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「铸魂」、「血契」</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>灵典</li><li><small>头盔</small>祭冠</li><li><small>护甲</small>祭袍</li><li><small>饰品</small>吊坠</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2103</b></span><span>生命 <b>6381</b></span><span>护甲 <b>281</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-beastlord" data-toc-label="兽王配置" tabindex="-1">兽王</h3>
+<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 9.9 L228.3 9.9 L249.8 23.0 L271.4 21.1 L293.0 81.1 L314.6 17.4 L336.2 49.3 L357.8 83.0 L379.3 98.0 L400.9 94.3 L422.5 96.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 9.9 L228.3 9.9 L249.8 23.0 L271.4 21.1 L293.0 81.1 L314.6 17.4 L336.2 49.3 L357.8 83.0 L379.3 98.0 L400.9 94.3 L422.5 96.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>唤狼</strong><span class="variant">裂齿</span><small>Lv.5</small></li><li><strong>灵界之门</strong><span class="variant">灵潮</span><small>Lv.5</small></li><li><strong>灵体降临</strong><span class="variant">战魂</span><small>Lv.5</small></li><li><strong>统御</strong><span class="variant">永契</span><small>Lv.5</small></li><li><strong>群狼猎杀</strong><span class="variant">撕咬</span><small>Lv.5</small></li><li class="is-ascend"><strong>月狼</strong><span class="variant">长夜</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「血契」、「铸魂」</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>符杖</li><li><small>头盔</small>祭冠</li><li><small>护甲</small>祭袍</li><li><small>饰品</small>护符</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1560</b></span><span>生命 <b>8592</b></span><span>护甲 <b>281</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-medium" data-toc-label="灵媒配置" tabindex="-1">灵媒</h3>
+<span class="build-score"><span>等效第 <strong>111</strong> 层</span><small>过半至第 106 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 11.7 L141.9 9.9 L163.5 9.9 L185.1 28.6 L206.7 9.9 L228.3 66.1 L249.8 64.3 L271.4 56.8 L293.0 98.0 L314.6 36.1 L336.2 88.6 L357.8 96.1 L379.3 98.0 L400.9 98.0 L422.5 98.0 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 11.7 L141.9 9.9 L163.5 9.9 L185.1 28.6 L206.7 9.9 L228.3 66.1 L249.8 64.3 L271.4 56.8 L293.0 98.0 L314.6 36.1 L336.2 88.6 L357.8 96.1 L379.3 98.0 L400.9 98.0 L422.5 98.0 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="120.3" y="114" text-anchor="middle">91</text><text x="206.7" y="114" text-anchor="middle">103</text><text x="293.0" y="114" text-anchor="middle">115</text><text x="379.3" y="114" text-anchor="middle">127</text><text x="465.7" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">151</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>统御</strong><span class="variant">狂潮</span><small>Lv.5</small></li><li><strong>唤灵</strong><span class="variant">蚀灵</span><small>Lv.5</small></li><li><strong>灵弹</strong><span class="variant">贯魂</span><small>Lv.5</small></li><li><strong>灵体降临</strong><span class="variant">不朽</span><small>Lv.5</small></li><li><strong>灵界之门</strong><span class="variant">灵潮</span><small>Lv.5</small></li><li class="is-ascend"><strong>通灵</strong><span class="variant">长通</span><small>Lv.5</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「铸魂」、「血契」</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>灵典</li><li><small>头盔</small>祭冠</li><li><small>护甲</small>祭袍</li><li><small>饰品</small>护符</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1448</b></span><span>生命 <b>8854</b></span><span>护甲 <b>281</b></span></dd></div>
+</dl>
+</section>
+<details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+<p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
+<p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
+</details></article>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-mage.html"><small>上一篇</small><span>法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-assassin.html"><small>下一篇</small><span>刺客<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+  </main>
+</div>
+<script src="search-index.js" defer></script>
+<script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
+(() => {
+  const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
+  const mobile = window.matchMedia('(max-width: 1000px)');
+  const toc = document.querySelector('.page-toc');
+  const links = [...document.querySelectorAll('[data-toc-id]')];
+  const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
+  const currentLabel = document.querySelector('.toc-current');
+  let currentId = '';
+  let scheduled = false;
+
+  function updateCurrent() {
+    scheduled = false;
+    const offset = mobile.matches ? 142 : 110;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.heading.getBoundingClientRect().top > offset) break;
+      current = section;
+    }
+    if (!current) return;
+    if (currentId !== current.heading.id) {
+      currentId = current.heading.id;
+      for (const { link } of sections) {
+        if (link === current.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      if (currentLabel) currentLabel.textContent = current.link.textContent.trim();
+    }
+    // 只滚动目录自身，避免目录定位带动正文跳动。
+    const panel = toc?.querySelector('.toc-panel');
+    if (panel && toc.open) {
+      const itemRect = current.link.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      if (itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom) {
+        panel.scrollTop += itemRect.top - panelRect.top - panel.clientHeight / 3;
+      }
+    }
+  }
+
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrent);
+  }
+
+  function fitMenus() {
+    for (const menu of menus) menu.open = !mobile.matches;
+    scheduleUpdate();
+  }
+  fitMenus();
+  mobile.addEventListener('change', fitMenus);
+  for (const menu of menus) {
+    menu.addEventListener('toggle', () => {
+      if (mobile.matches && menu.open) {
+        for (const other of menus) if (other !== menu) other.open = false;
+      }
+    });
+  }
+  document.addEventListener('click', event => {
+    if (mobile.matches && !menus.some(menu => menu.contains(event.target))) {
+      for (const menu of menus) menu.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobile.matches) return;
+    const open = menus.find(menu => menu.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+    }
+  });
+
+  function revealHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
+    target.scrollIntoView({ block: 'start' });
+    if (target.hasAttribute('tabindex')) target.focus({ preventScroll: true });
+    scheduleUpdate();
+  }
+  for (const link of document.querySelectorAll('.page-toc a, .tier-link, .class-link')) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (mobile.matches) for (const menu of menus) menu.open = false;
+      // 保留浏览器原生 hash 历史；重复点击当前锚点也能重新定位。
+      requestAnimationFrame(revealHash);
+    });
+  }
+  window.addEventListener('hashchange', revealHash);
+  window.addEventListener('load', () => { if (location.hash) revealHash(); else scheduleUpdate(); });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  document.addEventListener('toggle', scheduleUpdate, true);
+  scheduleUpdate();
+})();
+
+/* 全站搜索：索引在 search-index.js（window.GUIDE_SEARCH），按名称与所属做子串匹配；没有索引时搜索框什么也不做。 */
+(() => {
+  const input = document.querySelector('#guide-search');
+  const panel = document.querySelector('#guide-search-results');
+  if (!input || !panel) return;
+  const entries = () => window.GUIDE_SEARCH ?? [];
+  const escape = text => String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const mark = (text, query) => {
+    const at = text.toLowerCase().indexOf(query);
+    return at < 0 ? escape(text) : `${escape(text.slice(0, at))}<mark>${escape(text.slice(at, at + query.length))}</mark>${escape(text.slice(at + query.length))}`;
+  };
+  let results = [];
+  let active = -1;
+
+  function close() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(index) {
+    active = index;
+    [...panel.querySelectorAll('a')].forEach((link, i) => link.setAttribute('aria-selected', String(i === index)));
+    panel.querySelectorAll('a')[index]?.scrollIntoView({ block: 'nearest' });
+  }
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { close(); return; }
+    // 名称开头匹配排最前，其次名称包含，再次只有所属匹配。
+    const score = entry => {
+      const name = entry.n.toLowerCase();
+      if (name.startsWith(query)) return 0;
+      if (name.includes(query)) return 1;
+      return `${entry.c} ${entry.k}`.toLowerCase().includes(query) ? 2 : -1;
+    };
+    results = entries().map(entry => ({ entry, rank: score(entry) })).filter(item => item.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entry.n.length - b.entry.n.length).slice(0, 12).map(item => item.entry);
+    panel.innerHTML = results.length
+      ? results.map((entry, i) => `<a href="${escape(entry.u)}" role="option" id="guide-search-${i}" aria-selected="false"><strong>${mark(entry.n, query)}</strong>${entry.c ? `<small>${escape(entry.c)}</small>` : ''}<span class="kind">${escape(entry.k)}</span></a>`).join('')
+      : '<p class="search-empty">没有找到相关条目。</p>';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(results.length ? 0 : -1);
+  }
+  input.addEventListener('input', render);
+  input.addEventListener('focus', () => { if (input.value.trim()) render(); });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      if (!results.length) return;
+      event.preventDefault();
+      highlight((active + (event.key === 'ArrowDown' ? 1 : results.length - 1)) % results.length);
+    } else if (event.key === 'Enter' && results[active]) {
+      event.preventDefault();
+      location.href = results[active].u;
+      close();
+    } else if (event.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+  panel.addEventListener('click', () => close());
+  document.addEventListener('click', event => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== input) close();
+  });
+  // 按 / 聚焦搜索框（输入框里除外）。
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    event.preventDefault();
+    input.focus();
+  });
+})();
+
+/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+(() => {
+  if (!document.querySelector('.level-slider')) return;
+  for (const box of document.querySelectorAll('.skill-levels')) {
+    const slider = box.querySelector('.level-slider');
+    const output = box.querySelector('.level-value');
+    const total = box.querySelector('.level-total');
+    const rate = Number(box.dataset.rate) || 0;
+    const scaling = box.dataset.scaling || '伤害';
+    const update = () => {
+      const level = Number(slider.value);
+      output.textContent = `Lv.${level}`;
+      for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
+      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
+})();
+</script>
+</body>
+</html>
