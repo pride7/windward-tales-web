@@ -8,19 +8,21 @@
  * or when the player presses 立即更新. Without that message the waiting worker would sit there forever:
  * reloading the page does not release the old worker, so "takes over next launch" was never actually true.
  */
-const CACHE = 'windward-0.5.1-ota7-a8e49d69297f';
+const CACHE = 'windward-0.6.0-5cbec54d7e81';
 const ASSETS = [
-  "./assets/ArenaScene-B38oFHE3.js",
-  "./assets/index-BP1ZZ-I3.js",
-  "./assets/index-Bs7Zyhes.js",
-  "./assets/index-btWnsce2.css",
-  "./assets/index-s2vsuw5s.js",
+  "./assets/ArenaScene-CKZgG5Pm.js",
+  "./assets/index-0_icMxdr.js",
+  "./assets/index-B09Adc0h.css",
+  "./assets/index-CYQVEFa-.js",
+  "./assets/index-CeAgc24q.js",
   "./assets/phaser-B8p8Giq7.js",
   "./assets/phaser-DFK5Ua9d.js",
-  "./assets/web-CQknsaXV.js",
-  "./assets/web-DWN4-Kvt.js",
-  "./assets/web-DpI6x8Bw.js",
-  "./assets/web-Dr1SKrCI.js",
+  "./assets/web-Bya_14x-.js",
+  "./assets/web-C_CBMUVI.js",
+  "./assets/web-UUTcq_PB.js",
+  "./assets/web-iWGB79IJ.js",
+  "./assets/windward-serif-core-ILn5o2GB.woff2",
+  "./assets/windward-serif-extra-Cv_xVCrv.woff2",
   "./favicon.svg",
   "./guide/builds.html",
   "./guide/endgame.html",
