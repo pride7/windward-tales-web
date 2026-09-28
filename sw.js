@@ -8,19 +8,19 @@
  * or when the player presses 立即更新. Without that message the waiting worker would sit there forever:
  * reloading the page does not release the old worker, so "takes over next launch" was never actually true.
  */
-const CACHE = 'windward-0.7.1-ota2-49208fa78ca1';
+const CACHE = 'windward-0.7.1-ota3-1e88f7adbee5';
 const ASSETS = [
-  "./assets/ArenaScene-B_ZFGsY7.js",
-  "./assets/index-DJFenQQP.js",
-  "./assets/index-JqHcD5vf.js",
-  "./assets/index-gNu5NOiu.css",
-  "./assets/index-m_jcm56N.js",
+  "./assets/ArenaScene-DrheRXP4.js",
+  "./assets/index-CRDXJtkY.js",
+  "./assets/index-DvxkdHVJ.js",
+  "./assets/index-sYOMz-PL.css",
+  "./assets/index-uuNDUc_O.js",
   "./assets/phaser-B8p8Giq7.js",
   "./assets/phaser-DFK5Ua9d.js",
-  "./assets/web-BV0LM2bd.js",
-  "./assets/web-BV42c3gC.js",
-  "./assets/web-BpuXvIs3.js",
-  "./assets/web-ChoSyJME.js",
+  "./assets/web-BV1DiAkP.js",
+  "./assets/web-C5iWuyNA.js",
+  "./assets/web-INnsOVEM.js",
+  "./assets/web-h2KopcYG.js",
   "./assets/windward-serif-core-ILn5o2GB.woff2",
   "./assets/windward-serif-extra-Cv_xVCrv.woff2",
   "./cutins/beastlord.jpg",
