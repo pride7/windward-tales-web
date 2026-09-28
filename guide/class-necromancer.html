@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/necromancer.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>死灵法师</h1>
 <p class="page-description">远程 2 格。本体最弱，靠把打倒的敌人提取成影子、存进影子池慢慢壮大；影子越多、阶位越高，你越强。</p>
 <p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-netherlord">冥王</a><a class="tag tag-link" href="#spec-soulcaster">魂术师</a><a class="tag tag-link" href="#spec-psion">念动师</a></p>
@@ -502,8 +502,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-shadowSummon">
 <header><h4>暗影召唤</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">影子</span></p>
-<p class="skill-desc">按影子池的顺序召出 1 个还没上场的影子，它一直作战到被击倒为止；池子里的都已经在场、或者池子还是空的时，召出一个无名之影。</p>
-<p class="skill-synergy">开场先铺影子。池子越满、阶位越高，这一手越值钱。</p>
+<p class="skill-desc">按影子池的顺序召唤 1 个尚未上场的影子，持续作战至被击倒。若影子池为空，或其中的影子均已上场，则召唤 1 个无名之影。</p>
+<p class="skill-synergy">战斗开始时施放「暗影召唤」，可尽早让影子参与作战；影子池中的影子越强，收益越高。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>双影</strong><p>一次召出 2 个，但每个生命降低 30%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>影袭</strong><p>召出的影子立刻行动一次。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：影子池已全部在场时，召出的无名之影生命提高 50%。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="影子生命 / 攻击">
@@ -515,8 +515,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-arise">
 <header><h4>起来</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">尸骸</span></p>
-<p class="skill-desc">对本场倒下的敌人下令「起来」：最多 2 具尸骸化作普通阶的影子为你作战，直到本场结束或被击倒。被拉起过的敌人，战后提取成影子的几率翻倍。</p>
-<p class="skill-synergy">先打倒几个，再把它们拉起来反咬同伴；影子池还空着的时候，这是你唯一的帮手。</p>
+<p class="skill-desc">使本场战斗中倒下的最多 2 名敌人化作普通阶影子，持续作战至本场战斗结束或影子被击倒。这些敌人在战后被提取为影子的概率翻倍。</p>
+<p class="skill-synergy">先击倒敌人，再施放「起来」召唤影子；影子池为空时，也可借此获得作战单位。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>群起</strong><p>最多拉起 3 具。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>厉魂</strong><p>拉起的影子攻击提高 40%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：拉起的影子攻击提高 20%；与「厉魂」叠加后为 60%。</li><li><strong>魂术师</strong>：拉起的影子 3 回合后自爆，对 2 格内的敌人造成相当于其当前生命的伤害；自爆视为倒下，触发转职特性。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="影子生命 / 攻击">
@@ -528,9 +528,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shadowBolt">
 <header><h4>暗蚀箭</h4><span class="skill-meta">1 级开放 · 冷却 2 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">印记</span></p>
-<p class="skill-desc">对射程内一名敌人造成 150% 伤害，并打上君王印记 2 回合：影子攻击它时伤害提高 30%。</p>
-<p class="skill-synergy">点住最该先倒的那个，让影子一拥而上。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蚀骨</strong><p>伤害提高到 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>汲魂</strong><p>回复造成伤害的 40%。</p></div></div>
+<p class="skill-desc">对射程内一名敌人造成 150% 伤害，并施加持续 2 回合的君王印记；影子攻击该目标时，伤害提高 30%。</p>
+<p class="skill-synergy">优先以「暗蚀箭」标记需要集火的敌人，可提高影子对其造成的伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蚀骨</strong><p>伤害提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>汲魂</strong><p>回复造成伤害的 40%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魂术师</strong>：对带君王印记的目标伤害提高 40%。</li></ul></div>
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="暗蚀箭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,8 +541,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shadowExchange">
 <header><h4>影子交换</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">换位</span><span class="tag">替身</span></p>
-<p class="skill-desc">被贴身时可用：和离敌人最远的一个影子互换位置，并闪避下一次攻击；换过去的影子嘲讽 1 回合，替你挡在前面。</p>
-<p class="skill-synergy">本体最怕被围，换出去之后让影子去扛。</p>
+<p class="skill-desc">与敌人相邻时可施放：与距离敌人最远的影子交换位置，并闪避下一次攻击；交换位置的影子嘲讽敌人 1 回合。</p>
+<p class="skill-synergy">受到围攻时施放「影子交换」，可脱离近处敌人，并由影子吸引攻击。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>替身</strong><p>换过去的影子嘲讽 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>影遁</strong><p>闪避接下来 2 次攻击。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：换位后，把新位置相邻的敌人击退 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
@@ -554,9 +554,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-rulersHand">
 <header><h4>统治者之手</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
-<p class="skill-desc">用无形之手攫住射程内一名敌人：造成 180% 伤害并把它击退 2 格；撞上岩石、场地边缘会受撞击伤害并眩晕，撞上别的敌人两边都受伤。</p>
-<p class="skill-synergy">把冲上来的近战推回影子堆里，或者直接推进熔岩。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>碾压</strong><p>不再击退，改为眩晕 1 次行动，伤害提高到 240%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>掷飞</strong><p>击退 3 格。</p></div></div>
+<p class="skill-desc">对射程内一名敌人造成 180% 伤害，并将其击退 2 格。目标撞上岩石或场地边缘时，受到撞击伤害并眩晕；撞上其他敌人时，双方均受到伤害。</p>
+<p class="skill-synergy">以「统治者之手」击退靠近的敌人，可使其撞上障碍物，或进入熔岩等危险地形。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>碾压</strong><p>不再击退，改为眩晕 1 次行动，伤害提高至 240%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>掷飞</strong><p>击退 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：冷却时间由 4 回合缩短为 3 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="统治者之手的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -567,8 +567,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-monarchDomain">
 <header><h4>君王领域</h4><span class="skill-meta">10 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">影子</span><span class="tag">强化</span></p>
-<p class="skill-desc">展开君王领域：之后 3 回合，所有影子造成的伤害提高 30%，每回合回复 8% 生命。</p>
-<p class="skill-synergy">影子铺开之后放，一手把整支军队抬一截。</p>
+<p class="skill-desc">之后 3 回合，所有影子造成的伤害提高 30%，并在每回合回复 8% 最大生命。</p>
+<p class="skill-synergy">场上影子较多时施放「君王领域」，可同时提高它们的伤害并恢复生命。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>统治</strong><p>伤害提高改为 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>庇护</strong><p>影子受到的伤害同时降低 30%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：领域持续期间，撞墙造成的眩晕延长至 2 次行动。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="影子增伤 / 回复">
@@ -580,8 +580,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-devour">
 <header><h4>吞噬</h4><span class="skill-meta">15 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">吞噬</span></p>
-<p class="skill-desc">吞下生命比例最低的一个影子：你回复它当前生命的 80%。</p>
-<p class="skill-synergy">快要倒下的影子别浪费，吞回来续命，再召新的。</p>
+<p class="skill-desc">消耗生命比例最低的一个影子，回复相当于其当前生命 80% 的生命。</p>
+<p class="skill-synergy">需要回复生命时，可施放「吞噬」消耗一名影子，再召唤新的影子。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>反哺</strong><p>同时获得等量的护盾。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>灵爆</strong><p>被吞的影子先炸开，对它 2 格内的敌人造成它当前生命 100% 的伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魂术师</strong>：冷却时间由 5 回合缩短为 3 回合，吞噬后暗蚀箭的冷却立即结束。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="回复">
@@ -593,9 +593,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-veil">
 <header><h4>隐匿</h4><span class="skill-meta">20 级开放 · 冷却 7 回合</span></header>
 <p class="tags"><span class="tag">隐匿</span><span class="tag">闪避</span></p>
-<p class="skill-desc">隐入影子：之后 2 回合，只要有影子在敌人够得着的地方，敌人就只打影子；并闪避下一次攻击。</p>
-<p class="skill-synergy">影子站在前面时放，本体就能安心输出。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长隐</strong><p>隐匿延长到 3 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>暗袭</strong><p>同时进入专注：下一次技能必定暴击。</p></div></div>
+<p class="skill-desc">之后 2 回合，若敌人的攻击范围内有影子，则敌人只会攻击影子；同时闪避下一次攻击。</p>
+<p class="skill-synergy">影子位于敌人的攻击范围内时施放「隐匿」，可减少自身受到的攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长隐</strong><p>隐匿延长至 3 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>暗袭</strong><p>同时进入专注：下一次技能必定暴击。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魂术师</strong>：隐匿期间，暗蚀箭命中后弹射到另一名敌人，造成 50% 伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="隐匿的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -606,8 +606,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-legionCommand">
 <header><h4>军令</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">影子</span><span class="tag">齐攻</span></p>
-<p class="skill-desc">瞬发：放完还能接着行动，每回合限一个瞬发技。所有影子立刻行动一次，这一击的伤害随技能等级提高。</p>
-<p class="skill-synergy">影子铺满之后下令，等于白打一轮。</p>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。所有影子立即额外行动 1 次，此次行动造成的伤害随技能等级提高。</p>
+<p class="skill-synergy">场上影子较多时施放「军令」，可增加它们的攻击次数。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破阵</strong><p>这一轮的攻击让目标破甲 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>猛攻</strong><p>这一击伤害再提高 40%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：之后 1 回合，影子受到的伤害降低 30%。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="影子这一击的伤害">
@@ -619,9 +619,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-dragonFear">
 <header><h4>龙之恐惧</h4><span class="skill-meta">30 级开放 · 冷却 7 回合</span></header>
 <p class="tags"><span class="tag">群控</span><span class="tag">易伤</span></p>
-<p class="skill-desc">放出君王的威压：2 格内所有敌人眩晕，跳过 1 次行动，并易伤 2 回合：受到的所有伤害提高 30%，影子的攻击也算。</p>
-<p class="skill-synergy">被围时先吼一声，影子趁机把定住的敌人撕开。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>威压</strong><p>范围扩大到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂魂</strong><p>同时破甲 2 回合。</p></div></div>
+<p class="skill-desc">使 2 格内所有敌人眩晕，跳过 1 次行动，并易伤 2 回合，期间受到的所有伤害提高 30%，包括影子造成的伤害。</p>
+<p class="skill-synergy">受到包围时，以「龙之恐惧」限制敌人行动并施加易伤，再由影子攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>威压</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂魂</strong><p>同时破甲 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：眩晕的同时把敌人击退 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="龙之恐惧的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -632,8 +632,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shadowArmy">
 <header><h4>暗影军团</h4><span class="skill-meta">35 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
-<p class="skill-desc">号令影子军团：场上原有的影子各回复 30% 生命，再按影子池的顺序召出最多 3 个还没上场的影子（受影子上限约束，池子不够时补无名之影）；之后场上每有一个影子，你获得 5% 最大生命的护盾。</p>
-<p class="skill-synergy">空场时一手铺满，满场时把整支军队修好再套一层盾。</p>
+<p class="skill-desc">场上原有的影子各回复 30% 生命，再按影子池顺序召唤最多 3 个尚未上场的影子，受影子数量上限约束；影子池不足时，以无名之影补足。随后场上每有一个影子，你获得相当于 5% 最大生命的护盾。</p>
+<p class="skill-synergy">场上影子较少时施放「暗影军团」可补充影子；影子较多时施放则可恢复其生命并获得护盾。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>大军</strong><p>最多召出 4 个。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>铁军</strong><p>原有影子回复 50%，并在之后 3 回合伤害提高 20%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：召出的影子立即行动一次。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="影子生命 / 攻击 / 护盾">
@@ -645,8 +645,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shadowMonarch">
 <header><h4>影之君王</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">增伤</span><span class="tag">复生</span></p>
-<p class="skill-desc">射程内有敌人时可用：君王降临，立刻获得 30% 最大生命的护盾；之后 4 回合你和所有影子造成的伤害提高 50%，所有影子立刻行动一次；这期间倒下的影子立刻以 50% 生命重新站起（每个一次），倒下的敌人立刻化作普通阶的影子（受影子上限约束）。</p>
-<p class="skill-synergy">首领战和最凶的一波留给它：降临就是一轮齐攻，军队打不垮，杀一个还多一个。</p>
+<p class="skill-desc">射程内有敌人时可施放：立即获得相当于 30% 最大生命的护盾。之后 4 回合，你和所有影子造成的伤害提高 50%，所有影子立即额外行动 1 次；期间倒下的影子立即以 50% 生命重新站起，每个影子限 1 次。期间倒下的敌人会化作普通阶影子，受影子数量上限约束。</p>
+<p class="skill-synergy">面对首领或大量敌人时施放「影之君王」，可提高影子伤害并维持其作战能力。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>君临</strong><p>伤害提高改为 70%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>不灭</strong><p>重新站起时回满生命。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：期间每个影子可以重新站起两次。</li><li><strong>魂术师</strong>：期间暗蚀箭每次弹射到 2 名敌人。</li><li><strong>念动师</strong>：降临时把 2 格内所有敌人击退 2 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="护盾 / 增伤">
@@ -672,8 +672,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-boneTide">
 <header><h4>万骸</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
-<p class="skill-desc">按影子池的顺序召出影子直到上限（池子不够时补无名之影），并使召出的影子立即行动一次。</p>
-<p class="skill-synergy">冥王的铺场手段：一手把空位全部补满。</p>
+<p class="skill-desc">按影子池顺序召唤影子至数量上限；影子池不足时，以无名之影补足。召出的影子立即行动 1 次。</p>
+<p class="skill-synergy">冥王场上影子较少时施放「万骸」，可一次补足空缺的召唤位置。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>骸潮</strong><p>召出的影子之后 3 回合攻击提高 30%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>骸护</strong><p>召出的影子获得相当于其生命 20% 的护盾。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="影子生命 / 攻击">
@@ -685,8 +685,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card is-ascend" id="skill-underworld">
 <header><h4>冥府</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">不灭</span></p>
-<p class="skill-desc">之后 3 回合，倒下的影子立即以满生命重新站起，影子造成的伤害提高 10%。</p>
-<p class="skill-synergy">冥王的觉醒技：影子军团在这段时间里打不垮。</p>
+<p class="skill-desc">之后 3 回合，倒下的影子立即以最大生命重新站起，影子造成的伤害提高 10%。</p>
+<p class="skill-synergy">冥王在影子较多时施放「冥府」，可让倒下的影子继续作战。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>永夜</strong><p>持续时间延长至 5 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>冥召</strong><p>施放时所有影子回满生命。</p></div></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="影子增伤">
@@ -712,8 +712,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-soulBurst">
 <header><h4>魂爆</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
-<p class="skill-desc">引爆场上所有影子，每个对其 2 格内的敌人造成相当于其当前生命 120% 的伤害；每个倒下的影子都触发转职特性。</p>
-<p class="skill-synergy">魂术师的爆发手段：影子铺满之后一次引爆，接着用暗蚀箭收尾。</p>
+<p class="skill-desc">引爆场上所有影子，每个影子对其 2 格内的敌人造成相当于自身当前生命 120% 的伤害；每个倒下的影子都会触发转职特性。</p>
+<p class="skill-synergy">魂术师在场上影子较多时施放「魂爆」，可造成大量范围伤害，再以「暗蚀箭」攻击剩余敌人。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>烈爆</strong><p>伤害提高至 160%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余魂</strong><p>引爆后召出 1 个无名之影。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="爆炸伤害">
@@ -739,8 +739,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-psiBarrier">
 <header><h4>念力屏障</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
-<p class="skill-desc">获得 25% 最大生命的护盾，并把相邻的所有敌人击退 2 格。</p>
-<p class="skill-synergy">念动师的保命手段：被贴身时推开敌人，撞墙还能造成伤害。</p>
+<p class="skill-desc">获得相当于 25% 最大生命的护盾，并将所有相邻敌人击退 2 格。</p>
+<p class="skill-synergy">念动师与敌人相邻时施放「念力屏障」，可获得护盾并击退敌人；敌人撞上障碍物时还会受到伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚障</strong><p>护盾提高至 35% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>远斥</strong><p>击退距离增加至 3 格。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="护盾">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-druid.html"><small>上一篇</small><span>德鲁伊<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="rules.html"><small>下一篇</small><span>属性与规则<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

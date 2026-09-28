@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/ranger.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>游侠</h1>
 <p class="page-description">远程 3 格。靠敏捷堆暴击和闪避，喜欢开阔地和拉扯。</p>
 <p class="tags"><span class="tag">主属性 敏捷</span><span class="tag">射程 3 格</span><a class="tag tag-link" href="#spec-marksman">神射手</a><a class="tag tag-link" href="#spec-venomlord">毒王</a><a class="tag tag-link" href="#spec-windrunner">疾风</a></p>
@@ -502,9 +502,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-multishot">
 <header><h4>多重射击</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">多目标</span><span class="tag">引爆</span></p>
-<p class="skill-desc">射击射程内最多 3 名敌人，各造成 90% 伤害。优先射击中毒目标并引爆：立即造成剩余的全部毒伤。</p>
-<p class="skill-synergy">毒箭之后接多重射击，把持续伤害一次结清。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连珠</strong><p>射击 4 名敌人。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>穿甲箭雨</strong><p>无视护甲，伤害 80%。</p></div></div>
+<p class="skill-desc">射击射程内最多 3 名敌人，各造成 90% 伤害。优先射击中毒目标，并立即结算其剩余的全部毒伤。</p>
+<p class="skill-synergy">先以「毒箭」使敌人中毒，再以「多重射击」结算剩余毒伤。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连珠</strong><p>最多射击 4 名敌人。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>穿甲箭雨</strong><p>攻击无视护甲，对每名敌人造成 80% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>毒王</strong>：引爆后使目标重新中毒 1 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="多重射击的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -515,9 +515,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-pierce">
 <header><h4>穿刺箭</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">贯穿</span><span class="tag">破甲</span></p>
-<p class="skill-desc">对射程内护甲最高的敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合：护甲视为 0。箭会沿直线贯穿到射程尽头，路线上的其他敌人各受 110% 伤害，同样无视护甲；岩石会挡住箭。</p>
-<p class="skill-synergy">敌人排成一列时一箭穿一串；翻滚获得专注后再射出，必定暴击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>重矢</strong><p>主目标伤害提高到 300%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弱点</strong><p>命中后主目标易伤 2 回合。</p></div></div>
+<p class="skill-desc">对射程内护甲最高的敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合，期间护甲视为 0。箭矢沿直线贯穿至射程尽头，对路线上的其他敌人各造成 110% 伤害，同样无视护甲；岩石会阻挡箭矢。</p>
+<p class="skill-synergy">敌人排列在同一直线上时，可用「穿刺箭」同时攻击。先以「翻滚」获得专注，可使其必定暴击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>重矢</strong><p>对主目标造成的伤害提高至 300%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弱点</strong><p>命中后使主目标易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>神射手</strong>：沿线被贯穿的敌人也破甲 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="穿刺箭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -528,9 +528,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-roll">
 <header><h4>翻滚</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">后撤</span><span class="tag">专注</span></p>
-<p class="skill-desc">远离最近的敌人一格并射击，闪避下一次攻击，并进入专注：下一次技能攻击必定暴击。</p>
-<p class="skill-synergy">翻滚后接穿刺箭或多重射击，打出必定暴击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>影步</strong><p>闪避接下来 2 次攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回马箭</strong><p>翻滚时的射击伤害提高到 180%。</p></div></div>
+<p class="skill-desc">向远离最近敌人的方向移动 1 格并射击，闪避下一次攻击，并获得专注，使下一次技能攻击必定暴击。</p>
+<p class="skill-synergy">先以「翻滚」获得专注，再施放「穿刺箭」或「多重射击」。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>影步</strong><p>闪避接下来 2 次攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回马箭</strong><p>「翻滚」时的射击伤害提高至 180%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>神射手</strong>：后撤距离由 1 格增加至 2 格。</li><li><strong>疾风</strong>：翻滚时的射击改为急射的 2 箭。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="翻滚的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,9 +541,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-poison">
 <header><h4>毒箭</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">中毒</span></p>
-<p class="skill-desc">造成 80% 伤害，并让目标 3 回合内每回合受到 35% 攻击的毒伤。中毒目标可被多重射击引爆。</p>
-<p class="skill-synergy">给最高生命的敌人上毒，再用多重射击引爆。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>剧毒</strong><p>毒伤提高到 55% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蔓延</strong><p>目标相邻的敌人也会中毒。</p></div></div>
+<p class="skill-desc">对目标造成 80% 伤害，并使其中毒 3 回合，每回合受到 35% 攻击的毒伤。「多重射击」可以立即结算中毒目标剩余的全部毒伤。</p>
+<p class="skill-synergy">先使生命较高的敌人中毒，再以「多重射击」结算剩余毒伤。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>剧毒</strong><p>每回合毒伤提高至 55% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蔓延</strong><p>目标相邻的敌人也会中毒。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>毒王</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="毒箭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -554,9 +554,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-snipe">
 <header><h4>狙击</h4><span class="skill-meta">5 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">远射</span><span class="tag">必中</span></p>
-<p class="skill-desc">射程增加 2 格，对其中生命最高的敌人造成 250% 伤害，必定命中。</p>
-<p class="skill-synergy">翻滚进入专注后狙击，暴击一箭带走远处的弓手或萨满。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>穿云</strong><p>伤害提高到 320%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>猎杀</strong><p>命中后目标易伤 2 回合。</p></div></div>
+<p class="skill-desc">射程增加 2 格，对射程内生命最高的敌人造成 250% 伤害，必定命中。</p>
+<p class="skill-synergy">先以「翻滚」获得专注，再以「狙击」攻击远处的敌人。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>穿云</strong><p>伤害提高至 320%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>猎杀</strong><p>命中后目标易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>神射手</strong>：击杀目标后进入专注。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="狙击的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -567,9 +567,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-venom">
 <header><h4>毒雾箭</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">中毒</span></p>
-<p class="skill-desc">对射程内一名敌人及其相邻敌人造成 60% 伤害，并全部中毒 3 回合。</p>
-<p class="skill-synergy">一次给一群敌人上毒，再用多重射击连环引爆。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>浓毒</strong><p>毒伤提高到 55% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弥漫</strong><p>波及目标 2 格内的敌人，伤害 50%。</p></div></div>
+<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 60% 伤害，并使其全部中毒 3 回合。</p>
+<p class="skill-synergy">先以「毒雾箭」使多名敌人中毒，再以「多重射击」结算毒伤。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>浓毒</strong><p>每回合毒伤提高至 55% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弥漫</strong><p>波及目标 2 格内的敌人，各造成 50% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>毒王</strong>：命中的敌人同时易伤 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="毒雾箭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -580,8 +580,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-trap">
 <header><h4>陷阱箭</h4><span class="skill-meta">15 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">冻结</span></p>
-<p class="skill-desc">对最近的敌人造成 100% 伤害并冻结：跳过 1 次行动，冻结标记保留 2 回合。</p>
-<p class="skill-synergy">冻住冲上来的狼或狂战士，再从容拉开距离。</p>
+<p class="skill-desc">对最近的敌人造成 100% 伤害并使其冻结，跳过 1 次行动。冻结标记保留 2 回合。</p>
+<p class="skill-synergy">以「陷阱箭」限制近处敌人的行动，为后撤争取时间。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>寒霜陷阱</strong><p>冻结 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>荆棘陷阱</strong><p>目标相邻的敌人也被冻结 1 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>神射手</strong>：冻结的目标被穿刺箭或狙击命中时，伤害提高 50%，并消耗冻结标记。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -593,8 +593,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-rapidFire">
 <header><h4>急射</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">连射</span><span class="tag">普攻</span></p>
-<p class="skill-desc">对最近的敌人连续射击 3 次，每次造成 55% 伤害；每一箭都按普通攻击命中结算。</p>
-<p class="skill-synergy">喂给逐风旅途、追风连击、霜刃和吸血：命中次数就是收益。</p>
+<p class="skill-desc">对最近的敌人连续射击 3 次，每次造成 55% 伤害；每次命中均按普通攻击结算。</p>
+<p class="skill-synergy">「急射」可多次触发「逐风旅途」「追风连击」「霜刃」及吸血效果。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连发</strong><p>射击 4 次。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>精准</strong><p>每次 45% 伤害，但必定命中。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>疾风</strong>：节奏满层时多射 1 箭。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -606,9 +606,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-mark">
 <header><h4>猎人印记</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">易伤</span><span class="tag">破甲</span></p>
-<p class="skill-desc">瞬发：放完还能接着行动，每回合限一个瞬发技。使射程内生命最高的敌人易伤 3 回合、破甲 2 回合；它倒下时，印记连同剩下的回合转到离它最近的敌人身上。</p>
-<p class="skill-synergy">开场标记首领，之后每一箭都打满；清杂时印记一个接一个往下传。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深印</strong><p>易伤延长到 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>群印</strong><p>目标相邻的敌人也易伤 2 回合。</p></div></div>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。使射程内生命最高的敌人易伤 3 回合、破甲 2 回合。目标倒下时，印记及其剩余持续时间转移至距离目标最近的敌人。</p>
+<p class="skill-synergy">战斗开始时对首领施加「猎人印记」，可使后续攻击受益；目标倒下后，印记还会转移至其他敌人。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深印</strong><p>易伤延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>群印</strong><p>目标相邻的敌人也易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>疾风</strong>：印记目标被普通攻击命中时，追加 30% 攻击的伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="猎人印记的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -619,9 +619,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-explosiveArrow">
 <header><h4>爆炸箭</h4><span class="skill-meta">30 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">引爆</span></p>
-<p class="skill-desc">对最近的敌人造成 150% 伤害，其相邻敌人各受 100%。命中中毒目标时引爆毒伤，并把中毒扩散到相邻敌人。</p>
-<p class="skill-synergy">毒箭或毒雾箭先铺毒，再一箭引爆整群。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛爆</strong><p>中心伤害提高到 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>毒云</strong><p>扩散出去的中毒多持续 1 回合。</p></div></div>
+<p class="skill-desc">对最近的敌人造成 150% 伤害，对其相邻敌人各造成 100% 伤害。命中中毒目标时，立即结算其剩余毒伤，并使相邻敌人中毒。</p>
+<p class="skill-synergy">先以「毒箭」或「毒雾箭」使目标中毒，再以「爆炸箭」结算毒伤。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛爆</strong><p>中心伤害提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>毒云</strong><p>扩散出去的中毒多持续 1 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>毒王</strong>：无论目标是否中毒，都使相邻的敌人中毒。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="爆炸箭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -632,8 +632,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-deathArrow">
 <header><h4>追命箭</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">叠状态</span></p>
-<p class="skill-desc">对射程内一名敌人造成 200% 伤害，必定命中；目标身上每有一种异常状态（冻结、中毒、流血、燃烧、破甲、易伤），伤害再提高 35%，最多算 4 种。命中后目标易伤 2 回合，你闪避下一次攻击；击杀目标则进入专注。</p>
-<p class="skill-synergy">穿刺箭破甲、毒箭上毒、弱点上易伤，状态挂得越全，这一箭越疼。</p>
+<p class="skill-desc">对射程内一名敌人造成 200% 伤害，必定命中。目标每带有一种异常状态（冻结、中毒、流血、燃烧、破甲、易伤），伤害额外提高 35%，最多计算 4 种。命中后使目标易伤 2 回合，并闪避下一次攻击；若击杀目标，则获得专注。</p>
+<p class="skill-synergy">先以「穿刺箭」施加破甲，或以「毒箭」施加中毒，再施放「追命箭」，可按异常状态的种类提高伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>穿心</strong><p>每种状态改为提高 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>连猎</strong><p>击杀目标后冷却立即结束。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>疾风</strong>：每 2 层节奏算作 1 种异常状态，与目标身上的状态合计，仍然至多算 4 种。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -645,9 +645,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-arrowStorm">
 <header><h4>万箭齐发</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">中毒</span></p>
-<p class="skill-desc">射程增加 2 格，向其中所有敌人倾泻箭雨，各造成 200% 伤害；已中毒的先引爆剩余毒伤，再和其余敌人一起中毒 3 回合、破甲 2 回合。射完后撤 1 格，闪避下一次攻击。</p>
-<p class="skill-synergy">毒雾箭、毒箭先铺毒，箭雨一落全部引爆再重新染上；多重射击、爆炸箭和追命箭接着收。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>暴雨</strong><p>伤害提高到 260%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>毒雨</strong><p>毒伤提高到 55% 攻击，命中的敌人同时易伤 2 回合。</p></div></div>
+<p class="skill-desc">射程增加 2 格，对射程内所有敌人各造成 200% 伤害。已中毒的敌人先结算剩余毒伤；随后使所有命中的敌人中毒 3 回合、破甲 2 回合。施放后后撤 1 格，并闪避下一次攻击。</p>
+<p class="skill-synergy">先以「毒雾箭」或「毒箭」使敌人中毒，再施放「万箭齐发」结算毒伤并重新施加中毒。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>暴雨</strong><p>伤害提高至 260%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>毒雨</strong><p>毒伤提高至 55% 攻击，命中的敌人同时易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>神射手</strong>：射完后蓄势叠满。</li><li><strong>毒王</strong>：施加的中毒延长至 5 回合。</li><li><strong>疾风</strong>：之后 2 回合，普通攻击每次射出 2 箭。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="万箭齐发的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -660,7 +660,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>脱身</h4><span class="skill-meta">45 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">位移</span><span class="tag">冻结</span></p>
 <p class="skill-desc">向远离敌人的方向后撤 2 格，对最近的敌人造成 120% 伤害并使其冻结 1 次行动，获得 1 层蓄势。</p>
-<p class="skill-synergy">神射手的保命手段：被贴身时拉开距离，蓄势随之恢复。</p>
+<p class="skill-synergy">神射手与敌人相邻时施放「脱身」，可拉开距离并获得蓄势。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>远遁</strong><p>后撤距离增加至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>缚足</strong><p>冻结延长至 2 次行动。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -672,8 +672,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-skyPierce">
 <header><h4>裂空箭</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">贯穿</span><span class="tag">蓄势</span></p>
-<p class="skill-desc">沿直线射出贯穿到射程尽头的一箭，路线上所有敌人受到 280% 伤害，无视护甲；消耗蓄势。</p>
-<p class="skill-synergy">神射手的收尾手段：蓄势叠满之后一箭贯穿整列敌人。</p>
+<p class="skill-desc">沿直线射出贯穿至射程尽头的箭矢，对路线上的所有敌人各造成 280% 伤害，无视护甲，并消耗蓄势。</p>
+<p class="skill-synergy">神射手在蓄势层数较高时施放「裂空箭」，可同时攻击排列在同一直线上的敌人。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>穿云</strong><p>伤害提高至 360%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回势</strong><p>击杀敌人时返还一半蓄势。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -765,8 +765,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card is-ascend" id="skill-windGod">
 <header><h4>风神</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">连射</span></p>
-<p class="skill-desc">之后 4 回合，每次普通攻击射出 3 箭；节奏叠满，受到攻击时不会减少。</p>
-<p class="skill-synergy">疾风的觉醒技：开启之后以普通攻击为主，节奏始终保持满层。</p>
+<p class="skill-desc">之后 4 回合，每次普通攻击射出 3 箭；节奏层数达到上限，受到攻击时不会减少。</p>
+<p class="skill-synergy">疾风施放「风神」后可优先使用普通攻击，并维持最高节奏层数。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长风</strong><p>持续时间延长至 5 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>风愈</strong><p>施放时回复 15% 最大生命。</p></div></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-warrior.html"><small>上一篇</small><span>战士<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-mage.html"><small>下一篇</small><span>法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

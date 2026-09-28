@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/mage.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>法师</h1>
 <p class="page-description">远程 2 格。靠智力放大技能、缩短冷却，喜欢敌人扎堆。</p>
 <p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-glacier">冰结师</a><a class="tag tag-link" href="#spec-pyro">爆炎师</a><a class="tag tag-link" href="#spec-thunder">雷霆使</a></p>
@@ -502,8 +502,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-fireball">
 <header><h4>火球术</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">易伤</span></p>
-<p class="skill-desc">轰击射程内一名敌人及其相邻的敌人，各造成 160% 伤害，并使命中目标易伤 2 回合：受到的所有伤害提高 30%。</p>
-<p class="skill-synergy">先烧出易伤，再用闪电链或普攻扩大战果。</p>
+<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 160% 伤害，并使其易伤 2 回合，期间受到的所有伤害提高 30%。</p>
+<p class="skill-synergy">先以「火球术」施加易伤，再使用「闪电链」或普通攻击。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>燃烧</strong><p>命中的敌人燃烧 3 回合：每回合受到 30% 攻击的伤害，每次递增 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余波</strong><p>波及目标 2 格内的敌人，伤害 120%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：命中必定燃烧 1 层；已燃烧的目标再增加 1 层。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -515,9 +515,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-frostring">
 <header><h4>冰霜新星</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
-<p class="skill-desc">对 2 格内所有敌人造成 110% 伤害并冻结：跳过 1 次行动，冻结标记保留 2 回合，可被闪电链导电或碎冰击碎。贴身的敌人还会被寒气冲开 1 格，撞上岩石、边缘或别的敌人会受撞击伤害。</p>
-<p class="skill-synergy">冻住一群敌人并拉开距离，再用闪电链或碎冰收割；把冻住的敌人冲进浅水，它会多停一回合。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深冻</strong><p>冻结 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜环</strong><p>范围扩大到 3 格。</p></div></div>
+<p class="skill-desc">对 2 格内所有敌人造成 110% 伤害并使其冻结，跳过 1 次行动。冻结标记保留 2 回合，可被「闪电链」或「碎冰」消耗。相邻敌人还会被击退 1 格，若撞上岩石、场地边缘或其他敌人，将受到撞击伤害。</p>
+<p class="skill-synergy">先以「冰霜新星」冻结敌人，再以「闪电链」或「碎冰」消耗冻结标记。将敌人击退至浅水，还可延长其行动受限的时间。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深冻</strong><p>冻结 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜环</strong><p>范围扩大至 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：寒气冲开的距离由 1 格增加至 2 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="冰霜新星的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -528,9 +528,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-arcaneshield">
 <header><h4>奥术护盾</h4><span class="skill-meta">1 级开放 · 冷却 7 回合</span></header>
 <p class="tags"><span class="tag">防护</span><span class="tag">护盾</span></p>
-<p class="skill-desc">获得相当于 35% 最大生命的护盾，直到被打碎。</p>
-<p class="skill-synergy">为近距离释放冰霜新星争取安全。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚盾</strong><p>护盾提高到最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反射</strong><p>护盾吸收伤害时，对攻击者造成吸收量 50% 的必中伤害。</p></div></div>
+<p class="skill-desc">获得相当于 35% 最大生命的护盾，持续至护盾被击破。</p>
+<p class="skill-synergy">施放「冰霜新星」前先获得护盾，可减少近距离作战的风险。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚盾</strong><p>护盾提高至最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反射</strong><p>护盾吸收伤害时，对攻击者造成吸收量 50% 的必中伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：护盾被击破时，冻结攻击者 1 次行动。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="奥术护盾的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,9 +541,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-chain">
 <header><h4>闪电链</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">连跳</span><span class="tag">导电</span></p>
-<p class="skill-desc">依次击中最多 3 名相互靠近的敌人，伤害 140%/110%/80%。命中冻结目标时导电：伤害提高 50%，并消耗冻结标记。</p>
-<p class="skill-synergy">冰霜新星之后接闪电链，每一跳都能导电。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长链</strong><p>最多跳 5 次，第 4、5 跳伤害 80%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>过载</strong><p>只击中一个目标，伤害 240%，仍可导电。</p></div></div>
+<p class="skill-desc">依次击中最多 3 名相互靠近的敌人，分别造成 140%、110%、80% 伤害。命中带有冻结标记的敌人时，伤害提高 50%，并消耗该标记。</p>
+<p class="skill-synergy">先以「冰霜新星」施加冻结标记，再以「闪电链」攻击，可提高每次命中的伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长链</strong><p>最多命中 5 名敌人，第 4、5 次命中各造成 80% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>过载</strong><p>只命中一名敌人，造成 240% 伤害，仍可消耗冻结标记。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：导电时不再消耗冻结标记。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="闪电链的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -554,9 +554,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shatter">
 <header><h4>碎冰</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">碎冰</span></p>
-<p class="skill-desc">对 2 格内所有带冻结标记的敌人造成 180% 伤害，并击碎标记。</p>
-<p class="skill-synergy">冰霜新星之后接碎冰，一次结清一群敌人。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>寒爆</strong><p>伤害提高到 240%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜封</strong><p>击碎后目标再次冻结 1 次行动。</p></div></div>
+<p class="skill-desc">对 2 格内所有带有冻结标记的敌人造成 180% 伤害，并消耗冻结标记。</p>
+<p class="skill-synergy">先以「冰霜新星」为多名敌人施加冻结标记，再以「碎冰」同时攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>寒爆</strong><p>伤害提高至 240%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>霜封</strong><p>击碎后目标再次冻结 1 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：冷却时间由 4 回合缩短为 3 回合，范围由 2 格扩大至 3 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="碎冰的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -567,9 +567,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-blink">
 <header><h4>闪现</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">位移</span><span class="tag">专注</span></p>
-<p class="skill-desc">向远离敌人的方向移动最多 2 格，并进入专注：下一次技能攻击必定暴击。</p>
-<p class="skill-synergy">被近身时闪现拉开距离，再用必定暴击的火球术反击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>疾影</strong><p>移动距离提高到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>幻影</strong><p>闪现后闪避下一次攻击。</p></div></div>
+<p class="skill-desc">向远离敌人的方向移动最多 2 格，并获得专注，使下一次技能攻击必定暴击。</p>
+<p class="skill-synergy">相邻敌人较多时，以「闪现」拉开距离，再施放「火球术」。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>疾影</strong><p>移动距离提高至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>幻影</strong><p>闪现后闪避下一次攻击。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：获得 2 层静电。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="闪现的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -580,9 +580,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-arcaneBolt">
 <header><h4>奥术弹</h4><span class="skill-meta">15 级开放 · 冷却 2 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">增伤</span></p>
-<p class="skill-desc">对射程内一名敌人造成 130% 伤害，冷却只有 2 回合；目标处于冻结或易伤时伤害提高 40%。</p>
-<p class="skill-synergy">刷施放次数：术式屏障、星火回响、过载都按这个结算。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连珠弹</strong><p>冷却缩短到 1 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>重弹</strong><p>伤害提高到 200%，冷却 3 回合。</p></div></div>
+<p class="skill-desc">对射程内一名敌人造成 130% 伤害，冷却时间为 2 回合。目标处于冻结或易伤状态时，伤害提高 40%。</p>
+<p class="skill-synergy">「奥术弹」冷却时间较短，可频繁触发「术式屏障」「星火回响」和「过载」的效果。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>连珠弹</strong><p>冷却缩短至 1 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>重弹</strong><p>伤害提高至 200%，冷却 3 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>雷霆使</strong>：命中后额外弹向最近的另一名敌人，造成 60% 伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="奥术弹的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -593,9 +593,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-drain">
 <header><h4>吸魂</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
-<p class="skill-desc">对射程内生命最高的敌人造成 140% 伤害，并回复造成伤害的 50%。</p>
-<p class="skill-synergy">法师的续航：对着最厚的敌人吸。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深渊之握</strong><p>回复提高到造成伤害的 70%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>虚弱</strong><p>命中后目标易伤 2 回合。</p></div></div>
+<p class="skill-desc">对射程内生命最高的敌人造成 140% 伤害，并回复相当于造成伤害 50% 的生命。</p>
+<p class="skill-synergy">以「吸魂」攻击生命较高的敌人，可在造成伤害的同时回复生命。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深渊之握</strong><p>回复提高至造成伤害的 70%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>虚弱</strong><p>命中后目标易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：对燃烧目标的回复比例提高 20 个百分点。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="吸魂的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -606,9 +606,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-slowField">
 <header><h4>时滞</h4><span class="skill-meta">25 级开放 · 冷却 7 回合</span></header>
 <p class="tags"><span class="tag">眩晕</span><span class="tag">破甲</span></p>
-<p class="skill-desc">瞬发：放完还能接着行动，每回合限一个瞬发技。2 格内所有敌人眩晕，跳过 1 次行动，并破甲 2 回合、带上冻结标记 2 回合（可被导电、碎冰或霜火引燃）。</p>
-<p class="skill-synergy">被围时先时滞定住一圈，接霜火把整圈引燃，或者接闪电链、碎冰。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>凝滞</strong><p>范围扩大到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>侵蚀</strong><p>破甲改为易伤 2 回合。</p></div></div>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。使 2 格内所有敌人眩晕，跳过 1 次行动，并使其破甲 2 回合、获得持续 2 回合的冻结标记。</p>
+<p class="skill-synergy">受到包围时，先以「时滞」限制敌人行动，再以「霜火」「闪电链」或「碎冰」消耗冻结标记。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>凝滞</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>侵蚀</strong><p>破甲改为易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：眩晕延长至 2 次行动。</li><li><strong>雷霆使</strong>：命中的敌人之后 2 回合受到闪电链的伤害提高 40%。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="时滞的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -619,8 +619,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-meteor">
 <header><h4>陨石</h4><span class="skill-meta">30 级开放 · 冷却 7 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">碎裂</span></p>
-<p class="skill-desc">对 2 格内所有敌人造成 220% 伤害；命中冻结目标时碎裂：伤害再提高 50%，并消耗冻结标记。</p>
-<p class="skill-synergy">冰霜新星之后砸下来，一次结清。</p>
+<p class="skill-desc">对 2 格内所有敌人造成 220% 伤害；命中带有冻结标记的敌人时，伤害额外提高 50%，并消耗该标记。</p>
+<p class="skill-synergy">先以「冰霜新星」冻结敌人，再施放「陨石」造成额外伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>天火</strong><p>改为对射程内生命最高的单体造成 300% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余烬</strong><p>命中的敌人易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：对燃烧目标的伤害提高 50%，与碎裂加成分别计算。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害">
@@ -632,9 +632,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-frostfire">
 <header><h4>霜火</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">冰火</span><span class="tag">引燃</span></p>
-<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 170% 伤害。已冻结的敌人被引燃：伤害再提高 50%、消耗冻结标记，并燃烧 3 回合；没冻结的敌人被冻结 1 次行动。</p>
-<p class="skill-synergy">自己就能接自己：第一发冻住，第二发引燃；接在冰霜新星后面，直接引燃一片。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>炽焰</strong><p>燃烧伤害提高到 50% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>寒潮</strong><p>波及目标 2 格内的敌人，伤害 140%。</p></div></div>
+<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 170% 伤害。若目标带有冻结标记，则伤害额外提高 50%，消耗该标记，并使其燃烧 3 回合；其他目标被冻结 1 次行动。</p>
+<p class="skill-synergy">首次施放「霜火」可冻结敌人，再次施放可消耗冻结标记并施加燃烧。「冰霜新星」也可提前施加冻结标记。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>炽焰</strong><p>燃烧伤害提高至 50% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>寒潮</strong><p>波及目标 2 格内的敌人，伤害 140%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆炎师</strong>：未冻结的敌人改为燃烧 1 层，不再冻结。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="霜火的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -645,9 +645,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-tempest">
 <header><h4>元素风暴</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
-<p class="skill-desc">射程内有敌人时可用：召来冰火交织的风暴，席卷到射程外 2 格，其中所有敌人各受 200% 伤害，冻结 1 次行动并燃烧 3 回合；你获得 30% 最大生命的护盾。</p>
-<p class="skill-synergy">一手同时清场、控场和保命；留下的冻结标记还能交给闪电链、碎冰和霜火。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>极寒</strong><p>冻结延长到 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护法</strong><p>护盾提高到 50% 最大生命。</p></div></div>
+<p class="skill-desc">射程内有敌人时可施放：对射程外扩 2 格范围内的所有敌人各造成 200% 伤害，使其冻结 1 次行动并燃烧 3 回合；同时获得相当于 30% 最大生命的护盾。</p>
+<p class="skill-synergy">「元素风暴」可同时造成范围伤害、限制敌人行动并提供护盾。其冻结标记还能与「闪电链」「碎冰」「霜火」配合。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>极寒</strong><p>冻结延长至 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护法</strong><p>护盾提高至 50% 最大生命。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冰结师</strong>：冻结延长 1 次行动，与「极寒」叠加。</li><li><strong>爆炎师</strong>：燃烧改为直接叠加 2 层。</li><li><strong>雷霆使</strong>：施放后 2 回合内，闪电链的冷却时间为 1 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 燃烧 / 护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="元素风暴的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -712,8 +712,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-razeCity">
 <header><h4>焚城</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
-<p class="skill-desc">对 2 格内所有敌人造成 260% 伤害，并使其燃烧 2 层。</p>
-<p class="skill-synergy">爆炎师的铺场手段：先焚城叠满燃烧，燃烧的敌人倒下时再连环爆炸。</p>
+<p class="skill-desc">对 2 格内所有敌人造成 260% 伤害，并使其叠加 2 层燃烧。</p>
+<p class="skill-synergy">爆炎师可先以「焚城」叠加燃烧；燃烧的敌人倒下后，还可触发连锁爆炸。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>燎原</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>灼骨</strong><p>伤害提高至 320%。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 燃烧">
@@ -725,8 +725,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card is-ascend" id="skill-redLotus">
 <header><h4>红莲</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">引燃</span></p>
-<p class="skill-desc">结清场上所有燃烧，按 150% 结算；随后使所有敌人燃烧 3 层。</p>
-<p class="skill-synergy">爆炎师的觉醒技：燃烧叠满之后施放，一次结清并重新点燃全场。</p>
+<p class="skill-desc">立即以 150% 的比例结算场上所有燃烧伤害；随后使所有敌人叠加 3 层燃烧。</p>
+<p class="skill-synergy">爆炎师在敌人积累较多燃烧层数后施放「红莲」，可结算伤害并再次施加燃烧。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>业火</strong><p>结算比例提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>莲华</strong><p>施放时获得 30% 最大生命的护盾。</p></div></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="燃烧">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-ranger.html"><small>上一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-summoner.html"><small>下一篇</small><span>召唤师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

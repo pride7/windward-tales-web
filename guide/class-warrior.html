@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/warrior.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>战士</h1>
 <p class="page-description">近战。靠力量和体质硬吃伤害，喜欢卡口和护盾。</p>
 <p class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 1 格</span><a class="tag tag-link" href="#spec-mountain">碎岳</a><a class="tag tag-link" href="#spec-rampart">盾魂</a><a class="tag tag-link" href="#spec-bloodwar">狂战士</a></p>
@@ -502,8 +502,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-heavy">
 <header><h4>重击</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">重创</span></p>
-<p class="skill-desc">对射程内一名敌人造成 200% 攻击伤害。命中易伤目标时造成重创：伤害再提高 50%，并消耗易伤。</p>
-<p class="skill-synergy">战吼或冲锋造成的易伤，交给重击收割。</p>
+<p class="skill-desc">对射程内一名敌人造成 200% 攻击伤害。命中易伤目标时，伤害额外提高 50%，并消耗易伤。</p>
+<p class="skill-synergy">先以「战吼」或「冲锋」施加易伤，再以「重击」造成额外伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破甲重击</strong><p>命中后目标破甲 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>震荡重击</strong><p>命中后目标眩晕，跳过 1 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中破甲目标时，对其相邻敌人各造成该次伤害 50% 的伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -515,8 +515,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-whirl">
 <header><h4>旋风斩</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
-<p class="skill-desc">对所有相邻敌人各造成 130% 伤害，并使其破甲 2 回合：护甲视为 0。</p>
-<p class="skill-synergy">先破甲，再让所有攻击打满伤害，适合兽人、巨魔和首领。</p>
+<p class="skill-desc">对所有相邻敌人各造成 130% 伤害，并使其破甲 2 回合，期间护甲视为 0。</p>
+<p class="skill-synergy">先以「旋风斩」施加破甲，再使用其他攻击，适合对付高护甲敌人。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血旋</strong><p>每次命中回复造成伤害的 20%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>飓风</strong><p>攻击 2 格内所有敌人，伤害 110%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：使命中的敌人流血 3 回合，每回合受到 45% 攻击的伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -528,9 +528,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-warcry">
 <header><h4>战吼</h4><span class="skill-meta">1 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">易伤</span></p>
-<p class="skill-desc">获得相当于 35% 最大生命的护盾，并震慑相邻敌人：易伤 2 回合，受到的所有伤害提高 30%。</p>
-<p class="skill-synergy">震慑之后接重击，打出重创。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>铁壁</strong><p>护盾提高到最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>咆哮</strong><p>震慑范围扩大到 2 格。</p></div></div>
+<p class="skill-desc">获得相当于 35% 最大生命的护盾，并使相邻敌人易伤 2 回合，期间受到的所有伤害提高 30%。</p>
+<p class="skill-synergy">先以「战吼」施加易伤，再以「重击」造成额外伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>铁壁</strong><p>护盾提高至最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>咆哮</strong><p>震慑范围扩大至 2 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：冷却时间由 6 回合缩短为 5 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="战吼的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,9 +541,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-charge">
 <header><h4>冲锋</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">突进</span><span class="tag">易伤</span></p>
-<p class="skill-desc">冲向 2–4 格外最近的敌人并造成 170% 伤害，命中后目标易伤 2 回合：受到的所有伤害提高 30%。对首领必定命中。</p>
-<p class="skill-synergy">接敌即上易伤，下一回合的重击会造成重创。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛冲</strong><p>伤害提高到 220%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>践踏</strong><p>同时对目标相邻的敌人造成 100% 伤害。</p></div></div>
+<p class="skill-desc">冲向 2–4 格外最近的敌人并造成 170% 伤害，使其易伤 2 回合，期间受到的所有伤害提高 30%。对首领必定命中。</p>
+<p class="skill-synergy">以「冲锋」接近敌人并施加易伤，再以「重击」造成额外伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛冲</strong><p>伤害提高至 220%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>践踏</strong><p>同时对目标相邻的敌人各造成 100% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中后使目标额外破甲 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="冲锋的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -555,8 +555,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>处决</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">斩杀</span><span class="tag">重置</span></p>
 <p class="skill-desc">对射程内生命低于 40% 的敌人造成 300% 伤害。若因此击杀目标，冷却立即结束。</p>
-<p class="skill-synergy">旋风斩削弱一群敌人后，用处决逐个收割。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血偿</strong><p>处决击杀后回复 15% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>审判</strong><p>生命低于 55% 的敌人即可处决。</p></div></div>
+<p class="skill-synergy">先以「旋风斩」削减多名敌人的生命，再以「处决」逐一击杀。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血偿</strong><p>以「处决」击杀敌人后，回复 15% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>审判</strong><p>可以对生命低于 55% 的敌人施放「处决」。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：击杀流血目标时，其剩余的流血效果转移至距离最近的敌人。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="处决的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -567,9 +567,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-slam">
 <header><h4>震地</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">眩晕</span></p>
-<p class="skill-desc">对所有相邻敌人造成 100% 伤害并眩晕：跳过 1 次行动。</p>
-<p class="skill-synergy">被包围时先震地，再用旋风斩和重击处理。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>余震</strong><p>眩晕延长到 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂地</strong><p>范围扩大到 2 格，伤害 80%。</p></div></div>
+<p class="skill-desc">对所有相邻敌人造成 100% 伤害并使其眩晕，跳过 1 次行动。</p>
+<p class="skill-synergy">受到包围时，以「震地」限制敌人行动，再使用「旋风斩」或「重击」攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>余震</strong><p>眩晕延长至 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂地</strong><p>范围扩大至 2 格，对敌人造成 80% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：眩晕目标的同时使其破甲 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="震地的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -580,9 +580,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shieldBash">
 <header><h4>盾击</h4><span class="skill-meta">15 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">眩晕</span><span class="tag">盾伤</span></p>
-<p class="skill-desc">对相邻一名敌人造成 120% 伤害并眩晕：跳过 1 次行动，再把它击退 1 格。若自身有护盾，消耗护盾，伤害追加护盾量的 50%。击退撞上岩石或场地边缘再受 60% 攻击伤害，撞上别的敌人两边各受 40%；推进浅水、熔岩或冰面照样吃地形。</p>
-<p class="skill-synergy">背靠岩石或边缘的敌人最怕盾击；被包夹时也能用它推开一个缺口。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>盾墙</strong><p>不消耗护盾，伤害改为追加护盾量的 30%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>震慑</strong><p>眩晕延长到 2 次行动。</p></div></div>
+<p class="skill-desc">对相邻一名敌人造成 120% 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 50% 的伤害。目标撞上岩石或场地边缘时，额外受到 60% 攻击伤害；撞上其他敌人时，双方各受到 40% 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。</p>
+<p class="skill-synergy">敌人靠近岩石或场地边缘时，以「盾击」将其击退，可造成额外伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>盾墙</strong><p>不消耗护盾，改为额外造成相当于护盾值 30% 的伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>震慑</strong><p>眩晕延长至 2 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：护盾追加伤害的比例提高 20 个百分点：未选择精通时由 50% 提高至 70%，选择「盾墙」时由 30% 提高至 50%。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="盾击的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -593,9 +593,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-bloodlust">
 <header><h4>嗜血斩</h4><span class="skill-meta">20 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
-<p class="skill-desc">对射程内生命最高的敌人造成 150% 伤害，并回复造成伤害的 40%。</p>
-<p class="skill-synergy">对着首领或巨魔挥砍，把它的血量变成你的。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>饮血</strong><p>回复提高到造成伤害的 60%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>撕裂</strong><p>命中后目标流血 3 回合：每回合受到 35% 攻击的伤害，它每次攻击时再流血一次。</p></div></div>
+<p class="skill-desc">对射程内生命最高的敌人造成 150% 伤害，并回复相当于造成伤害 40% 的生命。</p>
+<p class="skill-synergy">以「嗜血斩」攻击生命较高的敌人，可在造成伤害的同时回复生命。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>饮血</strong><p>回复提高至造成伤害的 60%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>撕裂</strong><p>命中后目标流血 3 回合：每回合受到 35% 攻击的伤害，它每次攻击时再流血一次。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：对流血目标的回复比例变为原来的 2 倍。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="嗜血斩的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -606,9 +606,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-battleFocus">
 <header><h4>战意</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">专注</span><span class="tag">破甲</span></p>
-<p class="skill-desc">瞬发：放完还能接着行动，每回合限一个瞬发技。进入专注，下一次技能攻击必定暴击；相邻敌人破甲 2 回合。</p>
-<p class="skill-synergy">先战意，再用重击或处决打出必定暴击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破阵</strong><p>破甲范围扩大到 2 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>怒意</strong><p>同时获得相当于 15% 最大生命的护盾。</p></div></div>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得专注，使下一次技能攻击必定暴击；相邻敌人破甲 2 回合。</p>
+<p class="skill-synergy">先施放「战意」获得专注，再以「重击」或「处决」攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破阵</strong><p>破甲范围扩大至 2 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>怒意</strong><p>同时获得相当于 15% 最大生命的护盾。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：进入专注时立即获得 2 层裂痕。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="战意的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -619,9 +619,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-lastStand">
 <header><h4>不屈</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">闪避</span></p>
-<p class="skill-desc">生命低于 60% 时可用：回复 25% 最大生命，并闪避下一次攻击。</p>
-<p class="skill-synergy">把喝药规则放后面，先靠不屈撑住。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>顽强</strong><p>回复提高到 35% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反震</strong><p>同时眩晕相邻敌人：跳过 1 次行动。</p></div></div>
+<p class="skill-desc">生命低于 60% 时可施放：回复 25% 最大生命，并闪避下一次攻击。</p>
+<p class="skill-synergy">将「不屈」的施放规则排在使用药水之前，可优先通过技能回复生命。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>顽强</strong><p>回复提高至 35% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反震</strong><p>同时眩晕相邻敌人：跳过 1 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：回复量的一半转化为护盾。</li><li><strong>狂战士</strong>：生命低于 70% 时即可使用。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="治疗">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="不屈的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -632,9 +632,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-breaker">
 <header><h4>破军斩</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">破甲</span><span class="tag">护盾</span></p>
-<p class="skill-desc">对射程内一名敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合；按造成伤害的 30% 获得护盾，目标原本就破甲或易伤时提高到 60%。</p>
-<p class="skill-synergy">旋风斩、冲锋先挂上破甲或易伤，破军斩砍下去，护盾跟着满上。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>断岳</strong><p>伤害提高到 280%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚城</strong><p>护盾比例翻倍：60%，目标破甲或易伤时 120%。</p></div></div>
+<p class="skill-desc">对射程内一名敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合；获得相当于造成伤害 30% 的护盾。若目标原本已破甲或易伤，护盾比例提高至 60%。</p>
+<p class="skill-synergy">先以「旋风斩」施加破甲，或以「冲锋」施加易伤，再施放「破军斩」，可获得更多护盾。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>断岳</strong><p>伤害提高至 280%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚城</strong><p>护盾比例翻倍：60%，目标破甲或易伤时 120%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="破军斩的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -645,8 +645,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-warGod">
 <header><h4>战神</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">增伤</span><span class="tag">吸血</span></p>
-<p class="skill-desc">射程内有敌人时可用：立刻获得 30% 最大生命的护盾，并对射程内所有敌人劈出 250% 伤害；从这一刀起 3 回合，你的所有攻击（含普攻）伤害提高 35%，并回复造成伤害的 15%。</p>
-<p class="skill-synergy">留给首领和最凶的一波：开场一刀带着增伤和吸血，再接重击、处决，边打边回。</p>
+<p class="skill-desc">射程内有敌人时可施放：立即获得相当于 30% 最大生命的护盾，并对射程内所有敌人各造成 250% 伤害。自本次攻击起的 3 回合内，你的所有攻击（包括普通攻击）伤害提高 35%，并回复相当于造成伤害 15% 的生命。</p>
+<p class="skill-synergy">面对首领或大量敌人时施放「战神」，再以「重击」「处决」持续造成伤害并回复生命。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>战狂</strong><p>伤害提高改为 55%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>嗜战</strong><p>回复改为造成伤害的 30%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中的敌人全部破甲 2 回合，并立即获得满层裂痕。</li><li><strong>盾魂</strong>：护盾提高至 50% 最大生命；持续期间，单次伤害至多削减当前护盾的一半。</li><li><strong>狂战士</strong>：持续期间，每次攻击均使目标流血 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 护盾 / 增伤 / 吸血">
@@ -660,7 +660,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>裂岩</h4><span class="skill-meta">45 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">回复</span></p>
 <p class="skill-desc">对所有相邻敌人造成 160% 伤害。每命中一名处于破甲或眩晕状态的敌人，回复 7% 最大生命，并额外获得 1 层裂痕，不受每次施放至多 1 层的限制。</p>
-<p class="skill-synergy">碎岳的续航手段：先以战意、震地施加破甲与眩晕，再以裂岩回复生命并迅速积累裂痕。</p>
+<p class="skill-synergy">碎岳可先以「战意」「震地」施加破甲与眩晕，再以「裂岩」回复生命并积累裂痕。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>碎骨</strong><p>命中的敌人破甲 2 回合；该破甲自下一次施放起计入裂痕判定。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>吸髓</strong><p>每名敌人提供的回复提高至 10% 最大生命。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
@@ -672,8 +672,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-landslide">
 <header><h4>山崩</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">裂痕</span></p>
-<p class="skill-desc">对射程内生命最高的敌人造成 300% 伤害，无视护甲，并使其眩晕，跳过 1 次行动。与重击、破军斩相同，命中时消耗全部裂痕；若因此击杀目标，返还一半已消耗的裂痕。</p>
-<p class="skill-synergy">宜在裂痕满层时施放以击破首领；击杀后返还的裂痕可用于下一次攻击。</p>
+<p class="skill-desc">对射程内生命最高的敌人造成 300% 伤害，无视护甲，并使其眩晕，跳过 1 次行动。与「重击」「破军斩」相同，命中时消耗全部裂痕；若因此击杀目标，返还一半已消耗的裂痕。</p>
+<p class="skill-synergy">裂痕层数较高时施放「山崩」，可对首领造成更多伤害；击杀目标返还的裂痕可用于下一次攻击。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>崩塌</strong><p>伤害提高至 380%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>崩震</strong><p>目标相邻的敌人同样眩晕 1 次行动。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
@@ -712,8 +712,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-shieldBurst">
 <header><h4>盾爆</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">盾爆</span><span class="tag">群攻</span></p>
-<p class="skill-desc">击碎自身护盾，对 2 格内所有敌人造成相当于护盾值 160% 的伤害，无视护甲，并回复相当于护盾值 40% 的生命。若没有护盾，则改为获得 30% 最大生命的护盾。</p>
-<p class="skill-synergy">宜在护盾接近上限时施放；每回合获得的护盾与坚守可迅速补充护盾。</p>
+<p class="skill-desc">消耗自身护盾，对 2 格内所有敌人造成相当于护盾值 160% 的伤害，无视护甲，并回复相当于护盾值 40% 的生命。若没有护盾，则改为获得相当于 30% 最大生命的护盾。</p>
+<p class="skill-synergy">护盾值较高时施放「盾爆」可造成更多伤害；「坚守」有助于重新获得护盾。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震爆</strong><p>伤害提高至护盾值的 220%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回流</strong><p>回复提高至护盾值的 60%。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
@@ -739,8 +739,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-bloodDrink">
 <header><h4>噬血</h4><span class="skill-meta">45 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
-<p class="skill-desc">对射程内一名敌人造成 180% 伤害，并使其流血 3 回合，每回合受到 40% 攻击的伤害。回复造成伤害的 45%；若目标原本处于流血状态，另回复其剩余流血伤害的 50%。</p>
-<p class="skill-synergy">狂战士的续航手段：先以旋风斩、嗜血斩施加流血，再以噬血将剩余流血转化为生命。</p>
+<p class="skill-desc">对射程内一名敌人造成 180% 伤害，并使其流血 3 回合，每回合受到 40% 攻击的伤害。回复相当于造成伤害 45% 的生命；若目标原本已流血，额外回复相当于其剩余流血伤害 50% 的生命。</p>
+<p class="skill-synergy">狂战士可先以「旋风斩」或「嗜血斩」使敌人流血，再以「噬血」获得额外回复。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>渴血</strong><p>回复提高至造成伤害的 60%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>血涌</strong><p>流血伤害提高至每回合 60% 攻击。</p></div></div>
 
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害 / 回复">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="index.html"><small>上一篇</small><span>图鉴首页<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-ranger.html"><small>下一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

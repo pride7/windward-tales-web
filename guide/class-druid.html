@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/druid.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>德鲁伊</h1>
 <p class="page-description">远程 2 格。唯一以体质为主属性，靠中毒、反伤和持续回复把战斗拖长，熬赢而不是秒杀。</p>
 <p class="tags"><span class="tag">主属性 体质</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-plague">瘴巫</a><a class="tag tag-link" href="#spec-bramble">荆棘使</a><a class="tag tag-link" href="#spec-sylvan">森灵</a></p>
@@ -502,8 +502,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-thorngrasp">
 <header><h4>荆棘缚</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">缠绕</span></p>
-<p class="skill-desc">对射程内一名敌人造成 130% 伤害并缠绕，使其跳过一次行动。</p>
-<p class="skill-synergy">先缚住冲在最前的敌人，再让孢子云和反伤慢慢磨。</p>
+<p class="skill-desc">对射程内一名敌人造成 130% 伤害并使其缠绕，跳过 1 次行动。</p>
+<p class="skill-synergy">先以「荆棘缚」限制敌人行动，再利用「孢子云」和反伤效果持续造成伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>尖刺缚</strong><p>命中后目标破甲 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蔓生缚</strong><p>同时缠绕目标相邻的敌人。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -516,8 +516,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>孢子云</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">中毒</span></p>
 <p class="skill-desc">对 2 格内所有敌人造成 60% 伤害并使其中毒。</p>
-<p class="skill-synergy">中毒的人越多，自然之怒和野蛮生长越强，是德鲁伊的开场。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>浓孢</strong><p>毒伤提高到 60% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弥散</strong><p>范围扩大到 3 格。</p></div></div>
+<p class="skill-synergy">战斗开始时以「孢子云」使多名敌人中毒，可提高「自然之怒」与「野蛮生长」的收益。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>浓孢</strong><p>毒伤提高至 60% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弥散</strong><p>范围扩大至 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：冷却时间由 4 回合缩短为 3 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="孢子云的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -528,9 +528,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-barkskin">
 <header><h4>树皮术</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">棘刺</span></p>
-<p class="skill-desc">获得相当于 35% 最大生命的护盾，并立刻让相邻敌人撞上尖刺，受到护盾量 50% 的伤害。</p>
-<p class="skill-synergy">顶着打，让敌人自己撞在刺上。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>硬木</strong><p>护盾提高到最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘皮</strong><p>尖刺伤害提高到护盾量的 100%。</p></div></div>
+<p class="skill-desc">获得相当于 35% 最大生命的护盾，并立即对相邻敌人各造成相当于护盾值 50% 的尖刺伤害。</p>
+<p class="skill-synergy">敌人靠近时施放「树皮术」，可同时获得护盾并造成伤害。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>硬木</strong><p>护盾提高至最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘皮</strong><p>尖刺伤害提高至护盾量的 100%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：尖刺范围扩大至 2 格。</li><li><strong>森灵</strong>：冷却时间由 5 回合缩短为 4 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="护盾 / 尖刺">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="树皮术的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,9 +541,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-rejuvenate">
 <header><h4>回春</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">持续</span></p>
-<p class="skill-desc">立刻回复 15% 最大生命，并在之后 3 回合每回合再回复 8%。</p>
-<p class="skill-synergy">受伤后垫一手，配合常青和自然回复把血线拉回来。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>速效</strong><p>立刻回复提高到 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>长青</strong><p>持续回复延长到 5 回合。</p></div></div>
+<p class="skill-desc">立即回复 15% 最大生命，并在之后 3 回合每回合再回复 8% 最大生命。</p>
+<p class="skill-synergy">受伤后施放「回春」，配合「常青」与自然回复，可持续恢复生命。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>速效</strong><p>立刻回复提高至 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>长青</strong><p>持续回复延长至 5 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：施放时立即获得 1 层年轮。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="治疗">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="回春的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -554,8 +554,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-vinelash">
 <header><h4>藤鞭</h4><span class="skill-meta">5 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">引毒</span></p>
-<p class="skill-desc">抽打射程内一名敌人造成 170% 伤害；目标已中毒时提高到 240%。</p>
-<p class="skill-synergy">孢子云铺完毒，用藤鞭点掉最碍事的那个。</p>
+<p class="skill-desc">对射程内一名敌人造成 170% 伤害；目标已中毒时，伤害提高至 240%。</p>
+<p class="skill-synergy">先以「孢子云」使敌人中毒，再以「藤鞭」造成额外伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>撕裂</strong><p>命中后目标流血。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>绞缠</strong><p>命中后目标缠绕。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：对中毒目标的伤害由 240% 提高至 280%。</li><li><strong>荆棘使</strong>：对被缠绕目标的伤害与中毒目标相同，为 240%。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -568,8 +568,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>自然之怒</h4><span class="skill-meta">10 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">毒爆</span><span class="tag">群攻</span></p>
 <p class="skill-desc">对场上所有中毒的敌人各造成 110% 伤害。</p>
-<p class="skill-synergy">先用孢子云或虫群把毒铺满，再一次收割。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震怒</strong><p>伤害提高到 130%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续毒</strong><p>伤害结算后把中毒回合数补满。</p></div></div>
+<p class="skill-synergy">先以「孢子云」或「虫群」使多名敌人中毒，再施放「自然之怒」。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震怒</strong><p>伤害提高至 130%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续毒</strong><p>伤害结算后把中毒回合数补满。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：每命中一名敌人，回复 2% 最大生命。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="自然之怒的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -580,9 +580,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-rootcage">
 <header><h4>根须牢笼</h4><span class="skill-meta">15 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">群控</span><span class="tag">易伤</span></p>
-<p class="skill-desc">2 格内所有敌人缠绕并易伤 2 回合：受到的所有伤害提高 30%。</p>
-<p class="skill-synergy">把一群敌人同时定住，再用自然之怒一口气清掉。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>荆笼</strong><p>同时造成 100% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>深根</strong><p>范围扩大到 3 格。</p></div></div>
+<p class="skill-desc">使 2 格内所有敌人缠绕并易伤 2 回合，期间受到的所有伤害提高 30%。</p>
+<p class="skill-synergy">先以「根须牢笼」限制多名敌人的行动并施加易伤，再使用范围技能攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>荆笼</strong><p>同时造成 100% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>深根</strong><p>范围扩大至 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：缠绕延长至 2 次行动。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="根须牢笼的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -593,8 +593,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-symbiosis">
 <header><h4>共生</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">专注</span></p>
-<p class="skill-desc">从毒素里汲取生机：每有一名中毒的敌人回复 8% 最大生命，并进入专注。</p>
-<p class="skill-synergy">毒铺得越广，这一手回得越多。</p>
+<p class="skill-desc">场上每有一名中毒的敌人，回复 8% 最大生命，并获得专注。</p>
+<p class="skill-synergy">先使多名敌人中毒，再施放「共生」，可回复更多生命。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>汲取</strong><p>每名中毒敌人回复 12% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>共鸣</strong><p>同时获得 20% 最大生命的护盾。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：进入专注的同时获得 1 层年轮。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="治疗 / 护盾">
@@ -606,9 +606,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-swarm">
 <header><h4>虫群</h4><span class="skill-meta">25 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">多目标</span><span class="tag">中毒</span></p>
-<p class="skill-desc">放出虫群扑向 3 格内最多 3 名敌人，各造成 90% 伤害并使其中毒。</p>
-<p class="skill-synergy">补齐孢子云够不到的散兵，把毒铺满全场。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蜂拥</strong><p>目标数提高到 5 名。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蛰刺</strong><p>命中的敌人同时易伤 2 回合。</p></div></div>
+<p class="skill-desc">对 3 格内最多 3 名敌人各造成 90% 伤害，并使其中毒。</p>
+<p class="skill-synergy">「虫群」可以使「孢子云」范围外的敌人中毒。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蜂拥</strong><p>目标数提高至 5 名。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蛰刺</strong><p>命中的敌人同时易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：命中已中毒的敌人时，使其相邻的敌人也中毒。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="虫群的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -619,9 +619,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-worldtree">
 <header><h4>世界树</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">群控</span><span class="tag">终结</span></p>
-<p class="skill-desc">唤醒古树：回复 40% 最大生命，场上所有敌人缠绕，并对每个中毒的敌人造成 150% 伤害。</p>
-<p class="skill-synergy">留到最险的时候，一次同时解决血线和场面。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>回归</strong><p>回复提高到 60% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>降临</strong><p>对中毒敌人的伤害提高到 200%。</p></div></div>
+<p class="skill-desc">回复 40% 最大生命，使场上所有敌人缠绕，并对每名中毒的敌人造成 150% 伤害。</p>
+<p class="skill-synergy">生命较低且场上敌人较多时施放「世界树」，可同时回复生命并限制敌人行动。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>回归</strong><p>回复提高至 60% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>降临</strong><p>对中毒敌人的伤害提高至 200%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：溢出的回复转化为护盾，上限为 30% 最大生命。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="治疗 / 伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="世界树的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -632,9 +632,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-venomVine">
 <header><h4>噬毒藤</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">引毒</span></p>
-<p class="skill-desc">毒藤扫过射程内一名敌人及其相邻敌人：各造成 150% 伤害并缠绕，使其跳过一次行动。已中毒的先结清剩余毒伤再重新染毒，没中毒的直接染毒。每命中一名敌人，你回复 3% 最大生命。</p>
-<p class="skill-synergy">敌人越扎堆越赚：一手控住一片、把毒刷新一遍，自然之怒和共生跟着吃满。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛毒</strong><p>伤害提高到 190%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>汲毒</strong><p>每命中一名敌人回复 6% 最大生命。</p></div></div>
+<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 150% 伤害，并使其缠绕，跳过 1 次行动。已中毒的敌人先结算剩余毒伤，再次中毒；其他敌人直接中毒。每命中一名敌人，你回复 3% 最大生命。</p>
+<p class="skill-synergy">敌人集中时施放「噬毒藤」，可同时限制行动、结算毒伤并回复生命，再以「自然之怒」攻击中毒目标。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛毒</strong><p>伤害提高至 190%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>汲毒</strong><p>每命中一名敌人回复 6% 最大生命。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="噬毒藤的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -645,8 +645,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-ancientForm">
 <header><h4>古树化身</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">减伤</span><span class="tag">回复</span></p>
-<p class="skill-desc">射程内有敌人时可用：化身古树，根须破土，射程内所有敌人各受 200% 伤害并缠绕，跳过一次行动；之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命，你的每次攻击都让目标中毒（45% 攻击）。</p>
-<p class="skill-synergy">顶在敌群中间开：一下缠住一片，挨得少、回得多，普攻和技能顺手把毒铺满，自然之怒跟着收。</p>
+<p class="skill-desc">射程内有敌人时可施放：对射程内所有敌人各造成 200% 伤害，并使其缠绕，跳过 1 次行动。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都会使目标中毒，每回合受到 45% 攻击的毒伤。</p>
+<p class="skill-synergy">敌人较多时施放「古树化身」，可同时限制行动、回复生命并施加中毒，再以「自然之怒」攻击中毒目标。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>磐根</strong><p>受到的伤害改为降低 45%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>刺藤</strong><p>期间每次被攻击，对攻击者造成 60% 攻击的反伤。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：化身期间，攻击附带的中毒伤害翻倍。</li><li><strong>荆棘使</strong>：缠绕延长至 2 次行动。</li><li><strong>森灵</strong>：施放时年轮叠满。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 回复 / 毒伤">
@@ -672,8 +672,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-venomHeart">
 <header><h4>万毒噬心</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">毒爆</span><span class="tag">收割</span></p>
-<p class="skill-desc">结清场上所有中毒敌人剩余毒伤的 150%。</p>
-<p class="skill-synergy">瘴巫的收尾手段：毒铺满之后一次结清。</p>
+<p class="skill-desc">立即结算场上所有中毒敌人剩余毒伤的 150%。</p>
+<p class="skill-synergy">瘴巫先使多名敌人中毒，再施放「万毒噬心」，可同时结算剩余毒伤。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>噬尽</strong><p>结清比例提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余毒</strong><p>结清后使目标重新中毒 2 回合。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="毒伤">
@@ -765,8 +765,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card is-ascend" id="skill-eternity">
 <header><h4>万年</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">不倒</span></p>
-<p class="skill-desc">之后 3 回合，生命不会低于 1 点，年轮叠满，受到的回复翻倍。</p>
-<p class="skill-synergy">森灵的觉醒技：宜在生命危急时施放，撑过最猛烈的一波。</p>
+<p class="skill-desc">之后 3 回合，生命不会低于 1 点，年轮层数达到上限，受到的回复翻倍。</p>
+<p class="skill-synergy">森灵生命较低时施放「万年」，可在敌人攻势较强时维持生存。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长生</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>返生</strong><p>施放时回复 20% 最大生命。</p></div></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="回复倍率">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-assassin.html"><small>上一篇</small><span>刺客<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-necromancer.html"><small>下一篇</small><span>死灵法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

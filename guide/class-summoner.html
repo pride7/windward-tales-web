@@ -446,7 +446,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/summoner.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.1-ota1</p>
+<p class="eyebrow">职业 <span>/</span> v0.7.1-ota2</p>
 <h1>召唤师</h1>
 <p class="page-description">远程 2 格。自己输出不高，靠召唤物顶在前面挡刀与输出；场上帮手越多，你越强。</p>
 <p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-beastlord">兽王</a><a class="tag tag-link" href="#spec-medium">灵媒</a><a class="tag tag-link" href="#spec-puppeteer">傀儡师</a></p>
@@ -502,8 +502,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="skill-grid"><article class="skill-card" id="skill-callwolf">
 <header><h4>唤狼</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">近战</span></p>
-<p class="skill-desc">召唤 1 只灵狼为你作战，持续 8 回合。灵狼近战，生命与攻击按你的属性折算。</p>
-<p class="skill-synergy">狼冲在前面，你退到后排放灵弹。</p>
+<p class="skill-desc">召唤 1 只灵狼作战，持续 8 回合。灵狼进行近战攻击，其生命与攻击按你的属性计算。</p>
+<p class="skill-synergy">由灵狼在前方承受攻击，你可保持距离施放「灵弹」。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狼群</strong><p>一次召唤 2 只，但每只生命减半。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂齿</strong><p>灵狼的攻击会让目标流血。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="召唤物生命 / 攻击">
@@ -515,9 +515,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-callsprite">
 <header><h4>唤灵</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">远程</span></p>
-<p class="skill-desc">召唤 1 只精怪，持续 8 回合。精怪脆，但能从 2 格外攻击。</p>
-<p class="skill-synergy">精怪站后排持续输出，不用挤在前线。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>远灵</strong><p>精怪的射程提高到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蚀灵</strong><p>精怪的攻击会让目标破甲。</p></div></div>
+<p class="skill-desc">召唤 1 只精怪作战，持续 8 回合。精怪生命较低，可攻击 2 格外的敌人。</p>
+<p class="skill-synergy">精怪可在远处持续攻击敌人，适合布置在前线后方。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>远灵</strong><p>精怪的射程提高至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蚀灵</strong><p>精怪的攻击会让目标破甲。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：精怪射程增加 1 格；与「远灵」叠加后为 4 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="唤灵的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -529,8 +529,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <header><h4>魂契</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">群体</span></p>
 <p class="skill-desc">你和所有召唤物各回复 18% 最大生命。</p>
-<p class="skill-synergy">召唤物是消耗品，但能修就别急着换新的。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚契</strong><p>回复提高到 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护契</strong><p>同时给自己 20% 最大生命的护盾。</p></div></div>
+<p class="skill-synergy">多名召唤物受伤时施放「魂契」，可同时恢复它们的生命。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚契</strong><p>回复提高至 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>护契</strong><p>同时给自己 20% 最大生命的护盾。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：施放后灵弹的冷却立即结束。</li><li><strong>傀儡师</strong>：对石守的回复翻倍。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="治疗 / 护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="魂契的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,9 +541,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-callguard">
 <header><h4>石守</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">嘲讽</span></p>
-<p class="skill-desc">召唤 1 尊石守卫，持续 10 回合。它很硬、攻击很低，只要挡在你身前就会吸引敌人的攻击。</p>
-<p class="skill-synergy">把守卫摆在身前，敌人就打不到你。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>磐岩</strong><p>生命提高到你最大生命的 75%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘岩</strong><p>石守卫被攻击时反弹 50% 伤害。</p></div></div>
+<p class="skill-desc">召唤 1 尊石守卫作战，持续 10 回合。石守卫生命较高、攻击较低；位于你身前时可吸引敌人的攻击。</p>
+<p class="skill-synergy">将石守卫布置在身前，可使其承受敌人的攻击。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>磐岩</strong><p>生命提高至你最大生命的 75%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘岩</strong><p>石守卫被攻击时反弹 50% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：石守在比你远 1 格以内时，仍能吸引敌人的攻击。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="石守的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -554,8 +554,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-empower">
 <header><h4>附能</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">催动</span></p>
-<p class="skill-desc">所有召唤物立刻额外行动一次，这一击的伤害随技能等级提高。</p>
-<p class="skill-synergy">狼群到位后放，等于白打一轮。</p>
+<p class="skill-desc">所有召唤物立即额外行动 1 次，此次行动造成的伤害随技能等级提高。</p>
+<p class="skill-synergy">场上召唤物较多时施放「附能」，可增加它们的攻击次数。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狂涌</strong><p>额外行动两次。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蚀能</strong><p>这一轮的攻击会让目标破甲。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：这一轮灵狼的攻击使目标流血 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物这一击的伤害">
@@ -567,9 +567,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-sacrifice">
 <header><h4>献祭</h4><span class="skill-meta">10 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
-<p class="skill-desc">引爆生命最低的召唤物，对它 2 格内的所有敌人造成相当于它当前生命 150% 的伤害。</p>
-<p class="skill-synergy">快消散的召唤物别浪费，炸掉换一轮伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>崩裂</strong><p>范围扩大到 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回魂</strong><p>引爆后你回复它当前生命的 50%。</p></div></div>
+<p class="skill-desc">引爆生命最低的召唤物，对其 2 格内所有敌人造成相当于该召唤物当前生命 150% 的伤害。</p>
+<p class="skill-synergy">敌人集中在召唤物附近时施放「献祭」，可同时攻击多名敌人；召唤物的当前生命越高，造成的伤害越高。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>崩裂</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回魂</strong><p>引爆后你回复它当前生命的 50%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：引爆灵狼后，召回一只持续 3 回合的灵狼。</li><li><strong>灵媒</strong>：伤害改为按你的攻击计算，造成 200% 伤害，不再取决于召唤物剩余生命。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="爆炸伤害">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="献祭的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -580,8 +580,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-spiritbolt">
 <header><h4>灵弹</h4><span class="skill-meta">15 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">叠伤</span></p>
-<p class="skill-desc">对射程内一名敌人造成 130% 伤害；每有一个召唤物，伤害再提高 25%。</p>
-<p class="skill-synergy">召唤师自己的输出手段，场上帮手越多打得越疼。</p>
+<p class="skill-desc">对射程内一名敌人造成 130% 伤害；场上每有一个召唤物，伤害额外提高 25%。</p>
+<p class="skill-synergy">场上召唤物越多，「灵弹」造成的伤害越高。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>贯魂</strong><p>每个召唤物改为提高 40%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>噬魂</strong><p>命中后目标易伤 2 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>灵媒</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.1" data-scaling="伤害">
@@ -593,9 +593,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-wardstone">
 <header><h4>护魂石</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">回复</span></p>
-<p class="skill-desc">获得 25% 最大生命的护盾，并把所有召唤物的生命补满。</p>
-<p class="skill-synergy">守住自己和前排，把一轮集火扛过去。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>坚石</strong><p>护盾提高到 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续石</strong><p>同时把所有召唤物的持续时间补到 8 回合。</p></div></div>
+<p class="skill-desc">获得相当于 25% 最大生命的护盾，并使所有召唤物回复至最大生命。</p>
+<p class="skill-synergy">召唤物生命较低时施放「护魂石」，可同时保护自身并恢复召唤物。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>坚石</strong><p>护盾提高至 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续石</strong><p>同时把所有召唤物的持续时间补到 8 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：石守同时获得同等护盾。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="护魂石的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -606,9 +606,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-stormcall">
 <header><h4>群召</h4><span class="skill-meta">25 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
-<p class="skill-desc">一次召唤 2 只灵狼和 1 只精怪，持续 6 回合。</p>
-<p class="skill-synergy">开场或清完一波后用，迅速把场面铺满。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>潮涌</strong><p>改为召唤 3 只灵狼。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>久驻</strong><p>持续时间延长到 10 回合。</p></div></div>
+<p class="skill-desc">召唤 2 只灵狼和 1 只精怪作战，持续 6 回合。</p>
+<p class="skill-synergy">战斗开始时或击败一波敌人后施放「群召」，可迅速补充召唤物。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>潮涌</strong><p>改为召唤 3 只灵狼。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>久驻</strong><p>持续时间延长至 10 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：精怪换成第三只灵狼；与「潮涌」同时生效时改为 4 只。</li></ul></div>
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物生命 / 攻击">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="群召的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -619,9 +619,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-avatar">
 <header><h4>灵体降临</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">终结</span></p>
-<p class="skill-desc">召唤一尊灵体，持续 12 回合。它的生命和攻击都接近你本人。</p>
-<p class="skill-synergy">留到首领战，等于多了一个自己。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>不朽</strong><p>灵体不会到期消散。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>战魂</strong><p>灵体的攻击提高到你的 120%。</p></div></div>
+<p class="skill-desc">召唤 1 尊灵体作战，持续 12 回合。灵体的生命与攻击接近你的对应属性。</p>
+<p class="skill-synergy">面对首领时施放「灵体降临」，可增加一名战斗能力较强的召唤物。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>不朽</strong><p>灵体不会到期消散。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>战魂</strong><p>灵体的攻击提高至你的 120%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>傀儡师</strong>：场上的石守生命补满，12 回合内攻击提高至你本人的 100%。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵体降临的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -632,9 +632,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-dominion">
 <header><h4>统御</h4><span class="skill-meta">35 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">强化</span></p>
-<p class="skill-desc">号令所有召唤物：各回复 30% 生命、持续时间 +3 回合，之后 3 回合攻击提高 30%；场上每有一个召唤物，你获得 6% 最大生命的护盾。</p>
-<p class="skill-synergy">狼群和灵体到位之后放，一手把前排修好、拉长，再狠狠推一把。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狂潮</strong><p>攻击提高改为 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>永契</strong><p>持续时间改为 +6 回合，回复提高到 50%。</p></div></div>
+<p class="skill-desc">使所有召唤物各回复 30% 生命，持续时间增加 3 回合，并在之后 3 回合使其攻击提高 30%；场上每有一个召唤物，你获得相当于 6% 最大生命的护盾。</p>
+<p class="skill-synergy">场上召唤物较多时施放「统御」，可同时恢复召唤物、延长其持续时间并获得更多护盾。</p>
+<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>狂潮</strong><p>攻击提高改为 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>永契</strong><p>持续时间改为 +6 回合，回复提高至 50%。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物增伤 / 护盾">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="统御的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -645,8 +645,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-spiritGate">
 <header><h4>灵界之门</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">召唤</span><span class="tag">齐攻</span></p>
-<p class="skill-desc">打开灵界之门：召唤石守卫、灵狼、精怪各 1 只，持续 8 回合，不占召唤物上限；随后场上所有召唤物立刻行动一次。</p>
-<p class="skill-synergy">召唤物站满了照样再添三只，首领战和最凶的一波留给它。</p>
+<p class="skill-desc">召唤石守卫、灵狼和精怪各 1 只，持续 8 回合，且不占召唤物上限；随后场上所有召唤物立即行动 1 次。</p>
+<p class="skill-synergy">即使召唤物已达到上限，「灵界之门」仍可额外召唤 3 只，适合在面对首领或大量敌人时施放。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>灵潮</strong><p>所有召唤物立刻行动两次。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚门</strong><p>召唤物持续 12 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>兽王</strong>：额外召出 2 只灵狼。</li><li><strong>灵媒</strong>：之后 2 回合，灵弹不进入冷却。</li><li><strong>傀儡师</strong>：召出的石守生命翻倍。</li></ul></div>
 <div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击">
@@ -672,8 +672,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-packHunt">
 <header><h4>群狼猎杀</h4><span class="skill-meta">50 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">集火</span><span class="tag">围猎</span></p>
-<p class="skill-desc">所有灵狼立即扑向同一名敌人各攻击一次，这一击伤害提高 50%。</p>
-<p class="skill-synergy">兽王的收尾手段：围住一名敌人时，每只灵狼都吃满围猎加成。</p>
+<p class="skill-desc">所有灵狼立即攻击同一名敌人 1 次，此次攻击伤害提高 50%。</p>
+<p class="skill-synergy">兽王的灵狼围住同一名敌人时施放「群狼猎杀」，可集中造成伤害。</p>
 <div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>撕咬</strong><p>同时使目标流血 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>包抄</strong><p>灵狼先移动到目标身边再攻击。</p></div></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="召唤物这一击的伤害">
@@ -870,7 +870,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.1 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-mage.html"><small>上一篇</small><span>法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-assassin.html"><small>下一篇</small><span>刺客<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota1）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.1-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
