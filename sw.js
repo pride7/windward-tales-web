@@ -8,19 +8,19 @@
  * or when the player presses 立即更新. Without that message the waiting worker would sit there forever:
  * reloading the page does not release the old worker, so "takes over next launch" was never actually true.
  */
-const CACHE = 'windward-0.7.1-ota9-fa4ac99af328';
+const CACHE = 'windward-0.7.1-ota10-0eb0c3a6dc49';
 const ASSETS = [
-  "./assets/ArenaScene-CVk8tXDl.js",
-  "./assets/index-BYJEHaOp.css",
-  "./assets/index-BpVe2H8H.js",
-  "./assets/index-Dssz-NLB.js",
+  "./assets/ArenaScene-rCSMNTiU.js",
+  "./assets/index-C8GaQn4m.js",
+  "./assets/index-PbSW4SYE.css",
+  "./assets/index-kw-R9Qk8.js",
   "./assets/phaser-B8p8Giq7.js",
   "./assets/phaser-DFK5Ua9d.js",
-  "./assets/web-DPrP0cjD.js",
-  "./assets/web-DptRNkKG.js",
-  "./assets/web-DtcSfJ3T.js",
-  "./assets/windward-serif-core-ILn5o2GB.woff2",
-  "./assets/windward-serif-extra-Cv_xVCrv.woff2",
+  "./assets/web-DQwcZqlQ.js",
+  "./assets/web-DUln1Bag.js",
+  "./assets/web-p2_3zX5R.js",
+  "./assets/windward-title-core-CMpPpDbb.woff2",
+  "./assets/windward-title-extra-CeRAX2lI.woff2",
   "./cutins/beastlord.jpg",
   "./cutins/bleeder.jpg",
   "./cutins/bloodwar.jpg",
