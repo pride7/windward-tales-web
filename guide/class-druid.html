@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#f9fbf5" />
 <title>德鲁伊 · 风行物语图鉴</title>
-<meta name="description" content="远程 2 格。唯一以体质为主属性，靠中毒、反伤和持续回复把战斗拖长，熬赢而不是秒杀。职业特性「滋蔓」：战斗每进行 1 回合，你造成的伤害提高 1%，至多提高 40%；敌人的荆棘与棘刺反弹到你身上的伤害降低 50%。" />
+<meta name="description" content="远程 2 格。唯一以体质为主属性的职业，以中毒、反伤与持续回复延长战斗，凭借持久力取胜，而非速战速决。" />
 <link rel="icon" type="image/png" href="../icons/windward-64.png" />
 <style>
 :root {
@@ -161,7 +161,6 @@ kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; bac
 .note p:first-child { margin-top: 0; }
 .note p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-muted); }
-.variant { color: var(--gold); font-weight: 600; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
 .tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
 .tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
@@ -247,12 +246,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
-.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
-.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
-.variant-box strong { color: var(--gold); font-size: 13px; }
-.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
-.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -294,7 +287,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
 .skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
 .skill-chips strong { font-size: 12.5px; }
-.skill-chips .variant { font-size: 11.5px; }
 .skill-chips small { color: var(--ink-soft); font-size: 11px; }
 .gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
 .gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
@@ -389,7 +381,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
   .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
   .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
-  .variants { grid-template-columns: minmax(0, 1fr); }
   .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .skill-card { padding: 14px; }
@@ -436,19 +427,19 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="docs-layout">
   <aside class="site-sidebar"><details class="site-nav" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html" aria-current="page"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html" aria-current="page"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a><a href="class-gunner.html"><img src="../portraits/gunner.png" alt="" width="26" height="26" loading="lazy" /><span>火枪手</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-plague" data-toc-id="spec-plague" title="瘴巫"><span>瘴巫</span></a></li><li class="toc-level-3"><a href="#spec-bramble" data-toc-id="spec-bramble" title="荆棘使"><span>荆棘使</span></a></li><li class="toc-level-3"><a href="#spec-sylvan" data-toc-id="spec-sylvan" title="森灵"><span>森灵</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-plague" data-toc-id="skills-plague" title="瘴巫专属"><span>瘴巫专属</span></a></li><li class="toc-level-3"><a href="#skills-bramble" data-toc-id="skills-bramble" title="荆棘使专属"><span>荆棘使专属</span></a></li><li class="toc-level-3"><a href="#skills-sylvan" data-toc-id="skills-sylvan" title="森灵专属"><span>森灵专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-sylvan" data-toc-id="build-sylvan" title="森灵配置"><span>森灵配置</span></a></li><li class="toc-level-3"><a href="#build-bramble" data-toc-id="build-bramble" title="荆棘使配置"><span>荆棘使配置</span></a></li><li class="toc-level-3"><a href="#build-plague" data-toc-id="build-plague" title="瘴巫配置"><span>瘴巫配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-plague" data-toc-id="spec-plague" title="瘴巫"><span>瘴巫</span></a></li><li class="toc-level-3"><a href="#spec-bramble" data-toc-id="spec-bramble" title="荆棘使"><span>荆棘使</span></a></li><li class="toc-level-3"><a href="#spec-sylvan" data-toc-id="spec-sylvan" title="森灵"><span>森灵</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-plague" data-toc-id="skills-plague" title="瘴巫专属"><span>瘴巫专属</span></a></li><li class="toc-level-3"><a href="#skills-bramble" data-toc-id="skills-bramble" title="荆棘使专属"><span>荆棘使专属</span></a></li><li class="toc-level-3"><a href="#skills-sylvan" data-toc-id="skills-sylvan" title="森灵专属"><span>森灵专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-sylvan-1" data-toc-id="build-sylvan-1" title="森灵 · 木灵震怒配置"><span>森灵 · 木灵震怒配置</span></a></li><li class="toc-level-3"><a href="#build-bramble-0" data-toc-id="build-bramble-0" title="荆棘使 · 荆棘牢笼配置"><span>荆棘使 · 荆棘牢笼配置</span></a></li><li class="toc-level-3"><a href="#build-sylvan-0" data-toc-id="build-sylvan-0" title="森灵 · 年轮守护配置"><span>森灵 · 年轮守护配置</span></a></li><li class="toc-level-3"><a href="#build-plague-0" data-toc-id="build-plague-0" title="瘴巫 · 瘴气弥漫配置"><span>瘴巫 · 瘴气弥漫配置</span></a></li><li class="toc-level-3"><a href="#build-plague-1" data-toc-id="build-plague-1" title="瘴巫 · 衰败诅咒配置"><span>瘴巫 · 衰败诅咒配置</span></a></li><li class="toc-level-3"><a href="#build-bramble-1" data-toc-id="build-bramble-1" title="荆棘使 · 反刺护身配置"><span>荆棘使 · 反刺护身配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/druid.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.2-ota2</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0</p>
 <h1>德鲁伊</h1>
-<p class="page-description">远程 2 格。唯一以体质为主属性，靠中毒、反伤和持续回复把战斗拖长，熬赢而不是秒杀。职业特性「滋蔓」：战斗每进行 1 回合，你造成的伤害提高 1%，至多提高 40%；敌人的荆棘与棘刺反弹到你身上的伤害降低 50%。</p>
+<p class="page-description">远程 2 格。唯一以体质为主属性的职业，以中毒、反伤与持续回复延长战斗，凭借持久力取胜，而非速战速决。</p>
 <p class="tags"><span class="tag">主属性 体质</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-plague">瘴巫</a><a class="tag tag-link" href="#spec-bramble">荆棘使</a><a class="tag tag-link" href="#spec-sylvan">森灵</a></p>
 </div>
 </header>
@@ -456,424 +447,934 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <dl class="fact-grid">
 <div><dt>初始属性</dt><dd>力量 3，敏捷 4，智力 4，体质 10</dd></div>
 <div><dt>可用武器</dt><dd>藤杖、月镰</dd></div>
-<div class="wide"><dt>护甲精通 · 藤甲</dt><dd>生命很高、护甲偏低，体质提高攻击、生命与回复。</dd></div>
+<div class="wide"><dt>护甲精通 · 藤甲</dt><dd>生命很高、护甲偏低，体质提高攻击、生命与回复。精通加成：每回合回复与受击反伤。</dd></div>
+<div class="wide"><dt>职业特性 · 滋蔓</dt><dd>战斗每进行 1 回合，你造成的伤害提高 1%，至多提高 40%；敌人的荆棘与棘刺反弹到你身上的伤害降低 50%。</dd></div>
 </dl>
 <h2 id="specs" tabindex="-1">转职</h2>
-<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和两个专属技能（45 级与 50 级开放），并强化若干本职业技能。60 级且深渊到达第 40 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。</p>
+<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和一条技能线：20 级起每 5 级开放一个专属技能（60 级与 100 级除外），并强化若干本职业技能。每个转职分两套打法，专属技能有的属于其中一套，有的两套通用。60 级且深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。60 级起开放的专属技能要觉醒以后才能学习。100 级且深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并学会占用第二个觉醒栏的二觉技。</p>
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-plague" data-toc-label="瘴巫" tabindex="-1">瘴巫<small>觉醒后称「万疫巫尊」</small></h3>
 <p class="spec-pitch">毒布满全场，中毒的敌人越多，回复与伤害越高。</p>
-<a class="spec-strength" href="#build-plague">终局参考 · 等效第 <strong>121</strong> 层</a>
+<a class="spec-strength" href="#build-plague-0">终局参考 · 等效第 <strong>116</strong> 层</a>
 <dl class="spec-facts">
-<div><dt>转职特性</dt><dd>施加的中毒伤害提高 25%。每回合开始时，场上每有一名中毒的敌人，回复 1% 最大生命，至多 5%。</dd></div>
+<div><dt>转职特性</dt><dd>施加的中毒伤害提高 25%。每回合开始时，场上每有一名中毒的敌人，回复 1% 最大生命，至多 5%。最大生命提高 40%。</dd></div>
 <div><dt>觉醒提升</dt><dd>中毒伤害加成由 25% 提高至 50%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>中毒伤害加成由 50% 提高至 75%；学会二觉技「天瘴」。</dd></div>
+<div><dt>两套打法</dt><dd>瘴气弥漫：「瘴域」「传疫」「疫潮」「万孢」；衰败诅咒：「枯竭」「汲毒」「凋零」</dd></div>
 <div><dt>防具精通</dt><dd>藤甲精通 · 攻击</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-rotBlight"><small>45 级</small>腐疫</a><a class="chip" href="#skill-venomHeart"><small>50 级</small>万毒噬心</a><a class="chip" href="#skill-plagueTide"><small>觉醒</small>疫潮</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-miasmaBreath"><small>20 级</small>瘴息</a><a class="chip" href="#skill-swarm"><small>25 级</small>虫群</a><a class="chip" href="#skill-rotBlight"><small>30 级</small>腐疫</a><a class="chip" href="#skill-venomHeart"><small>35 级</small>万毒噬心</a><a class="chip" href="#skill-plagueAvatar"><small>40 级</small>疫魔化身</a><a class="chip" href="#skill-miasmaField"><small>45 级</small>瘴域</a><a class="chip" href="#skill-witherCurse"><small>50 级</small>枯竭</a><a class="chip" href="#skill-plagueSpread"><small>55 级</small>传疫</a><a class="chip" href="#skill-drainVenom"><small>65 级</small>汲毒</a><a class="chip" href="#skill-venomEat"><small>70 级</small>毒蚀</a><a class="chip" href="#skill-plagueTide"><small>75 级</small>疫潮</a><a class="chip" href="#skill-decay"><small>80 级</small>凋零</a><a class="chip" href="#skill-sporeBloom"><small>85 级</small>万孢</a><a class="chip" href="#skill-miasmaBurst"><small>90 级</small>瘴爆</a><a class="chip" href="#skill-venomSurge"><small>95 级</small>毒涌</a><a class="chip" href="#skill-miasmaSea"><small>觉醒</small>瘴海</a><a class="chip" href="#skill-skyMiasma"><small>二次觉醒</small>天瘴</a></dd></div>
 <div><dt>推荐被动</dt><dd><a href="#passive-druid-toxinlord">「蔓毒」</a>、<a href="#passive-druid-wildgrowth">「野蛮生长」</a></dd></div>
 </dl>
-<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-sporecloud">「孢子云」</a>冷却时间由 4 回合缩短为 3 回合。</li><li><a href="#skill-wrath">「自然之怒」</a>每命中一名敌人，回复 2% 最大生命。</li><li><a href="#skill-swarm">「虫群」</a>命中已中毒的敌人时，使其相邻的敌人也中毒。</li><li><a href="#skill-vinelash">「藤鞭」</a>对中毒目标的伤害由 240% 提高至 280%。</li><li><a href="#skill-ancientForm">「古树化身」</a>化身期间，攻击附带的中毒伤害翻倍。</li></ul></details>
+<details class="spec-rewrites"><summary>技能强化（3 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-sporecloud">「孢子云」</a>冷却时间由 4 回合缩短为 3 回合。</li><li><a href="#skill-wrath">「自然之怒」</a>每命中一名敌人，回复 2% 最大生命。</li><li><a href="#skill-vinelash">「藤鞭」</a>对中毒目标的伤害由 240% 提高至 280%。</li></ul></details>
 </section>
 <section class="spec-card">
 <h3 id="spec-bramble" data-toc-label="荆棘使" tabindex="-1">荆棘使<small>觉醒后称「荆冠之主」</small></h3>
 <p class="spec-pitch">以缠绕束缚敌人，荆棘随每一次缠绕造成伤害。</p>
-<a class="spec-strength" href="#build-bramble">终局参考 · 等效第 <strong>125</strong> 层</a>
+<a class="spec-strength" href="#build-bramble-0">终局参考 · 等效第 <strong>117</strong> 层</a>
 <dl class="spec-facts">
-<div><dt>转职特性</dt><dd>被缠绕的敌人受到的伤害提高 20%。敌人被缠绕时，立即受到 60% 攻击的荆棘伤害。</dd></div>
+<div><dt>转职特性</dt><dd>被缠绕的敌人受到的伤害提高 20%。敌人被缠绕时，立即受到 60% 攻击的荆棘伤害。最大生命提高 15%。</dd></div>
 <div><dt>觉醒提升</dt><dd>被缠绕敌人的增伤由 20% 提高至 35%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>缠绕时的荆棘伤害由 60% 提高至 100% 攻击；学会二觉技「万刺」。</dd></div>
+<div><dt>两套打法</dt><dd>荆棘牢笼：「荆狱」「蔓缠」「绞杀」「万藤」「森罗」；反刺护身：「刺甲」「荆血」「荆爆」</dd></div>
 <div><dt>防具精通</dt><dd>藤甲精通 · 受击反伤（与职业默认相同）</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-thornGuard"><small>45 级</small>荆棘护身</a><a class="chip" href="#skill-thornPrison"><small>50 级</small>荆狱</a><a class="chip" href="#skill-myriadVines"><small>觉醒</small>万藤</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-druid-thornmail">「棘甲」</a>、<a href="#passive-druid-resilience">「韧性」</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-thornPrick"><small>20 级</small>缠刺</a><a class="chip" href="#skill-thornGuard"><small>25 级</small>荆棘护身</a><a class="chip" href="#skill-thornPrison"><small>30 级</small>荆狱</a><a class="chip" href="#skill-venomVine"><small>35 级</small>噬毒藤</a><a class="chip" href="#skill-thornAvatar"><small>40 级</small>荆棘化身</a><a class="chip" href="#skill-vineTangle"><small>45 级</small>蔓缠</a><a class="chip" href="#skill-thornArmor"><small>50 级</small>刺甲</a><a class="chip" href="#skill-strangle"><small>55 级</small>绞杀</a><a class="chip" href="#skill-thornBlood"><small>65 级</small>荆血</a><a class="chip" href="#skill-lockVine"><small>70 级</small>锁藤</a><a class="chip" href="#skill-myriadVines"><small>75 级</small>万藤</a><a class="chip" href="#skill-thornBurst"><small>80 级</small>荆爆</a><a class="chip" href="#skill-forestMaze"><small>85 级</small>森罗</a><a class="chip" href="#skill-thornStorm"><small>90 级</small>荆暴</a><a class="chip" href="#skill-rootBind"><small>95 级</small>根缚</a><a class="chip" href="#skill-thornSea"><small>觉醒</small>荆海</a><a class="chip" href="#skill-myriadThorns"><small>二次觉醒</small>万刺</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-druid-thornmail">「棘甲」</a>、<a href="#passive-druid-rootGrip">「缠根」</a></dd></div>
 </dl>
-<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-thorngrasp">「荆棘缚」</a>冷却时间由 3 回合缩短为 2 回合。</li><li><a href="#skill-rootcage">「根须牢笼」</a>缠绕延长至 2 次行动。</li><li><a href="#skill-vinelash">「藤鞭」</a>对被缠绕目标的伤害与中毒目标相同，为 240%。</li><li><a href="#skill-barkskin">「树皮术」</a>尖刺范围扩大至 2 格。</li><li><a href="#skill-ancientForm">「古树化身」</a>缠绕延长至 2 次行动。</li></ul></details>
+<details class="spec-rewrites"><summary>技能强化（4 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-thorngrasp">「荆棘缚」</a>冷却时间由 3 回合缩短为 2 回合。</li><li><a href="#skill-rootcage">「根须牢笼」</a>缠绕延长至 2 次行动。</li><li><a href="#skill-vinelash">「藤鞭」</a>对被缠绕目标的伤害与中毒目标相同，为 240%。</li><li><a href="#skill-barkskin">「树皮术」</a>尖刺范围扩大至 2 格。</li></ul></details>
 </section>
 <section class="spec-card">
 <h3 id="spec-sylvan" data-toc-label="森灵" tabindex="-1">森灵<small>觉醒后称「古木之灵」</small></h3>
 <p class="spec-pitch">持续回复积累年轮，战斗越久越难以击倒。</p>
-<a class="spec-strength" href="#build-sylvan">终局参考 · 等效第 <strong>126</strong> 层</a>
+<a class="spec-strength" href="#build-sylvan-1">终局参考 · 等效第 <strong>120</strong> 层</a>
 <dl class="spec-facts">
-<div><dt>转职特性</dt><dd>每回合首次获得回复时，获得 1 层年轮（上限 5 层），每层使受到的伤害降低 4%。单次受到超过 15% 最大生命的伤害时，失去 1 层。</dd></div>
+<div><dt>转职特性</dt><dd>每回合首次获得回复时，获得 1 层年轮（上限 5 层），每层使受到的伤害降低 3%。单次受到超过 15% 最大生命的伤害时，失去 1 层。</dd></div>
 <div><dt>觉醒提升</dt><dd>年轮上限由 5 层提高至 8 层。</dd></div>
+<div><dt>第二次觉醒</dt><dd>每层年轮的减伤由 3% 提高至 4%；学会二觉技「森神」。</dd></div>
+<div><dt>两套打法</dt><dd>年轮守护：「木心」「甘霖」「万年」「木壁」；木灵震怒：「根击」「千枝」「木魄」</dd></div>
 <div><dt>防具精通</dt><dd>藤甲精通 · 每回合回复</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-woodWrath"><small>45 级</small>木之怒</a><a class="chip" href="#skill-rebirth"><small>50 级</small>新生</a><a class="chip" href="#skill-eternity"><small>觉醒</small>万年</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-druid-verdant">「常青」</a>、<a href="#passive-druid-resilience">「韧性」</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-rootDrain"><small>20 级</small>汲根</a><a class="chip" href="#skill-rebirth"><small>25 级</small>新生</a><a class="chip" href="#skill-worldtree"><small>30 级</small>世界树</a><a class="chip" href="#skill-woodWrath"><small>35 级</small>木之怒</a><a class="chip" href="#skill-ancientForm"><small>40 级</small>古树化身</a><a class="chip" href="#skill-woodHeart"><small>45 级</small>木心</a><a class="chip" href="#skill-rootStrike"><small>50 级</small>根击</a><a class="chip" href="#skill-sweetRain"><small>55 级</small>甘霖</a><a class="chip" href="#skill-thousandBranches"><small>65 级</small>千枝</a><a class="chip" href="#skill-woodBlow"><small>70 级</small>木击</a><a class="chip" href="#skill-eternity"><small>75 级</small>万年</a><a class="chip" href="#skill-woodSoul"><small>80 级</small>木魄</a><a class="chip" href="#skill-woodWall"><small>85 级</small>木壁</a><a class="chip" href="#skill-greenWood"><small>90 级</small>苍木</a><a class="chip" href="#skill-longLife"><small>95 级</small>长生</a><a class="chip" href="#skill-divineTree"><small>觉醒</small>神木</a><a class="chip" href="#skill-forestGod"><small>二次觉醒</small>森神</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-druid-ancientRoot">「古根」</a>、<a href="#passive-druid-lushGrowth">「繁茂」</a></dd></div>
 </dl>
-<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-barkskin">「树皮术」</a>冷却时间由 5 回合缩短为 4 回合。</li><li><a href="#skill-rejuvenate">「回春」</a>施放时立即获得 1 层年轮。</li><li><a href="#skill-symbiosis">「共生」</a>进入专注的同时获得 1 层年轮。</li><li><a href="#skill-worldtree">「世界树」</a>溢出的回复转化为护盾，上限为 30% 最大生命。</li><li><a href="#skill-ancientForm">「古树化身」</a>施放时年轮叠满。</li></ul></details>
+<details class="spec-rewrites"><summary>技能强化（3 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-barkskin">「树皮术」</a>冷却时间由 5 回合缩短为 4 回合。</li><li><a href="#skill-rejuvenate">「回春」</a>施放时立即获得 1 层年轮。</li><li><a href="#skill-symbiosis">「共生」</a>进入专注的同时获得 1 层年轮。</li></ul></details>
 </section></div>
 <h2 id="skills" tabindex="-1">技能</h2>
-<p class="lead">职业技能共 12 个，学习消耗 1 技能点；携带栏 3 个起步，10 级和 25 级各增加 1 个。5 级起可以为已学技能选择精通（二选一，切换免费）。技能可以逐级升级，等级上限每 20 级开放一级，最高 5 级；拖动卡片下方的滑块可查看各等级的提升。</p>
+<p class="lead">职业技能共 8 个，学习消耗技能点（SP），开放越晚的技能越贵；携带栏 3 个起步，10 级和 25 级各增加 1 个。技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级；拖动卡片下方的滑块可查看各等级的提升。</p>
 <h3 id="skills-class" data-toc-label="职业技能" tabindex="-1">职业技能</h3>
 <div class="skill-grid"><article class="skill-card" id="skill-thorngrasp">
 <header><h4>荆棘缚</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">缠绕</span></p>
-<p class="skill-desc">对射程内一名敌人造成 130% 伤害并使其缠绕，跳过 1 次行动。</p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d130} 伤害并使其缠绕，跳过 1 次行动。">对射程内一名敌人造成 182% + 649 伤害并使其缠绕，跳过 1 次行动。</p>
 <p class="skill-synergy">先以「荆棘缚」限制敌人行动，再利用「孢子云」和反伤效果持续造成伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>尖刺缚</strong><p>命中后目标破甲 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蔓生缚</strong><p>同时缠绕目标相邻的敌人。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：冷却时间由 3 回合缩短为 2 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="荆棘缚的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 40%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%</li></ol>
+<div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="荆棘缚的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 40%，每 100% 倍率另加 499 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-sporecloud">
 <header><h4>孢子云</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">中毒</span></p>
-<p class="skill-desc">对 2 格内所有敌人造成 60% 伤害并使其中毒。</p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成 {d60} 伤害并使其中毒，每回合受到 {p45} 攻击的毒伤。">对 2 格内所有敌人造成 88.8% + 299 伤害并使其中毒，每回合受到 66.6% 攻击的毒伤。</p>
 <p class="skill-synergy">战斗开始时以「孢子云」使多名敌人中毒，可提高「自然之怒」与「野蛮生长」的收益。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>浓孢</strong><p>毒伤提高至 60% 攻击。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>弥散</strong><p>范围扩大至 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：冷却时间由 4 回合缩短为 3 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="孢子云的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 毒伤累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 毒伤 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 毒伤 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 毒伤 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 毒伤 +12%</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害 / 毒伤" data-open="1" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="孢子云的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害 / 毒伤提高 48%，每 100% 倍率另加 499 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-barkskin">
 <header><h4>树皮术</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">棘刺</span></p>
-<p class="skill-desc">获得相当于 35% 最大生命的护盾，并立即对相邻敌人各造成相当于护盾值 50% 的尖刺伤害。</p>
+<p class="skill-desc" data-template="获得相当于 {p50} 最大生命的护盾，并立即对相邻敌人各造成相当于护盾值 50% 的尖刺伤害。">获得相当于 74% 最大生命的护盾，并立即对相邻敌人各造成相当于护盾值 50% 的尖刺伤害。</p>
 <p class="skill-synergy">敌人靠近时施放「树皮术」，可同时获得护盾并造成伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>硬木</strong><p>护盾提高至最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>棘皮</strong><p>尖刺伤害提高至护盾量的 100%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：尖刺范围扩大至 2 格。</li><li><strong>森灵</strong>：冷却时间由 5 回合缩短为 4 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="护盾 / 尖刺">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="树皮术的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时护盾 / 尖刺累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 / 尖刺 +12%</li><li data-level="3"><b>Lv.3</b>护盾 / 尖刺 +12%</li><li data-level="4"><b>Lv.4</b>护盾 / 尖刺 +12%</li><li data-level="5"><b>Lv.5</b>护盾 / 尖刺 +12%</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="护盾 / 尖刺" data-open="1" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="树皮术的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：护盾 / 尖刺提高 48%</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-rejuvenate">
 <header><h4>回春</h4><span class="skill-meta">1 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">持续</span></p>
-<p class="skill-desc">立即回复 15% 最大生命，并在之后 3 回合每回合再回复 8% 最大生命。</p>
+<p class="skill-desc" data-template="立即回复 {p15} 最大生命，并在之后 3 回合每回合再回复 {p8} 最大生命。">立即回复 22.2% 最大生命，并在之后 3 回合每回合再回复 11.8% 最大生命。</p>
 <p class="skill-synergy">受伤后施放「回春」，配合「常青」与自然回复，可持续恢复生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>速效</strong><p>立刻回复提高至 30% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>长青</strong><p>持续回复延长至 5 回合。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：施放时立即获得 1 层年轮。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="治疗">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="回春的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时治疗累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>治疗 +12%</li><li data-level="3"><b>Lv.3</b>治疗 +12%</li><li data-level="4"><b>Lv.4</b>治疗 +12%</li><li data-level="5"><b>Lv.5</b>治疗 +12%</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="治疗" data-open="1" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="回春的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：治疗提高 48%</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-vinelash">
 <header><h4>藤鞭</h4><span class="skill-meta">5 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">引毒</span></p>
-<p class="skill-desc">对射程内一名敌人造成 170% 伤害；目标已中毒时，伤害提高至 240%。</p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d170} 伤害；目标已中毒时，伤害提高至 {d240}。">对射程内一名敌人造成 238% + 884 伤害；目标已中毒时，伤害提高至 336% + 1248。</p>
 <p class="skill-synergy">先以「孢子云」使敌人中毒，再以「藤鞭」造成额外伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>撕裂</strong><p>命中后目标流血。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>绞缠</strong><p>命中后目标缠绕。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：对中毒目标的伤害由 240% 提高至 280%。</li><li><strong>荆棘使</strong>：对被缠绕目标的伤害与中毒目标相同，为 240%。</li></ul></div>
-<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="藤鞭的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 40%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%</li></ol>
+<div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="5" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="藤鞭的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-wrath">
 <header><h4>自然之怒</h4><span class="skill-meta">10 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">毒爆</span><span class="tag">群攻</span></p>
-<p class="skill-desc">对场上所有中毒的敌人各造成 110% 伤害。</p>
+<p class="skill-desc" data-template="对场上所有中毒的敌人各造成 {d110} 伤害。">对场上所有中毒的敌人各造成 162.8% + 572 伤害。</p>
 <p class="skill-synergy">先以「孢子云」或「虫群」使多名敌人中毒，再施放「自然之怒」。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震怒</strong><p>伤害提高至 130%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>续毒</strong><p>伤害结算后把中毒回合数补满。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：每命中一名敌人，回复 2% 最大生命。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="自然之怒的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.026666666666666665" data-scaling="伤害" data-open="10" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="自然之怒的技能等级" /></label><output class="level-value">Lv.19</output></div>
+<p class="level-total">Lv.19（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-rootcage">
 <header><h4>根须牢笼</h4><span class="skill-meta">15 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">群控</span><span class="tag">易伤</span></p>
-<p class="skill-desc">使 2 格内所有敌人缠绕并易伤 2 回合，期间受到的所有伤害提高 30%。</p>
+<p class="skill-desc">使 3 格内所有敌人缠绕并易伤 2 回合，期间受到的所有伤害提高 30%。</p>
 <p class="skill-synergy">先以「根须牢笼」限制多名敌人的行动并施加易伤，再使用范围技能攻击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>荆笼</strong><p>同时造成 100% 伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>深根</strong><p>范围扩大至 3 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>荆棘使</strong>：缠绕延长至 2 次行动。</li></ul></div>
-<div class="skill-levels" data-rate="0" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="根须牢笼的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">升级不提高百分比数值</p>
+<div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="15" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="根须牢笼的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：效果不变</p>
 <ol class="level-gains"><li data-level="2"><b>Lv.2</b>易伤 +1 回合</li><li data-level="3"><b>Lv.3</b>被缚的敌人中毒：每回合受到 35% 攻击的伤害</li><li data-level="4"><b>Lv.4</b>易伤再 +1 回合</li><li data-level="5"><b>Lv.5</b>中毒提高到 55% 攻击</li></ol>
 </div>
 </article>
 <article class="skill-card" id="skill-symbiosis">
-<header><h4>共生</h4><span class="skill-meta">20 级开放 · 冷却 5 回合</span></header>
+<header><h4>共生</h4><span class="skill-meta">15 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">专注</span></p>
-<p class="skill-desc">场上每有一名中毒的敌人，回复 8% 最大生命，并获得专注。</p>
+<p class="skill-desc" data-template="场上每有一名中毒的敌人，回复 {p8} 最大生命，并获得专注。">场上每有一名中毒的敌人，回复 11.8% 最大生命，并获得专注。</p>
 <p class="skill-synergy">先使多名敌人中毒，再施放「共生」，可回复更多生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>汲取</strong><p>每名中毒敌人回复 12% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>共鸣</strong><p>同时获得 20% 最大生命的护盾。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：进入专注的同时获得 1 层年轮。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="治疗 / 护盾">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="共生的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时治疗 / 护盾累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>治疗 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>治疗 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>治疗 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>治疗 / 护盾 +12%</li></ol>
+<div class="skill-levels" data-rate="0.028235294117647056" data-scaling="治疗 / 护盾" data-open="15" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="共生的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：治疗 / 护盾提高 48%</p>
+
+</div>
+</article></div>
+<h3 id="skills-plague" data-toc-label="瘴巫专属" tabindex="-1">瘴巫专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-miasmaBreath">
+<header><h4>瘴息</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">施毒</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人及其相邻敌人各造成 {d120} 伤害，并使其中毒 3 回合，每回合受到 {p45} 攻击的毒伤。">对射程内一名敌人及其相邻敌人各造成 168% + 624 伤害，并使其中毒 3 回合，每回合受到 63% 攻击的毒伤。</p>
+<p class="skill-synergy">转职后最先学到的铺毒手段：一次让几名敌人中毒，触发瘴巫的回复。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害 / 毒伤" data-open="20" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="瘴息的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害 / 毒伤提高 40%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-swarm">
 <header><h4>虫群</h4><span class="skill-meta">25 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">多目标</span><span class="tag">中毒</span></p>
-<p class="skill-desc">对 3 格内最多 3 名敌人各造成 90% 伤害，并使其中毒。</p>
+<p class="skill-desc" data-template="对 3 格内最多 3 名敌人各造成 {d90} 伤害，并使其中毒，每回合受到 {p45} 攻击的毒伤；命中已中毒的敌人时，使其相邻的敌人也中毒。">对 3 格内最多 3 名敌人各造成 133.2% + 468 伤害，并使其中毒，每回合受到 66.6% 攻击的毒伤；命中已中毒的敌人时，使其相邻的敌人也中毒。</p>
 <p class="skill-synergy">「虫群」可以使「孢子云」范围外的敌人中毒。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蜂拥</strong><p>目标数提高至 5 名。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>蛰刺</strong><p>命中的敌人同时易伤 2 回合。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：命中已中毒的敌人时，使其相邻的敌人也中毒。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 毒伤">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="虫群的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 毒伤累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 毒伤 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 毒伤 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 毒伤 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 毒伤 +12%，多扑 1 名敌人</li></ol>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="伤害 / 毒伤" data-open="25" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="虫群的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：伤害 / 毒伤提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+<ol class="level-gains"><li data-level="5"><b>Lv.5</b>多扑 1 名敌人</li></ol>
 </div>
 </article>
-<article class="skill-card" id="skill-worldtree">
-<header><h4>世界树</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
-<p class="tags"><span class="tag">群控</span><span class="tag">终结</span></p>
-<p class="skill-desc">回复 40% 最大生命，使场上所有敌人缠绕，并对每名中毒的敌人造成 150% 伤害。</p>
-<p class="skill-synergy">生命较低且场上敌人较多时施放「世界树」，可同时回复生命并限制敌人行动。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>回归</strong><p>回复提高至 60% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>降临</strong><p>对中毒敌人的伤害提高至 200%。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>森灵</strong>：溢出的回复转化为护盾，上限为 30% 最大生命。</li></ul></div>
-<div class="skill-levels" data-rate="0.15" data-scaling="治疗 / 伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="世界树的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时治疗 / 伤害累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>治疗 / 伤害 +15%</li><li data-level="3"><b>Lv.3</b>治疗 / 伤害 +15%</li><li data-level="4"><b>Lv.4</b>治疗 / 伤害 +15%</li><li data-level="5"><b>Lv.5</b>治疗 / 伤害 +15%</li></ol>
+<article class="skill-card" id="skill-rotBlight">
+<header><h4>腐疫</h4><span class="skill-meta">30 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">虚弱</span></p>
+<p class="skill-desc" data-template="使 2 格内所有敌人中毒，每回合受到 {p45} 攻击的毒伤；中毒期间，其攻击力降低 30%。">使 2 格内所有敌人中毒，每回合受到 66.6% 攻击的毒伤；中毒期间，其攻击力降低 30%。</p>
+<p class="skill-synergy">瘴巫的防护手段：中毒的敌人越多，受到的攻击越轻，回复也越多。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="毒伤" data-open="30" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="腐疫的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：毒伤提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-venomHeart">
+<header><h4>万毒噬心</h4><span class="skill-meta">35 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">毒爆</span><span class="tag">收割</span></p>
+<p class="skill-desc" data-template="立即结算场上所有中毒敌人剩余毒伤的 {p150}。">立即结算场上所有中毒敌人剩余毒伤的 222%。</p>
+<p class="skill-synergy">瘴巫先使多名敌人中毒，再施放「万毒噬心」，可同时结算剩余毒伤。</p>
+
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="毒伤" data-open="35" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="万毒噬心的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：毒伤提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-plagueAvatar">
+<header><h4>疫魔化身</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">化身</span><span class="tag">施毒</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人各造成 {d200} 伤害，并使其中毒。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都使目标中毒，每回合受到 {p90} 攻击的毒伤。">射程内有敌人时可施放：对射程内所有敌人各造成 320% + 1040 伤害，并使其中毒。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都使目标中毒，每回合受到 144% 攻击的毒伤。</p>
+<p class="skill-synergy">瘴巫的招牌技：化身期间每一次攻击都在铺毒。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 回复 / 毒伤" data-open="40" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="疫魔化身的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 回复 / 毒伤提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-miasmaField">
+<header><h4>瘴域</h4><span class="skill-meta">45 级开放 · 瘴气弥漫打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">施毒</span><span class="tag">持续</span></p>
+<p class="skill-desc" data-template="之后 3 回合，每回合开始时，使射程内所有未中毒的敌人中毒 3 回合，每回合受到 {p45} 攻击的毒伤。">之后 3 回合，每回合开始时，使射程内所有未中毒的敌人中毒 3 回合，每回合受到 66.6% 攻击的毒伤。</p>
+<p class="skill-synergy">瘴气弥漫打法的起手：毒自己补上，不用每回合施放。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="毒伤" data-open="45" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="瘴域的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：毒伤提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-witherCurse">
+<header><h4>枯竭</h4><span class="skill-meta">50 级开放 · 衰败诅咒打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">削弱</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害，使其攻击力降低 30%、破甲 3 回合；目标已中毒时，两者都持续到中毒结束。">对射程内一名敌人造成 296% + 1040 伤害，使其攻击力降低 30%、破甲 3 回合；目标已中毒时，两者都持续到中毒结束。</p>
+<p class="skill-synergy">衰败诅咒打法的起手：先削弱首领，再慢慢毒死它。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="枯竭的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-plagueSpread">
+<header><h4>传疫</h4><span class="skill-meta">55 级开放 · 瘴气弥漫打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">引爆</span><span class="tag">传毒</span></p>
+<p class="skill-desc" data-template="结算射程内一名中毒敌人的全部剩余毒伤，并使它 2 格内的其他敌人中毒 3 回合，每回合伤害为它结算前的 {p100}。">结算射程内一名中毒敌人的全部剩余毒伤，并使它 2 格内的其他敌人中毒 3 回合，每回合伤害为它结算前的 148%。</p>
+<p class="skill-synergy">瘴气弥漫打法的传递手段：把一名敌人身上的毒分给周围。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="毒伤" data-open="55" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="传疫的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：毒伤提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-drainVenom">
+<header><h4>汲毒</h4><span class="skill-meta">65 级、觉醒后开放 · 衰败诅咒打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">毒伤</span></p>
+<p class="skill-desc" data-template="立即结算射程内所有中毒敌人 1 回合的毒伤（不减少中毒回合），回复相当于结算伤害 {p50} 的生命。">立即结算射程内所有中毒敌人 1 回合的毒伤（不减少中毒回合），回复相当于结算伤害 74% 的生命。</p>
+<p class="skill-synergy">衰败诅咒打法的续航：毒铺得越开，回复越多。</p>
+
+<div class="skill-levels" data-rate="0.06857142857142857" data-scaling="回复" data-open="65" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="汲毒的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-venomEat">
+<header><h4>毒蚀</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">毒伤</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害；目标已中毒时，立即结算 2 回合毒伤（不减少中毒回合），「万毒噬心」的剩余冷却缩短 2 回合；未中毒时，使其中毒 3 回合，每回合受到 {p45} 攻击的毒伤。">对射程内一名敌人造成 384.8% + 1352 伤害；目标已中毒时，立即结算 2 回合毒伤（不减少中毒回合），「万毒噬心」的剩余冷却缩短 2 回合；未中毒时，使其中毒 3 回合，每回合受到 66.6% 攻击的毒伤。</p>
+<p class="skill-synergy">与「万毒噬心」配成两拍循环：「毒蚀」结算毒伤、催快「万毒噬心」，再以「万毒噬心」一次结清。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害 / 毒伤" data-open="70" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="毒蚀的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害 / 毒伤提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-plagueTide">
+<header><h4>疫潮</h4><span class="skill-meta">75 级、觉醒后开放 · 瘴气弥漫打法 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群毒</span><span class="tag">增益</span></p>
+<p class="skill-desc">使场上所有敌人中毒 5 回合；之后 3 回合毒伤翻倍，每回合按中毒敌人数量额外回复 2% 最大生命。</p>
+<p class="skill-synergy">瘴气弥漫打法的大招：敌人越多收益越高，宜在大波次开启。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="毒伤 / 回复" data-open="75" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="疫潮的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：毒伤 / 回复提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-decay">
+<header><h4>凋零</h4><span class="skill-meta">80 级、觉醒后开放 · 衰败诅咒打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">削弱</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="使射程内所有敌人攻击力降低 30% 3 回合；其中已中毒的敌人同时破甲 3 回合。获得 {p30} 最大生命的护盾。">使射程内所有敌人攻击力降低 30% 3 回合；其中已中毒的敌人同时破甲 3 回合。获得 48% 最大生命的护盾。</p>
+<p class="skill-synergy">衰败诅咒打法的保命手段：敌人围上来时一次削弱全场。</p>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="护盾" data-open="80" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="凋零的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：护盾提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-sporeBloom">
+<header><h4>万孢</h4><span class="skill-meta">85 级、觉醒后开放 · 瘴气弥漫打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">施毒</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d150} 伤害，并使其中毒 3 回合，每回合受到 {p45} 攻击的毒伤；场上每有一名中毒的敌人，伤害提高 15%，至多提高 90%。">对射程内所有敌人造成 240% + 780 伤害，并使其中毒 3 回合，每回合受到 72% 攻击的毒伤；场上每有一名中毒的敌人，伤害提高 15%，至多提高 90%。</p>
+<p class="skill-synergy">瘴气弥漫打法的大招：中毒的敌人越多，伤害越高。</p>
+
+<div class="skill-levels" data-rate="0.19999999999999998" data-scaling="伤害 / 毒伤" data-open="85" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="万孢的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害 / 毒伤提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-miasmaBurst">
+<header><h4>瘴爆</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；中毒的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1664 伤害；中毒的敌人改为受到 720% + 2340 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「疫魔化身」错开施放；先铺毒，再以「瘴爆」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="瘴爆的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-venomSurge">
+<header><h4>毒涌</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">毒伤</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 4 回合，中毒每回合结算两次（第二次不减少中毒回合）；期间毒伤提高 {p15}。">之后 4 回合，中毒每回合结算两次（第二次不减少中毒回合）；期间毒伤提高 24%。</p>
+<p class="skill-synergy">毒铺开以后施放「毒涌」，这几回合里毒伤翻倍。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="毒伤" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="毒涌的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：毒伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-miasmaSea">
+<header><h4>瘴海</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">毒海</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，并使其中毒 5 回合，每回合受到 {p60} 攻击的毒伤；之后 4 回合，中毒的敌人受到你的攻击与技能伤害提高 20%。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3120 伤害，并使其中毒 5 回合，每回合受到 96% 攻击的毒伤；之后 4 回合，中毒的敌人受到你的攻击与技能伤害提高 20%。</p>
+<p class="skill-synergy">瘴巫的觉醒技：把毒铺满全场，再加重之后的每一击。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害 / 毒伤" data-open="60" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="瘴海的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害 / 毒伤提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-skyMiasma">
+<header><h4>天瘴</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">引爆</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，并结算其全部剩余毒伤，随后使其重新中毒 5 回合，每回合受到 {p60} 攻击的毒伤。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 3640 伤害，并结算其全部剩余毒伤，随后使其重新中毒 5 回合，每回合受到 60% 攻击的毒伤。</p>
+<p class="skill-synergy">瘴巫的二觉技：「瘴海」把毒铺满，「天瘴」一次结清再重新铺上。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害 / 毒伤" data-open="100" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="天瘴的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article></div>
+<h3 id="skills-bramble" data-toc-label="荆棘使专属" tabindex="-1">荆棘使专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-thornPrick">
+<header><h4>缠刺</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d160} 伤害，并使其缠绕 1 次行动；目标已被缠绕时，改为缠绕延长 1 次行动，并再受到一次荆棘伤害。">对射程内一名敌人造成 224% + 832 伤害，并使其缠绕 1 次行动；目标已被缠绕时，改为缠绕延长 1 次行动，并再受到一次荆棘伤害。</p>
+<p class="skill-synergy">转职后最先学到的缠绕手段：每一次缠绕都带出荆棘伤害。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="缠刺的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornGuard">
+<header><h4>荆棘护身</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="获得 {p35} 最大生命的护盾；护盾存在期间，攻击你的敌人被缠绕 1 次行动。">获得 51.8% 最大生命的护盾；护盾存在期间，攻击你的敌人被缠绕 1 次行动。</p>
+<p class="skill-synergy">荆棘使的防护手段：每一次被攻击都会触发缠绕与荆棘伤害。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="护盾" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="荆棘护身的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornPrison">
+<header><h4>荆狱</h4><span class="skill-meta">30 级开放 · 荆棘牢笼打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">荆棘</span></p>
+<p class="skill-desc" data-template="使 3 格内所有敌人缠绕 2 次行动，并造成 {d150} 伤害。">使 3 格内所有敌人缠绕 2 次行动，并造成 222% + 780 伤害。</p>
+<p class="skill-synergy">荆棘使的收尾手段：缠绕越多，荆棘伤害与增伤越高。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="荆狱的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-venomVine">
 <header><h4>噬毒藤</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">引毒</span></p>
-<p class="skill-desc">对射程内一名敌人及其相邻敌人各造成 150% 伤害，并使其缠绕，跳过 1 次行动。已中毒的敌人先结算剩余毒伤，再次中毒；其他敌人直接中毒。每命中一名敌人，你回复 3% 最大生命。</p>
+<p class="skill-desc" data-template="对射程内一名敌人及其相邻敌人各造成 {d190} 伤害，并使其缠绕，跳过 1 次行动。已中毒的敌人先结算剩余毒伤，再次中毒；其他敌人直接中毒。每命中一名敌人，你回复 {p3} 最大生命。">对射程内一名敌人及其相邻敌人各造成 281.2% + 988 伤害，并使其缠绕，跳过 1 次行动。已中毒的敌人先结算剩余毒伤，再次中毒；其他敌人直接中毒。每命中一名敌人，你回复 4.4% 最大生命。</p>
 <p class="skill-synergy">敌人集中时施放「噬毒藤」，可同时限制行动、结算毒伤并回复生命，再以「自然之怒」攻击中毒目标。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛毒</strong><p>伤害提高至 190%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>汲毒</strong><p>每命中一名敌人回复 6% 最大生命。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="噬毒藤的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +12%</li></ol>
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害 / 回复" data-open="35" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="噬毒藤的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornAvatar">
+<header><h4>荆棘化身</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">化身</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人各造成 {d200} 伤害，并使其缠绕 2 次行动。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都使未被缠绕的目标缠绕 1 次行动。">射程内有敌人时可施放：对射程内所有敌人各造成 320% + 1040 伤害，并使其缠绕 2 次行动。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都使未被缠绕的目标缠绕 1 次行动。</p>
+<p class="skill-synergy">荆棘使的招牌技：化身期间每一次攻击都在缠绕，每一次缠绕都带出荆棘伤害。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 回复" data-open="40" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="荆棘化身的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 回复提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-vineTangle">
+<header><h4>蔓缠</h4><span class="skill-meta">45 级开放 · 荆棘牢笼打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d120} 伤害，并使其缠绕 1 次行动。">对射程内所有敌人造成 177.6% + 624 伤害，并使其缠绕 1 次行动。</p>
+<p class="skill-synergy">荆棘牢笼打法的起手：一次缠住射程内的所有敌人。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="蔓缠的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornArmor">
+<header><h4>刺甲</h4><span class="skill-meta">50 级开放 · 反刺护身打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">荆棘</span></p>
+<p class="skill-desc" data-template="获得 {p30} 最大生命的护盾；之后 3 回合，每次受到攻击，对攻击者造成 {p80} 攻击的荆棘伤害。">获得 44.4% 最大生命的护盾；之后 3 回合，每次受到攻击，对攻击者造成 118.4% 攻击的荆棘伤害。</p>
+<p class="skill-synergy">反刺护身打法的起手：敌人打得越凶，伤到自己越多。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="护盾 / 荆棘" data-open="50" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="刺甲的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：护盾 / 荆棘提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-strangle">
+<header><h4>绞杀</h4><span class="skill-meta">55 级开放 · 荆棘牢笼打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="对射程内一名被缠绕的敌人造成 {d300} 伤害；它的缠绕每剩 1 次行动，伤害提高 30%，至多提高 90%。">对射程内一名被缠绕的敌人造成 444% + 1560 伤害；它的缠绕每剩 1 次行动，伤害提高 30%，至多提高 90%。</p>
+<p class="skill-synergy">荆棘牢笼打法对付首领的手段：缠得越久，打得越重。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="绞杀的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornBlood">
+<header><h4>荆血</h4><span class="skill-meta">65 级、觉醒后开放 · 反刺护身打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">荆棘</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="之后 3 回合，荆棘与反伤造成伤害的 {p30} 转化为生命回复。">之后 3 回合，荆棘与反伤造成伤害的 48% 转化为生命回复。</p>
+<p class="skill-synergy">反刺护身打法的续航：敌人打得越凶，回得越多。</p>
+
+<div class="skill-levels" data-rate="0.08571428571428572" data-scaling="回复比例" data-open="65" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="荆血的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：回复比例提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-lockVine">
+<header><h4>锁藤</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害，并使其缠绕 1 次行动；目标已被缠绕时，「噬毒藤」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1352 伤害，并使其缠绕 1 次行动；目标已被缠绕时，「噬毒藤」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「噬毒藤」配成两拍循环：「锁藤」缠住目标、催快「噬毒藤」，再以「噬毒藤」打出。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="锁藤的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-myriadVines">
+<header><h4>万藤</h4><span class="skill-meta">75 级、觉醒后开放 · 荆棘牢笼打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">荆棘</span></p>
+<p class="skill-desc">使场上所有敌人缠绕 2 次行动；之后 4 回合，缠绕造成的荆棘伤害变为 3 倍。</p>
+<p class="skill-synergy">荆棘牢笼打法的大招：先开万藤，再以荆狱、荆棘缚反复缠绕。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="荆棘倍率" data-open="75" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="万藤的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：荆棘倍率提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornBurst">
+<header><h4>荆爆</h4><span class="skill-meta">80 级、觉醒后开放 · 反刺护身打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">爆发</span></p>
+<p class="skill-desc" data-template="获得 {p40} 最大生命的护盾；护盾被击破时，对 2 格内所有敌人造成相当于这次护盾值 150% 的伤害。">获得 64% 最大生命的护盾；护盾被击破时，对 2 格内所有敌人造成相当于这次护盾值 150% 的伤害。</p>
+<p class="skill-synergy">反刺护身打法的爆发：敌人越快打破护盾，越早受到反噬。</p>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="护盾" data-open="80" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="荆爆的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：护盾提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-forestMaze">
+<header><h4>森罗</h4><span class="skill-meta">85 级、觉醒后开放 · 荆棘牢笼打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">缠绕</span></p>
+<p class="skill-desc" data-template="对射程内所有被缠绕的敌人造成 {d400} 伤害，并使其缠绕延长 1 次行动。">对射程内所有被缠绕的敌人造成 640% + 2080 伤害，并使其缠绕延长 1 次行动。</p>
+<p class="skill-synergy">荆棘牢笼打法的大招：先缠住一片，再一次打出。</p>
+
+<div class="skill-levels" data-rate="0.19999999999999998" data-scaling="伤害" data-open="85" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="森罗的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thornStorm">
+<header><h4>荆暴</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；被缠绕的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1664 伤害；被缠绕的敌人改为受到 720% + 2340 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「荆棘化身」错开施放；先缠住敌人，再以「荆暴」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="荆暴的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-rootBind">
+<header><h4>根缚</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">缠绕</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 4 回合，你施加的缠绕都多持续 1 次行动，荆棘伤害提高 {p50}。">之后 4 回合，你施加的缠绕都多持续 1 次行动，荆棘伤害提高 80%。</p>
+<p class="skill-synergy">施放后接连缠绕，这几回合里缠得更久、荆棘更重。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="荆棘增伤" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="根缚的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：荆棘增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-thornSea">
+<header><h4>荆海</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">荆棘</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，并使其缠绕 2 次行动；之后 4 回合，被缠绕的敌人每回合开始时受到一次荆棘伤害。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3120 伤害，并使其缠绕 2 次行动；之后 4 回合，被缠绕的敌人每回合开始时受到一次荆棘伤害。</p>
+<p class="skill-synergy">荆棘使的觉醒技：铺开缠绕，之后荆棘每回合都会发作。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="荆海的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-myriadThorns">
+<header><h4>万刺</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">万刺</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，并使其缠绕 2 次行动，缠绕时连续受到 3 次荆棘伤害。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 3640 伤害，并使其缠绕 2 次行动，缠绕时连续受到 3 次荆棘伤害。</p>
+<p class="skill-synergy">荆棘使的二觉技：「荆海」让荆棘每回合发作，「万刺」一次打出三倍荆棘。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="万刺的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article></div>
+<h3 id="skills-sylvan" data-toc-label="森灵专属" tabindex="-1">森灵专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-rootDrain">
+<header><h4>汲根</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d160} 伤害，并回复相当于造成伤害 30% 的生命。">对射程内一名敌人造成 224% + 832 伤害，并回复相当于造成伤害 30% 的生命。</p>
+<p class="skill-synergy">转职后最先学到的回复手段：每回合触发一次回复、积累年轮。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害 / 回复" data-open="20" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="汲根的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害 / 回复提高 40%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-rebirth">
+<header><h4>新生</h4><span class="skill-meta">25 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="回复 {p30} 最大生命，并获得 2 层年轮。">回复 44.4% 最大生命，并获得 2 层年轮。</p>
+<p class="skill-synergy">森灵的收尾手段：危急时回复并迅速恢复年轮。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="回复" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="新生的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-worldtree">
+<header><h4>世界树</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">终结</span></p>
+<p class="skill-desc" data-template="回复 {p40} 最大生命，溢出的回复转化为护盾（上限为 30% 最大生命）；使场上所有敌人缠绕，并对每名中毒的敌人造成 {d150} 伤害。">回复 64% 最大生命，溢出的回复转化为护盾（上限为 30% 最大生命）；使场上所有敌人缠绕，并对每名中毒的敌人造成 240% + 780 伤害。</p>
+<p class="skill-synergy">生命较低且场上敌人较多时施放「世界树」，可同时回复生命并限制敌人行动。</p>
+
+<div class="skill-levels" data-rate="0.04285714285714286" data-scaling="治疗 / 伤害" data-open="30" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="世界树的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：治疗 / 伤害提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-woodWrath">
+<header><h4>木之怒</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成（{d100} + 年轮层数 × 40%）的伤害，并使其缠绕 1 次行动，不消耗年轮。">对 2 格内所有敌人造成（148% + 520 + 年轮层数 × 40%）的伤害，并使其缠绕 1 次行动，不消耗年轮。</p>
+<p class="skill-synergy">森灵的输出手段：年轮越厚，伤害越高。</p>
+
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="木之怒的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-ancientForm">
 <header><h4>古树化身</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
 <p class="tags"><span class="tag">减伤</span><span class="tag">回复</span></p>
-<p class="skill-desc">射程内有敌人时可施放：对射程内所有敌人各造成 200% 伤害，并使其缠绕，跳过 1 次行动。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都会使目标中毒，每回合受到 45% 攻击的毒伤。</p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人各造成 {d200} 伤害，并使其缠绕，跳过 1 次行动；年轮立即叠满。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都会使目标中毒，每回合受到 {p45} 攻击的毒伤。">射程内有敌人时可施放：对射程内所有敌人各造成 320% + 1040 伤害，并使其缠绕，跳过 1 次行动；年轮立即叠满。之后 3 回合受到的伤害降低 30%，每回合回复 8% 最大生命；你的每次攻击都会使目标中毒，每回合受到 72% 攻击的毒伤。</p>
 <p class="skill-synergy">敌人较多时施放「古树化身」，可同时限制行动、回复生命并施加中毒，再以「自然之怒」攻击中毒目标。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>磐根</strong><p>受到的伤害改为降低 45%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>刺藤</strong><p>期间每次被攻击，对攻击者造成 60% 攻击的反伤。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>瘴巫</strong>：化身期间，攻击附带的中毒伤害翻倍。</li><li><strong>荆棘使</strong>：缠绕延长至 2 次行动。</li><li><strong>森灵</strong>：施放时年轮叠满。</li></ul></div>
-<div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 回复 / 毒伤">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="古树化身的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复 / 毒伤累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 / 毒伤 +15%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 / 毒伤 +15%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 / 毒伤 +15%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 / 毒伤 +15%</li></ol>
-</div>
-</article></div>
-<h3 id="skills-plague" data-toc-label="瘴巫专属" tabindex="-1">瘴巫专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-rotBlight">
-<header><h4>腐疫</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
-<p class="tags"><span class="tag">群攻</span><span class="tag">虚弱</span></p>
-<p class="skill-desc">使 2 格内所有敌人中毒；中毒期间，其攻击力降低 20%。</p>
-<p class="skill-synergy">瘴巫的防护手段：中毒的敌人越多，受到的攻击越轻，回复也越多。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>蚀骨</strong><p>攻击力降低提高至 30%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>疫散</strong><p>范围扩大至 3 格。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="毒伤">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="腐疫的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时毒伤累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>毒伤 +12%</li><li data-level="3"><b>Lv.3</b>毒伤 +12%</li><li data-level="4"><b>Lv.4</b>毒伤 +12%</li><li data-level="5"><b>Lv.5</b>毒伤 +12%</li></ol>
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 回复 / 毒伤" data-open="40" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="古树化身的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 回复 / 毒伤提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article>
-<article class="skill-card" id="skill-venomHeart">
-<header><h4>万毒噬心</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
-<p class="tags"><span class="tag">毒爆</span><span class="tag">收割</span></p>
-<p class="skill-desc">立即结算场上所有中毒敌人剩余毒伤的 150%。</p>
-<p class="skill-synergy">瘴巫先使多名敌人中毒，再施放「万毒噬心」，可同时结算剩余毒伤。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>噬尽</strong><p>结清比例提高至 200%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>余毒</strong><p>结清后使目标重新中毒 2 回合。</p></div></div>
-
-<div class="skill-levels" data-rate="0.12" data-scaling="毒伤">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="万毒噬心的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时毒伤累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>毒伤 +12%</li><li data-level="3"><b>Lv.3</b>毒伤 +12%</li><li data-level="4"><b>Lv.4</b>毒伤 +12%</li><li data-level="5"><b>Lv.5</b>毒伤 +12%</li></ol>
-</div>
-</article>
-<article class="skill-card is-ascend" id="skill-plagueTide">
-<header><h4>疫潮</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
-<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">疫潮</span></p>
-<p class="skill-desc">使场上所有敌人中毒 5 回合；之后 3 回合毒伤翻倍，每回合按中毒敌人数量额外回复 2% 最大生命。</p>
-<p class="skill-synergy">瘴巫的觉醒技：敌人越多收益越高，宜在大波次开启。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>瘟潮</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>毒泽</strong><p>施放时对中毒敌人造成 100% 伤害。</p></div></div>
-
-<div class="skill-levels" data-rate="0.15" data-scaling="毒伤 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="疫潮的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时毒伤 / 回复累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>毒伤 / 回复 +15%</li><li data-level="3"><b>Lv.3</b>毒伤 / 回复 +15%</li><li data-level="4"><b>Lv.4</b>毒伤 / 回复 +15%</li><li data-level="5"><b>Lv.5</b>毒伤 / 回复 +15%</li></ol>
-</div>
-</article></div>
-<h3 id="skills-bramble" data-toc-label="荆棘使专属" tabindex="-1">荆棘使专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-thornGuard">
-<header><h4>荆棘护身</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
-<p class="tags"><span class="tag">护盾</span><span class="tag">缠绕</span></p>
-<p class="skill-desc">获得 25% 最大生命的护盾；护盾存在期间，攻击你的敌人被缠绕 1 次行动。</p>
-<p class="skill-synergy">荆棘使的防护手段：每一次被攻击都会触发缠绕与荆棘伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>厚棘</strong><p>护盾提高至 35% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反刺</strong><p>攻击者同时受到 80% 攻击的荆棘伤害。</p></div></div>
-
-<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="荆棘护身的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时护盾累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%</li></ol>
-</div>
-</article>
-<article class="skill-card" id="skill-thornPrison">
-<header><h4>荆狱</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
-<p class="tags"><span class="tag">群控</span><span class="tag">荆棘</span></p>
-<p class="skill-desc">使 2 格内所有敌人缠绕 2 次行动，并造成 150% 伤害。</p>
-<p class="skill-synergy">荆棘使的收尾手段：缠绕越多，荆棘伤害与增伤越高。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>深狱</strong><p>范围扩大至 3 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>刺狱</strong><p>伤害提高至 200%。</p></div></div>
-
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="荆狱的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
-</div>
-</article>
-<article class="skill-card is-ascend" id="skill-myriadVines">
-<header><h4>万藤</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
-<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">万藤</span></p>
-<p class="skill-desc">使场上所有敌人缠绕 2 次行动；之后 3 回合，缠绕造成的荆棘伤害变为 3 倍。</p>
-<p class="skill-synergy">荆棘使的觉醒技：先开万藤，再以荆狱、荆棘缚反复缠绕。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>盘根</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>藤刺</strong><p>施放时对所有敌人造成 100% 伤害。</p></div></div>
-
-<div class="skill-levels" data-rate="0.15" data-scaling="荆棘倍率">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="万藤的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时荆棘倍率累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>荆棘倍率 +15%</li><li data-level="3"><b>Lv.3</b>荆棘倍率 +15%</li><li data-level="4"><b>Lv.4</b>荆棘倍率 +15%</li><li data-level="5"><b>Lv.5</b>荆棘倍率 +15%</li></ol>
-</div>
-</article></div>
-<h3 id="skills-sylvan" data-toc-label="森灵专属" tabindex="-1">森灵专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-woodWrath">
-<header><h4>木之怒</h4><span class="skill-meta">45 级开放 · 冷却 4 回合</span></header>
-<p class="tags"><span class="tag">群攻</span><span class="tag">年轮</span></p>
-<p class="skill-desc">对 2 格内所有敌人造成（100% + 年轮层数 × 40%）的伤害，不消耗年轮。</p>
-<p class="skill-synergy">森灵的输出手段：年轮越厚，伤害越高。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>古怒</strong><p>每层年轮提高至 55%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>木刺</strong><p>命中的敌人同时缠绕 1 次行动。</p></div></div>
-
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="木之怒的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
-</div>
-</article>
-<article class="skill-card" id="skill-rebirth">
-<header><h4>新生</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
+<article class="skill-card" id="skill-woodHeart">
+<header><h4>木心</h4><span class="skill-meta">45 级开放 · 年轮守护打法 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">回复</span><span class="tag">年轮</span></p>
-<p class="skill-desc">回复 30% 最大生命，并获得 2 层年轮。</p>
-<p class="skill-synergy">森灵的收尾手段：危急时回复并迅速恢复年轮。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>复苏</strong><p>回复提高至 40% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>深根</strong><p>获得 3 层年轮。</p></div></div>
+<p class="skill-desc" data-template="之后 3 回合，每回合回复 {p6} 最大生命；期间受到重击时年轮不会减少。">之后 3 回合，每回合回复 8.9% 最大生命；期间受到重击时年轮不会减少。</p>
+<p class="skill-synergy">年轮守护打法的起手：持续回复，年轮只增不减。</p>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="新生的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时回复累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>回复 +12%</li><li data-level="3"><b>Lv.3</b>回复 +12%</li><li data-level="4"><b>Lv.4</b>回复 +12%</li><li data-level="5"><b>Lv.5</b>回复 +12%</li></ol>
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="回复" data-open="45" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="木心的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：回复提高 48%</p>
+
 </div>
 </article>
-<article class="skill-card is-ascend" id="skill-eternity">
-<header><h4>万年</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
-<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">不倒</span></p>
-<p class="skill-desc">之后 3 回合，生命不会低于 1 点，年轮层数达到上限，受到的回复翻倍。</p>
-<p class="skill-synergy">森灵生命较低时施放「万年」，可在敌人攻势较强时维持生存。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>长生</strong><p>持续时间延长至 4 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>返生</strong><p>施放时回复 20% 最大生命。</p></div></div>
+<article class="skill-card" id="skill-rootStrike">
+<header><h4>根击</h4><span class="skill-meta">50 级开放 · 木灵震怒打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害，每层年轮使伤害提高 30%；不消耗年轮。">对射程内一名敌人造成 296% + 1040 伤害，每层年轮使伤害提高 30%；不消耗年轮。</p>
+<p class="skill-synergy">木灵震怒打法的主力：年轮越多，这一击越重。</p>
 
-<div class="skill-levels" data-rate="0.15" data-scaling="回复倍率">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="万年的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时回复倍率累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>回复倍率 +15%</li><li data-level="3"><b>Lv.3</b>回复倍率 +15%</li><li data-level="4"><b>Lv.4</b>回复倍率 +15%</li><li data-level="5"><b>Lv.5</b>回复倍率 +15%</li></ol>
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="根击的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-sweetRain">
+<header><h4>甘霖</h4><span class="skill-meta">55 级开放 · 年轮守护打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">持续</span></p>
+<p class="skill-desc" data-template="回复 {p20} 最大生命；之后 3 回合，每回合再回复 {p5} 最大生命。">回复 29.6% 最大生命；之后 3 回合，每回合再回复 7.4% 最大生命。</p>
+<p class="skill-synergy">年轮守护打法的回复手段：立即回复一截，之后几回合持续回复。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="回复" data-open="55" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="甘霖的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-thousandBranches">
+<header><h4>千枝</h4><span class="skill-meta">65 级、觉醒后开放 · 木灵震怒打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d150} 伤害，每层年轮使伤害提高 20%，并使其缠绕 1 次行动；不消耗年轮。">对射程内所有敌人造成 222% + 780 伤害，每层年轮使伤害提高 20%，并使其缠绕 1 次行动；不消耗年轮。</p>
+<p class="skill-synergy">木灵震怒打法的范围技：年轮越多，伤害越高。</p>
+
+<div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="千枝的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-woodBlow">
+<header><h4>木击</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害，并回复相当于造成伤害 20% 的生命；年轮满层时，「木之怒」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1352 伤害，并回复相当于造成伤害 20% 的生命；年轮满层时，「木之怒」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「木之怒」配成两拍循环：「木击」回复、叠年轮，催快「木之怒」。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害 / 回复" data-open="70" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="木击的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-eternity">
+<header><h4>万年</h4><span class="skill-meta">75 级、觉醒后开放 · 年轮守护打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">不倒</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 3 回合，生命不会低于 1 点，年轮层数达到上限，受到的回复提高至平时的 {p200}。">之后 3 回合，生命不会低于 1 点，年轮层数达到上限，受到的回复提高至平时的 320%。</p>
+<p class="skill-synergy">森灵生命较低时施放「万年」，可在敌人攻势较强时维持生存。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="回复倍率" data-open="75" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="万年的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：回复倍率提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-woodSoul">
+<header><h4>木魄</h4><span class="skill-meta">80 级、觉醒后开放 · 木灵震怒打法 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">年轮</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 3 回合，每层年轮使你造成的伤害提高 {p5}。">之后 3 回合，每层年轮使你造成的伤害提高 8%。</p>
+<p class="skill-synergy">木灵震怒打法的增益：年轮叠满以后施放，伤害大幅提高。</p>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="增伤" data-open="80" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="木魄的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-woodWall">
+<header><h4>木壁</h4><span class="skill-meta">85 级、觉醒后开放 · 年轮守护打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="获得相当于 {p20} 最大生命的护盾，每层年轮再加 {p5}。">获得相当于 32% 最大生命的护盾，每层年轮再加 8%。</p>
+<p class="skill-synergy">年轮守护打法的保命手段：年轮越多，护盾越厚。</p>
+
+<div class="skill-levels" data-rate="0.19999999999999998" data-scaling="护盾" data-open="85" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="木壁的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：护盾提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-greenWood">
+<header><h4>苍木</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；年轮满层时改为 {d450}。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1664 伤害；年轮满层时改为 720% + 2340。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「古树化身」错开施放；年轮叠满以后施放「苍木」，造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="苍木的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-longLife">
+<header><h4>长生</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 4 回合，受到的回复提高 {p50}，每次获得回复都获得 1 层年轮（不止每回合第一次）。">之后 4 回合，受到的回复提高 80%，每次获得回复都获得 1 层年轮（不止每回合第一次）。</p>
+<p class="skill-synergy">施放后接回复技能，这几回合里年轮叠得更快。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="回复" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="长生的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：回复提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-divineTree">
+<header><h4>神木</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">年轮</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，并叠满年轮；之后 4 回合，年轮不会减少。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3120 伤害，并叠满年轮；之后 4 回合，年轮不会减少。</p>
+<p class="skill-synergy">森灵的觉醒技：叠满并锁住年轮，宜留给首领所在的波次。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="神木的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 520 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-forestGod">
+<header><h4>森神</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">森神</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，回复相当于造成伤害 10% 的生命，并叠满年轮。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 3640 伤害，回复相当于造成伤害 10% 的生命，并叠满年轮。</p>
+<p class="skill-synergy">森灵的二觉技：「神木」叠满并锁住年轮，「森神」吃满年轮一次打出、补回生命。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="5.2">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="森神的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 520 点固定伤害</p>
+
 </div>
 </article></div>
 <h2 id="passives" tabindex="-1">职业被动</h2>
-<p class="lead">5 级起可以花费 1 技能点学习，最多同时携带 2 项，随时可以免费退还。被动不占用技能携带栏。</p>
-<div class="passive-grid"><div class="passive-card" id="passive-druid-thornmail">
-<h4>棘甲</h4><p>反伤伤害提高 100%。</p><p class="muted">堆反伤词条，站着让敌人自己撞。</p>
-<span class="tag">荆棘使推荐</span>
+<p class="lead">职业通用被动 5 级起可以学习，转职被动在转职以后可以学习，每项 10 SP，不限个数，只受 SP 限制，随时可以退还。被动不占用技能携带栏。</p>
+<div class="passive-grid"><div class="passive-card" id="passive-druid-resilience">
+<h4>韧性</h4><p>受到伤害后，若生命低于 50%，回复 3% 最大生命。</p><p class="muted">残血时的兜底，和回春叠着用。</p>
+<span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-druid-verdant">
-<h4>常青</h4><p>每回合的自然回复翻倍。</p><p class="muted">体质越高收益越大，长局尤其明显。</p>
-<span class="tag">森灵推荐</span>
+<h4>常青</h4><p>每回合的自然回复提高 100%。</p><p class="muted">体质越高收益越大，长局尤其明显。</p>
+<span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-druid-toxinlord">
 <h4>蔓毒</h4><p>中毒每回合的伤害提高 30%。</p><p class="muted">孢子云铺满全场时收益最高。</p>
-<span class="tag">瘴巫推荐</span>
-</div>
-<div class="passive-card" id="passive-druid-resilience">
-<h4>韧性</h4><p>受到伤害后，若生命低于 50%，回复 3% 最大生命。</p><p class="muted">残血时的兜底，和回春叠着用。</p>
-<span class="tag">荆棘使推荐</span> <span class="tag">森灵推荐</span>
-</div>
-<div class="passive-card" id="passive-druid-seeding">
-<h4>播种</h4><p>中毒的敌人被击败时，它相邻的敌人也会中毒。</p><p class="muted">毒能自己传开，越打人越多越省技能。</p>
-
+<span class="tag">瘴巫转职被动</span>
 </div>
 <div class="passive-card" id="passive-druid-wildgrowth">
 <h4>野蛮生长</h4><p>每有一名中毒的敌人，你造成的伤害提高 5%，最多 25%。</p><p class="muted">先铺毒再输出，顺序反了就亏。</p>
-<span class="tag">瘴巫推荐</span>
+<span class="tag">瘴巫转职被动</span>
+</div>
+<div class="passive-card" id="passive-druid-thornmail">
+<h4>棘甲</h4><p>反伤伤害提高 100%。</p><p class="muted">堆反伤词条，站着让敌人自己撞。</p>
+<span class="tag">荆棘使转职被动</span>
+</div>
+<div class="passive-card" id="passive-druid-rootGrip">
+<h4>缠根</h4><p>缠绕时的荆棘伤害提高 30%。</p><p class="muted">缠绕越频繁，收益越高。</p>
+<span class="tag">荆棘使转职被动</span>
+</div>
+<div class="passive-card" id="passive-druid-ancientRoot">
+<h4>古根</h4><p>每层年轮的减伤再提高 0.5%。</p><p class="muted">年轮叠满以后效果最好。</p>
+<span class="tag">森灵转职被动</span>
+</div>
+<div class="passive-card" id="passive-druid-lushGrowth">
+<h4>繁茂</h4><p>每有 1 层年轮，你受到的回复提高 3%。</p><p class="muted">年轮越多，回复越多。</p>
+<span class="tag">森灵转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职分别搜索出的最优配置：200 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 86～143 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 81～141 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-sylvan" data-toc-label="森灵配置" tabindex="-1">森灵</h3>
-<span class="build-score"><span>等效第 <strong>126</strong> 层</span><small>过半至第 125 层</small></span>
+<h3 id="build-sylvan-1" data-toc-label="森灵 · 木灵震怒配置" tabindex="-1">森灵 · 木灵震怒</h3>
+<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 120 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 15.5 L197.6 9.9 L224.8 11.7 L252.1 9.9 L279.4 9.9 L306.6 8.0 L333.9 53.0 L361.2 32.4 L388.4 62.4 L415.7 45.5 L442.9 84.9 L470.2 83.0 L497.5 98.0 L524.7 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 15.5 L197.6 9.9 L224.8 11.7 L252.1 9.9 L279.4 9.9 L306.6 8.0 L333.9 53.0 L361.2 32.4 L388.4 62.4 L415.7 45.5 L442.9 84.9 L470.2 83.0 L497.5 98.0 L524.7 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 9.9 L189.4 8.0 L215.3 11.7 L241.2 9.9 L267.1 19.3 L293.0 38.0 L318.9 28.6 L344.8 36.1 L370.7 47.4 L396.6 66.1 L422.5 94.3 L448.4 92.4 L474.3 98.0 L500.2 84.9 L526.1 96.1 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 9.9 L189.4 8.0 L215.3 11.7 L241.2 9.9 L267.1 19.3 L293.0 38.0 L318.9 28.6 L344.8 36.1 L370.7 47.4 L396.6 66.1 L422.5 94.3 L448.4 92.4 L474.3 98.0 L500.2 84.9 L526.1 96.1 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>树皮术</strong><span class="variant">硬木</span><small>Lv.5</small></li><li><strong>根须牢笼</strong><span class="variant">荆笼</span><small>Lv.5</small></li><li><strong>噬毒藤</strong><span class="variant">猛毒</span><small>Lv.5</small></li><li><strong>古树化身</strong><span class="variant">刺藤</span><small>Lv.5</small></li><li><strong>木之怒</strong><span class="variant">木刺</span><small>Lv.5</small></li><li class="is-ascend"><strong>万年</strong><span class="variant">返生</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「棘甲」、「韧性」</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>木之怒</strong><small>Lv.8</small></li><li><strong>古树化身</strong><small>Lv.1</small></li><li><strong>千枝</strong><small>Lv.7</small></li><li><strong>木魄</strong><small>Lv.5</small></li><li><strong>树皮术</strong><small>Lv.20</small></li><li class="is-ascend"><strong>神木</strong><small>Lv.1</small></li><li class="is-ascend"><strong>森神</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「古根」Lv.17、「繁茂」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>体质 1 : 敏捷 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>饰品</small>吊坠</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1916</b></span><span>生命 <b>5242</b></span><span>护甲 <b>341</b></span></dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>藤制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1411</b></span><span>生命 <b>3690</b></span><span>护甲 <b>121</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-bramble" data-toc-label="荆棘使配置" tabindex="-1">荆棘使</h3>
-<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 122 层</small></span>
+<h3 id="build-bramble-0" data-toc-label="荆棘使 · 荆棘牢笼配置" tabindex="-1">荆棘使 · 荆棘牢笼</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 114 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 11.7 L197.6 9.9 L224.8 17.4 L252.1 15.5 L279.4 13.6 L306.6 19.3 L333.9 38.0 L361.2 56.8 L388.4 60.5 L415.7 54.9 L442.9 75.5 L470.2 86.8 L497.5 98.0 L524.7 98.0 L552.0 94.3 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 11.7 L197.6 9.9 L224.8 17.4 L252.1 15.5 L279.4 13.6 L306.6 19.3 L333.9 38.0 L361.2 56.8 L388.4 60.5 L415.7 54.9 L442.9 75.5 L470.2 86.8 L497.5 98.0 L524.7 98.0 L552.0 94.3" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 11.7 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 17.4 L215.3 19.3 L241.2 8.0 L267.1 24.9 L293.0 43.6 L318.9 39.9 L344.8 53.0 L370.7 79.3 L396.6 69.9 L422.5 96.1 L448.4 90.5 L474.3 98.0 L500.2 84.9 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 11.7 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 17.4 L215.3 19.3 L241.2 8.0 L267.1 24.9 L293.0 43.6 L318.9 39.9 L344.8 53.0 L370.7 79.3 L396.6 69.9 L422.5 96.1 L448.4 90.5 L474.3 98.0 L500.2 84.9 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>噬毒藤</strong><span class="variant">汲毒</span><small>Lv.5</small></li><li><strong>根须牢笼</strong><span class="variant">荆笼</span><small>Lv.5</small></li><li><strong>古树化身</strong><span class="variant">磐根</span><small>Lv.5</small></li><li><strong>荆棘护身</strong><span class="variant">厚棘</span><small>Lv.5</small></li><li><strong>荆狱</strong><span class="variant">刺狱</span><small>Lv.5</small></li><li class="is-ascend"><strong>万藤</strong><span class="variant">藤刺</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「常青」、「韧性」</dd></div>
-<div><dt>属性加点</dt><dd>体质 2 : 智力 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>藤甲</li><li><small>饰品</small>吊坠</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1991</b></span><span>生命 <b>5207</b></span><span>护甲 <b>323</b></span></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>荆狱</strong><small>Lv.13</small></li><li><strong>回春</strong><small>Lv.2</small></li><li><strong>荆棘化身</strong><small>Lv.1</small></li><li><strong>万藤</strong><small>Lv.6</small></li><li><strong>荆棘护身</strong><small>Lv.16</small></li><li class="is-ascend"><strong>荆海</strong><small>Lv.2</small></li><li class="is-ascend"><strong>万刺</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「棘甲」Lv.17、「缠根」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>体质 1 : 力量 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>藤制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1411</b></span><span>生命 <b>4243</b></span><span>护甲 <b>225</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-plague" data-toc-label="瘴巫配置" tabindex="-1">瘴巫</h3>
-<span class="build-score"><span>等效第 <strong>121</strong> 层</span><small>过半至第 116 层</small></span>
+<h3 id="build-sylvan-0" data-toc-label="森灵 · 年轮守护配置" tabindex="-1">森灵 · 年轮守护</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 114 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 9.9 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 17.4 L197.6 9.9 L224.8 17.4 L252.1 26.8 L279.4 15.5 L306.6 32.4 L333.9 49.3 L361.2 79.3 L388.4 81.1 L415.7 56.8 L442.9 96.1 L470.2 94.3 L497.5 98.0 L524.7 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 9.9 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 17.4 L197.6 9.9 L224.8 17.4 L252.1 26.8 L279.4 15.5 L306.6 32.4 L333.9 49.3 L361.2 79.3 L388.4 81.1 L415.7 56.8 L442.9 96.1 L470.2 94.3 L497.5 98.0 L524.7 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 9.9 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 8.0 L215.3 21.1 L241.2 11.7 L267.1 17.4 L293.0 36.1 L318.9 21.1 L344.8 77.4 L370.7 79.3 L396.6 71.8 L422.5 98.0 L448.4 98.0 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 9.9 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 8.0 L215.3 21.1 L241.2 11.7 L267.1 17.4 L293.0 36.1 L318.9 21.1 L344.8 77.4 L370.7 79.3 L396.6 71.8 L422.5 98.0 L448.4 98.0 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>荆棘缚</strong><span class="variant">蔓生缚</span><small>Lv.5</small></li><li><strong>腐疫</strong><span class="variant">蚀骨</span><small>Lv.5</small></li><li><strong>噬毒藤</strong><span class="variant">猛毒</span><small>Lv.5</small></li><li><strong>树皮术</strong><span class="variant">硬木</span><small>Lv.5</small></li><li><strong>古树化身</strong><span class="variant">刺藤</span><small>Lv.5</small></li><li class="is-ascend"><strong>疫潮</strong><span class="variant">毒泽</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「韧性」、「野蛮生长」</dd></div>
-<div><dt>属性加点</dt><dd>体质 2 : 智力 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>饰品</small>吊坠</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>生存</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2151</b></span><span>生命 <b>5592</b></span><span>护甲 <b>341</b></span></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>树皮术</strong><small>Lv.1</small></li><li><strong>木之怒</strong><small>Lv.14</small></li><li><strong>古树化身</strong><small>Lv.13</small></li><li><strong>木心</strong><small>Lv.7</small></li><li><strong>木壁</strong><small>Lv.1</small></li><li class="is-ascend"><strong>神木</strong><small>Lv.1</small></li><li class="is-ascend"><strong>森神</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「古根」Lv.17、「繁茂」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部力量</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>藤制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1264</b></span><span>生命 <b>3172</b></span><span>护甲 <b>329</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-plague-0" data-toc-label="瘴巫 · 瘴气弥漫配置" tabindex="-1">瘴巫 · 瘴气弥漫</h3>
+<span class="build-score"><span>等效第 <strong>116</strong> 层</span><small>过半至第 114 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 13.6 L215.3 21.1 L241.2 9.9 L267.1 30.5 L293.0 28.6 L318.9 36.1 L344.8 71.8 L370.7 75.5 L396.6 77.4 L422.5 96.1 L448.4 96.1 L474.3 98.0 L500.2 98.0 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 13.6 L215.3 21.1 L241.2 9.9 L267.1 30.5 L293.0 28.6 L318.9 36.1 L344.8 71.8 L370.7 75.5 L396.6 77.4 L422.5 96.1 L448.4 96.1 L474.3 98.0 L500.2 98.0 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>树皮术</strong><small>Lv.20</small></li><li><strong>疫魔化身</strong><small>Lv.13</small></li><li><strong>腐疫</strong><small>Lv.5</small></li><li><strong>疫潮</strong><small>Lv.1</small></li><li><strong>传疫</strong><small>Lv.1</small></li><li class="is-ascend"><strong>瘴海</strong><small>Lv.1</small></li><li class="is-ascend"><strong>天瘴</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「蔓毒」Lv.17、「野蛮生长」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部力量</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>藤制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1331</b></span><span>生命 <b>4440</b></span><span>护甲 <b>329</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-plague-1" data-toc-label="瘴巫 · 衰败诅咒配置" tabindex="-1">瘴巫 · 衰败诅咒</h3>
+<span class="build-score"><span>等效第 <strong>116</strong> 层</span><small>过半至第 114 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 8.0 L163.5 9.9 L189.4 8.0 L215.3 21.1 L241.2 19.3 L267.1 30.5 L293.0 28.6 L318.9 43.6 L344.8 73.6 L370.7 73.6 L396.6 75.5 L422.5 96.1 L448.4 98.0 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 8.0 L163.5 9.9 L189.4 8.0 L215.3 21.1 L241.2 19.3 L267.1 30.5 L293.0 28.6 L318.9 43.6 L344.8 73.6 L370.7 73.6 L396.6 75.5 L422.5 96.1 L448.4 98.0 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>树皮术</strong><small>Lv.20</small></li><li><strong>腐疫</strong><small>Lv.1</small></li><li><strong>疫魔化身</strong><small>Lv.11</small></li><li><strong>枯竭</strong><small>Lv.3</small></li><li><strong>凋零</strong><small>Lv.2</small></li><li class="is-ascend"><strong>瘴海</strong><small>Lv.3</small></li><li class="is-ascend"><strong>天瘴</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「蔓毒」Lv.17、「野蛮生长」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部力量</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1313</b></span><span>生命 <b>4358</b></span><span>护甲 <b>323</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-bramble-1" data-toc-label="荆棘使 · 反刺护身配置" tabindex="-1">荆棘使 · 反刺护身</h3>
+<span class="build-score"><span>等效第 <strong>115</strong> 层</span><small>过半至第 111 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 9.9 L85.8 8.0 L111.7 8.0 L137.6 13.6 L163.5 9.9 L189.4 23.0 L215.3 28.6 L241.2 8.0 L267.1 53.0 L293.0 54.9 L318.9 41.8 L344.8 64.3 L370.7 75.5 L396.6 64.3 L422.5 94.3 L448.4 92.4 L474.3 96.1 L500.2 88.6 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 9.9 L85.8 8.0 L111.7 8.0 L137.6 13.6 L163.5 9.9 L189.4 23.0 L215.3 28.6 L241.2 8.0 L267.1 53.0 L293.0 54.9 L318.9 41.8 L344.8 64.3 L370.7 75.5 L396.6 64.3 L422.5 94.3 L448.4 92.4 L474.3 96.1 L500.2 88.6 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>根须牢笼</strong><small>Lv.5</small></li><li><strong>噬毒藤</strong><small>Lv.13</small></li><li><strong>刺甲</strong><small>Lv.1</small></li><li><strong>荆爆</strong><small>Lv.5</small></li><li><strong>荆棘护身</strong><small>Lv.16</small></li><li class="is-ascend"><strong>荆海</strong><small>Lv.1</small></li><li class="is-ascend"><strong>万刺</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「韧性」Lv.20、「常青」Lv.20、「棘甲」Lv.17、「缠根」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>体质 2 : 力量 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>月镰</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>藤甲</li><li><small>靴子</small>藤制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1462</b></span><span>生命 <b>4444</b></span><span>护甲 <b>190</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.2-ota2 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-assassin.html"><small>上一篇</small><span>刺客<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-necromancer.html"><small>下一篇</small><span>死灵法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.2-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
@@ -1050,20 +1551,28 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   });
 })();
 
-/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+/* 技能等级滑块：拖到几级，就写出这一级的开放等级、百分比数值的累计提高与固定伤害（算法同引擎的 skillLevelInfo），并标出到这一级为止的整数提升。没有脚本时停在最高级。 */
 (() => {
   if (!document.querySelector('.level-slider')) return;
   for (const box of document.querySelectorAll('.skill-levels')) {
     const slider = box.querySelector('.level-slider');
     const output = box.querySelector('.level-value');
     const total = box.querySelector('.level-total');
-    const rate = Number(box.dataset.rate) || 0;
-    const scaling = box.dataset.scaling || '伤害';
+    const rate = Number(box.dataset.rate) || 0, open = Number(box.dataset.open) || 1, step = Number(box.dataset.step) || 5, fixedK = Number(box.dataset.fixed) || 0;
+    const scaling = box.dataset.scaling || '伤害', desc = box.closest('.skill-card')?.querySelector('.skill-desc');
     const update = () => {
       const level = Number(slider.value);
       output.textContent = `Lv.${level}`;
       for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
-      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+      const opensAt = open + step * (level - 1), pct = Math.round(rate * 1000 * (level - 1)) / 10, fixed = Math.round(fixedK * opensAt);
+      // 说明里的模板按这一级填数：{d200} 写成「百分比 + 固定伤害」，{p15} 只按百分比成长（同引擎的 fillSkillTemplate）。
+      if (desc?.dataset.template) {
+        const mul = 1 + rate * (level - 1), num = x => { const r = Math.round(x * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+        desc.textContent = desc.dataset.template
+          .replace(/\{d(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%${fixed ? ` + ${Math.round(n / 100 * fixed)}` : ''}`)
+          .replace(/\{p(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%`);
+      }
+      total.textContent = `Lv.${level}（角色 ${opensAt} 级开放）：${[pct ? `${scaling}提高 ${pct}%` : null, fixed ? `每 100% 倍率另加 ${fixed} 点固定伤害` : null].filter(Boolean).join('，') || '效果不变'}`;
     };
     slider.addEventListener('input', update);
     update();

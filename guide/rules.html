@@ -161,7 +161,6 @@ kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; bac
 .note p:first-child { margin-top: 0; }
 .note p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-muted); }
-.variant { color: var(--gold); font-weight: 600; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
 .tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
 .tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
@@ -247,12 +246,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
-.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
-.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
-.variant-box strong { color: var(--gold); font-size: 13px; }
-.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
-.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -294,7 +287,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
 .skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
 .skill-chips strong { font-size: 12.5px; }
-.skill-chips .variant { font-size: 11.5px; }
 .skill-chips small { color: var(--ink-soft); font-size: 11px; }
 .gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
 .gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
@@ -389,7 +381,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
   .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
   .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
-  .variants { grid-template-columns: minmax(0, 1fr); }
   .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .skill-card { padding: 14px; }
@@ -436,14 +427,14 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="docs-layout">
   <aside class="site-sidebar"><details class="site-nav" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a><a href="class-gunner.html"><img src="../portraits/gunner.png" alt="" width="26" height="26" loading="lazy" /><span>火枪手</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#attributes" data-toc-id="attributes" title="属性收益"><span>属性收益</span></a></li><li class="toc-level-2"><a href="#formulas" data-toc-id="formulas" title="减伤、闪避与暴击"><span>减伤、闪避与暴击</span></a></li><li class="toc-level-2"><a href="#armor-materials" data-toc-id="armor-materials" title="护甲材质"><span>护甲材质</span></a></li><li class="toc-level-2"><a href="#skill-rules" data-toc-id="skill-rules" title="技能与技能点"><span>技能与技能点</span></a></li><li class="toc-level-2"><a href="#spec-rules" data-toc-id="spec-rules" title="转职与觉醒"><span>转职与觉醒</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#attributes" data-toc-id="attributes" title="属性收益"><span>属性收益</span></a></li><li class="toc-level-2"><a href="#formulas" data-toc-id="formulas" title="减伤、闪避与暴击"><span>减伤、闪避与暴击</span></a></li><li class="toc-level-2"><a href="#armor-materials" data-toc-id="armor-materials" title="护甲材质"><span>护甲材质</span></a></li><li class="toc-level-2"><a href="#skill-rules" data-toc-id="skill-rules" title="技能与技能点（SP）"><span>技能与技能点（SP）</span></a></li><li class="toc-level-2"><a href="#spec-rules" data-toc-id="spec-rules" title="转职与觉醒"><span>转职与觉醒</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
-    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.7.2-ota2</span><span>与游戏版本同步更新</span></div></header>
+    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.8.0</span><span>与游戏版本同步更新</span></div></header>
     <article class="guide-article"><h2 id="attributes" tabindex="-1">属性收益</h2>
 <p class="lead">主属性每点提供较多攻击，其余三项属性也有少量贡献。每次升级获得 3 点属性点，可以自由分配。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">属性</th><th scope="col">每点收益</th></tr></thead><tbody role="rowgroup">
@@ -459,33 +450,30 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="formula"><strong>暴击率</strong><code>85 × 暴击值 ÷ (暴击值 + 85)</code><p>暴击值来自基础值、敏捷与装备，同样按递减曲线换算，上限接近 85%。</p></div>
 </div>
 <h2 id="armor-materials" tabindex="-1">护甲材质</h2>
-<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">材质</th><th scope="col">默认精通职业</th><th scope="col">固有属性</th><th scope="col">说明</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">战士</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲更高，体质增强生存和回复。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">游侠</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">防护适中，敏捷提高暴击和闪避。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">法师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲较低，智力提高攻击、护盾与治疗。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>夜行衣</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">刺客</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲都很低，敏捷提高攻击、暴击与闪避。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>祭袍</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">召唤师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲很低但生命偏高，智力提高攻击、护盾与治疗。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>冥纱</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">死灵法师</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲都偏低，智力提高攻击、护盾与治疗。</div></td></tr>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">材质</th><th scope="col">默认精通职业</th><th scope="col">材质精通</th><th scope="col">固有属性</th><th scope="col">说明</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">战士</div></td><td data-label="材质精通" role="cell"><div class="cell-content">最大生命</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲与生命最高，体质增强生存和回复。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>鳞甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">火枪手</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护甲</div></td><td data-label="固有属性" role="cell"><div class="cell-content">力量</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲较高、生命略高，力量提高攻击与护甲。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">游侠、刺客</div></td><td data-label="材质精通" role="cell"><div class="cell-content">闪避</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">防护适中，敏捷提高暴击和闪避。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="材质精通" role="cell"><div class="cell-content">每回合回复</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">法师、死灵法师</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护盾与治疗</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲最低，智力提高攻击、护盾与治疗。</div></td></tr>
 </tbody></table></div>
-<div class="note">防具全职业可穿。穿戴精通材质时发挥完整的护甲与生命，并获得精通加成；穿戴其他材质时保留固有属性，但护甲与生命按布甲的底子计算。部分转职会改为精通其他材质，见各职业页的转职卡。头盔与护甲分别计算。</div>
-<h2 id="skill-rules" tabindex="-1">技能与技能点</h2>
+<div class="note">防具全职业可穿。穿戴精通材质时发挥完整的护甲与生命，并获得两条精通加成：一条随材质而定，一条随职业而定；穿戴其他材质时保留固有属性，但护甲与生命按布甲的底子计算。部分转职会改为精通其他材质，见各职业页的转职卡。头盔与护甲分别计算。</div>
+<h2 id="skill-rules" tabindex="-1">技能与技能点（SP）</h2>
 <ul class="rule-list">
-<li>每个职业有 12 个职业技能，按 1、5、10、15、20、25、30、35、40 级依次开放。学习一个技能消耗 1 技能点。</li>
+<li>每个职业有 8 个职业技能，按 1、5、10、15 级依次开放；20 级以后的技能在转职的技能线上开放。学习技能消耗技能点（SP），开放越晚的技能越贵：1～19 级开放的技能学习需 10 SP，20～39 级的需 15 SP，40 级起的需 20 SP，觉醒技需 30 SP。</li>
 <li>携带栏 3 个起步，10 级和 25 级各增加 1 个，最多携带 5 个技能。</li>
-<li>5 级起可以为已学技能选择精通，消耗 1 技能点，两个分支二选一，切换免费。</li>
-<li>已学技能可以逐级升级，每级消耗 1 技能点。等级上限每 20 级开放一级，最高 5 级。</li>
-<li>职业被动 5 级起可以学习，最多同时携带 2 项，随时可以免费退还。</li>
-<li>技能点：10 级前每级获得 1 点，60 级前每 3 级获得 1 点，此后每 10 级获得 1 点（10 级 10 点、40 级 20 点、60 级 26 点、100 级 30 点、200 级 40 点）。</li>
+<li>已学技能可以逐级升级：技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级。每升一级，技能的百分比数值随之提高；造成伤害的技能另有固定伤害，等级越高，固定伤害越多。回合、次数等整数效果只在 Lv.2～Lv.5 提高。每升一级的价格：1～19 级开放的技能 10 SP，20～39 级的 12 SP，40 级起的 14 SP，觉醒技 16 SP。</li>
+<li>职业被动 5 级起可以学习，每项 10 SP。被动分职业通用被动与转职被动：转职以后还能学习本转职的转职被动，被动不限个数，只受 SP 限制。已学的被动可以逐级升级：学会时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，每升一级 2 SP。遗忘技能、退还被动时，花费的 SP 全部退还。</li>
+<li>每次升级都获得 SP：1～10 级每级 10 SP，11～60 级每级 4 SP，61～100 级每级 11 SP（10 级累计 100 SP、40 级累计 220 SP、60 级累计 300 SP、80 级累计 520 SP、100 级累计 740 SP）。</li>
 </ul>
 <h2 id="spec-rules" tabindex="-1">转职与觉醒</h2>
 <ul class="rule-list">
-<li>20 级起可以转职，每个职业有三个转职方向。转职不消耗技能点，战斗外可以随时免费更换；更换时会遗忘原转职的专属技能，并退还花费的技能点。</li>
-<li>每个转职有一条转职特性、两个专属技能（45 级与 50 级开放），并强化若干本职业技能。</li>
-<li>60 级且深渊到达第 40 层后可以觉醒：转职特性随之提升，并开放一个觉醒技。觉醒技单独占用觉醒栏，不占用常规携带栏；学习、精通与升级的消耗与普通技能相同。</li>
+<li>20 级起可以转职，每个职业有三个转职方向。转职不消耗技能点，战斗外可以随时免费更换；更换时会遗忘原转职的专属技能与转职被动，并退还花费的技能点，觉醒也随之重置，条件仍满足时可以立即再次觉醒。更换后，按新转职的技能线自动学习已开放且技能点足够的专属技能。如需保留原转职的配置，可以新建一套配置方案。</li>
+<li>每个转职有一条转职特性和一条技能线：20～95 级每 5 级开放一个专属技能（60 级除外），共 15 个；转职还会强化若干本职业技能。每个转职分两套打法，专属技能有的属于其中一套，有的两套通用。每个转职另有 2 个转职被动，只有选择该转职才能学习。</li>
+<li>60 级且深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放觉醒技与 60 级起的专属技能，觉醒之前无法学习这些技能。觉醒技单独占用觉醒栏，不占用常规携带栏。100 级且深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并开放二觉技，占用第二个觉醒栏。</li>
 </ul></article>
-    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-necromancer.html"><small>上一篇</small><span>死灵法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="gear.html"><small>下一篇</small><span>装备<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.2-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-gunner.html"><small>上一篇</small><span>火枪手<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="gear.html"><small>下一篇</small><span>装备<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
@@ -662,20 +650,28 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   });
 })();
 
-/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+/* 技能等级滑块：拖到几级，就写出这一级的开放等级、百分比数值的累计提高与固定伤害（算法同引擎的 skillLevelInfo），并标出到这一级为止的整数提升。没有脚本时停在最高级。 */
 (() => {
   if (!document.querySelector('.level-slider')) return;
   for (const box of document.querySelectorAll('.skill-levels')) {
     const slider = box.querySelector('.level-slider');
     const output = box.querySelector('.level-value');
     const total = box.querySelector('.level-total');
-    const rate = Number(box.dataset.rate) || 0;
-    const scaling = box.dataset.scaling || '伤害';
+    const rate = Number(box.dataset.rate) || 0, open = Number(box.dataset.open) || 1, step = Number(box.dataset.step) || 5, fixedK = Number(box.dataset.fixed) || 0;
+    const scaling = box.dataset.scaling || '伤害', desc = box.closest('.skill-card')?.querySelector('.skill-desc');
     const update = () => {
       const level = Number(slider.value);
       output.textContent = `Lv.${level}`;
       for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
-      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+      const opensAt = open + step * (level - 1), pct = Math.round(rate * 1000 * (level - 1)) / 10, fixed = Math.round(fixedK * opensAt);
+      // 说明里的模板按这一级填数：{d200} 写成「百分比 + 固定伤害」，{p15} 只按百分比成长（同引擎的 fillSkillTemplate）。
+      if (desc?.dataset.template) {
+        const mul = 1 + rate * (level - 1), num = x => { const r = Math.round(x * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+        desc.textContent = desc.dataset.template
+          .replace(/\{d(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%${fixed ? ` + ${Math.round(n / 100 * fixed)}` : ''}`)
+          .replace(/\{p(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%`);
+      }
+      total.textContent = `Lv.${level}（角色 ${opensAt} 级开放）：${[pct ? `${scaling}提高 ${pct}%` : null, fixed ? `每 100% 倍率另加 ${fixed} 点固定伤害` : null].filter(Boolean).join('，') || '效果不变'}`;
     };
     slider.addEventListener('input', update);
     update();

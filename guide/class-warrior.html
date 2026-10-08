@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#f9fbf5" />
 <title>战士 · 风行物语图鉴</title>
-<meta name="description" content="近战。靠力量和体质硬吃伤害，喜欢卡口和护盾。" />
+<meta name="description" content="近战 1 格。以力量与体质承受伤害，依托护盾坚守狭窄地形。" />
 <link rel="icon" type="image/png" href="../icons/windward-64.png" />
 <style>
 :root {
@@ -161,7 +161,6 @@ kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; bac
 .note p:first-child { margin-top: 0; }
 .note p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-muted); }
-.variant { color: var(--gold); font-weight: 600; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
 .tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
 .tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
@@ -247,12 +246,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
-.variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.variants .block-label { grid-column: 1 / -1; margin: 2px 0 -2px; }
-.variant-box { position: relative; padding: 9px 11px 9px 34px; border-radius: 9px; background: var(--surface-soft); }
-.variant-box strong { color: var(--gold); font-size: 13px; }
-.variant-box p { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
-.variant-key { position: absolute; left: 9px; top: 10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--gold-tint); color: var(--gold-bright); font-size: 10.5px; font-weight: 700; }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -294,7 +287,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
 .skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
 .skill-chips strong { font-size: 12.5px; }
-.skill-chips .variant { font-size: 11.5px; }
 .skill-chips small { color: var(--ink-soft); font-size: 11px; }
 .gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
 .gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
@@ -389,7 +381,6 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
   .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
   .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
-  .variants { grid-template-columns: minmax(0, 1fr); }
   .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .skill-card { padding: 14px; }
@@ -436,444 +427,954 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="docs-layout">
   <aside class="site-sidebar"><details class="site-nav" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html" aria-current="page"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-summoner.html"><img src="../portraits/summoner.png" alt="" width="26" height="26" loading="lazy" /><span>召唤师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html" aria-current="page"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a><a href="class-gunner.html"><img src="../portraits/gunner.png" alt="" width="26" height="26" loading="lazy" /><span>火枪手</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-mountain" data-toc-id="spec-mountain" title="碎岳"><span>碎岳</span></a></li><li class="toc-level-3"><a href="#spec-rampart" data-toc-id="spec-rampart" title="盾魂"><span>盾魂</span></a></li><li class="toc-level-3"><a href="#spec-bloodwar" data-toc-id="spec-bloodwar" title="狂战士"><span>狂战士</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-mountain" data-toc-id="skills-mountain" title="碎岳专属"><span>碎岳专属</span></a></li><li class="toc-level-3"><a href="#skills-rampart" data-toc-id="skills-rampart" title="盾魂专属"><span>盾魂专属</span></a></li><li class="toc-level-3"><a href="#skills-bloodwar" data-toc-id="skills-bloodwar" title="狂战士专属"><span>狂战士专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar" data-toc-id="build-bloodwar" title="狂战士配置"><span>狂战士配置</span></a></li><li class="toc-level-3"><a href="#build-mountain" data-toc-id="build-mountain" title="碎岳配置"><span>碎岳配置</span></a></li><li class="toc-level-3"><a href="#build-rampart" data-toc-id="build-rampart" title="盾魂配置"><span>盾魂配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-mountain" data-toc-id="spec-mountain" title="碎岳"><span>碎岳</span></a></li><li class="toc-level-3"><a href="#spec-rampart" data-toc-id="spec-rampart" title="盾魂"><span>盾魂</span></a></li><li class="toc-level-3"><a href="#spec-bloodwar" data-toc-id="spec-bloodwar" title="狂战士"><span>狂战士</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-mountain" data-toc-id="skills-mountain" title="碎岳专属"><span>碎岳专属</span></a></li><li class="toc-level-3"><a href="#skills-rampart" data-toc-id="skills-rampart" title="盾魂专属"><span>盾魂专属</span></a></li><li class="toc-level-3"><a href="#skills-bloodwar" data-toc-id="skills-bloodwar" title="狂战士专属"><span>狂战士专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-1" data-toc-id="build-mountain-1" title="碎岳 · 群体配置"><span>碎岳 · 群体配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-0" data-toc-id="build-mountain-0" title="碎岳 · 单体配置"><span>碎岳 · 单体配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-0" data-toc-id="build-rampart-0" title="盾魂 · 承伤反击配置"><span>盾魂 · 承伤反击配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-1" data-toc-id="build-rampart-1" title="盾魂 · 以盾为刃配置"><span>盾魂 · 以盾为刃配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-0" data-toc-id="build-bloodwar-0" title="狂战士 · 低血爆发配置"><span>狂战士 · 低血爆发配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-1" data-toc-id="build-bloodwar-1" title="狂战士 · 流血收割配置"><span>狂战士 · 流血收割配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/warrior.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.7.2-ota2</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0</p>
 <h1>战士</h1>
-<p class="page-description">近战。靠力量和体质硬吃伤害，喜欢卡口和护盾。</p>
+<p class="page-description">近战 1 格。以力量与体质承受伤害，依托护盾坚守狭窄地形。</p>
 <p class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 1 格</span><a class="tag tag-link" href="#spec-mountain">碎岳</a><a class="tag tag-link" href="#spec-rampart">盾魂</a><a class="tag tag-link" href="#spec-bloodwar">狂战士</a></p>
 </div>
 </header>
     <article class="guide-article"><h2 id="overview" tabindex="-1">概况</h2>
 <dl class="fact-grid">
 <div><dt>初始属性</dt><dd>力量 8，敏捷 4，智力 2，体质 8</dd></div>
-<div><dt>可用武器</dt><dd>剑刃、战斧、长枪</dd></div>
-<div class="wide"><dt>护甲精通 · 重甲</dt><dd>生命与护甲更高，体质增强生存和回复。</dd></div>
+<div><dt>可用武器</dt><dd>长剑、战斧、长枪</dd></div>
+<div class="wide"><dt>护甲精通 · 重甲</dt><dd>护甲与生命最高，体质增强生存和回复。精通加成：最大生命与力量。</dd></div>
+
 </dl>
 <h2 id="specs" tabindex="-1">转职</h2>
-<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和两个专属技能（45 级与 50 级开放），并强化若干本职业技能。60 级且深渊到达第 40 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。</p>
+<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和一条技能线：20 级起每 5 级开放一个专属技能（60 级与 100 级除外），并强化若干本职业技能。每个转职分两套打法，专属技能有的属于其中一套，有的两套通用。60 级且深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。60 级起开放的专属技能要觉醒以后才能学习。100 级且深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并学会占用第二个觉醒栏的二觉技。</p>
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-mountain" data-toc-label="碎岳" tabindex="-1">碎岳<small>觉醒后称「崩岳王」</small></h3>
 <p class="spec-pitch">以破甲与眩晕积累裂痕，再以重击一次释放。</p>
-<a class="spec-strength" href="#build-mountain">终局参考 · 等效第 <strong>126</strong> 层</a>
+<a class="spec-strength" href="#build-mountain-1">终局参考 · 等效第 <strong>122</strong> 层</a>
 <dl class="spec-facts">
-<div><dt>转职特性</dt><dd>技能命中处于破甲或眩晕状态的敌人时，获得 1 层裂痕，每次施放至多获得 1 层，上限 5 层。重击、破军斩或山崩命中时消耗全部裂痕，每层使该次伤害提高 25%，并回复 3% 最大生命。</dd></div>
-<div><dt>觉醒提升</dt><dd>裂痕每层的增伤由 25% 提高至 35%。</dd></div>
+<div><dt>转职特性</dt><dd>技能命中处于破甲或眩晕状态的敌人时，获得 1 层裂痕，每次施放至多获得 1 层，上限 5 层。重击、山崩或裂野命中时消耗全部裂痕，每层使该次伤害提高 30%，并回复 3% 最大生命。最大生命提高 20%，荆棘与棘刺反弹到你身上的伤害降低 50%。</dd></div>
+<div><dt>觉醒提升</dt><dd>裂痕每层的增伤由 30% 提高至 45%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>裂痕上限由 5 层提高至 7 层，每层的增伤由 45% 提高至 60%；学会二觉技「开天」。</dd></div>
+<div><dt>两套打法</dt><dd>单体：「山崩」「崩心」「汲岳」「岳印」；群体：「地动」「裂野」「岩爆」「坠岩」</dd></div>
 <div><dt>防具精通</dt><dd>重甲精通 · 力量（与职业默认相同）</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-rockSplit"><small>45 级</small>裂岩</a><a class="chip" href="#skill-landslide"><small>50 级</small>山崩</a><a class="chip" href="#skill-mountainFall"><small>觉醒</small>天崩</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-warrior-sunderCrit">「碎甲」</a>、<a href="#passive-warrior-suppress">「压制」</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-chisel"><small>20 级</small>凿击</a><a class="chip" href="#skill-battleFocus"><small>25 级</small>战意</a><a class="chip" href="#skill-rockSplit"><small>30 级</small>裂岩</a><a class="chip" href="#skill-landslide"><small>35 级</small>山崩</a><a class="chip" href="#skill-mountainShake"><small>40 级</small>撼岳</a><a class="chip" href="#skill-quake"><small>45 级</small>地动</a><a class="chip" href="#skill-riftField"><small>50 级</small>裂野</a><a class="chip" href="#skill-rockBurst"><small>55 级</small>岩爆</a><a class="chip" href="#skill-heartCrush"><small>65 级</small>崩心</a><a class="chip" href="#skill-spineCrack"><small>70 级</small>碎脊</a><a class="chip" href="#skill-boulder"><small>75 级</small>坠岩</a><a class="chip" href="#skill-mountainDrink"><small>80 级</small>汲岳</a><a class="chip" href="#skill-peakSeal"><small>85 级</small>岳印</a><a class="chip" href="#skill-skyRend"><small>90 级</small>裂穹</a><a class="chip" href="#skill-crushingWeight"><small>95 级</small>万钧</a><a class="chip" href="#skill-mountainFall"><small>觉醒</small>天崩</a><a class="chip" href="#skill-openSky"><small>二次觉醒</small>开天</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-warrior-suppress">「压制」</a>、<a href="#passive-warrior-rockMail">「岩甲」</a></dd></div>
 </dl>
-<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-heavy">「重击」</a>命中破甲目标时，对其相邻敌人各造成该次伤害 50% 的伤害。</li><li><a href="#skill-charge">「冲锋」</a>命中后使目标额外破甲 2 回合。</li><li><a href="#skill-slam">「震地」</a>眩晕目标的同时使其破甲 2 回合。</li><li><a href="#skill-battleFocus">「战意」</a>进入专注时立即获得 2 层裂痕。</li><li><a href="#skill-warGod">「战神」</a>命中的敌人全部破甲 2 回合，并立即获得满层裂痕。</li></ul></details>
+<details class="spec-rewrites"><summary>技能强化（4 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-heavy">「重击」</a>命中破甲目标时，对其相邻敌人各造成该次伤害 50% 的伤害。</li><li><a href="#skill-charge">「冲锋」</a>命中后使目标额外破甲 2 回合。</li><li><a href="#skill-slam">「震地」</a>眩晕目标的同时使其破甲 2 回合。</li><li><a href="#skill-battleFocus">「战意」</a>进入专注时立即获得 2 层裂痕。</li></ul></details>
 </section>
 <section class="spec-card">
 <h3 id="spec-rampart" data-toc-label="盾魂" tabindex="-1">盾魂<small>觉醒后称「铁壁圣卫」</small></h3>
 <p class="spec-pitch">叠加护盾承受攻击，以盾击与破盾反震克敌。</p>
-<a class="spec-strength" href="#build-rampart">终局参考 · 等效第 <strong>124</strong> 层</a>
+<a class="spec-strength" href="#build-rampart-0">终局参考 · 等效第 <strong>118</strong> 层</a>
 <dl class="spec-facts">
-<div><dt>转职特性</dt><dd>护盾改为可叠加，上限为 80% 最大生命；受到的伤害降低 15%。每回合开始时获得 6% 最大生命的护盾，受破盾词缀影响时改为回复等量生命。拥有护盾时，每次攻击额外造成当前护盾值 6% 的伤害。护盾被击破时，对相邻敌人造成破盾前护盾值 100% 的伤害。</dd></div>
+<div><dt>转职特性</dt><dd>护盾改为可叠加，上限为 80% 最大生命；受到的伤害降低 10%。每回合开始时获得 6% 最大生命的护盾，受破盾词缀影响时改为回复等量生命。拥有护盾时，每次攻击额外造成当前护盾值 6% 的伤害。护盾被击破时，对相邻敌人造成破盾前护盾值 100% 的伤害。</dd></div>
 <div><dt>觉醒提升</dt><dd>护盾上限由 80% 提高至 100% 最大生命，每回合获得的护盾由 6% 提高至 8%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>护盾上限由 100% 提高至 150% 最大生命，盾锋由当前护盾值的 6% 提高至 9%；学会二觉技「天城」。</dd></div>
+<div><dt>两套打法</dt><dd>承伤反击：「坚守」「御锋」「重盾」；以盾为刃：「盾爆」「回旋盾」「碎城」「盾潮」</dd></div>
 <div><dt>防具精通</dt><dd>重甲精通 · 最大生命</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-holdFast"><small>45 级</small>坚守</a><a class="chip" href="#skill-shieldBurst"><small>50 级</small>盾爆</a><a class="chip" href="#skill-fortress"><small>觉醒</small>不落城</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-warrior-bulwark">「坚壁」</a>、<a href="#passive-warrior-unmoved">「不动如山」</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-shieldPress"><small>20 级</small>盾压</a><a class="chip" href="#skill-braceShield"><small>25 级</small>架盾</a><a class="chip" href="#skill-holdFast"><small>30 级</small>坚守</a><a class="chip" href="#skill-breaker"><small>35 级</small>破军斩</a><a class="chip" href="#skill-citadel"><small>40 级</small>城塞</a><a class="chip" href="#skill-rushFormation"><small>45 级</small>冲阵</a><a class="chip" href="#skill-shieldBurst"><small>50 级</small>盾爆</a><a class="chip" href="#skill-parryEdge"><small>55 级</small>御锋</a><a class="chip" href="#skill-heavyShield"><small>65 级</small>重盾</a><a class="chip" href="#skill-quell"><small>70 级</small>镇压</a><a class="chip" href="#skill-shieldBoomerang"><small>75 级</small>回旋盾</a><a class="chip" href="#skill-sunderWall"><small>80 级</small>碎城</a><a class="chip" href="#skill-shieldTide"><small>85 级</small>盾潮</a><a class="chip" href="#skill-sanctuary"><small>90 级</small>圣域</a><a class="chip" href="#skill-layeredWall"><small>95 级</small>千重</a><a class="chip" href="#skill-fortress"><small>觉醒</small>不落城</a><a class="chip" href="#skill-skyCitadel"><small>二次觉醒</small>天城</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-warrior-unmoved">「不动如山」</a>、<a href="#passive-warrior-edgeSurge">「盾势」</a></dd></div>
 </dl>
-<details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-warcry">「战吼」</a>冷却时间由 6 回合缩短为 5 回合。</li><li><a href="#skill-breaker">「破军斩」</a>获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li><li><a href="#skill-shieldBash">「盾击」</a>护盾追加伤害的比例提高 20 个百分点：未选择精通时由 50% 提高至 70%，选择「盾墙」时由 30% 提高至 50%。</li><li><a href="#skill-lastStand">「不屈」</a>回复量的一半转化为护盾。</li><li><a href="#skill-warGod">「战神」</a>护盾提高至 50% 最大生命；持续期间，单次伤害至多削减当前护盾的一半。</li></ul></details>
+<details class="spec-rewrites"><summary>技能强化（4 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-warcry">「战吼」</a>冷却时间由 6 回合缩短为 5 回合。</li><li><a href="#skill-charge">「冲锋」</a>接敌时获得 15% 最大生命的护盾。</li><li><a href="#skill-breaker">「破军斩」</a>获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li><li><a href="#skill-shieldBash">「盾击」</a>护盾追加伤害的比例提高 20 个百分点，由 50% 提高至 70%。</li></ul></details>
 </section>
 <section class="spec-card">
 <h3 id="spec-bloodwar" data-toc-label="狂战士" tabindex="-1">狂战士<small>觉醒后称「血狱狂神」</small></h3>
 <p class="spec-pitch">生命越低伤害越高，以吸血与流血维持续战。</p>
-<a class="spec-strength" href="#build-bloodwar">终局参考 · 等效第 <strong>127</strong> 层</a>
+<a class="spec-strength" href="#build-bloodwar-0">终局参考 · 等效第 <strong>117</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>每损失 10% 生命，造成的伤害提高 5%，至多提高 40%。溢出的治疗转化为护盾，上限为 20% 最大生命。每场战斗一次，受到致命伤害时保留 1 点生命并进入「死斗」：之后 2 回合内生命不会低于 1 点，并回复造成伤害 30% 的生命。</dd></div>
 <div><dt>觉醒提升</dt><dd>每损失 10% 生命带来的增伤由 5% 提高至 7%，上限由 40% 提高至 55%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>溢出治疗转化的护盾上限由 20% 提高至 35% 最大生命；学会二觉技「修罗」。</dd></div>
+<div><dt>两套打法</dt><dd>低血爆发：「燃血」「决死」「浴血」「搏命」；流血收割：「扑杀」「血祭」「割筋」「血浪」「屠戮」</dd></div>
 <div><dt>防具精通</dt><dd>重甲精通 · 力量（与职业默认相同）</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-bloodDrink"><small>45 级</small>噬血</a><a class="chip" href="#skill-bloodRite"><small>50 级</small>血祭</a><a class="chip" href="#skill-bloodSea"><small>觉醒</small>血海</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-warrior-bloodbath">「血战」</a>、<a href="#passive-warrior-bloodRage">「血怒」</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-bloodGash"><small>20 级</small>血痕</a><a class="chip" href="#skill-bloodBurn"><small>25 级</small>燃血</a><a class="chip" href="#skill-lastStand"><small>30 级</small>不屈</a><a class="chip" href="#skill-bloodDrink"><small>35 级</small>噬血</a><a class="chip" href="#skill-warGod"><small>40 级</small>战神</a><a class="chip" href="#skill-pounce"><small>45 级</small>扑杀</a><a class="chip" href="#skill-bloodRite"><small>50 级</small>血祭</a><a class="chip" href="#skill-hamstring"><small>55 级</small>割筋</a><a class="chip" href="#skill-deathWish"><small>65 级</small>决死</a><a class="chip" href="#skill-frenzySlash"><small>70 级</small>狂斩</a><a class="chip" href="#skill-bloodWave"><small>75 级</small>血浪</a><a class="chip" href="#skill-bloodSoak"><small>80 级</small>浴血</a><a class="chip" href="#skill-massacre"><small>85 级</small>屠戮</a><a class="chip" href="#skill-bloodCollapse"><small>90 级</small>血崩</a><a class="chip" href="#skill-desperation"><small>95 级</small>搏命</a><a class="chip" href="#skill-bloodSea"><small>觉醒</small>血海</a><a class="chip" href="#skill-asura"><small>二次觉醒</small>修罗</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-warrior-bloodRage">「血怒」</a>、<a href="#passive-warrior-bloodbath">「血战」</a></dd></div>
 </dl>
 <details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-bloodlust">「嗜血斩」</a>对流血目标的回复比例变为原来的 2 倍。</li><li><a href="#skill-execute">「处决」</a>击杀流血目标时，其剩余的流血效果转移至距离最近的敌人。</li><li><a href="#skill-whirl">「旋风斩」</a>使命中的敌人流血 3 回合，每回合受到 45% 攻击的伤害。</li><li><a href="#skill-lastStand">「不屈」</a>生命低于 70% 时即可使用。</li><li><a href="#skill-warGod">「战神」</a>持续期间，每次攻击均使目标流血 2 回合。</li></ul></details>
 </section></div>
 <h2 id="skills" tabindex="-1">技能</h2>
-<p class="lead">职业技能共 12 个，学习消耗 1 技能点；携带栏 3 个起步，10 级和 25 级各增加 1 个。5 级起可以为已学技能选择精通（二选一，切换免费）。技能可以逐级升级，等级上限每 20 级开放一级，最高 5 级；拖动卡片下方的滑块可查看各等级的提升。</p>
+<p class="lead">职业技能共 8 个，学习消耗技能点（SP），开放越晚的技能越贵；携带栏 3 个起步，10 级和 25 级各增加 1 个。技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级；拖动卡片下方的滑块可查看各等级的提升。</p>
 <h3 id="skills-class" data-toc-label="职业技能" tabindex="-1">职业技能</h3>
 <div class="skill-grid"><article class="skill-card" id="skill-heavy">
 <header><h4>重击</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">重创</span></p>
-<p class="skill-desc">对射程内一名敌人造成 200% 攻击伤害。命中易伤目标时，伤害额外提高 50%，并消耗易伤。</p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害。命中易伤目标时，伤害额外提高 50%，并消耗易伤。">对射程内一名敌人造成 280% + 1114 伤害。命中易伤目标时，伤害额外提高 50%，并消耗易伤。</p>
 <p class="skill-synergy">先以「战吼」或「冲锋」施加易伤，再以「重击」造成额外伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破甲重击</strong><p>命中后目标破甲 2 回合。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>震荡重击</strong><p>命中后目标眩晕，跳过 1 次行动。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中破甲目标时，对其相邻敌人各造成该次伤害 50% 的伤害。</li></ul></div>
-<div class="skill-levels" data-rate="0.1" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="重击的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 40%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +10%</li><li data-level="3"><b>Lv.3</b>伤害 +10%</li><li data-level="4"><b>Lv.4</b>伤害 +10%</li><li data-level="5"><b>Lv.5</b>伤害 +10%</li></ol>
+<div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="重击的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 40%，每 100% 倍率另加 557 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-whirl">
 <header><h4>旋风斩</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
-<p class="skill-desc">对所有相邻敌人各造成 130% 伤害，并使其破甲 2 回合，期间护甲视为 0。</p>
+<p class="skill-desc" data-template="对所有相邻敌人各造成 {d130} 伤害，并使其破甲 2 回合，期间护甲视为 0。">对所有相邻敌人各造成 192.4% + 724 伤害，并使其破甲 2 回合，期间护甲视为 0。</p>
 <p class="skill-synergy">先以「旋风斩」施加破甲，再使用其他攻击，适合对付高护甲敌人。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血旋</strong><p>每次命中回复造成伤害的 20%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>飓风</strong><p>攻击 2 格内所有敌人，伤害 110%。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：使命中的敌人流血 3 回合，每回合受到 45% 攻击的伤害。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="旋风斩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="1" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="旋风斩的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 48%，每 100% 倍率另加 557 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-warcry">
 <header><h4>战吼</h4><span class="skill-meta">1 级开放 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">护盾</span><span class="tag">易伤</span></p>
-<p class="skill-desc">获得相当于 35% 最大生命的护盾，并使相邻敌人易伤 2 回合，期间受到的所有伤害提高 30%。</p>
+<p class="skill-desc" data-template="获得相当于 {p35} 最大生命的护盾，并使相邻敌人易伤 2 回合，期间受到的所有伤害提高 30%。">获得相当于 51.8% 最大生命的护盾，并使相邻敌人易伤 2 回合，期间受到的所有伤害提高 30%。</p>
 <p class="skill-synergy">先以「战吼」施加易伤，再以「重击」造成额外伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>铁壁</strong><p>护盾提高至最大生命的 50%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>咆哮</strong><p>震慑范围扩大至 2 格。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：冷却时间由 6 回合缩短为 5 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="护盾">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="战吼的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时护盾累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 +12%</li><li data-level="3"><b>Lv.3</b>护盾 +12%，易伤 +1 回合</li><li data-level="4"><b>Lv.4</b>护盾 +12%</li><li data-level="5"><b>Lv.5</b>护盾 +12%，易伤再 +1 回合</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="护盾" data-open="1" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="战吼的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：护盾提高 48%</p>
+<ol class="level-gains"><li data-level="3"><b>Lv.3</b>易伤 +1 回合</li><li data-level="5"><b>Lv.5</b>易伤再 +1 回合</li></ol>
 </div>
 </article>
 <article class="skill-card" id="skill-charge">
 <header><h4>冲锋</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">突进</span><span class="tag">易伤</span></p>
-<p class="skill-desc">冲向 2–4 格外最近的敌人并造成 170% 伤害，使其易伤 2 回合，期间受到的所有伤害提高 30%。对首领必定命中。</p>
+<p class="skill-desc" data-template="冲向 2–4 格外最近的敌人并造成 {d170} 伤害，使其易伤 2 回合，期间受到的所有伤害提高 30%。对首领必定命中。">冲向 2–4 格外最近的敌人并造成 251.6% + 947 伤害，使其易伤 2 回合，期间受到的所有伤害提高 30%。对首领必定命中。</p>
 <p class="skill-synergy">以「冲锋」接近敌人并施加易伤，再以「重击」造成额外伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>猛冲</strong><p>伤害提高至 220%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>践踏</strong><p>同时对目标相邻的敌人各造成 100% 伤害。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中后使目标额外破甲 2 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="冲锋的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中后使目标额外破甲 2 回合。</li><li><strong>盾魂</strong>：接敌时获得 15% 最大生命的护盾。</li></ul></div>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="1" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="冲锋的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 48%，每 100% 倍率另加 557 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-execute">
 <header><h4>处决</h4><span class="skill-meta">5 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">斩杀</span><span class="tag">重置</span></p>
-<p class="skill-desc">对射程内生命低于 40% 的敌人造成 300% 伤害。若因此击杀目标，冷却立即结束。</p>
+<p class="skill-desc" data-template="对射程内生命低于 40% 的敌人造成 {d300} 伤害。若因此击杀目标，冷却立即结束。">对射程内生命低于 40% 的敌人造成 444% + 1740 伤害。若因此击杀目标，冷却立即结束。</p>
 <p class="skill-synergy">先以「旋风斩」削减多名敌人的生命，再以「处决」逐一击杀。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血偿</strong><p>以「处决」击杀敌人后，回复 15% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>审判</strong><p>可以对生命低于 55% 的敌人施放「处决」。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：击杀流血目标时，其剩余的流血效果转移至距离最近的敌人。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="处决的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="处决的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-slam">
 <header><h4>震地</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">眩晕</span></p>
-<p class="skill-desc">对所有相邻敌人造成 100% 伤害并使其眩晕，跳过 1 次行动。</p>
+<p class="skill-desc" data-template="对所有相邻敌人造成 {d100} 伤害并使其眩晕，跳过 1 次行动。">对所有相邻敌人造成 148% + 580 伤害并使其眩晕，跳过 1 次行动。</p>
 <p class="skill-synergy">受到包围时，以「震地」限制敌人行动，再使用「旋风斩」或「重击」攻击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>余震</strong><p>眩晕延长至 2 次行动。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>裂地</strong><p>范围扩大至 2 格，对敌人造成 80% 伤害。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：眩晕目标的同时使其破甲 2 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="震地的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.026666666666666665" data-scaling="伤害" data-open="10" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="震地的技能等级" /></label><output class="level-value">Lv.19</output></div>
+<p class="level-total">Lv.19（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-shieldBash">
 <header><h4>盾击</h4><span class="skill-meta">15 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">眩晕</span><span class="tag">盾伤</span></p>
-<p class="skill-desc">对相邻一名敌人造成 120% 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 50% 的伤害。目标撞上岩石或场地边缘时，额外受到 60% 攻击伤害；撞上其他敌人时，双方各受到 40% 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。</p>
+<p class="skill-desc" data-template="对相邻一名敌人造成 {d120} 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 {p50} 的伤害。目标撞上岩石或场地边缘时，额外受到 {p60} 攻击伤害；撞上其他敌人时，双方各受到 {p40} 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。">对相邻一名敌人造成 177.6% + 696 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 74% 的伤害。目标撞上岩石或场地边缘时，额外受到 88.8% 攻击伤害；撞上其他敌人时，双方各受到 59.2% 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。</p>
 <p class="skill-synergy">敌人靠近岩石或场地边缘时，以「盾击」将其击退，可造成额外伤害。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>盾墙</strong><p>不消耗护盾，改为额外造成相当于护盾值 30% 的伤害。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>震慑</strong><p>眩晕延长至 2 次行动。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：护盾追加伤害的比例提高 20 个百分点：未选择精通时由 50% 提高至 70%，选择「盾墙」时由 30% 提高至 50%。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="盾击的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：护盾追加伤害的比例提高 20 个百分点，由 50% 提高至 70%。</li></ul></div>
+<div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害" data-open="15" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="盾击的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-bloodlust">
-<header><h4>嗜血斩</h4><span class="skill-meta">20 级开放 · 冷却 4 回合</span></header>
+<header><h4>嗜血斩</h4><span class="skill-meta">15 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
-<p class="skill-desc">对射程内生命最高的敌人造成 150% 伤害，并回复相当于造成伤害 40% 的生命。</p>
+<p class="skill-desc" data-template="对射程内生命最高的敌人造成 {d150} 伤害，并回复相当于造成伤害 60% 的生命。">对射程内生命最高的敌人造成 222% + 870 伤害，并回复相当于造成伤害 60% 的生命。</p>
 <p class="skill-synergy">以「嗜血斩」攻击生命较高的敌人，可在造成伤害的同时回复生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>饮血</strong><p>回复提高至造成伤害的 60%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>撕裂</strong><p>命中后目标流血 3 回合：每回合受到 35% 攻击的伤害，它每次攻击时再流血一次。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：对流血目标的回复比例变为原来的 2 倍。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="嗜血斩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +12%</li></ol>
+<div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害 / 回复" data-open="15" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="嗜血斩的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article></div>
+<h3 id="skills-mountain" data-toc-label="碎岳专属" tabindex="-1">碎岳专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-chisel">
+<header><h4>凿击</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d170} 伤害，并使其破甲 2 回合；若目标原本已处于破甲状态，改为使其眩晕，跳过 1 次行动，并额外获得 1 层裂痕。">对射程内一名敌人造成 238% + 986 伤害，并使其破甲 2 回合；若目标原本已处于破甲状态，改为使其眩晕，跳过 1 次行动，并额外获得 1 层裂痕。</p>
+<p class="skill-synergy">先以「凿击」施加破甲，再以「重击」消耗裂痕；对已破甲的敌人再施放一次，可将其眩晕。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="凿击的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-battleFocus">
 <header><h4>战意</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
 <p class="tags"><span class="tag">专注</span><span class="tag">破甲</span></p>
-<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得专注，使下一次技能攻击必定暴击；相邻敌人破甲 2 回合。</p>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得专注，使下一次技能攻击必定暴击；2 格内的敌人破甲 2 回合。</p>
 <p class="skill-synergy">先施放「战意」获得专注，再以「重击」或「处决」攻击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>破阵</strong><p>破甲范围扩大至 2 格。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>怒意</strong><p>同时获得相当于 15% 最大生命的护盾。</p></div></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：进入专注时立即获得 2 层裂痕。</li></ul></div>
-<div class="skill-levels" data-rate="0" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="战意的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">升级不提高百分比数值</p>
+<div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="战意的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：效果不变</p>
 <ol class="level-gains"><li data-level="2"><b>Lv.2</b>破甲 +1 回合</li><li data-level="3"><b>Lv.3</b>破甲的敌人同时易伤 1 回合</li><li data-level="4"><b>Lv.4</b>破甲再 +1 回合</li><li data-level="5"><b>Lv.5</b>易伤再 +1 回合</li></ol>
 </div>
 </article>
-<article class="skill-card" id="skill-lastStand">
-<header><h4>不屈</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
-<p class="tags"><span class="tag">回复</span><span class="tag">闪避</span></p>
-<p class="skill-desc">生命低于 60% 时可施放：回复 25% 最大生命，并闪避下一次攻击。</p>
-<p class="skill-synergy">将「不屈」的施放规则排在使用药水之前，可优先通过技能回复生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>顽强</strong><p>回复提高至 35% 最大生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>反震</strong><p>同时眩晕相邻敌人：跳过 1 次行动。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：回复量的一半转化为护盾。</li><li><strong>狂战士</strong>：生命低于 70% 时即可使用。</li></ul></div>
-<div class="skill-levels" data-rate="0.15" data-scaling="治疗">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="不屈的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时治疗累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>治疗 +15%</li><li data-level="3"><b>Lv.3</b>治疗 +15%，闪避 +1 次</li><li data-level="4"><b>Lv.4</b>治疗 +15%</li><li data-level="5"><b>Lv.5</b>治疗 +15%，闪避再 +1 次</li></ol>
-</div>
-</article>
-<article class="skill-card" id="skill-breaker">
-<header><h4>破军斩</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
-<p class="tags"><span class="tag">破甲</span><span class="tag">护盾</span></p>
-<p class="skill-desc">对射程内一名敌人造成 220% 伤害，无视护甲，并使其破甲 2 回合；获得相当于造成伤害 30% 的护盾。若目标原本已破甲或易伤，护盾比例提高至 60%。</p>
-<p class="skill-synergy">先以「旋风斩」施加破甲，或以「冲锋」施加易伤，再施放「破军斩」，可获得更多护盾。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>断岳</strong><p>伤害提高至 280%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚城</strong><p>护盾比例翻倍：60%，目标破甲或易伤时 120%。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li></ul></div>
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 护盾">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="破军斩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 护盾累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 护盾 +12%</li></ol>
-</div>
-</article>
-<article class="skill-card" id="skill-warGod">
-<header><h4>战神</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
-<p class="tags"><span class="tag">增伤</span><span class="tag">吸血</span></p>
-<p class="skill-desc">射程内有敌人时可施放：立即获得相当于 30% 最大生命的护盾，并对射程内所有敌人各造成 250% 伤害。自本次攻击起的 3 回合内，你的所有攻击（包括普通攻击）伤害提高 35%，并回复相当于造成伤害 15% 的生命。</p>
-<p class="skill-synergy">面对首领或大量敌人时施放「战神」，再以「重击」「处决」持续造成伤害并回复生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>战狂</strong><p>伤害提高改为 55%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>嗜战</strong><p>回复改为造成伤害的 30%。</p></div></div>
-<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>碎岳</strong>：命中的敌人全部破甲 2 回合，并立即获得满层裂痕。</li><li><strong>盾魂</strong>：护盾提高至 50% 最大生命；持续期间，单次伤害至多削减当前护盾的一半。</li><li><strong>狂战士</strong>：持续期间，每次攻击均使目标流血 2 回合。</li></ul></div>
-<div class="skill-levels" data-rate="0.15" data-scaling="伤害 / 护盾 / 增伤 / 吸血">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="战神的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 护盾 / 增伤 / 吸血累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 护盾 / 增伤 / 吸血 +15%</li><li data-level="3"><b>Lv.3</b>伤害 / 护盾 / 增伤 / 吸血 +15%</li><li data-level="4"><b>Lv.4</b>伤害 / 护盾 / 增伤 / 吸血 +15%</li><li data-level="5"><b>Lv.5</b>伤害 / 护盾 / 增伤 / 吸血 +15%</li></ol>
-</div>
-</article></div>
-<h3 id="skills-mountain" data-toc-label="碎岳专属" tabindex="-1">碎岳专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-rockSplit">
-<header><h4>裂岩</h4><span class="skill-meta">45 级开放 · 冷却 4 回合</span></header>
+<article class="skill-card" id="skill-rockSplit">
+<header><h4>裂岩</h4><span class="skill-meta">30 级开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">群攻</span><span class="tag">回复</span></p>
-<p class="skill-desc">对所有相邻敌人造成 160% 伤害。每命中一名处于破甲或眩晕状态的敌人，回复 7% 最大生命，并额外获得 1 层裂痕，不受每次施放至多 1 层的限制。</p>
+<p class="skill-desc" data-template="对所有相邻敌人造成 {d160} 伤害。每命中一名处于破甲或眩晕状态的敌人，回复 {p7} 最大生命，并额外获得 1 层裂痕，不受每次施放至多 1 层的限制。">对所有相邻敌人造成 236.8% + 928 伤害。每命中一名处于破甲或眩晕状态的敌人，回复 10.4% 最大生命，并额外获得 1 层裂痕，不受每次施放至多 1 层的限制。</p>
 <p class="skill-synergy">碎岳可先以「战意」「震地」施加破甲与眩晕，再以「裂岩」回复生命并积累裂痕。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>碎骨</strong><p>命中的敌人破甲 2 回合；该破甲自下一次施放起计入裂痕判定。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>吸髓</strong><p>每名敌人提供的回复提高至 10% 最大生命。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="裂岩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +12%</li></ol>
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害 / 回复" data-open="30" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="裂岩的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-landslide">
-<header><h4>山崩</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
+<header><h4>山崩</h4><span class="skill-meta">35 级开放 · 单体打法 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">裂痕</span></p>
-<p class="skill-desc">对射程内生命最高的敌人造成 300% 伤害，无视护甲，并使其眩晕，跳过 1 次行动。与「重击」「破军斩」相同，命中时消耗全部裂痕；若因此击杀目标，返还一半已消耗的裂痕。</p>
+<p class="skill-desc" data-template="对射程内生命最高的敌人造成 {d300} 伤害，无视护甲，并使其眩晕，跳过 1 次行动。与「重击」「破军斩」相同，命中时消耗全部裂痕；若因此击杀目标，返还一半已消耗的裂痕。">对射程内生命最高的敌人造成 444% + 1740 伤害，无视护甲，并使其眩晕，跳过 1 次行动。与「重击」「破军斩」相同，命中时消耗全部裂痕；若因此击杀目标，返还一半已消耗的裂痕。</p>
 <p class="skill-synergy">裂痕层数较高时施放「山崩」，可对首领造成更多伤害；击杀目标返还的裂痕可用于下一次攻击。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>崩塌</strong><p>伤害提高至 380%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>崩震</strong><p>目标相邻的敌人同样眩晕 1 次行动。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="山崩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="山崩的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-mountainShake">
+<header><h4>撼岳</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">增伤</span><span class="tag">裂痕</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：获得 {p30} 最大生命的护盾，对射程内所有敌人造成 {d250} 伤害并使其破甲 2 回合，立即获得满层裂痕；之后 3 回合，所有攻击（包括普通攻击）伤害提高 {p35}，并回复造成伤害 {p15} 的生命。">射程内有敌人时可施放：获得 48% 最大生命的护盾，对射程内所有敌人造成 400% + 1450 伤害并使其破甲 2 回合，立即获得满层裂痕；之后 3 回合，所有攻击（包括普通攻击）伤害提高 56%，并回复造成伤害 24% 的生命。</p>
+<p class="skill-synergy">施放「撼岳」叠满裂痕后，以「山崩」或「裂野」一次消耗。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾 / 增伤 / 吸血" data-open="40" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="撼岳的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾 / 增伤 / 吸血提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-quake">
+<header><h4>地动</h4><span class="skill-meta">45 级开放 · 群体打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">击退</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成 {d110} 伤害并将其击退 1 格；处于破甲状态的敌人改为眩晕，跳过 1 次行动。每命中一名敌人，获得 {p6} 最大生命的护盾。被击退的敌人撞上岩石、场地边缘或其他敌人时额外受到撞击伤害。">对 2 格内所有敌人造成 162.8% + 638 伤害并将其击退 1 格；处于破甲状态的敌人改为眩晕，跳过 1 次行动。每命中一名敌人，获得 8.9% 最大生命的护盾。被击退的敌人撞上岩石、场地边缘或其他敌人时额外受到撞击伤害。</p>
+<p class="skill-synergy">被包围时以「地动」拉开空间；先以「坠岩」砸下巨石，可让敌人撞上去。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害 / 护盾" data-open="45" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="地动的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：伤害 / 护盾提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-riftField">
+<header><h4>裂野</h4><span class="skill-meta">50 级开放 · 群体打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">裂痕</span></p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成 {d200} 伤害，并消耗全部裂痕，每层按碎岳的增伤比例提高本次每一击的伤害；处于破甲或眩晕状态的敌人受到的伤害再提高 30%。">对 2 格内所有敌人造成 296% + 1160 伤害，并消耗全部裂痕，每层按碎岳的增伤比例提高本次每一击的伤害；处于破甲或眩晕状态的敌人受到的伤害再提高 30%。</p>
+<p class="skill-synergy">「山崩」打首领，「裂野」清波次，两者消耗同一份裂痕；先以「岩爆」攒够裂痕再施放。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="裂野的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-rockBurst">
+<header><h4>岩爆</h4><span class="skill-meta">55 级开放 · 群体打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成 {d150} 伤害并使其破甲 2 回合；每命中一名原本已处于破甲状态的敌人，额外获得 1 层裂痕，不受每次施放至多 1 层的限制，每次施放至多 3 层。">对 2 格内所有敌人造成 222% + 870 伤害并使其破甲 2 回合；每命中一名原本已处于破甲状态的敌人，额外获得 1 层裂痕，不受每次施放至多 1 层的限制，每次施放至多 3 层。</p>
+<p class="skill-synergy">群体打法的裂痕来源：以「岩爆」攒够裂痕，再以「裂野」一次消耗。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="岩爆的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-heartCrush">
+<header><h4>崩心</h4><span class="skill-meta">65 级、觉醒后开放 · 单体打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">开荒</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d240} 伤害，并使其易伤 2 回合；目标生命高于 50% 时，伤害提高 50%。">对射程内一名敌人造成 355.2% + 1392 伤害，并使其易伤 2 回合；目标生命高于 50% 时，伤害提高 50%。</p>
+<p class="skill-synergy">开荒首领：对满血的敌人效果最好，施加的易伤再以「重击」消耗。</p>
+
+<div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="崩心的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-spineCrack">
+<header><h4>碎脊</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">眩晕</span><span class="tag">裂痕</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害，无视护甲，并使其眩晕，跳过 1 次行动；获得 2 层裂痕，不受每次施放至多 1 层的限制。若目标原本已处于眩晕状态，「山崩」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1508 伤害，无视护甲，并使其眩晕，跳过 1 次行动；获得 2 层裂痕，不受每次施放至多 1 层的限制。若目标原本已处于眩晕状态，「山崩」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「山崩」配成两拍循环：「碎脊」眩晕并攒裂痕，「山崩」一次打出。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="碎脊的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-boulder">
+<header><h4>坠岩</h4><span class="skill-meta">75 级、觉醒后开放 · 群体打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">眩晕</span><span class="tag">巨石</span></p>
+<p class="skill-desc" data-template="射程增加 2 格。朝敌人最密集处砸下巨石，对目标及其相邻的敌人造成 {d280} 伤害并使其眩晕，跳过 1 次行动；巨石落在目标身后的一格空地上，化作岩石保留 3 回合，敌人被击退撞上时同样受到撞击伤害。">射程增加 2 格。朝敌人最密集处砸下巨石，对目标及其相邻的敌人造成 414.4% + 1624 伤害并使其眩晕，跳过 1 次行动；巨石落在目标身后的一格空地上，化作岩石保留 3 回合，敌人被击退撞上时同样受到撞击伤害。</p>
+<p class="skill-synergy">先以「坠岩」砸下巨石，再以「地动」或「盾击」把敌人撞向巨石。</p>
+
+<div class="skill-levels" data-rate="0.096" data-scaling="伤害" data-open="75" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="坠岩的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-mountainDrink">
+<header><h4>汲岳</h4><span class="skill-meta">80 级、觉醒后开放 · 单体打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害，并回复造成伤害 40% 的生命；目标处于破甲或眩晕状态时，回复提高至 60%，并额外获得 1 层裂痕。">对射程内一名敌人造成 296% + 1160 伤害，并回复造成伤害 40% 的生命；目标处于破甲或眩晕状态时，回复提高至 60%，并额外获得 1 层裂痕。</p>
+<p class="skill-synergy">单体打法的续航：先以「凿击」或「碎脊」施加破甲、眩晕，再施放「汲岳」。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复" data-open="80" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="汲岳的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-peakSeal">
+<header><h4>岳印</h4><span class="skill-meta">85 级、觉醒后开放 · 单体打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">印记</span></p>
+<p class="skill-desc" data-template="对射程内生命最高的敌人造成 {d200} 伤害，并留下岳印 4 回合：此期间你对它的每次攻击额外造成 {p50} 攻击的伤害，并使其破甲 1 回合。">对射程内生命最高的敌人造成 296% + 1160 伤害，并留下岳印 4 回合：此期间你对它的每次攻击额外造成 74% 攻击的伤害，并使其破甲 1 回合。</p>
+<p class="skill-synergy">首领战持续较久时，先留下「岳印」，之后每一击都追加伤害，破甲也不会中断。</p>
+
+<div class="skill-levels" data-rate="0.16" data-scaling="伤害 / 追加伤害" data-open="85" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="岳印的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害 / 追加伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-skyRend">
+<header><h4>裂穹</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害，无视护甲，并使其破甲 3 回合；处于眩晕状态的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1856 伤害，无视护甲，并使其破甲 3 回合；处于眩晕状态的敌人改为受到 720% + 2610 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「撼岳」错开施放；先以「碎脊」「地动」眩晕敌人，再以「裂穹」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="裂穹的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-crushingWeight">
+<header><h4>万钧</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">裂痕</span><span class="tag">波及</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害；之后 4 回合，消耗裂痕的攻击只消耗 2 层（不足 2 层时全部消耗），增伤仍按消耗前的层数计算；每次消耗时，对目标相邻的敌人造成该次伤害 {p40} 的伤害。">对射程内一名敌人造成 320% + 1160 伤害；之后 4 回合，消耗裂痕的攻击只消耗 2 层（不足 2 层时全部消耗），增伤仍按消耗前的层数计算；每次消耗时，对目标相邻的敌人造成该次伤害 64% 的伤害。</p>
+<p class="skill-synergy">裂痕较多时施放「万钧」，之后连续几次「山崩」「重击」都能获得裂痕增伤。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害 / 波及伤害" data-open="95" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="万钧的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：伤害 / 波及伤害提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card is-ascend" id="skill-mountainFall">
 <header><h4>天崩</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">群攻</span></p>
-<p class="skill-desc">对射程内所有敌人造成 260% 伤害，无视护甲，并使其破甲 3 回合。同时消耗全部裂痕，每层按碎岳的增伤比例提高本次每一击的伤害，并回复 3% 最大生命。</p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d450} 伤害，无视护甲，并使其破甲 3 回合。同时消耗全部裂痕，每层按碎岳的增伤比例提高本次每一击的伤害，并回复 3% 最大生命。">对射程内所有敌人造成 720% + 2610 伤害，无视护甲，并使其破甲 3 回合。同时消耗全部裂痕，每层按碎岳的增伤比例提高本次每一击的伤害，并回复 3% 最大生命。</p>
 <p class="skill-synergy">碎岳的觉醒技：宜在裂痕满层时，留给首领所在的波次施放。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>天罚</strong><p>伤害提高至 330%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>地裂</strong><p>命中的敌人同时眩晕 1 次行动。</p></div></div>
 
-<div class="skill-levels" data-rate="0.15" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="天崩的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +15%</li><li data-level="3"><b>Lv.3</b>伤害 +15%</li><li data-level="4"><b>Lv.4</b>伤害 +15%</li><li data-level="5"><b>Lv.5</b>伤害 +15%</li></ol>
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="天崩的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-openSky">
+<header><h4>开天</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">群控</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d700} 伤害，使其眩晕 1 次行动、破甲 3 回合，并立即获得满层裂痕。">对射程内所有敌人造成 700% + 4060 伤害，使其眩晕 1 次行动、破甲 3 回合，并立即获得满层裂痕。</p>
+<p class="skill-synergy">碎岳的二觉技：先以「开天」攒满裂痕并控住敌人，再以「天崩」或「重击」一次打出。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="开天的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article></div>
 <h3 id="skills-rampart" data-toc-label="盾魂专属" tabindex="-1">盾魂专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-holdFast">
-<header><h4>坚守</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
-<p class="tags"><span class="tag">减伤</span><span class="tag">回复</span></p>
-<p class="skill-desc">回复 20% 最大生命，并获得 25% 最大生命的护盾；之后 2 回合受到的伤害降低 25%。</p>
-<p class="skill-synergy">盾魂的续航手段：在破盾词缀下护盾无效时，回复与减伤效果仍然生效。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>铁卫</strong><p>减伤提高至 40%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>复苏</strong><p>回复提高至 30% 最大生命。</p></div></div>
+<div class="skill-grid"><article class="skill-card" id="skill-shieldPress">
+<header><h4>盾压</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">盾伤</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="对相邻一名敌人造成 {d150} 伤害，并获得 {p15} 最大生命的护盾；若施放前已有护盾，改为获得 {p25} 最大生命的护盾。">对相邻一名敌人造成 210% + 870 伤害，并获得 21% 最大生命的护盾；若施放前已有护盾，改为获得 35% 最大生命的护盾。</p>
+<p class="skill-synergy">转职后最先学到的叠盾手段：护盾越厚，盾锋追加的伤害越高。</p>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="回复 / 护盾">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="坚守的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时回复 / 护盾累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>回复 / 护盾 +12%</li><li data-level="3"><b>Lv.3</b>回复 / 护盾 +12%</li><li data-level="4"><b>Lv.4</b>回复 / 护盾 +12%</li><li data-level="5"><b>Lv.5</b>回复 / 护盾 +12%</li></ol>
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害 / 护盾" data-open="20" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="盾压的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害 / 护盾提高 40%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-braceShield">
+<header><h4>架盾</h4><span class="skill-meta">25 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">盾锋</span></p>
+<p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得 {p15} 最大生命的护盾；本回合接下来的一次攻击，盾锋的比例翻倍。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得 22.2% 最大生命的护盾；本回合接下来的一次攻击，盾锋的比例翻倍。</p>
+<p class="skill-synergy">先施放「架盾」叠盾，同一回合再以「盾压」「破军斩」出手。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="护盾" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="架盾的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-holdFast">
+<header><h4>坚守</h4><span class="skill-meta">30 级开放 · 承伤反击打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">减伤</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="回复 {p20} 最大生命，并获得 {p25} 最大生命的护盾；之后 2 回合受到的伤害降低 40%。">回复 29.6% 最大生命，并获得 37% 最大生命的护盾；之后 2 回合受到的伤害降低 40%。</p>
+<p class="skill-synergy">盾魂的续航手段：在破盾词缀下护盾无效时，回复与减伤效果仍然生效。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="回复 / 护盾" data-open="30" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="坚守的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：回复 / 护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-breaker">
+<header><h4>破军斩</h4><span class="skill-meta">35 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">破甲</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d280} 伤害，无视护甲，并使其破甲 2 回合；获得相当于造成伤害 30% 的护盾。若目标原本已破甲或易伤，护盾比例提高至 60%。">对射程内一名敌人造成 414.4% + 1624 伤害，无视护甲，并使其破甲 2 回合；获得相当于造成伤害 30% 的护盾。若目标原本已破甲或易伤，护盾比例提高至 60%。</p>
+<p class="skill-synergy">先以「旋风斩」施加破甲，或以「冲锋」施加易伤，再施放「破军斩」，可获得更多护盾。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li></ul></div>
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害 / 护盾" data-open="35" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="破军斩的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害 / 护盾提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-citadel">
+<header><h4>城塞</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">增伤</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：获得 {p50} 最大生命的护盾，对射程内所有敌人造成 {d250} 伤害；之后 3 回合，所有攻击（包括普通攻击）伤害提高 {p35}，回复造成伤害 {p15} 的生命，且单次伤害至多削减当前护盾的一半。">射程内有敌人时可施放：获得 80% 最大生命的护盾，对射程内所有敌人造成 400% + 1450 伤害；之后 3 回合，所有攻击（包括普通攻击）伤害提高 56%，回复造成伤害 24% 的生命，且单次伤害至多削减当前护盾的一半。</p>
+<p class="skill-synergy">敌人攻势最猛时施放「城塞」：护盾难以被一击打穿，盾锋与破盾反震都更可观。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾 / 增伤 / 吸血" data-open="40" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="城塞的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾 / 增伤 / 吸血提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-rushFormation">
+<header><h4>冲阵</h4><span class="skill-meta">45 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">击退</span><span class="tag">撞击</span></p>
+<p class="skill-desc" data-template="对相邻一名敌人及其身后一格的敌人各造成 {d120} 伤害，并将其击退 2 格；被击退的敌人撞上岩石、场地边缘或其他敌人时，额外受到相当于你当前护盾值 20% 的伤害。">对相邻一名敌人及其身后一格的敌人各造成 177.6% + 696 伤害，并将其击退 2 格；被击退的敌人撞上岩石、场地边缘或其他敌人时，额外受到相当于你当前护盾值 20% 的伤害。</p>
+<p class="skill-synergy">把成排的敌人推开、撞向岩石或彼此；护盾越厚，撞击越重。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="冲阵的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-shieldBurst">
-<header><h4>盾爆</h4><span class="skill-meta">50 级开放 · 冷却 6 回合</span></header>
+<header><h4>盾爆</h4><span class="skill-meta">50 级开放 · 以盾为刃打法 · 冷却 6 回合</span></header>
 <p class="tags"><span class="tag">盾爆</span><span class="tag">群攻</span></p>
-<p class="skill-desc">消耗自身护盾，对 2 格内所有敌人造成相当于护盾值 160% 的伤害，无视护甲，并回复相当于护盾值 40% 的生命。若没有护盾，则改为获得相当于 30% 最大生命的护盾。</p>
+<p class="skill-desc" data-template="消耗自身护盾，对 2 格内所有敌人造成相当于护盾值 {p160} 的伤害，无视护甲，并回复相当于护盾值 40% 的生命。若没有护盾，则改为获得相当于 {p30} 最大生命的护盾。">消耗自身护盾，对 2 格内所有敌人造成相当于护盾值 296% 的伤害，无视护甲，并回复相当于护盾值 40% 的生命。若没有护盾，则改为获得相当于 55.5% 最大生命的护盾。</p>
 <p class="skill-synergy">护盾值较高时施放「盾爆」可造成更多伤害；「坚守」有助于重新获得护盾。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>震爆</strong><p>伤害提高至护盾值的 220%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>回流</strong><p>回复提高至护盾值的 60%。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="盾爆的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +12%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +12%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +12%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +12%</li></ol>
+<div class="skill-levels" data-rate="0.085" data-scaling="伤害 / 回复" data-open="50" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="盾爆的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害 / 回复提高 85%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-parryEdge">
+<header><h4>御锋</h4><span class="skill-meta">55 级开放 · 承伤反击打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">反击</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="获得 {p20} 最大生命的护盾；之后 2 回合，每次受到攻击时对攻击者造成 {p100} 攻击的反击伤害，并获得相当于反击伤害 50% 的护盾。">获得 29.6% 最大生命的护盾；之后 2 回合，每次受到攻击时对攻击者造成 148% 攻击的反击伤害，并获得相当于反击伤害 50% 的护盾。</p>
+<p class="skill-synergy">敌人出手越重越频繁，「御锋」换回的伤害和护盾越多。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="护盾 / 反击" data-open="55" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="御锋的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：护盾 / 反击提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-heavyShield">
+<header><h4>重盾</h4><span class="skill-meta">65 级、觉醒后开放 · 承伤反击打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">盾伤</span><span class="tag">印记</span></p>
+<p class="skill-desc" data-template="对相邻一名敌人造成 {d200} 伤害，额外造成相当于当前护盾值 {p60} 的伤害；之后 3 回合，该敌人每次攻击你，你获得 {p10} 最大生命的护盾。">对相邻一名敌人造成 296% + 1160 伤害，额外造成相当于当前护盾值 88.8% 的伤害；之后 3 回合，该敌人每次攻击你，你获得 14.8% 最大生命的护盾。</p>
+<p class="skill-synergy">贴住最危险的敌人：它攻击得越频繁，你的护盾越厚。</p>
+
+<div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害 / 护盾" data-open="65" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="重盾的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：伤害 / 护盾提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-quell">
+<header><h4>镇压</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害，无视护甲；获得相当于造成伤害 40% 的护盾，这次护盾可超出上限 20% 最大生命，超出部分 3 回合后消失。下一次「破军斩」的护盾比例翻倍。">对射程内一名敌人造成 384.8% + 1508 伤害，无视护甲；获得相当于造成伤害 40% 的护盾，这次护盾可超出上限 20% 最大生命，超出部分 3 回合后消失。下一次「破军斩」的护盾比例翻倍。</p>
+<p class="skill-synergy">与「破军斩」配成两拍循环，把护盾推过上限：护盾越厚越耐打，盾锋和以护盾值计算的伤害也随之提高。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害 / 护盾" data-open="70" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="镇压的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害 / 护盾提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shieldBoomerang">
+<header><h4>回旋盾</h4><span class="skill-meta">75 级、觉醒后开放 · 以盾为刃打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">弹跳</span><span class="tag">盾伤</span></p>
+<p class="skill-desc" data-template="射程增加 2 格。掷出盾牌，在至多 4 名敌人之间弹跳，各造成相当于当前护盾值 {p40} 的伤害，无视护甲，并将其击退 1 格；不消耗护盾。">射程增加 2 格。掷出盾牌，在至多 4 名敌人之间弹跳，各造成相当于当前护盾值 74% 的伤害，无视护甲，并将其击退 1 格；不消耗护盾。</p>
+<p class="skill-synergy">盾魂少有的远距离手段：护盾越厚，清理成群的敌人越快。</p>
+
+<div class="skill-levels" data-rate="0.17" data-scaling="伤害" data-open="75" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="回旋盾的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 85%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-sunderWall">
+<header><h4>碎城</h4><span class="skill-meta">80 级、觉醒后开放 · 以盾为刃打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">盾伤</span><span class="tag">收割</span></p>
+<p class="skill-desc" data-template="消耗一半护盾，对相邻一名敌人造成相当于消耗量 {p300} 的伤害，无视护甲；若因此击杀目标，返还消耗的护盾。">消耗一半护盾，对相邻一名敌人造成相当于消耗量 555% 的伤害，无视护甲；若因此击杀目标，返还消耗的护盾。</p>
+<p class="skill-synergy">以盾为刃打法对付首领的手段：先以「镇压」把护盾推过上限，再以「碎城」一次打出。</p>
+
+<div class="skill-levels" data-rate="0.21250000000000002" data-scaling="伤害" data-open="80" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="碎城的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：伤害提高 85%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shieldTide">
+<header><h4>盾潮</h4><span class="skill-meta">85 级、觉醒后开放 · 以盾为刃打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
+<p class="skill-desc" data-template="对 2 格内所有敌人造成 {d220} 伤害并将其击退 1 格；每命中一名敌人，获得 {p10} 最大生命的护盾，可超出上限，超出部分 3 回合后消失。">对 2 格内所有敌人造成 325.6% + 1276 伤害并将其击退 1 格；每命中一名敌人，获得 14.8% 最大生命的护盾，可超出上限，超出部分 3 回合后消失。</p>
+<p class="skill-synergy">被包围时一次清开并叠满护盾，再接「盾爆」或「圣域」。</p>
+
+<div class="skill-levels" data-rate="0.16" data-scaling="伤害 / 护盾" data-open="85" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="盾潮的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害 / 护盾提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-sanctuary">
+<header><h4>圣域</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">眩晕</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：护盾立即补充至上限；对 2 格内所有敌人造成相当于护盾值 {p120} 的伤害，无视护甲，并使其眩晕，跳过 1 次行动。不消耗护盾。">射程内有敌人时可施放：护盾立即补充至上限；对 2 格内所有敌人造成相当于护盾值 240% 的伤害，无视护甲，并使其眩晕，跳过 1 次行动。不消耗护盾。</p>
+<p class="skill-synergy">第二个大招：补满护盾对承伤反击打法有用，以护盾值计算的伤害对以盾为刃打法有用。</p>
+
+<div class="skill-levels" data-rate="0.5" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="圣域的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 100%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-layeredWall">
+<header><h4>千重</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">破盾</span></p>
+<p class="skill-desc" data-template="获得 {p30} 最大生命的护盾；之后 4 回合，护盾被击破时保留相当于上限 30% 的护盾，破盾反震的伤害提高至破盾前护盾值的 200%，每回合开始时获得的护盾翻倍。">获得 48% 最大生命的护盾；之后 4 回合，护盾被击破时保留相当于上限 30% 的护盾，破盾反震的伤害提高至破盾前护盾值的 200%，每回合开始时获得的护盾翻倍。</p>
+<p class="skill-synergy">施放「千重」后，护盾被击破反而成为输出手段，适合在敌人攻势最猛的波次使用。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="护盾" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="千重的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：护盾提高 60%</p>
+
 </div>
 </article>
 <article class="skill-card is-ascend" id="skill-fortress">
 <header><h4>不落城</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">坚守</span></p>
-<p class="skill-desc">护盾立即补充至上限；之后 3 回合受到的伤害降低 40%，每次受到攻击时对攻击者造成 80% 攻击的反击伤害。</p>
+<p class="skill-desc" data-template="护盾立即补充至上限；之后 3 回合受到的伤害降低 55%，每次受到攻击时对攻击者造成 {p80} 攻击的反击伤害。">护盾立即补充至上限；之后 3 回合受到的伤害降低 55%，每次受到攻击时对攻击者造成 128% 攻击的反击伤害。</p>
 <p class="skill-synergy">盾魂的觉醒技：宜留至敌人攻势最猛烈的波次施放。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>金汤</strong><p>减伤提高至 55%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>坚城反击</strong><p>反击伤害提高至 130% 攻击。</p></div></div>
 
-<div class="skill-levels" data-rate="0.15" data-scaling="护盾 / 反击">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="不落城的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时护盾 / 反击累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>护盾 / 反击 +15%</li><li data-level="3"><b>Lv.3</b>护盾 / 反击 +15%</li><li data-level="4"><b>Lv.4</b>护盾 / 反击 +15%</li><li data-level="5"><b>Lv.5</b>护盾 / 反击 +15%</li></ol>
+<div class="skill-levels" data-rate="0.075" data-scaling="护盾 / 反击" data-open="60" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="不落城的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：护盾 / 反击提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-skyCitadel">
+<header><h4>天城</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">盾击</span></p>
+<p class="skill-desc" data-template="获得相当于护盾上限 {p50} 的护盾，可超出上限，超出部分 3 回合后消失；随后对 2 格内所有敌人造成相当于当前护盾值 {p150} 的伤害，无视护甲，并将其击退 1 格。之后 3 回合，盾锋的比例翻倍。">获得相当于护盾上限 50% 的护盾，可超出上限，超出部分 3 回合后消失；随后对 2 格内所有敌人造成相当于当前护盾值 150% 的伤害，无视护甲，并将其击退 1 格。之后 3 回合，盾锋的比例翻倍。</p>
+<p class="skill-synergy">盾魂的二觉技：「不落城」承伤，「天城」把护盾打出去；护盾越厚，伤害越高。</p>
+
+<div class="skill-levels" data-rate="1" data-scaling="伤害 / 护盾" data-open="100" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="天城的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article></div>
 <h3 id="skills-bloodwar" data-toc-label="狂战士专属" tabindex="-1">狂战士专属技能</h3>
-<div class="skill-grid"><article class="skill-card" id="skill-bloodDrink">
-<header><h4>噬血</h4><span class="skill-meta">45 级开放 · 冷却 3 回合</span></header>
-<p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
-<p class="skill-desc">对射程内一名敌人造成 180% 伤害，并使其流血 3 回合，每回合受到 40% 攻击的伤害。回复相当于造成伤害 45% 的生命；若目标原本已流血，额外回复相当于其剩余流血伤害 50% 的生命。</p>
-<p class="skill-synergy">狂战士可先以「旋风斩」或「嗜血斩」使敌人流血，再以「噬血」获得额外回复。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>渴血</strong><p>回复提高至造成伤害的 60%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>血涌</strong><p>流血伤害提高至每回合 60% 攻击。</p></div></div>
+<div class="skill-grid"><article class="skill-card" id="skill-bloodGash">
+<header><h4>血痕</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">自损</span><span class="tag">流血</span></p>
+<p class="skill-desc" data-template="消耗 5% 当前生命，对射程内一名敌人造成 {d170} 伤害，并使其流血 3 回合，每回合受到 {p40} 攻击的伤害。">消耗 5% 当前生命，对射程内一名敌人造成 238% + 986 伤害，并使其流血 3 回合，每回合受到 56% 攻击的伤害。</p>
+<p class="skill-synergy">消耗的生命会提高狂战士的增伤；流血的目标再以「嗜血斩」攻击，回复翻倍。</p>
 
-<div class="skill-levels" data-rate="0.1" data-scaling="伤害 / 回复">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="噬血的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害 / 回复累计提高 40%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 / 回复 +10%</li><li data-level="3"><b>Lv.3</b>伤害 / 回复 +10%</li><li data-level="4"><b>Lv.4</b>伤害 / 回复 +10%</li><li data-level="5"><b>Lv.5</b>伤害 / 回复 +10%</li></ol>
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="血痕的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bloodBurn">
+<header><h4>燃血</h4><span class="skill-meta">25 级开放 · 低血爆发打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">暴击</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。消耗 10% 当前生命；本回合接下来施放的一个技能必定暴击，且该技能造成伤害的 {p30} 转化为回复。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。消耗 10% 当前生命；本回合接下来施放的一个技能必定暴击，且该技能造成伤害的 44.4% 转化为回复。</p>
+<p class="skill-synergy">先施放「燃血」，同一回合再以「噬血」「决死」等伤害较高的技能出手。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="回复" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="燃血的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-lastStand">
+<header><h4>不屈</h4><span class="skill-meta">30 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">闪避</span></p>
+<p class="skill-desc" data-template="生命低于 60% 时可施放：回复 {p25} 最大生命，并闪避下一次攻击。">生命低于 60% 时可施放：回复 40% 最大生命，并闪避下一次攻击。</p>
+<p class="skill-synergy">将「不屈」的施放规则排在使用药水之前，可优先通过技能回复生命。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：生命低于 70% 时即可使用。</li></ul></div>
+<div class="skill-levels" data-rate="0.04285714285714286" data-scaling="治疗" data-open="30" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="不屈的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：治疗提高 60%</p>
+<ol class="level-gains"><li data-level="3"><b>Lv.3</b>闪避 +1 次</li><li data-level="5"><b>Lv.5</b>闪避再 +1 次</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-bloodDrink">
+<header><h4>噬血</h4><span class="skill-meta">35 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d180} 伤害，并使其流血 3 回合，每回合受到 {p40} 攻击的伤害。回复相当于造成伤害 60% 的生命；若目标原本已流血，额外回复相当于其剩余流血伤害 50% 的生命。">对射程内一名敌人造成 252% + 1044 伤害，并使其流血 3 回合，每回合受到 56% 攻击的伤害。回复相当于造成伤害 60% 的生命；若目标原本已流血，额外回复相当于其剩余流血伤害 50% 的生命。</p>
+<p class="skill-synergy">狂战士可先以「旋风斩」或「嗜血斩」使敌人流血，再以「噬血」获得额外回复。</p>
+
+<div class="skill-levels" data-rate="0.03076923076923077" data-scaling="伤害 / 回复" data-open="35" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="噬血的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害 / 回复提高 40%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-warGod">
+<header><h4>战神</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">增伤</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：立即获得相当于 {p30} 最大生命的护盾，并对射程内所有敌人各造成 {d250} 伤害。自本次攻击起的 3 回合内，你的所有攻击（包括普通攻击）伤害提高 {p55}，并回复相当于造成伤害 {p15} 的生命。">射程内有敌人时可施放：立即获得相当于 48% 最大生命的护盾，并对射程内所有敌人各造成 400% + 1450 伤害。自本次攻击起的 3 回合内，你的所有攻击（包括普通攻击）伤害提高 88%，并回复相当于造成伤害 24% 的生命。</p>
+<p class="skill-synergy">面对首领或大量敌人时施放「战神」，再以「重击」「处决」持续造成伤害并回复生命。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>狂战士</strong>：持续期间，每次攻击均使目标流血 2 回合。</li></ul></div>
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾 / 增伤 / 吸血" data-open="40" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="战神的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾 / 增伤 / 吸血提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-pounce">
+<header><h4>扑杀</h4><span class="skill-meta">45 级开放 · 流血收割打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">突进</span><span class="tag">收割</span></p>
+<p class="skill-desc" data-template="冲向 2–4 格内生命最低的敌人并造成 {d200} 伤害，使其流血 3 回合，每回合受到 {p40} 攻击的伤害。若因此击杀目标，冷却立即结束。">冲向 2–4 格内生命最低的敌人并造成 296% + 1160 伤害，使其流血 3 回合，每回合受到 59.2% 攻击的伤害。若因此击杀目标，冷却立即结束。</p>
+<p class="skill-synergy">狂战士依靠吸血维持续战，「扑杀」用于接近远处的敌人；残血的敌人较多时，可以连续施放。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="扑杀的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article>
 <article class="skill-card" id="skill-bloodRite">
-<header><h4>血祭</h4><span class="skill-meta">50 级开放 · 冷却 4 回合</span></header>
+<header><h4>血祭</h4><span class="skill-meta">50 级开放 · 流血收割打法 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">血爆</span><span class="tag">收割</span></p>
-<p class="skill-desc">射程内存在流血的敌人时可用：消耗 10% 当前生命，对射程内所有流血的敌人造成 260% 伤害，并立即结算其剩余的全部流血伤害。</p>
+<p class="skill-desc" data-template="射程内存在流血的敌人时可用：消耗 10% 当前生命，对射程内所有流血的敌人造成 {d260} 伤害，并立即结算其剩余的全部流血伤害。">射程内存在流血的敌人时可用：消耗 10% 当前生命，对射程内所有流血的敌人造成 384.8% + 1508 伤害，并立即结算其剩余的全部流血伤害。</p>
 <p class="skill-synergy">消耗的生命会进一步提高狂战士的增伤；剩余的流血伤害一次结算完毕。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>血誓</strong><p>生命消耗降低至 5% 当前生命。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>狂血</strong><p>伤害提高至 330%。</p></div></div>
 
-<div class="skill-levels" data-rate="0.12" data-scaling="伤害">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="血祭的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时伤害累计提高 48%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>伤害 +12%</li><li data-level="3"><b>Lv.3</b>伤害 +12%</li><li data-level="4"><b>Lv.4</b>伤害 +12%</li><li data-level="5"><b>Lv.5</b>伤害 +12%</li></ol>
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="血祭的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-hamstring">
+<header><h4>割筋</h4><span class="skill-meta">55 级开放 · 流血收割打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">流血</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害，并使其流血 3 回合，每回合受到 {p40} 攻击的伤害；之后 3 回合，该敌人每次攻击你时，你回复 {p4} 最大生命。">对射程内一名敌人造成 296% + 1160 伤害，并使其流血 3 回合，每回合受到 59.2% 攻击的伤害；之后 3 回合，该敌人每次攻击你时，你回复 5.9% 最大生命。</p>
+<p class="skill-synergy">对存活最久、攻击次数最多的敌人施放「割筋」，回复最多。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害 / 回复" data-open="55" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="割筋的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-deathWish">
+<header><h4>决死</h4><span class="skill-meta">65 级、觉醒后开放 · 低血爆发打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">低血</span><span class="tag">爆发</span></p>
+<p class="skill-desc" data-template="生命低于 50% 时可施放：对射程内一名敌人造成 {d380} 伤害，并回复造成伤害 50% 的生命。">生命低于 50% 时可施放：对射程内一名敌人造成 562.4% + 2204 伤害，并回复造成伤害 50% 的生命。</p>
+<p class="skill-synergy">低血爆发打法的收尾：生命越低，狂战士的增伤越高，越适合施放「决死」。</p>
+
+<div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="决死的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-frenzySlash">
+<header><h4>狂斩</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">连斩</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="对射程内一名敌人连斩 3 次，每次造成 {d100} 伤害，并刷新其流血的持续时间；回复造成伤害 35% 的生命。生命低于 50% 时改为连斩 4 次。命中流血的目标时，「噬血」的剩余冷却缩短 1 回合。">对射程内一名敌人连斩 3 次，每次造成 148% + 580 伤害，并刷新其流血的持续时间；回复造成伤害 35% 的生命。生命低于 50% 时改为连斩 4 次。命中流血的目标时，「噬血」的剩余冷却缩短 1 回合。</p>
+<p class="skill-synergy">与「噬血」配成两拍循环：「噬血」施加流血，「狂斩」刷新流血并缩短「噬血」的冷却。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="狂斩的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bloodWave">
+<header><h4>血浪</h4><span class="skill-meta">75 级、觉醒后开放 · 流血收割打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">突进</span><span class="tag">流血</span></p>
+<p class="skill-desc" data-template="冲向 2 格内敌人最密集的位置，对落点相邻的所有敌人造成 {d160} 伤害，并使其流血 3 回合，每回合受到 {p40} 攻击的伤害；每命中一名生命低于 40% 的敌人，回复 5% 最大生命。">冲向 2 格内敌人最密集的位置，对落点相邻的所有敌人造成 236.8% + 928 伤害，并使其流血 3 回合，每回合受到 59.2% 攻击的伤害；每命中一名生命低于 40% 的敌人，回复 5% 最大生命。</p>
+<p class="skill-synergy">接近敌人并施加流血，为「血祭」「屠戮」备好目标。</p>
+
+<div class="skill-levels" data-rate="0.096" data-scaling="伤害" data-open="75" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="血浪的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bloodSoak">
+<header><h4>浴血</h4><span class="skill-meta">80 级、觉醒后开放 · 低血爆发打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">低血</span><span class="tag">保命</span></p>
+<p class="skill-desc" data-template="生命低于 50% 时可施放：获得相当于已损失生命 {p50} 的护盾，并闪避接下来 2 次攻击；之后 2 回合，造成伤害的 {p40} 转化为回复。">生命低于 50% 时可施放：获得相当于已损失生命 74% 的护盾，并闪避接下来 2 次攻击；之后 2 回合，造成伤害的 59.2% 转化为回复。</p>
+<p class="skill-synergy">低血爆发打法的保命手段：血线压低之后以「浴血」多撑几回合，再以「决死」和低血增伤输出。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="护盾 / 回复" data-open="80" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="浴血的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：护盾 / 回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-massacre">
+<header><h4>屠戮</h4><span class="skill-meta">85 级、觉醒后开放 · 流血收割打法 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">再行动</span></p>
+<p class="skill-desc" data-template="对所有相邻敌人造成 {d250} 伤害；之后 3 回合，击杀敌人后立即再行动一次，并回复 10% 最大生命，每回合至多一次。">对所有相邻敌人造成 400% + 1450 伤害；之后 3 回合，击杀敌人后立即再行动一次，并回复 10% 最大生命，每回合至多一次。</p>
+<p class="skill-synergy">残局收割的手段：敌人越密集、残血越多，越容易接连再行动。</p>
+
+<div class="skill-levels" data-rate="0.19999999999999998" data-scaling="伤害" data-open="85" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="屠戮的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bloodCollapse">
+<header><h4>血崩</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：消耗 20% 当前生命，对射程内所有敌人造成 {d300} 伤害，再对其中生命最高的敌人造成 {d200} 伤害；回复造成伤害 30% 的生命。">射程内有敌人时可施放：消耗 20% 当前生命，对射程内所有敌人造成 480% + 1740 伤害，再对其中生命最高的敌人造成 320% + 1160 伤害；回复造成伤害 30% 的生命。</p>
+<p class="skill-synergy">第二个大招：消耗的生命立即提高狂战士的增伤，首领额外承受一击。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害" data-open="90" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="血崩的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 580 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-desperation">
+<header><h4>搏命</h4><span class="skill-meta">95 级、觉醒后开放 · 低血爆发打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">低血</span><span class="tag">增伤</span></p>
+<p class="skill-desc" data-template="生命高于 30% 时立即降至 30%，并获得相当于失去生命 {p100} 的护盾，不受溢出护盾上限的限制；之后 4 回合，每损失 10% 生命带来的增伤翻倍，上限提高至 80%。">生命高于 30% 时立即降至 30%，并获得相当于失去生命 160% 的护盾，不受溢出护盾上限的限制；之后 4 回合，每损失 10% 生命带来的增伤翻倍，上限提高至 80%。</p>
+<p class="skill-synergy">施放后立即进入接近最高的增伤，护盾承担降低生命带来的风险；随后接「决死」「狂斩」。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="护盾" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="搏命的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：护盾提高 60%</p>
+
 </div>
 </article>
 <article class="skill-card is-ascend" id="skill-bloodSea">
 <header><h4>血海</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">血海</span></p>
-<p class="skill-desc">消耗 15% 当前生命，使场上所有敌人流血 4 回合，每回合受到 80% 攻击的伤害；之后 3 回合造成的伤害提高 60%，并回复造成伤害的 40%。</p>
+<p class="skill-desc" data-template="消耗 15% 当前生命，使场上所有敌人流血 4 回合，每回合受到 {p80} 攻击的伤害；之后 3 回合造成的伤害提高 {p90}，并回复造成伤害的 {p40}。">消耗 15% 当前生命，使场上所有敌人流血 4 回合，每回合受到 128% 攻击的伤害；之后 3 回合造成的伤害提高 144%，并回复造成伤害的 64%。</p>
 <p class="skill-synergy">狂战士的觉醒技：消耗的生命可使核心增伤迅速接近上限，随后依靠血海的吸血恢复生命。</p>
-<div class="variants"><p class="block-label">精通（二选一）</p><div class="variant-box"><span class="variant-key">A</span><strong>怒涛</strong><p>增伤提高至 90%。</p></div><div class="variant-box"><span class="variant-key">B</span><strong>血渊</strong><p>回复提高至造成伤害的 60%。</p></div></div>
 
-<div class="skill-levels" data-rate="0.15" data-scaling="流血 / 增伤 / 吸血">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="血海的技能等级" /></label><output class="level-value">Lv.5</output></div>
-<p class="level-total">Lv.5 时流血 / 增伤 / 吸血累计提高 60%</p>
-<ol class="level-gains"><li data-level="2"><b>Lv.2</b>流血 / 增伤 / 吸血 +15%</li><li data-level="3"><b>Lv.3</b>流血 / 增伤 / 吸血 +15%</li><li data-level="4"><b>Lv.4</b>流血 / 增伤 / 吸血 +15%</li><li data-level="5"><b>Lv.5</b>流血 / 增伤 / 吸血 +15%</li></ol>
+<div class="skill-levels" data-rate="0.075" data-scaling="流血 / 增伤 / 吸血" data-open="60" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="血海的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：流血 / 增伤 / 吸血提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-asura">
+<header><h4>修罗</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">收割</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人连斩 3 次，每次造成 {d240} 伤害；命中流血的敌人时，立即结清其剩余的流血伤害。回复造成伤害的 30%；本场已触发过「死斗」时，可再触发一次。">对射程内所有敌人连斩 3 次，每次造成 240% + 1392 伤害；命中流血的敌人时，立即结清其剩余的流血伤害。回复造成伤害的 30%；本场已触发过「死斗」时，可再触发一次。</p>
+<p class="skill-synergy">狂战士的二觉技：先以「血海」使全场流血、提高增伤，再以「修罗」一次收割。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="5.8">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="修罗的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 580 点固定伤害</p>
+
 </div>
 </article></div>
 <h2 id="passives" tabindex="-1">职业被动</h2>
-<p class="lead">5 级起可以花费 1 技能点学习，最多同时携带 2 项，随时可以免费退还。被动不占用技能携带栏。</p>
+<p class="lead">职业通用被动 5 级起可以学习，转职被动在转职以后可以学习，每项 10 SP，不限个数，只受 SP 限制，随时可以退还。被动不占用技能携带栏。</p>
 <div class="passive-grid"><div class="passive-card" id="passive-warrior-bulwark">
 <h4>坚壁</h4><p>护盾未破时，你造成的伤害提高 25%。</p><p class="muted">战吼开场，贴身硬打。</p>
-<span class="tag">盾魂推荐</span>
+<span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-warrior-sunderCrit">
 <h4>碎甲</h4><p>攻击破甲目标必定暴击。</p><p class="muted">旋风斩或穿刺后接重击。</p>
-<span class="tag">碎岳推荐</span>
+<span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-warrior-bloodRage">
 <h4>血怒</h4><p>击杀敌人回复 8% 最大生命；处决击杀时再回复 8%。</p><p class="muted">处决收割流。</p>
-<span class="tag">狂战士推荐</span>
+<span class="tag">狂战士转职被动</span>
 </div>
 <div class="passive-card" id="passive-warrior-bloodbath">
 <h4>血战</h4><p>对流血目标造成的伤害提高 20%。</p><p class="muted">撕裂或放血流。</p>
-<span class="tag">狂战士推荐</span>
+<span class="tag">狂战士转职被动</span>
 </div>
 <div class="passive-card" id="passive-warrior-unmoved">
 <h4>不动如山</h4><p>护盾未破时，受到的伤害降低 20%。</p><p class="muted">战吼、壁垒、守望誓约。</p>
-<span class="tag">盾魂推荐</span>
+<span class="tag">盾魂转职被动</span>
 </div>
 <div class="passive-card" id="passive-warrior-suppress">
 <h4>压制</h4><p>攻击眩晕或冻结的敌人时伤害提高 25%。</p><p class="muted">震地、盾击、时滞之后。</p>
-<span class="tag">碎岳推荐</span>
+<span class="tag">碎岳转职被动</span>
+</div>
+<div class="passive-card" id="passive-warrior-rockMail">
+<h4>岩甲</h4><p>施放技能使至少一名敌人眩晕后，获得相当于 8% 最大生命的护盾，不叠加。</p><p class="muted">凿击、地动、碎脊这类控制技之后。</p>
+<span class="tag">碎岳转职被动</span>
+</div>
+<div class="passive-card" id="passive-warrior-edgeSurge">
+<h4>盾势</h4><p>顶着护盾时，每次攻击追加相当于当前护盾值 4% 的伤害。</p><p class="muted">先把护盾叠厚；盾魂的盾锋与它分别结算。</p>
+<span class="tag">盾魂转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职分别搜索出的最优配置：200 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 86～143 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 81～141 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-bloodwar" data-toc-label="狂战士配置" tabindex="-1">狂战士</h3>
-<span class="build-score"><span>等效第 <strong>127</strong> 层</span><small>过半至第 128 层</small></span>
+<h3 id="build-mountain-1" data-toc-label="碎岳 · 群体配置" tabindex="-1">碎岳 · 群体</h3>
+<span class="build-score"><span>等效第 <strong>122</strong> 层</span><small>过半至第 120 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 8.0 L197.6 15.5 L224.8 21.1 L252.1 8.0 L279.4 15.5 L306.6 23.0 L333.9 41.8 L361.2 66.1 L388.4 68.0 L415.7 23.0 L442.9 58.6 L470.2 79.3 L497.5 92.4 L524.7 77.4 L552.0 81.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 8.0 L197.6 15.5 L224.8 21.1 L252.1 8.0 L279.4 15.5 L306.6 23.0 L333.9 41.8 L361.2 66.1 L388.4 68.0 L415.7 23.0 L442.9 58.6 L470.2 79.3 L497.5 92.4 L524.7 77.4 L552.0 81.1" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 17.4 L189.4 9.9 L215.3 15.5 L241.2 9.9 L267.1 9.9 L293.0 23.0 L318.9 39.9 L344.8 30.5 L370.7 56.8 L396.6 36.1 L422.5 86.8 L448.4 88.6 L474.3 98.0 L500.2 71.8 L526.1 90.5 L552.0 94.3 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 17.4 L189.4 9.9 L215.3 15.5 L241.2 9.9 L267.1 9.9 L293.0 23.0 L318.9 39.9 L344.8 30.5 L370.7 56.8 L396.6 36.1 L422.5 86.8 L448.4 88.6 L474.3 98.0 L500.2 71.8 L526.1 90.5 L552.0 94.3" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>处决</strong><span class="variant">血偿</span><small>Lv.5</small></li><li><strong>噬血</strong><span class="variant">血涌</span><small>Lv.5</small></li><li><strong>战意</strong><span class="variant">破阵</span><small>Lv.5</small></li><li><strong>破军斩</strong><span class="variant">坚城</span><small>Lv.5</small></li><li><strong>战神</strong><span class="variant">战狂</span><small>Lv.5</small></li><li class="is-ascend"><strong>血海</strong><span class="variant">血渊</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」、「碎甲」</dd></div>
-<div><dt>属性加点</dt><dd>力量 3 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>饰品</small>徽章</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>裂野</strong><small>Lv.11</small></li><li><strong>撼岳</strong><small>Lv.13</small></li><li><strong>战意</strong><small>Lv.5</small></li><li><strong>坠岩</strong><small>Lv.2</small></li><li><strong>裂穹</strong><small>Lv.3</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.1</small></li><li class="is-ascend"><strong>开天</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
 <div><dt>自动战斗打法</dt><dd>稳健</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2405</b></span><span>生命 <b>5038</b></span><span>护甲 <b>745</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1251</b></span><span>生命 <b>5918</b></span><span>护甲 <b>334</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-mountain" data-toc-label="碎岳配置" tabindex="-1">碎岳</h3>
-<span class="build-score"><span>等效第 <strong>126</strong> 层</span><small>过半至第 119 层</small></span>
+<h3 id="build-mountain-0" data-toc-label="碎岳 · 单体配置" tabindex="-1">碎岳 · 单体</h3>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 120 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 11.7 L61.3 9.9 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 9.9 L197.6 11.7 L224.8 15.5 L252.1 9.9 L279.4 19.3 L306.6 24.9 L333.9 41.8 L361.2 71.8 L388.4 69.9 L415.7 39.9 L442.9 60.5 L470.2 66.1 L497.5 92.4 L524.7 96.1 L552.0 79.3 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 11.7 L61.3 9.9 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 9.9 L197.6 11.7 L224.8 15.5 L252.1 9.9 L279.4 19.3 L306.6 24.9 L333.9 41.8 L361.2 71.8 L388.4 69.9 L415.7 39.9 L442.9 60.5 L470.2 66.1 L497.5 92.4 L524.7 96.1 L552.0 79.3" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 9.9 L163.5 21.1 L189.4 15.5 L215.3 24.9 L241.2 15.5 L267.1 21.1 L293.0 39.9 L318.9 49.3 L344.8 41.8 L370.7 62.4 L396.6 47.4 L422.5 88.6 L448.4 96.1 L474.3 98.0 L500.2 90.5 L526.1 92.4 L552.0 94.3 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 9.9 L163.5 21.1 L189.4 15.5 L215.3 24.9 L241.2 15.5 L267.1 21.1 L293.0 39.9 L318.9 49.3 L344.8 41.8 L370.7 62.4 L396.6 47.4 L422.5 88.6 L448.4 96.1 L474.3 98.0 L500.2 90.5 L526.1 92.4 L552.0 94.3" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>不屈</strong><span class="variant">反震</span><small>Lv.5</small></li><li><strong>嗜血斩</strong><span class="variant">撕裂</span><small>Lv.5</small></li><li><strong>战意</strong><span class="variant">破阵</span><small>Lv.5</small></li><li><strong>破军斩</strong><span class="variant">断岳</span><small>Lv.5</small></li><li><strong>战神</strong><span class="variant">战狂</span><small>Lv.5</small></li><li class="is-ascend"><strong>天崩</strong><span class="variant">天罚</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」、「不动如山」</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>裂穹</strong><small>Lv.3</small></li><li><strong>撼岳</strong><small>Lv.13</small></li><li><strong>战意</strong><small>Lv.5</small></li><li><strong>山崩</strong><small>Lv.14</small></li><li><strong>崩心</strong><small>Lv.1</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.1</small></li><li class="is-ascend"><strong>开天</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>饰品</small>吊坠</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>智力</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2117</b></span><span>生命 <b>6081</b></span><span>护甲 <b>640</b></span></dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1577</b></span><span>生命 <b>4667</b></span><span>护甲 <b>438</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-rampart" data-toc-label="盾魂配置" tabindex="-1">盾魂</h3>
-<span class="build-score"><span>等效第 <strong>124</strong> 层</span><small>过半至第 119 层</small></span>
+<h3 id="build-rampart-0" data-toc-label="盾魂 · 承伤反击配置" tabindex="-1">盾魂 · 承伤反击</h3>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 117 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 8.0 L197.6 8.0 L224.8 24.9 L252.1 9.9 L279.4 23.0 L306.6 38.0 L333.9 49.3 L361.2 66.1 L388.4 86.8 L415.7 32.4 L442.9 64.3 L470.2 94.3 L497.5 98.0 L524.7 98.0 L552.0 90.5 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L61.3 8.0 L88.5 8.0 L115.8 8.0 L143.1 8.0 L170.3 8.0 L197.6 8.0 L224.8 24.9 L252.1 9.9 L279.4 23.0 L306.6 38.0 L333.9 49.3 L361.2 66.1 L388.4 86.8 L415.7 32.4 L442.9 64.3 L470.2 94.3 L497.5 98.0 L524.7 98.0 L552.0 90.5" /><text x="34.0" y="114" text-anchor="middle">86</text><text x="143.1" y="114" text-anchor="middle">98</text><text x="252.1" y="114" text-anchor="middle">110</text><text x="361.2" y="114" text-anchor="middle">122</text><text x="470.2" y="114" text-anchor="middle">134</text><text x="552.0" y="114" text-anchor="middle">143</text>
+<path class="area" d="M34.0 8.0 L59.9 19.3 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 38.0 L215.3 8.0 L241.2 8.0 L267.1 53.0 L293.0 54.9 L318.9 24.9 L344.8 62.4 L370.7 30.5 L396.6 75.5 L422.5 96.1 L448.4 88.6 L474.3 96.1 L500.2 69.9 L526.1 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 19.3 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 38.0 L215.3 8.0 L241.2 8.0 L267.1 53.0 L293.0 54.9 L318.9 24.9 L344.8 62.4 L370.7 30.5 L396.6 75.5 L422.5 96.1 L448.4 88.6 L474.3 96.1 L500.2 69.9 L526.1 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>嗜血斩</strong><span class="variant">饮血</span><small>Lv.5</small></li><li><strong>战意</strong><span class="variant">怒意</span><small>Lv.5</small></li><li><strong>破军斩</strong><span class="variant">坚城</span><small>Lv.5</small></li><li><strong>战神</strong><span class="variant">嗜战</span><small>Lv.5</small></li><li><strong>坚守</strong><span class="variant">铁卫</span><small>Lv.5</small></li><li class="is-ascend"><strong>不落城</strong><span class="variant">坚城反击</span><small>Lv.5</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「不动如山」、「碎甲」</dd></div>
-<div><dt>属性加点</dt><dd>力量 2 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>饰品</small>徽章</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>智力</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>镇压</strong><small>Lv.7</small></li><li><strong>处决</strong><small>Lv.5</small></li><li><strong>坚守</strong><small>Lv.1</small></li><li><strong>圣域</strong><small>Lv.3</small></li><li><strong>御锋</strong><small>Lv.10</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.9</small></li><li class="is-ascend"><strong>天城</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>藤制头饰</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1187</b></span><span>生命 <b>5016</b></span><span>护甲 <b>290</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-rampart-1" data-toc-label="盾魂 · 以盾为刃配置" tabindex="-1">盾魂 · 以盾为刃</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 117 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 11.7 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 38.0 L215.3 9.9 L241.2 8.0 L267.1 53.0 L293.0 66.1 L318.9 32.4 L344.8 60.5 L370.7 36.1 L396.6 71.8 L422.5 94.3 L448.4 94.3 L474.3 98.0 L500.2 83.0 L526.1 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 11.7 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 8.0 L189.4 38.0 L215.3 9.9 L241.2 8.0 L267.1 53.0 L293.0 66.1 L318.9 32.4 L344.8 60.5 L370.7 36.1 L396.6 71.8 L422.5 94.3 L448.4 94.3 L474.3 98.0 L500.2 83.0 L526.1 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>破军斩</strong><small>Lv.14</small></li><li><strong>回旋盾</strong><small>Lv.6</small></li><li><strong>盾潮</strong><small>Lv.1</small></li><li><strong>城塞</strong><small>Lv.13</small></li><li><strong>千重</strong><small>Lv.1</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.1</small></li><li class="is-ascend"><strong>天城</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1194</b></span><span>生命 <b>4790</b></span><span>护甲 <b>270</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-bloodwar-0" data-toc-label="狂战士 · 低血爆发配置" tabindex="-1">狂战士 · 低血爆发</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 117 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 13.6 L163.5 15.5 L189.4 26.8 L215.3 23.0 L241.2 8.0 L267.1 30.5 L293.0 56.8 L318.9 41.8 L344.8 49.3 L370.7 64.3 L396.6 86.8 L422.5 92.4 L448.4 94.3 L474.3 90.5 L500.2 81.1 L526.1 88.6 L552.0 90.5 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 13.6 L163.5 15.5 L189.4 26.8 L215.3 23.0 L241.2 8.0 L267.1 30.5 L293.0 56.8 L318.9 41.8 L344.8 49.3 L370.7 64.3 L396.6 86.8 L422.5 92.4 L448.4 94.3 L474.3 90.5 L500.2 81.1 L526.1 88.6 L552.0 90.5" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>处决</strong><small>Lv.15</small></li><li><strong>燃血</strong><small>Lv.1</small></li><li><strong>战神</strong><small>Lv.13</small></li><li><strong>决死</strong><small>Lv.8</small></li><li><strong>狂斩</strong><small>Lv.1</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.1</small></li><li class="is-ascend"><strong>修罗</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「血怒」Lv.17、「血战」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 3 : 敏捷 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
 <div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>2214</b></span><span>生命 <b>6023</b></span><span>护甲 <b>671</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1769</b></span><span>生命 <b>2853</b></span><span>护甲 <b>490</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-bloodwar-1" data-toc-label="狂战士 · 流血收割配置" tabindex="-1">狂战士 · 流血收割</h3>
+<span class="build-score"><span>等效第 <strong>114</strong> 层</span><small>过半至第 108 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 11.7 L163.5 13.6 L189.4 24.9 L215.3 17.4 L241.2 8.0 L267.1 49.3 L293.0 71.8 L318.9 41.8 L344.8 69.9 L370.7 68.0 L396.6 84.9 L422.5 98.0 L448.4 98.0 L474.3 92.4 L500.2 92.4 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 11.7 L163.5 13.6 L189.4 24.9 L215.3 17.4 L241.2 8.0 L267.1 49.3 L293.0 71.8 L318.9 41.8 L344.8 69.9 L370.7 68.0 L396.6 84.9 L422.5 98.0 L448.4 98.0 L474.3 92.4 L500.2 92.4 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>嗜血斩</strong><small>Lv.11</small></li><li><strong>战神</strong><small>Lv.13</small></li><li><strong>扑杀</strong><small>Lv.11</small></li><li><strong>狂斩</strong><small>Lv.1</small></li><li><strong>血浪</strong><small>Lv.1</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.1</small></li><li class="is-ascend"><strong>修罗</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「血怒」Lv.17、「血战」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>生存</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1236</b></span><span>生命 <b>4804</b></span><span>护甲 <b>425</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.7.2-ota2 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="index.html"><small>上一篇</small><span>图鉴首页<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-ranger.html"><small>下一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.7.2-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
@@ -1050,20 +1551,28 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   });
 })();
 
-/* 技能等级滑块：拖到几级，就标出到这一级为止的提升，并算出百分比数值的累计提高。没有脚本时列出全部等级。 */
+/* 技能等级滑块：拖到几级，就写出这一级的开放等级、百分比数值的累计提高与固定伤害（算法同引擎的 skillLevelInfo），并标出到这一级为止的整数提升。没有脚本时停在最高级。 */
 (() => {
   if (!document.querySelector('.level-slider')) return;
   for (const box of document.querySelectorAll('.skill-levels')) {
     const slider = box.querySelector('.level-slider');
     const output = box.querySelector('.level-value');
     const total = box.querySelector('.level-total');
-    const rate = Number(box.dataset.rate) || 0;
-    const scaling = box.dataset.scaling || '伤害';
+    const rate = Number(box.dataset.rate) || 0, open = Number(box.dataset.open) || 1, step = Number(box.dataset.step) || 5, fixedK = Number(box.dataset.fixed) || 0;
+    const scaling = box.dataset.scaling || '伤害', desc = box.closest('.skill-card')?.querySelector('.skill-desc');
     const update = () => {
       const level = Number(slider.value);
       output.textContent = `Lv.${level}`;
       for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
-      if (rate) total.textContent = level === 1 ? `Lv.1 为基础数值` : `Lv.${level} 时${scaling}累计提高 ${Math.round(rate * (level - 1) * 100)}%`;
+      const opensAt = open + step * (level - 1), pct = Math.round(rate * 1000 * (level - 1)) / 10, fixed = Math.round(fixedK * opensAt);
+      // 说明里的模板按这一级填数：{d200} 写成「百分比 + 固定伤害」，{p15} 只按百分比成长（同引擎的 fillSkillTemplate）。
+      if (desc?.dataset.template) {
+        const mul = 1 + rate * (level - 1), num = x => { const r = Math.round(x * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+        desc.textContent = desc.dataset.template
+          .replace(/\{d(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%${fixed ? ` + ${Math.round(n / 100 * fixed)}` : ''}`)
+          .replace(/\{p(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%`);
+      }
+      total.textContent = `Lv.${level}（角色 ${opensAt} 级开放）：${[pct ? `${scaling}提高 ${pct}%` : null, fixed ? `每 100% 倍率另加 ${fixed} 点固定伤害` : null].filter(Boolean).join('，') || '效果不变'}`;
     };
     slider.addEventListener('input', update);
     update();

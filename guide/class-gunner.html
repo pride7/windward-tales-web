@@ -1,0 +1,1584 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f9fbf5" />
+<title>火枪手 · 风行物语图鉴</title>
+<meta name="description" content="远程 3 格。以力量驾驭火铳与火炮，用榴弹、贯穿弹与炮击压制成群的敌人，并以击退与牵制将敌人阻挡在射程边缘。" />
+<link rel="icon" type="image/png" href="../icons/windward-64.png" />
+<style>
+:root {
+  --surface-page: #e3eddd;
+  --surface-hollow: #eaf0e1;
+  --surface-sunken: #deead5;
+  --surface-soft: #f2f6eb;
+  --surface-paper: #f9fbf5;
+  --surface-raised: #ffffff;
+  --surface-warm: #f1eddc;
+  --surface-cool: #e6e9f4;
+  --line-soft: #d1ddc8;
+  --line-mid: #c1d1b4;
+  --line-strong: #b3c39d;
+  --ink: #304638;
+  --ink-muted: #5d6d5f;
+  --ink-soft: #7d8a72;
+  --ink-invert: #ffffff;
+  --accent-deep: #42603b;
+  --accent-edge: #45683f;
+  --focus-ring: #718d5e;
+  --hero-mark: #3c7167;
+  --accent: #547246;
+  --accent-mid: #63824e;
+  --accent-light: #7d9d6c;
+  --accent-pale: #9db68b;
+  --mint: #397052;
+  --sage-deep: #617654;
+  --sage-mid: #879779;
+  --gold: #866225;
+  --gold-deep: #8a662a;
+  --gold-mid: #92713c;
+  --gold-light: #ab915c;
+  --gold-pale: #b3975a;
+  --gold-tint: #eee4c9;
+  --gold-bright: #8a5c15;
+  --gold-sand: #d7c495;
+  --surface-cream: #faf0e6;
+  --danger: #a34f3b;
+  --clay-soft: #a1634d;
+  --info: #3b6983;
+  --info-soft: #507a89;
+  --abyss-tint: #e3e7f5;
+  --abyss-pale: #c9cee3;
+  --abyss-line: #b7bdd6;
+  --abyss-mid: #7f8cbf;
+  --abyss: #4d5a86;
+  --abyss-deep: #3f4a75;
+  --shade-tint: #ebe7f1;
+  --shade: #5a4d70;
+  --shade-deep: #3b3150;
+  --rarity-common: #52634d;
+  --rarity-rare: #356982;
+  --rarity-epic: #79549a;
+  --rarity-legendary: #a8681c;
+  --rarity-trophy: #b23a2e;
+}
+/* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
+* { box-sizing: border-box; }
+:root {
+  --header-height: 68px; --reading-offset: 96px;
+  --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  --radius: 12px; --shadow: 0 1px 2px #304a3a0d, 0 6px 18px #304a3a0a; --shadow-lift: 0 2px 4px #304a3a12, 0 14px 32px #304a3a14;
+}
+html { scroll-behavior: smooth; scroll-padding-top: var(--reading-offset); }
+body { margin: 0; background: var(--surface-page); background-image: linear-gradient(180deg, var(--surface-paper) 0, var(--surface-page) 520px); background-repeat: no-repeat; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--mint); text-underline-offset: 3px; }
+button, summary, a, input { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a, summary { transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .16s; }
+a:focus-visible, summary:focus-visible, input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+svg, img { flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: fixed; z-index: 40; left: 16px; top: -80px; padding: 10px 16px; border-radius: 8px; background: var(--accent); color: var(--ink-invert); }
+.skip-link:focus { top: 10px; }
+
+/* ---------- 顶栏与搜索 ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; height: var(--header-height); border-bottom: 1px solid var(--line-soft); background: color-mix(in srgb, var(--surface-paper) 92%, transparent); backdrop-filter: blur(10px); }
+.header-inner { display: flex; align-items: center; gap: 20px; max-width: 1480px; height: 100%; margin: auto; padding: 0 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { border-radius: 10px; }
+.brand strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: 2px; }
+.brand small { display: block; color: var(--ink-muted); font-size: 10px; letter-spacing: 2px; }
+.site-search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
+.search-box { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink-soft); }
+.search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+.search-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.search-box input::placeholder { color: var(--ink-soft); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+kbd { padding: 0 6px; border: 1px solid var(--line-mid); border-radius: 5px; background: var(--surface-soft); color: var(--ink-soft); font: 11px/18px var(--sans); }
+.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; max-height: min(70dvh, 480px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); box-shadow: var(--shadow-lift); }
+.search-results a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 8px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.search-results a strong { font-size: 14px; }
+.search-results a mark { background: var(--gold-tint); color: inherit; border-radius: 2px; }
+.search-results a small { grid-column: 1; color: var(--ink-muted); font-size: 12px; }
+.search-results a .kind { grid-column: 2; grid-row: 1 / 3; padding: 1px 7px; border-radius: 5px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 11px; }
+.search-results a[aria-selected="true"], .search-results a:hover { background: var(--surface-soft); }
+.search-empty { margin: 0; padding: 14px 10px; color: var(--ink-muted); font-size: 13px; }
+.play-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 15px; border: 1px solid var(--accent-edge); border-radius: 10px; background: var(--accent); color: var(--ink-invert); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.play-link:hover { background: var(--accent-deep); }
+
+/* ---------- 版面 ---------- */
+.docs-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr) 196px; grid-template-areas: "navigation content outline"; align-items: start; gap: 36px; max-width: 1480px; margin: 0 auto; padding: 28px 28px 0; }
+.docs-layout.no-toc { grid-template-columns: 212px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+.site-sidebar { grid-area: navigation; }
+.toc-sidebar { grid-area: outline; }
+.site-sidebar, .toc-sidebar { position: sticky; top: calc(var(--header-height) + 24px); min-width: 0; }
+.site-nav > summary { display: none; }
+.nav-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidebar-label { margin: 18px 10px 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 2px; }
+.nav-group { display: grid; gap: 2px; }
+.site-nav nav a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 10px; border-radius: 9px; color: var(--ink-muted); font-size: 13.5px; text-decoration: none; }
+.site-nav nav a img { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-soft); }
+.site-nav nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.site-nav nav a[aria-current="page"] { color: var(--accent-deep); background: var(--surface-raised); box-shadow: inset 3px 0 var(--accent), var(--shadow); font-weight: 600; }
+
+.page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 34px; margin-bottom: 8px; color: var(--ink-muted); font-size: 12px; font-weight: 600; }
+.page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+.page-toc:not([open]) > summary > svg:last-child { transform: rotate(0); }
+.toc-current { display: none; }
+.toc-panel { max-height: calc(100dvh - 170px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.page-toc ol { margin: 0; padding: 0; list-style: none; }
+.page-toc nav a { display: flex; align-items: center; min-height: 32px; padding: 5px 9px 5px 12px; border-left: 2px solid var(--line-soft); color: var(--ink-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+.page-toc nav a > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-toc .toc-level-3 a { padding-left: 24px; font-size: 11.5px; }
+.page-toc nav a:hover { color: var(--ink); background: var(--surface-soft); }
+.page-toc nav a[aria-current="location"] { color: var(--accent-deep); border-color: var(--accent); background: var(--surface-hollow); font-weight: 600; }
+.toc-top { display: inline-flex; align-items: center; min-height: 40px; margin: 8px 0 0 12px; color: var(--ink-muted); font-size: 11px; text-decoration: none; }
+
+/* ---------- 正文 ---------- */
+.guide-main { grid-area: content; min-width: 0; padding-bottom: 48px; }
+.guide-heading { padding: 6px 0 26px; margin-bottom: 30px; border-bottom: 1px solid var(--line-mid); }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink-soft); font-size: 11px; letter-spacing: 1px; }
+.eyebrow span { color: var(--sage-mid); }
+.guide-heading h1, .class-hero h1, .home-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: 3px; line-height: 1.3; }
+.page-description { max-width: 720px; margin: 10px 0 14px; color: var(--ink-muted); font-size: 14.5px; }
+.page-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; color: var(--ink-soft); font-size: 11px; }
+.version-badge { padding: 1px 7px; border: 1px solid var(--line-soft); border-radius: 5px; background: var(--surface-raised); font-variant-numeric: tabular-nums; }
+.guide-article { overflow-wrap: anywhere; }
+.guide-article h2 { display: flex; align-items: center; gap: 10px; margin: 56px 0 14px; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.4; letter-spacing: 2px; }
+.guide-article h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: linear-gradient(var(--accent-light), var(--accent)); }
+.guide-article > h2:first-child { margin-top: 0; }
+.guide-article h3 { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+.guide-article h4 { margin: 0; font-size: 16px; }
+.lead { max-width: 820px; margin: 0 0 20px; color: var(--ink-muted); font-size: 14px; line-height: 1.85; }
+.note { margin: 18px 0 24px; padding: 13px 16px; border: 1px solid var(--line-soft); border-left: 3px solid var(--accent-pale); border-radius: 0 10px 10px 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 13px; line-height: 1.8; }
+.note p { margin: 6px 0; }
+.note p:first-child { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+.muted { color: var(--ink-muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; background: var(--surface-hollow); color: var(--sage-deep); font-family: var(--sans); font-size: 11.5px; font-weight: 500; line-height: 1.75; white-space: nowrap; }
+.tag-danger { background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised)); color: var(--danger); }
+.tag-gold { background: var(--gold-tint); color: var(--gold-bright); }
+.tag-link { text-decoration: none; background: var(--surface-raised); border: 1px solid var(--line-mid); color: var(--accent-deep); }
+.tag-link:hover { border-color: var(--accent); }
+code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); font-size: .92em; white-space: normal; }
+.block-label { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+
+/* ---------- 首页 ---------- */
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-bottom: 36px; padding: 30px 32px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 85% 20%, var(--surface-warm), transparent 55%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.home-hint { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink-muted); font-size: 13px; }
+.home-portraits { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; }
+.home-portraits img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--surface-raised); box-shadow: var(--shadow); background: var(--surface-soft); }
+.home-portraits img:nth-child(n+5) { transform: translateX(36px); }
+.class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.class-card { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.class-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.class-card img { width: 72px; height: 72px; border-radius: 14px; background: var(--surface-soft); }
+.class-card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-card-body strong { font-family: var(--serif); font-size: 19px; letter-spacing: 2px; }
+.class-card-body .tags { gap: 4px; }
+.class-card-intro { color: var(--ink-muted); font-size: 12.5px; line-height: 1.7; }
+.spec-names { display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-names span { padding: 0 7px; border: 1px solid var(--line-mid); border-radius: 6px; color: var(--accent-deep); font-size: 11.5px; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.ref-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.ref-card strong { font-size: 15px; }
+.ref-card span { grid-column: 1; color: var(--ink-muted); font-size: 12.5px; line-height: 1.65; }
+.ref-card svg { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--accent); }
+.ref-card:hover { border-color: var(--accent-pale); box-shadow: var(--shadow-lift); }
+
+.strength-chart { display: grid; gap: 4px; padding: 14px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.strength-group { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+.strength-group:last-child { border-bottom: 0; }
+.strength-class { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.strength-class img { width: 28px; height: 28px; border-radius: 7px; }
+.strength-bars { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.strength-bars li { display: grid; grid-template-columns: 58px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font-size: 12px; }
+.strength-label { color: var(--ink-muted); white-space: nowrap; }
+.strength-track { height: 10px; border-radius: 5px; background: var(--surface-hollow); overflow: hidden; }
+.strength-fill { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--accent-pale), var(--accent)); }
+.strength-bars li:first-child .strength-fill { background: linear-gradient(90deg, var(--accent-light), var(--accent-deep)); }
+.strength-value { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.axis-note { margin: 8px 2px 0; color: var(--ink-soft); font-size: 11.5px; }
+
+/* ---------- 职业页 ---------- */
+.class-hero { display: flex; align-items: center; gap: 26px; margin-bottom: 34px; padding: 26px 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: radial-gradient(circle at 12% 30%, var(--surface-warm), transparent 50%), linear-gradient(135deg, var(--surface-raised), var(--surface-soft)); box-shadow: var(--shadow); }
+.class-hero-portrait { width: 132px; height: 132px; border-radius: 22px; border: 3px solid var(--surface-raised); box-shadow: var(--shadow-lift); background: var(--surface-soft); }
+.class-hero .page-description { margin-bottom: 12px; }
+.fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.fact-grid > div { padding: 12px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+.fact-grid .wide { grid-column: 1 / -1; }
+.fact-grid dt, .spec-facts dt, .build-specs dt { margin-bottom: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; }
+.fact-grid dd, .spec-facts dd, .build-specs dd { margin: 0; font-size: 13.5px; line-height: 1.75; }
+
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.spec-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line-soft); border-top: 3px solid var(--accent-light); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.guide-article .spec-card h3 { display: flex; flex-direction: column; margin: 0; font-family: var(--serif); font-size: 21px; letter-spacing: 2px; }
+.spec-card h3 small { font-family: var(--sans); color: var(--gold); font-size: 11.5px; font-weight: 500; letter-spacing: 0; }
+.spec-pitch { margin: 0; color: var(--ink-muted); font-size: 13px; }
+.spec-strength { align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; text-decoration: none; }
+.spec-strength strong { font-size: 14px; }
+.spec-facts { display: grid; gap: 10px; margin: 0; }
+.spec-facts dd { font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 9px; border: 1px solid var(--line-mid); border-radius: 7px; background: var(--surface-soft); color: var(--ink); font-size: 12.5px; font-weight: 600; text-decoration: none; }
+.chip small { color: var(--ink-soft); font-size: 10.5px; font-weight: 500; }
+.chip:hover { border-color: var(--accent); }
+.spec-rewrites { border-top: 1px dashed var(--line-mid); padding-top: 8px; }
+.spec-rewrites summary { display: flex; align-items: center; gap: 6px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.spec-rewrites summary svg { transform: rotate(90deg); }
+.spec-rewrites[open] summary svg { transform: rotate(-90deg); }
+.spec-rewrites ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-muted); font-size: 12.5px; }
+.spec-rewrites li { margin-bottom: 4px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: start; }
+.skill-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scroll-margin-top: var(--reading-offset); }
+.skill-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.skill-card.is-ascend { border-color: var(--gold-sand); background: linear-gradient(180deg, var(--surface-cream), var(--surface-raised) 90px); }
+.skill-card > header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; }
+.skill-card h4 { font-family: var(--serif); font-size: 18px; letter-spacing: 1px; }
+.skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.skill-desc { margin: 0; font-size: 13.5px; }
+.skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
+.rewrites strong { color: var(--accent-deep); }
+.skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
+.level-control { display: flex; align-items: center; gap: 12px; }
+.level-control label { display: flex; flex: 1; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.level-slider { flex: 1; min-width: 0; accent-color: var(--accent); }
+.level-value { min-width: 42px; padding: 0 7px; border-radius: 6px; background: var(--surface-hollow); color: var(--accent-deep); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.level-total { margin: 6px 0 4px; color: var(--accent-deep); font-size: 12.5px; font-weight: 600; }
+.level-gains { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--ink-muted); }
+.level-gains li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px; }
+.level-gains b { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
+.level-gains li.is-locked { opacity: .38; }
+
+.passive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passive-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.passive-card:target { border-color: var(--accent); }
+.passive-card h4 { font-family: var(--serif); font-size: 17px; letter-spacing: 1px; }
+.passive-card p { margin: 0; font-size: 13px; }
+.passive-card p.muted { font-size: 12.5px; }
+.passive-card .tag { align-self: flex-start; }
+
+.build-card { margin: 14px 0 18px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); overflow: hidden; }
+.build-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); background: linear-gradient(90deg, var(--surface-hollow), var(--surface-raised)); }
+.guide-article .build-card h3 { margin: 0; font-family: var(--serif); font-size: 20px; letter-spacing: 2px; }
+.build-score { display: flex; align-items: baseline; gap: 10px; color: var(--ink-muted); font-size: 12.5px; }
+.build-score strong { color: var(--accent-deep); font-size: 24px; font-variant-numeric: tabular-nums; }
+.build-score small { color: var(--ink-soft); font-size: 11.5px; }
+.curve { margin: 0; padding: 12px 18px 4px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve text { fill: var(--ink-soft); font: 10px var(--sans); }
+.curve .grid { stroke: var(--line-soft); stroke-width: 1; }
+.curve .half { stroke: var(--gold-light); stroke-width: 1; stroke-dasharray: 4 4; }
+.curve .area { fill: color-mix(in srgb, var(--accent-pale) 35%, transparent); }
+.curve .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.curve figcaption { color: var(--ink-soft); font-size: 11px; text-align: right; }
+.build-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 12px 18px 18px; }
+.build-specs .wide { grid-column: 1 / -1; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-chips li { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 9px; border: 1px solid var(--line-soft); border-radius: 7px; background: var(--surface-soft); }
+.skill-chips li.is-ascend { border-color: var(--gold-sand); background: var(--surface-cream); }
+.skill-chips strong { font-size: 12.5px; }
+.skill-chips small { color: var(--ink-soft); font-size: 11px; }
+.gear-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.gear-list li { padding: 5px 9px; border-radius: 7px; background: var(--surface-soft); font-size: 13px; }
+.gear-list small { display: block; color: var(--ink-soft); font-size: 10.5px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-muted); }
+.stat-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.method-note { margin-top: 10px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); font-size: 12.5px; }
+.method-note summary { display: flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-weight: 600; }
+.method-note summary svg { margin-left: auto; transform: rotate(90deg); }
+.method-note[open] summary svg { transform: rotate(-90deg); }
+
+/* ---------- 资料页 ---------- */
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.formula { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+.formula code { align-self: flex-start; font-size: 13px; }
+.formula p { margin: 0; color: var(--ink-muted); font-size: 12.5px; }
+.rule-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rule-list li { position: relative; padding: 10px 14px 10px 32px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); font-size: 13.5px; }
+.rule-list li::before { content: ""; position: absolute; left: 14px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); }
+.enemy-name { display: inline-flex; align-items: center; gap: 10px; }
+.enemy-name strong { white-space: nowrap; }
+.enemy-thumb { width: 40px; height: 40px; border-radius: 9px; object-fit: cover; background: var(--surface-hollow); }
+.enemy-thumb.is-empty { display: inline-block; }
+
+.table-scroll { max-width: 100%; margin: 14px 0 24px; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); scrollbar-width: thin; }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.65; }
+.data-table th, .data-table td { padding: 11px 13px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+.data-table th { position: sticky; top: 0; background: var(--surface-soft); color: var(--ink-muted); font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.data-table tbody tr:hover td { background: color-mix(in srgb, var(--surface-soft) 60%, transparent); }
+.data-table tr:target td { background: var(--gold-tint); }
+.data-table tr:last-child td { border-bottom: 0; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cell-content { min-width: 0; }
+.table-hint { display: none; margin: 10px 0 -8px; color: var(--ink-muted); font-size: 11px; }
+
+.page-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.page-pagination a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); color: var(--ink); text-decoration: none; }
+.page-pagination a:hover { border-color: var(--accent-pale); box-shadow: var(--shadow); }
+.page-pagination .next { text-align: right; }
+.page-pagination small { color: var(--ink-muted); font-size: 11px; }
+.page-pagination span { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 13.5px; font-weight: 600; }
+.page-pagination .previous svg { order: -1; transform: rotate(180deg); }
+.site-footer { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: 11.5px; }
+.site-footer > span { font-family: var(--serif); color: var(--ink); font-size: 14px; letter-spacing: 1px; }
+.site-footer p { max-width: 600px; margin: 8px 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: none; }
+
+/* ---------- 窄屏 ---------- */
+@media (max-width: 1240px) {
+  .docs-layout { grid-template-columns: 196px minmax(0, 1fr); grid-template-areas: "navigation content"; }
+  .toc-sidebar { display: none; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 手机与平板：导航和目录收成两个下拉按钮并列，展开后占满整行；正文不被侧栏挤压。 */
+@media (max-width: 1000px) {
+  :root { --header-height: 60px; --reading-offset: 124px; }
+  .header-inner { gap: 12px; padding: 0 18px; }
+  .brand small { display: none; }
+  .site-search { max-width: none; }
+  kbd { display: none; }
+  .docs-layout, .docs-layout.no-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "navigation outline" "content content"; gap: 16px 10px; max-width: 900px; padding: 12px 18px 0; }
+  .docs-layout.no-toc { grid-template-areas: "navigation navigation" "content content"; }
+  .toc-sidebar { display: block; }
+  .site-sidebar, .toc-sidebar { top: calc(var(--header-height) + 8px); z-index: 10; }
+  .site-nav > summary, .page-toc > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; padding: 9px 12px; border: 1px solid var(--line-mid); border-radius: 10px; background: var(--surface-raised); color: var(--ink); font-size: 12.5px; font-weight: 500; box-shadow: var(--shadow); }
+  .site-nav > summary > svg:last-child, .page-toc > summary > svg:last-child { width: 12px; margin-left: auto; transform: rotate(90deg); }
+  .site-nav[open] > summary > svg:last-child, .page-toc[open] > summary > svg:last-child { transform: rotate(-90deg); }
+  .site-nav[open] > summary, .page-toc[open] > summary { border-color: var(--accent); }
+  .nav-panel, .toc-panel { position: absolute; top: calc(100% + 8px); width: calc(200% + 10px); max-height: min(64dvh, 540px); padding: 10px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface-raised); overflow-y: auto; box-shadow: var(--shadow-lift); }
+  .no-toc .nav-panel { width: 100%; }
+  .nav-panel { left: 0; }
+  .toc-panel { right: 0; }
+  .nav-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-label { margin: 10px 10px 4px; }
+  .toc-current { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-muted); font-size: 10.5px; }
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .home-portraits { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .home-portraits img { width: 100%; height: auto; aspect-ratio: 1; }
+  .home-portraits img:nth-child(n+5) { transform: none; }
+  .formula-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .header-inner { padding: 0 12px; gap: 8px; }
+  .brand span { display: none; }
+  .brand img { width: 34px; height: 34px; }
+  .play-link { padding: 7px 10px; font-size: 12px; }
+  .play-link svg { display: none; }
+  .docs-layout, .docs-layout.no-toc { padding: 10px 14px 0; gap: 14px 8px; }
+  .toc-current { display: none; }
+  .guide-article h2 { margin-top: 42px; font-size: 22px; }
+  .class-hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .class-hero-portrait { width: 96px; height: 96px; border-radius: 18px; }
+  .fact-grid, .build-specs { grid-template-columns: minmax(0, 1fr); }
+  .gear-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strength-group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .skill-card { padding: 14px; }
+  .table-hint { display: block; }
+  .table-scroll:has(.table-cards) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
+  .table-cards { display: block; width: 100%; }
+  .table-cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .table-cards tbody { display: grid; gap: 10px; }
+  .table-cards tr { display: block; padding: 10px 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: var(--surface-raised); }
+  .table-cards td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 6px 0; border: 0; font-size: 13px; white-space: normal; text-align: left; }
+  .table-cards td.num { white-space: normal; text-align: left; }
+  .table-cards td::before { content: attr(data-label); color: var(--ink-muted); font-size: 12px; }
+  .table-cards td:first-child { display: block; margin-bottom: 4px; padding: 4px 0 10px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+  .table-cards td:first-child::before { display: none; }
+  .table-compare th, .table-compare td { padding: 9px 10px; font-size: 12px; }
+  .page-pagination { gap: 8px; margin-top: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, summary { transition: none; }
+  .class-card:hover { transform: none; }
+}
+@media print {
+  .site-header, .site-sidebar, .toc-sidebar, .page-pagination, .skip-link, .level-control { display: none; }
+  .docs-layout { display: block; max-width: none; padding: 0; }
+  .table-scroll { overflow: visible; box-shadow: none; }
+  .guide-article h2, .guide-article h3 { break-after: avoid; }
+  .skill-card, .spec-card, .build-card, .table-cards tr { break-inside: avoid; box-shadow: none; }
+}
+
+</style>
+</head>
+<body class="page-class-gunner">
+<a class="skip-link" href="#guide-content">跳到正文</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="index.html"><img src="../icons/windward-64.png" alt="" width="38" height="38" /><span><strong>风行物语</strong><small>图鉴与攻略</small></span></a>
+  <div class="site-search" role="search">
+    <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="visually-hidden">搜索图鉴</span><input id="guide-search" type="search" placeholder="搜索技能、被动、装备、敌人…" autocomplete="off" spellcheck="false" aria-controls="guide-search-results" aria-expanded="false" /><kbd>/</kbd></label>
+    <div class="search-results" id="guide-search-results" role="listbox" aria-label="搜索结果" hidden></div>
+  </div>
+  <a class="play-link" href="../">回到游戏<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div></header>
+<div class="docs-layout">
+  <aside class="site-sidebar"><details class="site-nav" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴导航</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="nav-panel"><nav aria-label="攻略分类"><div class="nav-group"><a href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/></svg><span>图鉴首页</span></a></div><p class="sidebar-label">职业</p><div class="nav-group"><a href="class-warrior.html"><img src="../portraits/warrior.png" alt="" width="26" height="26" loading="lazy" /><span>战士</span></a><a href="class-ranger.html"><img src="../portraits/ranger.png" alt="" width="26" height="26" loading="lazy" /><span>游侠</span></a><a href="class-mage.html"><img src="../portraits/mage.png" alt="" width="26" height="26" loading="lazy" /><span>法师</span></a><a href="class-assassin.html"><img src="../portraits/assassin.png" alt="" width="26" height="26" loading="lazy" /><span>刺客</span></a><a href="class-druid.html"><img src="../portraits/druid.png" alt="" width="26" height="26" loading="lazy" /><span>德鲁伊</span></a><a href="class-necromancer.html"><img src="../portraits/necromancer.png" alt="" width="26" height="26" loading="lazy" /><span>死灵法师</span></a><a href="class-gunner.html" aria-current="page"><img src="../portraits/gunner.png" alt="" width="26" height="26" loading="lazy" /><span>火枪手</span></a></div><p class="sidebar-label">资料</p><div class="nav-group"><a href="rules.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0Zm16 0-3 7a3 3 0 0 0 6 0Z"/></svg><span>属性与规则</span></a><a href="gear.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V3h6v3M5 12c4 3 10 3 14 0M12 12v4"/></svg><span>装备</span></a><a href="enemies.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/></svg><span>敌人与关卡</span></a><a href="endgame.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>远行 · 深渊 · 讨伐 · 大地</span></a></div></nav></div>
+  </details></aside>
+  <aside class="toc-sidebar"><details class="page-toc" open>
+    <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-artillery" data-toc-id="spec-artillery" title="枪炮师"><span>枪炮师</span></a></li><li class="toc-level-3"><a href="#spec-munitions" data-toc-id="spec-munitions" title="弹药师"><span>弹药师</span></a></li><li class="toc-level-3"><a href="#spec-demolition" data-toc-id="spec-demolition" title="爆破师"><span>爆破师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-artillery" data-toc-id="skills-artillery" title="枪炮师专属"><span>枪炮师专属</span></a></li><li class="toc-level-3"><a href="#skills-munitions" data-toc-id="skills-munitions" title="弹药师专属"><span>弹药师专属</span></a></li><li class="toc-level-3"><a href="#skills-demolition" data-toc-id="skills-demolition" title="爆破师专属"><span>爆破师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-0" data-toc-id="build-demolition-0" title="爆破师 · 雷区布设配置"><span>爆破师 · 雷区布设配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-0" data-toc-id="build-artillery-0" title="枪炮师 · 过热轰击配置"><span>枪炮师 · 过热轰击配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-0" data-toc-id="build-munitions-0" title="弹药师 · 弹幕压制配置"><span>弹药师 · 弹幕压制配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-1" data-toc-id="build-munitions-1" title="弹药师 · 猎首狙杀配置"><span>弹药师 · 猎首狙杀配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-1" data-toc-id="build-demolition-1" title="爆破师 · 连环引爆配置"><span>爆破师 · 连环引爆配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-1" data-toc-id="build-artillery-1" title="枪炮师 · 阵地固守配置"><span>枪炮师 · 阵地固守配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+  </details></aside>
+  <main class="guide-main" id="guide-content" tabindex="-1">
+    <header class="class-hero">
+<img class="class-hero-portrait" src="../portraits/gunner.png" alt="" width="132" height="132" />
+<div>
+<p class="eyebrow">职业 <span>/</span> v0.8.0</p>
+<h1>火枪手</h1>
+<p class="page-description">远程 3 格。以力量驾驭火铳与火炮，用榴弹、贯穿弹与炮击压制成群的敌人，并以击退与牵制将敌人阻挡在射程边缘。</p>
+<p class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 3 格</span><a class="tag tag-link" href="#spec-artillery">枪炮师</a><a class="tag tag-link" href="#spec-munitions">弹药师</a><a class="tag tag-link" href="#spec-demolition">爆破师</a></p>
+</div>
+</header>
+    <article class="guide-article"><h2 id="overview" tabindex="-1">概况</h2>
+<dl class="fact-grid">
+<div><dt>初始属性</dt><dd>力量 9，敏捷 4，智力 2，体质 6</dd></div>
+<div><dt>可用武器</dt><dd>火铳、手炮</dd></div>
+<div class="wide"><dt>护甲精通 · 鳞甲</dt><dd>护甲较高、生命略高，力量提高攻击与护甲。精通加成：护甲与体质。</dd></div>
+<div class="wide"><dt>职业特性 · 弹匣</dt><dd>技能消耗弹药，普通攻击不消耗。弹匣共 8 发，每场战斗开始时装满；剩余弹药不足时，对应的技能无法施放。「装填」占用一次行动，装满弹匣并上膛，使下一次消耗弹药的技能伤害提高 30%。<br />装填：「装填」是火枪手专用的基础动作，可以在「策略」中为它设置规则，配合「弹匣未满」「已上膛」及剩余弹药数量等条件安排时机。所有规则都无法执行时，若弹匣未满，且有技能仅因弹药不足而无法施放，或射程内没有敌人，将自动装填。「快速装填」「战地急救」「炮火连天」等技能也能补充弹药。<br />上膛：上膛不叠加，由下一次消耗弹药的技能消耗；施放不消耗弹药的技能时，上膛保留。战斗中，角色头顶的一排弹丸表示弹匣：亮色为剩余弹药，浅色为已用空槽，上膛后剩余弹药变为橙红色。</dd></div>
+<div class="wide"><dt>职业特性 · 射界</dt><dd>在 2 格以外命中敌人时，敌人的荆棘与棘刺反弹到你身上的伤害减半。技能命中的敌人被牵制，下一次行动少移动 1 格；同一名敌人被牵制后，需再行动一次才能再次被牵制。</dd></div>
+</dl>
+<h2 id="specs" tabindex="-1">转职</h2>
+<p class="lead">20 级起可以转职，转职不消耗技能点，战斗外可随时免费更换。每个转职有一条转职特性和一条技能线：20 级起每 5 级开放一个专属技能（60 级与 100 级除外），并强化若干本职业技能。每个转职分两套打法，专属技能有的属于其中一套，有的两套通用。60 级且深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放一个单独占用觉醒栏的觉醒技。60 级起开放的专属技能要觉醒以后才能学习。100 级且深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并学会占用第二个觉醒栏的二觉技。</p>
+<div class="spec-grid"><section class="spec-card">
+<h3 id="spec-artillery" data-toc-label="枪炮师" tabindex="-1">枪炮师<small>觉醒后称「炮火宗师」</small></h3>
+<p class="spec-pitch">连续开火积累热量，热量叠满时打出一发过热的重炮。</p>
+<a class="spec-strength" href="#build-artillery-0">终局参考 · 等效第 <strong>118</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>每施放一次消耗 2 发以上弹药的技能，获得 1 层热量，上限 5 层，每层使技能伤害提高 8%。热量叠满后，下一次消耗弹药的技能进入过热：落点与扇面的范围扩大 1 格，直线的射程增加 1 格，伤害再提高 50%；施放后热量清零，你受到 5% 最大生命的反冲伤害。热量越高，炮盾越厚：每获得一层热量，获得相当于热量层数 × 4% 最大生命的护盾（与已有护盾取较高值）。</dd></div>
+<div><dt>觉醒提升</dt><dd>热量每层的增伤由 8% 提高至 10%，过热不再造成反冲伤害。</dd></div>
+<div><dt>第二次觉醒</dt><dd>每层热量的炮盾由 4% 提高至 6% 最大生命；学会二觉技「万炮」。</dd></div>
+<div><dt>两套打法</dt><dd>过热轰击：「升温」「赤热炮」「天轨炮」「连珠炮」；阵地固守：「筑垒」「拒马」「据守」</dd></div>
+<div><dt>防具精通</dt><dd>鳞甲精通 · 体质（与职业默认相同）</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-heavyShell"><small>20 级</small>重弹</a><a class="chip" href="#skill-ventShield"><small>25 级</small>散热护盾</a><a class="chip" href="#skill-bombard"><small>30 级</small>炮击</a><a class="chip" href="#skill-aetherCannon"><small>35 级</small>魔导光炮</a><a class="chip" href="#skill-fireCover"><small>40 级</small>炮火连天</a><a class="chip" href="#skill-heatUp"><small>45 级</small>升温</a><a class="chip" href="#skill-fortify"><small>50 级</small>筑垒</a><a class="chip" href="#skill-redHot"><small>55 级</small>赤热炮</a><a class="chip" href="#skill-spikeWall"><small>65 级</small>拒马</a><a class="chip" href="#skill-breakCannon"><small>70 级</small>破阵炮</a><a class="chip" href="#skill-orbitalCannon"><small>75 级</small>天轨炮</a><a class="chip" href="#skill-chainCannon"><small>80 级</small>连珠炮</a><a class="chip" href="#skill-holdGround"><small>85 级</small>据守</a><a class="chip" href="#skill-fireNet"><small>90 级</small>火力网</a><a class="chip" href="#skill-fullPower"><small>95 级</small>火力全开</a><a class="chip" href="#skill-skyCannon"><small>觉醒</small>贯天炮</a><a class="chip" href="#skill-myriadGuns"><small>二次觉醒</small>万炮</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-gunner-emplace">「架炮」</a>、<a href="#passive-gunner-saturate">「密集火力」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（3 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-cannon">「加农炮」</a>后坐距离由 1 格增加至 2 格，目标的击退距离增加 1 格。</li><li><a href="#skill-buckshot">「霰弹」</a>扇面延伸 1 格。</li><li><a href="#skill-slug">「贯穿弹」</a>命中 3 名以上敌人时，额外获得 1 层热量。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-munitions" data-toc-label="弹药师" tabindex="-1">弹药师<small>觉醒后称「万弹之主」</small></h3>
+<p class="spec-pitch">按敌情装填特种弹，每一次命中都附带弹种的效果。</p>
+<a class="spec-strength" href="#build-munitions-0">终局参考 · 等效第 <strong>117</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>装填时装上一种特种弹，之后普通攻击与技能的每次命中都附带它的效果，直到下一次装填。「爆裂弹」：对目标相邻的敌人造成该次伤害 30% 的溅射伤害；「穿甲弹」：无视目标的护甲，并使其破甲 2 回合；「银弹」：必定命中，对首领的伤害提高 25%。规则中的「装填」可以指定弹种；未指定时按局势选择：首领在场时装填银弹，场上有 3 名以上敌人时装填爆裂弹，其余情况装填穿甲弹。每场战斗开始时同样按局势装好一种。附带弹种效果的命中回复造成伤害 10% 的生命。最大生命提高 15%。</dd></div>
+<div><dt>觉醒提升</dt><dd>可以同时装填两种特种弹：规则指定的弹种为主，另一种按局势选择。</dd></div>
+<div><dt>第二次觉醒</dt><dd>附带弹种效果的命中回复的生命由 10% 提高至 15%；学会二觉技「万弹」。</dd></div>
+<div><dt>两套打法</dt><dd>弹幕压制：「扫射」「跳弹」「全弹齐发」「弹链」；猎首狙杀：「斩首弹」「标靶」「决胜弹」</dd></div>
+<div><dt>防具精通</dt><dd>鳞甲精通 · 体质（与职业默认相同）</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-pointShot"><small>20 级</small>点射</a><a class="chip" href="#skill-quickReload"><small>25 级</small>快速装填</a><a class="chip" href="#skill-drainShell"><small>30 级</small>汲能弹</a><a class="chip" href="#skill-bulletRain"><small>35 级</small>弹雨</a><a class="chip" href="#skill-gunStorm"><small>40 级</small>枪林弹雨</a><a class="chip" href="#skill-sweepFire"><small>45 级</small>扫射</a><a class="chip" href="#skill-headshot"><small>50 级</small>斩首弹</a><a class="chip" href="#skill-ricochet"><small>55 级</small>跳弹</a><a class="chip" href="#skill-markTarget"><small>65 级</small>标靶</a><a class="chip" href="#skill-coreShell"><small>70 级</small>钨芯弹</a><a class="chip" href="#skill-fullBarrage"><small>75 级</small>全弹齐发</a><a class="chip" href="#skill-beltFire"><small>80 级</small>弹链</a><a class="chip" href="#skill-decider"><small>85 级</small>决胜弹</a><a class="chip" href="#skill-shellStorm"><small>90 级</small>弹暴</a><a class="chip" href="#skill-endlessMag"><small>95 级</small>无尽弹匣</a><a class="chip" href="#skill-shellCurtain"><small>觉醒</small>弹幕</a><a class="chip" href="#skill-myriadShells"><small>二次觉醒</small>万弹</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-gunner-fineRounds">「精工弹药」</a>、<a href="#passive-gunner-specialLoad">「特种装药」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（3 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-grenade">「榴弹」</a>装填爆裂弹时，范围扩大 1 格。</li><li><a href="#skill-slug">「贯穿弹」</a>装填穿甲弹时，伤害提高 40%。</li><li><a href="#skill-cannon">「加农炮」</a>装填银弹时，对首领的伤害再提高 30%。</li></ul></details>
+</section>
+<section class="spec-card">
+<h3 id="spec-demolition" data-toc-label="爆破师" tabindex="-1">爆破师<small>觉醒后称「爆破宗匠」</small></h3>
+<p class="spec-pitch">在落点埋下炸药，等敌人踩响，或把敌人轰进去。</p>
+<a class="spec-strength" href="#build-demolition-0">终局参考 · 等效第 <strong>119</strong> 层</a>
+<dl class="spec-facts">
+<div><dt>转职特性</dt><dd>「榴弹」「燃烧弹」「震天雷」「炮击」「破城弹」命中后，在落点埋下炸药，场上至多 3 处，再埋下的顶替最早的一处。敌人进入或离开炸药所在的格子、技能的范围覆盖炸药，或者炸药埋下满 3 回合时，炸药爆炸：对该格及相邻的敌人造成 120% 伤害并使其破甲 2 回合，波及的其他炸药一同爆炸。被炸药波及的敌人朝远离你的方向被炸退 1 格。最大生命提高 15%。</dd></div>
+<div><dt>觉醒提升</dt><dd>炸药上限由 3 处提高至 5 处，爆炸伤害由 120% 提高至 160%。</dd></div>
+<div><dt>第二次觉醒</dt><dd>炸药爆炸的伤害由 160% 提高至 200%；学会二觉技「崩天」。</dd></div>
+<div><dt>两套打法</dt><dd>雷区布设：「雷阵」「绊雷」「地火」；连环引爆：「集束弹」「烈性炸药」「轰天」「火药桶」</dd></div>
+<div><dt>防具精通</dt><dd>鳞甲精通 · 体质（与职业默认相同）</dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-layMine"><small>20 级</small>布雷</a><a class="chip" href="#skill-setOff"><small>25 级</small>诱爆</a><a class="chip" href="#skill-siegeShell"><small>30 级</small>破城弹</a><a class="chip" href="#skill-chainBlast"><small>35 级</small>连锁爆破</a><a class="chip" href="#skill-warSmoke"><small>40 级</small>烽烟四起</a><a class="chip" href="#skill-mineField"><small>45 级</small>雷阵</a><a class="chip" href="#skill-clusterBomb"><small>50 级</small>集束弹</a><a class="chip" href="#skill-tripMine"><small>55 级</small>绊雷</a><a class="chip" href="#skill-highExplosive"><small>65 级</small>烈性炸药</a><a class="chip" href="#skill-shapedCharge"><small>70 级</small>定向爆破</a><a class="chip" href="#skill-skyBlast"><small>75 级</small>轰天</a><a class="chip" href="#skill-groundFire"><small>80 级</small>地火</a><a class="chip" href="#skill-powderKeg"><small>85 级</small>火药桶</a><a class="chip" href="#skill-shockBlast"><small>90 级</small>震爆</a><a class="chip" href="#skill-arsenal"><small>95 级</small>火药库</a><a class="chip" href="#skill-fireSea"><small>觉醒</small>火海</a><a class="chip" href="#skill-skyCollapse"><small>二次觉醒</small>崩天</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-gunner-penetrate">「透甲」</a>、<a href="#passive-gunner-heavyCharge">「重装药」</a></dd></div>
+</dl>
+<details class="spec-rewrites"><summary>技能强化（3 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-cannon">「加农炮」</a>被击退的目标进入炸药所在的格子时，这次爆炸的伤害提高 50%。</li><li><a href="#skill-barricade">「掩体」</a>在被击退的敌人原来所在的格子埋下炸药。</li><li><a href="#skill-shockBomb">「震天雷」</a>范围覆盖炸药时，被这次爆炸波及的敌人眩晕 1 次行动。</li></ul></details>
+</section></div>
+<h2 id="skills" tabindex="-1">技能</h2>
+<p class="lead">职业技能共 8 个，学习消耗技能点（SP），开放越晚的技能越贵；携带栏 3 个起步，10 级和 25 级各增加 1 个。技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级；拖动卡片下方的滑块可查看各等级的提升。</p>
+<h3 id="skills-class" data-toc-label="职业技能" tabindex="-1">职业技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-grenade">
+<header><h4>榴弹</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。向射程内一名敌人投出榴弹，对其及相邻敌人各造成 {d140} 伤害，并使其破甲 2 回合，期间护甲视为 0。">消耗 2 发弹药。向射程内一名敌人投出榴弹，对其及相邻敌人各造成 196% + 860 伤害，并使其破甲 2 回合，期间护甲视为 0。</p>
+<p class="skill-synergy">先以「榴弹」施加破甲，再以「破城弹」引爆，或以「贯穿弹」集火。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>弹药师</strong>：装填爆裂弹时，范围扩大 1 格。</li></ul></div>
+<div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="榴弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 40%，每 100% 倍率另加 614 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-slug">
+<header><h4>贯穿弹</h4><span class="skill-meta">1 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">贯穿</span><span class="tag">穿甲</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。朝射程内一名敌人射出贯穿弹，沿直线贯穿至射程尽头，对路线上的所有敌人各造成 {d150} 伤害，无视护甲；岩石会阻挡子弹。">消耗 2 发弹药。朝射程内一名敌人射出贯穿弹，沿直线贯穿至射程尽头，对路线上的所有敌人各造成 210% + 921 伤害，无视护甲；岩石会阻挡子弹。</p>
+<p class="skill-synergy">敌人排成一列时施放「贯穿弹」收益最高，也可以越过前排直接命中后排。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：命中 3 名以上敌人时，额外获得 1 层热量。</li><li><strong>弹药师</strong>：装填穿甲弹时，伤害提高 40%。</li></ul></div>
+<div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="贯穿弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害提高 40%，每 100% 倍率另加 614 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-barricade">
+<header><h4>掩体</h4><span class="skill-meta">1 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="筑起掩体，获得相当于 {p35} 最大生命的护盾，并将相邻的敌人击退 1 格。">筑起掩体，获得相当于 51.8% 最大生命的护盾，并将相邻的敌人击退 1 格。</p>
+<p class="skill-synergy">敌人贴近时施放「掩体」，可以拉开距离并承受接下来的攻击。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆破师</strong>：在被击退的敌人原来所在的格子埋下炸药。</li></ul></div>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="护盾" data-open="1" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="掩体的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-firebomb">
+<header><h4>燃烧弹</h4><span class="skill-meta">1 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
+<p class="skill-desc" data-template="消耗 1 发弹药。向射程内一名敌人投出燃烧弹，对其及相邻敌人各造成 {d70} 伤害，并使其燃烧 3 回合：每回合受到 {p45} 攻击的伤害，每次递增 50%。">消耗 1 发弹药。向射程内一名敌人投出燃烧弹，对其及相邻敌人各造成 103.6% + 430 伤害，并使其燃烧 3 回合：每回合受到 66.6% 攻击的伤害，每次递增 50%。</p>
+<p class="skill-synergy">先以「燃烧弹」点燃聚集的敌人，再以「榴弹」或「炮击」造成范围伤害。</p>
+
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害 / 燃烧" data-open="1" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="燃烧弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 96 级开放）：伤害 / 燃烧提高 48%，每 100% 倍率另加 614 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-cannon">
+<header><h4>加农炮</h4><span class="skill-meta">5 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人造成 {d260} 伤害，其相邻敌人各受到 {d100} 伤害；目标被击退 2 格，撞上岩石、场地边缘或其他敌人时受到撞击伤害并眩晕。开火后你后退 1 格。">消耗 3 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，其相邻敌人各受到 148% + 640 伤害；目标被击退 2 格，撞上岩石、场地边缘或其他敌人时受到撞击伤害并眩晕。开火后你后退 1 格。</p>
+<p class="skill-synergy">把敌人轰向岩石或场地边缘可以造成额外的撞击伤害并使其眩晕；后坐也能让你和敌人拉开距离。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：后坐距离由 1 格增加至 2 格，目标的击退距离增加 1 格。</li><li><strong>弹药师</strong>：装填银弹时，对首领的伤害再提高 30%。</li><li><strong>爆破师</strong>：被击退的目标进入炸药所在的格子时，这次爆炸的伤害提高 50%。</li></ul></div>
+<div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="加农炮的技能等级" /></label><output class="level-value">Lv.20</output></div>
+<p class="level-total">Lv.20（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shockBomb">
+<header><h4>震天雷</h4><span class="skill-meta">10 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群控</span><span class="tag">眩晕</span></p>
+<p class="skill-desc" data-template="消耗 1 发弹药。向射程内一名敌人投出震天雷，对其及相邻敌人各造成 {d80} 伤害，并使其眩晕，跳过 2 次行动。">消耗 1 发弹药。向射程内一名敌人投出震天雷，对其及相邻敌人各造成 118.4% + 512 伤害，并使其眩晕，跳过 2 次行动。</p>
+<p class="skill-synergy">以「震天雷」限制成群的敌人，再以「炮击」或「霰弹」集中输出。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆破师</strong>：范围覆盖炸药时，被这次爆炸波及的敌人眩晕 1 次行动。</li></ul></div>
+<div class="skill-levels" data-rate="0.026666666666666665" data-scaling="伤害" data-open="10" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="震天雷的技能等级" /></label><output class="level-value">Lv.19</output></div>
+<p class="level-total">Lv.19（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-buckshot">
+<header><h4>霰弹</h4><span class="skill-meta">15 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">扇面</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。朝 2 格内一名敌人的方向扇形射出霰弹，扇面上 2 格内的敌人各受到 {d120} 伤害；相邻的敌人被击退 1 格。">消耗 2 发弹药。朝 2 格内一名敌人的方向扇形射出霰弹，扇面上 2 格内的敌人各受到 168% + 768 伤害；相邻的敌人被击退 1 格。</p>
+<p class="skill-synergy">敌人贴近时以「霰弹」击退前排，再以其他技能在远处输出。</p>
+<div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：扇面延伸 1 格。</li></ul></div>
+<div class="skill-levels" data-rate="0.023529411764705882" data-scaling="伤害" data-open="15" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="霰弹的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fieldAid">
+<header><h4>战地急救</h4><span class="skill-meta">15 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">回复</span><span class="tag">装填</span></p>
+<p class="skill-desc" data-template="回复 {p20} 最大生命，并装填 3 发弹药。">回复 29.6% 最大生命，并装填 3 发弹药。</p>
+<p class="skill-synergy">把「战地急救」的施放规则排在使用药水之前，可以同时回复生命与补充弹药。</p>
+
+<div class="skill-levels" data-rate="0.028235294117647056" data-scaling="治疗" data-open="15" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="战地急救的技能等级" /></label><output class="level-value">Lv.18</output></div>
+<p class="level-total">Lv.18（角色 100 级开放）：治疗提高 48%</p>
+<ol class="level-gains"><li data-level="3"><b>Lv.3</b>装填 +1 发</li><li data-level="5"><b>Lv.5</b>装填再 +1 发</li></ol>
+</div>
+</article></div>
+<h3 id="skills-artillery" data-toc-label="枪炮师专属" tabindex="-1">枪炮师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-heavyShell">
+<header><h4>重弹</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d170} 伤害，并将其击退 1 格。">消耗 2 发弹药。对射程内一名敌人造成 238% + 1088 伤害，并将其击退 1 格。</p>
+<p class="skill-synergy">转职后最先学到的输出手段：耗弹 2 发，稳定积累热量。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="重弹的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-ventShield">
+<header><h4>散热护盾</h4><span class="skill-meta">25 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">散热</span></p>
+<p class="skill-desc" data-template="消耗全部热量，每层获得相当于 {p8} 最大生命的护盾，并回复 {p4} 最大生命；没有热量时，获得相当于 {p15} 最大生命的护盾。">消耗全部热量，每层获得相当于 11.8% 最大生命的护盾，并回复 5.9% 最大生命；没有热量时，获得相当于 22.2% 最大生命的护盾。</p>
+<p class="skill-synergy">枪炮师的保命手段：热量越高，护盾与回复越多。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="护盾 / 回复" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="散热护盾的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：护盾 / 回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bombard">
+<header><h4>炮击</h4><span class="skill-meta">30 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。射程增加 1 格，以一名敌人为中心呼叫炮击，对其 2 格内的所有敌人各造成 {d260} 伤害，并使其破甲 2 回合。">消耗 3 发弹药。射程增加 1 格，以一名敌人为中心呼叫炮击，对其 2 格内的所有敌人各造成 384.8% + 1664 伤害，并使其破甲 2 回合。</p>
+<p class="skill-synergy">敌人聚集时施放「炮击」，再以「破城弹」引爆破甲，弹药也会随之返还。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="炮击的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-aetherCannon">
+<header><h4>魔导光炮</h4><span class="skill-meta">35 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">光束</span><span class="tag">穿甲</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。朝射程内一名敌人发射魔导光束，贯穿至射程尽头，光束宽 3 格（路线及其两侧），对其中所有敌人各造成 {d350} 伤害，无视护甲；每层热量使伤害再提高 10%，不消耗热量。">消耗 3 发弹药。朝射程内一名敌人发射魔导光束，贯穿至射程尽头，光束宽 3 格（路线及其两侧），对其中所有敌人各造成 518% + 2240 伤害，无视护甲；每层热量使伤害再提高 10%，不消耗热量。</p>
+<p class="skill-synergy">枪炮师的收尾手段：热量越高，光束越强。</p>
+
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="魔导光炮的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fireCover">
+<header><h4>炮火连天</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">装填</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，装满弹匣，热量直接叠满。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 48% 最大生命的护盾，装满弹匣，热量直接叠满。不消耗弹药。</p>
+<p class="skill-synergy">「炮火连天」施放后弹匣装满、热量叠满，可以接着施放「魔导光炮」「炮击」等耗弹多的技能，打出过热的一发。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="炮火连天的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-heatUp">
+<header><h4>升温</h4><span class="skill-meta">45 级开放 · 过热轰击打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">热量</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="获得 2 层热量；之后 3 回合，技能伤害提高 {p20}。">获得 2 层热量；之后 3 回合，技能伤害提高 32%。</p>
+<p class="skill-synergy">过热轰击打法的起手：热量一口气攒上去，紧接着打出过热的一发。</p>
+
+<div class="skill-levels" data-rate="0.05454545454545454" data-scaling="增伤" data-open="45" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="升温的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fortify">
+<header><h4>筑垒</h4><span class="skill-meta">50 级开放 · 阵地固守打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="获得 {p25} 最大生命的护盾，并将 2 格内的敌人击退 2 格。">获得 37% 最大生命的护盾，并将 2 格内的敌人击退 2 格。</p>
+<p class="skill-synergy">阵地固守打法的保命手段：敌人逼近时把它们推回射界之外。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="护盾" data-open="50" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="筑垒的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-redHot">
+<header><h4>赤热炮</h4><span class="skill-meta">55 级开放 · 过热轰击打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">过热</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人及其相邻敌人造成 {d220} 伤害；这一发过热时，伤害再提高 50%。">消耗 3 发弹药。对射程内一名敌人及其相邻敌人造成 325.6% + 1408 伤害；这一发过热时，伤害再提高 50%。</p>
+<p class="skill-synergy">过热轰击打法的重炮：留到热量叠满再施放。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="赤热炮的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-spikeWall">
+<header><h4>拒马</h4><span class="skill-meta">65 级、觉醒后开放 · 阵地固守打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">拒敌</span><span class="tag">击退</span></p>
+<p class="skill-desc" data-template="对相邻的敌人造成 {d100} 伤害并将其击退 2 格；之后 3 回合，敌人移动到与你相邻的格子时，同样受到伤害并被击退。">对相邻的敌人造成 160% + 640 伤害并将其击退 2 格；之后 3 回合，敌人移动到与你相邻的格子时，同样受到伤害并被击退。</p>
+<p class="skill-synergy">阵地固守打法的拒敌手段：贴上来的敌人会被推回射界之外。</p>
+
+<div class="skill-levels" data-rate="0.08571428571428572" data-scaling="伤害" data-open="65" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="拒马的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-breakCannon">
+<header><h4>破阵炮</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">热量</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害并获得 1 层热量；「魔导光炮」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害并获得 1 层热量；「魔导光炮」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「魔导光炮」配成两拍循环：「破阵炮」积累热量、催快「魔导光炮」。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="破阵炮的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-orbitalCannon">
+<header><h4>天轨炮</h4><span class="skill-meta">75 级、觉醒后开放 · 过热轰击打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">轰炸</span></p>
+<p class="skill-desc" data-template="施放前热量叠满，这一击按过热结算。以射程内敌人最密集处为中心，从高空降下魔导炮击，对 3 格内的所有敌人各造成 {d320} 伤害，无视护甲。">施放前热量叠满，这一击按过热结算。以射程内敌人最密集处为中心，从高空降下魔导炮击，对 3 格内的所有敌人各造成 512% + 2048 伤害，无视护甲。</p>
+<p class="skill-synergy">过热轰击打法的大招：在敌人聚集时施放，可以一次覆盖大半个战场。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="天轨炮的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-chainCannon">
+<header><h4>连珠炮</h4><span class="skill-meta">80 级、觉醒后开放 · 过热轰击打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">连射</span><span class="tag">热量</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人连续开火 3 次，每次造成 {d120} 伤害；每次命中获得 1 层热量。">消耗 3 发弹药。对射程内一名敌人连续开火 3 次，每次造成 177.6% + 768 伤害；每次命中获得 1 层热量。</p>
+<p class="skill-synergy">过热轰击打法的连射：一次施放就把热量攒满。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="连珠炮的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-holdGround">
+<header><h4>据守</h4><span class="skill-meta">85 级、觉醒后开放 · 阵地固守打法 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">持续</span></p>
+<p class="skill-desc" data-template="之后 3 回合，每施放一次消耗弹药的技能，获得相当于 {p8} 最大生命的护盾。">之后 3 回合，每施放一次消耗弹药的技能，获得相当于 12.8% 最大生命的护盾。</p>
+<p class="skill-synergy">阵地固守打法的续航：站定开火，每一发都加固防线。</p>
+
+<div class="skill-levels" data-rate="0.19999999999999998" data-scaling="护盾" data-open="85" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="据守的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：护盾提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fireNet">
+<header><h4>火力网</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；破甲的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；破甲的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「炮火连天」错开施放；先以「炮击」「榴弹」施加破甲，再以「火力网」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="火力网的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fullPower">
+<header><h4>火力全开</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">增伤</span><span class="tag">省弹</span></p>
+<p class="skill-desc" data-template="之后 4 回合，技能伤害提高 {p30}，消耗弹药的技能少消耗 1 发（至少消耗 1 发）。">之后 4 回合，技能伤害提高 48%，消耗弹药的技能少消耗 1 发（至少消耗 1 发）。</p>
+<p class="skill-synergy">施放后连续开火，这几回合里打得更重，弹药也更耐用。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="火力全开的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-skyCannon">
+<header><h4>贯天炮</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">贯天</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害并将其击退 1 格；施放后热量叠满。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害并将其击退 1 格；施放后热量叠满。</p>
+<p class="skill-synergy">枪炮师的觉醒技：一次轰开全场，再以过热的一发接上。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="贯天炮的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-myriadGuns">
+<header><h4>万炮</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">万炮</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，无视护甲；随后热量叠满。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 4480 伤害，无视护甲；随后热量叠满。</p>
+<p class="skill-synergy">枪炮师的二觉技：「贯天炮」轰开全场，「万炮」再打一轮，热量随之叠满。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="万炮的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article></div>
+<h3 id="skills-munitions" data-toc-label="弹药师专属" tabindex="-1">弹药师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-pointShot">
+<header><h4>点射</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">弹种</span></p>
+<p class="skill-desc" data-template="消耗 1 发弹药。对射程内一名敌人造成 {d170} 伤害。">消耗 1 发弹药。对射程内一名敌人造成 238% + 1088 伤害。</p>
+<p class="skill-synergy">转职后最先学到的输出手段：耗弹少，每一发都附带弹种的效果。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="点射的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-quickReload">
+<header><h4>快速装填</h4><span class="skill-meta">25 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">装填</span><span class="tag">上膛</span></p>
+<p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。立即装满弹匣并上膛，使下一次消耗弹药的技能伤害提高 30%。</p>
+<p class="skill-synergy">弹药不足时施放「快速装填」，同一回合即可接着施放「加农炮」或「炮击」。</p>
+
+<div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="快速装填的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：效果不变</p>
+<ol class="level-gains"><li data-level="2"><b>Lv.2</b>上膛增伤 +10%</li><li data-level="3"><b>Lv.3</b>上膛增伤再 +10%</li><li data-level="4"><b>Lv.4</b>上膛增伤再 +10%</li><li data-level="5"><b>Lv.5</b>上膛增伤再 +10%</li></ol>
+</div>
+</article>
+<article class="skill-card" id="skill-drainShell">
+<header><h4>汲能弹</h4><span class="skill-meta">30 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
+<p class="skill-desc" data-template="消耗 1 发弹药。对射程内生命最高的敌人造成 {d160} 伤害，回复造成伤害 50% 的生命，并装填 4 发当前弹种的弹药。">消耗 1 发弹药。对射程内生命最高的敌人造成 236.8% + 1024 伤害，回复造成伤害 50% 的生命，并装填 4 发当前弹种的弹药。</p>
+<p class="skill-synergy">弹药师的保命手段：伤害越高，回复越多，弹药也随之补充。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害 / 回复" data-open="30" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="汲能弹的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：伤害 / 回复提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-bulletRain">
+<header><h4>弹雨</h4><span class="skill-meta">35 级开放 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">连射</span><span class="tag">弹种</span></p>
+<p class="skill-desc" data-template="弹匣中至少有 3 发弹药时可施放：射出弹匣中剩余的全部弹药，每发射向射程内随机一名敌人，造成 {d80} 伤害并附带当前弹种的效果；射完后装满弹匣。">弹匣中至少有 3 发弹药时可施放：射出弹匣中剩余的全部弹药，每发射向射程内随机一名敌人，造成 118.4% + 512 伤害并附带当前弹种的效果；射完后装满弹匣。</p>
+<p class="skill-synergy">弹药师的收尾手段：弹匣越满，射出的弹药越多。</p>
+
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="弹雨的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-gunStorm">
+<header><h4>枪林弹雨</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">上膛</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，装满弹匣并上膛。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 48% 最大生命的护盾，装满弹匣并上膛。不消耗弹药。</p>
+<p class="skill-synergy">「枪林弹雨」施放后弹匣装满并上膛，可以接着施放「弹雨」或耗弹多的技能。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="枪林弹雨的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-sweepFire">
+<header><h4>扫射</h4><span class="skill-meta">45 级开放 · 弹幕压制打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">扇面</span><span class="tag">群攻</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。朝 3 格内一名敌人的方向扇形扫射，扇面上 3 格内的敌人各受到 {d140} 伤害。">消耗 3 发弹药。朝 3 格内一名敌人的方向扇形扫射，扇面上 3 格内的敌人各受到 207.2% + 896 伤害。</p>
+<p class="skill-synergy">弹幕压制打法的主力：装填爆裂弹时，溅射一并铺开。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="扫射的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-headshot">
+<header><h4>斩首弹</h4><span class="skill-meta">50 级开放 · 猎首狙杀打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">首领</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内生命最高的敌人造成 {d220} 伤害；目标为首领时，伤害再提高 40%。">消耗 2 发弹药。对射程内生命最高的敌人造成 325.6% + 1408 伤害；目标为首领时，伤害再提高 40%。</p>
+<p class="skill-synergy">猎首狙杀打法的主力：装填银弹时，对首领的伤害更高。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="斩首弹的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-ricochet">
+<header><h4>跳弹</h4><span class="skill-meta">55 级开放 · 弹幕压制打法 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">弹射</span><span class="tag">群攻</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d150} 伤害，随后弹向离它最近的 2 名敌人，各造成同样的伤害。">消耗 2 发弹药。对射程内一名敌人造成 222% + 960 伤害，随后弹向离它最近的 2 名敌人，各造成同样的伤害。</p>
+<p class="skill-synergy">弹幕压制打法的连射：敌人越聚集，跳弹越容易命中。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="跳弹的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-markTarget">
+<header><h4>标靶</h4><span class="skill-meta">65 级、觉醒后开放 · 猎首狙杀打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">标记</span><span class="tag">增伤</span></p>
+<p class="skill-desc" data-template="给射程内生命最高的敌人挂上标靶 3 回合，你对它造成的伤害提高 {p30}。">给射程内生命最高的敌人挂上标靶 3 回合，你对它造成的伤害提高 48%。</p>
+<p class="skill-synergy">猎首狙杀打法的起手：先挂上标靶，再以「斩首弹」「决胜弹」集火。</p>
+
+<div class="skill-levels" data-rate="0.08571428571428572" data-scaling="增伤" data-open="65" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="标靶的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-coreShell">
+<header><h4>钨芯弹</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">穿甲</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害，无视护甲；「弹雨」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，无视护甲；「弹雨」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「弹雨」配成两拍循环：「钨芯弹」穿透护甲、催快「弹雨」。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="钨芯弹的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-fullBarrage">
+<header><h4>全弹齐发</h4><span class="skill-meta">75 级、觉醒后开放 · 弹幕压制打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">齐射</span></p>
+<p class="skill-desc" data-template="向射程内的所有敌人各射出 3 发特种弹，依次为爆裂弹、穿甲弹与银弹，每发造成 {d100} 伤害并附带对应弹种的效果。">向射程内的所有敌人各射出 3 发特种弹，依次为爆裂弹、穿甲弹与银弹，每发造成 160% + 640 伤害并附带对应弹种的效果。</p>
+<p class="skill-synergy">弹幕压制打法的大招：敌人越多，射出的弹药越多。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="全弹齐发的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-beltFire">
+<header><h4>弹链</h4><span class="skill-meta">80 级、觉醒后开放 · 弹幕压制打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">连射</span></p>
+<p class="skill-desc" data-template="消耗 4 发弹药。对射程内所有敌人各射出 2 发子弹，每发造成 {d80} 伤害。">消耗 4 发弹药。对射程内所有敌人各射出 2 发子弹，每发造成 118.4% + 512 伤害。</p>
+<p class="skill-synergy">弹幕压制打法的大招：敌人越多，射出的子弹越多，弹种的效果也铺得越开。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="弹链的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-decider">
+<header><h4>决胜弹</h4><span class="skill-meta">85 级、觉醒后开放 · 猎首狙杀打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">斩杀</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。对射程内生命最高的敌人造成 {d260} 伤害；目标每损失 10% 生命，伤害提高 10%。">消耗 3 发弹药。对射程内生命最高的敌人造成 384.8% + 1664 伤害；目标每损失 10% 生命，伤害提高 10%。</p>
+<p class="skill-synergy">猎首狙杀打法的收尾：首领的生命越低，这一发越重。</p>
+
+<div class="skill-levels" data-rate="0.16" data-scaling="伤害" data-open="85" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="决胜弹的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shellStorm">
+<header><h4>弹暴</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">首领</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；首领和带标靶的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；首领和带标靶的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「枪林弹雨」错开施放；先以「标靶」标记敌人，再以「弹暴」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="弹暴的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-endlessMag">
+<header><h4>无尽弹匣</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">省弹</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 4 回合，消耗弹药的技能不消耗弹药，伤害提高 {p20}。">之后 4 回合，消耗弹药的技能不消耗弹药，伤害提高 32%。</p>
+<p class="skill-synergy">施放后连续开火，这几回合里不必装填。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="无尽弹匣的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-shellCurtain">
+<header><h4>弹幕</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">弹幕</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害；随后装满弹匣并上膛。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害；随后装满弹匣并上膛。</p>
+<p class="skill-synergy">弹药师的觉醒技：一次扫过全场，弹匣随之装满。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="弹幕的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-myriadShells">
+<header><h4>万弹</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">万弹</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，同时附带爆裂弹、穿甲弹与银弹的效果。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 4480 伤害，同时附带爆裂弹、穿甲弹与银弹的效果。</p>
+<p class="skill-synergy">弹药师的二觉技：「弹幕」扫过全场，「万弹」再以三种弹种一并命中。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="万弹的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article></div>
+<h3 id="skills-demolition" data-toc-label="爆破师专属" tabindex="-1">爆破师专属技能</h3>
+<div class="skill-grid"><article class="skill-card" id="skill-layMine">
+<header><h4>布雷</h4><span class="skill-meta">20 级开放 · 冷却 3 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">埋雷</span></p>
+<p class="skill-desc" data-template="消耗 1 发弹药。对射程内一名敌人造成 {d150} 伤害，并在其脚下埋下炸药。">消耗 1 发弹药。对射程内一名敌人造成 210% + 960 伤害，并在其脚下埋下炸药。</p>
+<p class="skill-synergy">转职后最先学到的埋雷手段：敌人一挪步就会踩响。</p>
+
+<div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="布雷的技能等级" /></label><output class="level-value">Lv.17</output></div>
+<p class="level-total">Lv.17（角色 100 级开放）：伤害提高 40%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-setOff">
+<header><h4>诱爆</h4><span class="skill-meta">25 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">引爆</span><span class="tag">回复</span></p>
+<p class="skill-desc" data-template="引爆射程内的所有炸药，每引爆一处，回复 {p6} 最大生命，并获得相当于 {p6} 最大生命的护盾；射程内没有炸药时，在你相邻的空格埋下 2 处炸药。">引爆射程内的所有炸药，每引爆一处，回复 8.9% 最大生命，并获得相当于 8.9% 最大生命的护盾；射程内没有炸药时，在你相邻的空格埋下 2 处炸药。</p>
+<p class="skill-synergy">爆破师的保命手段：埋下的炸药越多，回复与护盾越多。</p>
+
+<div class="skill-levels" data-rate="0.032" data-scaling="护盾 / 回复" data-open="25" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="诱爆的技能等级" /></label><output class="level-value">Lv.16</output></div>
+<p class="level-total">Lv.16（角色 100 级开放）：护盾 / 回复提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-siegeShell">
+<header><h4>破城弹</h4><span class="skill-meta">30 级开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">破甲</span><span class="tag">引爆</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人及其相邻敌人各造成 {d220} 伤害。已破甲的敌人被引爆：伤害额外提高 50%，被击退 1 格并消耗破甲，每引爆一名敌人返还 1 发弹药；未破甲的敌人破甲 2 回合。">消耗 2 发弹药。对射程内一名敌人及其相邻敌人各造成 325.6% + 1408 伤害。已破甲的敌人被引爆：伤害额外提高 50%，被击退 1 格并消耗破甲，每引爆一名敌人返还 1 发弹药；未破甲的敌人破甲 2 回合。</p>
+<p class="skill-synergy">先以「榴弹」或「炮击」施加破甲，再以「破城弹」引爆；第一发施加破甲，第二发引爆，弹药也会随之返还。</p>
+
+<div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="破城弹的技能等级" /></label><output class="level-value">Lv.15</output></div>
+<p class="level-total">Lv.15（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-chainBlast">
+<header><h4>连锁爆破</h4><span class="skill-meta">35 级开放 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">连爆</span><span class="tag">群攻</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。在射程内敌人最密集处埋下炸药，随即引爆场上的所有炸药，每处爆炸造成 {d280} 伤害；同一名敌人每多被一处爆炸波及，这一次的伤害再提高 40%。">消耗 2 发弹药。在射程内敌人最密集处埋下炸药，随即引爆场上的所有炸药，每处爆炸造成 414.4% + 1792 伤害；同一名敌人每多被一处爆炸波及，这一次的伤害再提高 40%。</p>
+<p class="skill-synergy">爆破师的收尾手段：先埋下多处炸药，再一次引爆。</p>
+
+<div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="连锁爆破的技能等级" /></label><output class="level-value">Lv.14</output></div>
+<p class="level-total">Lv.14（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-warSmoke">
+<header><h4>烽烟四起</h4><span class="skill-meta">40 级开放 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">埋雷</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合，命中的敌人脚下各埋下一处炸药（不受数量上限，下一回合开始时爆炸）；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，并装满弹匣。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合，命中的敌人脚下各埋下一处炸药（不受数量上限，下一回合开始时爆炸）；随后你后退 1 格，获得相当于 48% 最大生命的护盾，并装满弹匣。不消耗弹药。</p>
+<p class="skill-synergy">「烽烟四起」在敌人脚下埋满炸药，下一回合一并爆炸，可以再以「连锁爆破」提前引爆。</p>
+
+<div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="烽烟四起的技能等级" /></label><output class="level-value">Lv.13</output></div>
+<p class="level-total">Lv.13（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-mineField">
+<header><h4>雷阵</h4><span class="skill-meta">45 级开放 · 雷区布设打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">埋雷</span><span class="tag">增伤</span></p>
+<p class="skill-desc" data-template="在你周围 2 格内的 3 处空格埋下炸药，不受数量上限限制，这几处炸药爆炸的伤害提高 {p30}；优先埋在靠近敌人的格子。">在你周围 2 格内的 3 处空格埋下炸药，不受数量上限限制，这几处炸药爆炸的伤害提高 44.4%；优先埋在靠近敌人的格子。</p>
+<p class="skill-synergy">雷区布设打法的起手：在身边铺下雷区，贴近的敌人会先踩响。</p>
+
+<div class="skill-levels" data-rate="0.04363636363636363" data-scaling="炸药增伤" data-open="45" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="雷阵的技能等级" /></label><output class="level-value">Lv.12</output></div>
+<p class="level-total">Lv.12（角色 100 级开放）：炸药增伤提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-clusterBomb">
+<header><h4>集束弹</h4><span class="skill-meta">50 级开放 · 连环引爆打法 · 冷却 5 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">引爆</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人及其相邻敌人造成 {d160} 伤害；落点 1 格内每有一处炸药，伤害提高 30%，并把这些炸药一并引爆。">消耗 2 发弹药。对射程内一名敌人及其相邻敌人造成 236.8% + 1024 伤害；落点 1 格内每有一处炸药，伤害提高 30%，并把这些炸药一并引爆。</p>
+<p class="skill-synergy">连环引爆打法的主力：先埋炸药，再把集束弹砸进雷区。</p>
+
+<div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="集束弹的技能等级" /></label><output class="level-value">Lv.11</output></div>
+<p class="level-total">Lv.11（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-tripMine">
+<header><h4>绊雷</h4><span class="skill-meta">55 级开放 · 雷区布设打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">护盾</span><span class="tag">埋雷</span></p>
+<p class="skill-desc" data-template="获得 {p15} 最大生命的护盾，并在你相邻的所有空格埋下炸药，不受数量上限限制。">获得 22.2% 最大生命的护盾，并在你相邻的所有空格埋下炸药，不受数量上限限制。</p>
+<p class="skill-synergy">雷区布设打法的保命手段：贴近的敌人一踩就炸，炸完被推开。</p>
+
+<div class="skill-levels" data-rate="0.05333333333333333" data-scaling="护盾" data-open="55" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="绊雷的技能等级" /></label><output class="level-value">Lv.10</output></div>
+<p class="level-total">Lv.10（角色 100 级开放）：护盾提高 48%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-highExplosive">
+<header><h4>烈性炸药</h4><span class="skill-meta">65 级、觉醒后开放 · 连环引爆打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">炸药</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 3 回合，炸药爆炸的伤害提高 {p40}。">之后 3 回合，炸药爆炸的伤害提高 64%。</p>
+<p class="skill-synergy">连环引爆打法的增益：施放后再以「连锁爆破」一次引爆。</p>
+
+<div class="skill-levels" data-rate="0.08571428571428572" data-scaling="增伤" data-open="65" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="烈性炸药的技能等级" /></label><output class="level-value">Lv.8</output></div>
+<p class="level-total">Lv.8（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shapedCharge">
+<header><h4>定向爆破</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
+<p class="tags"><span class="tag">单体</span><span class="tag">埋雷</span></p>
+<p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害，并在其脚下埋下炸药；「连锁爆破」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，并在其脚下埋下炸药；「连锁爆破」的剩余冷却缩短 2 回合。</p>
+<p class="skill-synergy">与「连锁爆破」配成两拍循环：「定向爆破」埋下炸药、催快「连锁爆破」。</p>
+
+<div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="定向爆破的技能等级" /></label><output class="level-value">Lv.7</output></div>
+<p class="level-total">Lv.7（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-skyBlast">
+<header><h4>轰天</h4><span class="skill-meta">75 级、觉醒后开放 · 连环引爆打法 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">爆破</span></p>
+<p class="skill-desc" data-template="在射程内生命最高的 3 名敌人脚下各埋下一处炸药并立即全部引爆，每处爆炸对该格及相邻的敌人造成 {d260} 伤害。">在射程内生命最高的 3 名敌人脚下各埋下一处炸药并立即全部引爆，每处爆炸对该格及相邻的敌人造成 416% + 1664 伤害。</p>
+<p class="skill-synergy">连环引爆打法的大招：先挑出最强的几名敌人，一次炸开它们和身边的敌人。</p>
+
+<div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="轰天的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<p class="level-total">Lv.6（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-groundFire">
+<header><h4>地火</h4><span class="skill-meta">80 级、觉醒后开放 · 雷区布设打法 · 冷却 8 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">埋雷</span></p>
+<p class="skill-desc" data-template="对射程内所有敌人造成 {d100} 伤害，并在其脚下各埋下一处炸药，不受数量上限限制，下一回合开始时爆炸。">对射程内所有敌人造成 160% + 640 伤害，并在其脚下各埋下一处炸药，不受数量上限限制，下一回合开始时爆炸。</p>
+<p class="skill-synergy">雷区布设打法的大招：敌人越多，下一回合炸得越多。</p>
+
+<div class="skill-levels" data-rate="0.15" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="地火的技能等级" /></label><output class="level-value">Lv.5</output></div>
+<p class="level-total">Lv.5（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-powderKeg">
+<header><h4>火药桶</h4><span class="skill-meta">85 级、觉醒后开放 · 连环引爆打法 · 冷却 6 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
+<p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人及其 2 格内的敌人造成 {d200} 伤害并使其燃烧 3 回合，随后引爆 2 格内的所有炸药。">消耗 3 发弹药。对射程内一名敌人及其 2 格内的敌人造成 296% + 1280 伤害并使其燃烧 3 回合，随后引爆 2 格内的所有炸药。</p>
+<p class="skill-synergy">连环引爆打法的重炮：砸进雷区中央，炸药与燃烧一并结算。</p>
+
+<div class="skill-levels" data-rate="0.16" data-scaling="伤害" data-open="85" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="火药桶的技能等级" /></label><output class="level-value">Lv.4</output></div>
+<p class="level-total">Lv.4（角色 100 级开放）：伤害提高 48%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-shockBlast">
+<header><h4>震爆</h4><span class="skill-meta">90 级、觉醒后开放 · 冷却 10 回合</span></header>
+<p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；破甲的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；破甲的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
+<p class="skill-synergy">与「烽烟四起」错开施放；先以炸药、「破城弹」施加破甲，再以「震爆」造成更高伤害。</p>
+
+<div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="震爆的技能等级" /></label><output class="level-value">Lv.3</output></div>
+<p class="level-total">Lv.3（角色 100 级开放）：伤害 / 护盾提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card" id="skill-arsenal">
+<header><h4>火药库</h4><span class="skill-meta">95 级、觉醒后开放 · 冷却 12 回合</span></header>
+<p class="tags"><span class="tag">埋雷</span><span class="tag">增益</span></p>
+<p class="skill-desc" data-template="之后 4 回合，你的技能命中后在目标脚下埋下炸药，炸药爆炸的伤害提高 {p20}。">之后 4 回合，你的技能命中后在目标脚下埋下炸药，炸药爆炸的伤害提高 32%。</p>
+<p class="skill-synergy">施放后连续开火，每一发都在敌人脚下留下炸药。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="火药库的技能等级" /></label><output class="level-value">Lv.2</output></div>
+<p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-fireSea">
+<header><h4>火海</h4><span class="skill-meta">觉醒后开放 · 冷却 16 回合</span></header>
+<p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">火海</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，并在其中生命最高的 3 名敌人脚下埋下炸药。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害，并在其中生命最高的 3 名敌人脚下埋下炸药。</p>
+<p class="skill-synergy">爆破师的觉醒技：一次炸遍全场，再给最强的几名敌人留下炸药。</p>
+
+<div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="火海的技能等级" /></label><output class="level-value">Lv.9</output></div>
+<p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article>
+<article class="skill-card is-ascend" id="skill-skyCollapse">
+<header><h4>崩天</h4><span class="skill-meta">二次觉醒后开放 · 冷却 20 回合</span></header>
+<p class="tags"><span class="tag tag-gold">二觉技</span><span class="tag">觉醒</span><span class="tag">崩天</span></p>
+<p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d700} 伤害，随后引爆场上所有炸药。">射程内有敌人时可施放：对射程内所有敌人造成 700% + 4480 伤害，随后引爆场上所有炸药。</p>
+<p class="skill-synergy">爆破师的二觉技：「火海」埋下炸药，「崩天」一次全部引爆。</p>
+
+<div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="100" data-step="5" data-fixed="6.4">
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="1" value="1" step="1" aria-label="崩天的技能等级" /></label><output class="level-value">Lv.1</output></div>
+<p class="level-total">Lv.1（角色 100 级开放）：每 100% 倍率另加 640 点固定伤害</p>
+
+</div>
+</article></div>
+<h2 id="passives" tabindex="-1">职业被动</h2>
+<p class="lead">职业通用被动 5 级起可以学习，转职被动在转职以后可以学习，每项 10 SP，不限个数，只受 SP 限制，随时可以退还。被动不占用技能携带栏。</p>
+<div class="passive-grid"><div class="passive-card" id="passive-gunner-bigMag">
+<h4>扩充弹匣</h4><p>弹匣容量由 8 发提高至 12 发。</p><p class="muted">减少装填次数，连续施放耗弹多的技能。</p>
+<span class="tag">职业通用</span>
+</div>
+<div class="passive-card" id="passive-gunner-steadyReload">
+<h4>从容装填</h4><p>每次装填弹匣时，回复 8% 最大生命。</p><p class="muted">把装填的回合变成续航。</p>
+<span class="tag">职业通用</span>
+</div>
+<div class="passive-card" id="passive-gunner-penetrate">
+<h4>透甲</h4><p>攻击破甲的敌人时，造成的伤害提高 20%。</p><p class="muted">以榴弹或炮击施加破甲，再集中火力。</p>
+<span class="tag">爆破师转职被动</span>
+</div>
+<div class="passive-card" id="passive-gunner-emplace">
+<h4>架炮</h4><p>这一回合与上一回合都没有主动移动时，技能伤害提高 20%。技能自带的后坐不算移动。</p><p class="muted">站定输出，以掩体把贴近的敌人推开。</p>
+<span class="tag">枪炮师转职被动</span>
+</div>
+<div class="passive-card" id="passive-gunner-saturate">
+<h4>密集火力</h4><p>技能每多命中一名敌人，对每名敌人的伤害提高 6%，至多提高 30%。</p><p class="muted">等敌人聚拢再开火。</p>
+<span class="tag">枪炮师转职被动</span>
+</div>
+<div class="passive-card" id="passive-gunner-specialLoad">
+<h4>特种装药</h4><p>特种弹的效果提高 30%：爆裂弹的溅射伤害、银弹对首领的增伤与命中回复的生命都按此提高。</p><p class="muted">弹种的效果越强，收益越高。</p>
+<span class="tag">弹药师转职被动</span>
+</div>
+<div class="passive-card" id="passive-gunner-heavyCharge">
+<h4>重装药</h4><p>炸药爆炸的伤害提高 25%。</p><p class="muted">炸药埋得越多、炸得越频繁，收益越高。</p>
+<span class="tag">爆破师转职被动</span>
+</div>
+<div class="passive-card" id="passive-gunner-fineRounds">
+<h4>精工弹药</h4><p>上膛的增伤由 30% 提高至 60%，上膛的那一次技能必定暴击。</p><p class="muted">装填之后接加农炮或炮击。</p>
+<span class="tag">弹药师转职被动</span>
+</div></div>
+<h2 id="builds" tabindex="-1">推荐配置</h2>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 81～141 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-demolition-0" data-toc-label="爆破师 · 雷区布设配置" tabindex="-1">爆破师 · 雷区布设</h3>
+<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 117 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 8.0 L163.5 11.7 L189.4 11.7 L215.3 24.9 L241.2 15.5 L267.1 26.8 L293.0 21.1 L318.9 36.1 L344.8 45.5 L370.7 68.0 L396.6 66.1 L422.5 83.0 L448.4 86.8 L474.3 96.1 L500.2 98.0 L526.1 98.0 L552.0 90.5 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 9.9 L137.6 8.0 L163.5 11.7 L189.4 11.7 L215.3 24.9 L241.2 15.5 L267.1 26.8 L293.0 21.1 L318.9 36.1 L344.8 45.5 L370.7 68.0 L396.6 66.1 L422.5 83.0 L448.4 86.8 L474.3 96.1 L500.2 98.0 L526.1 98.0 L552.0 90.5" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.16</small></li><li><strong>震天雷</strong><small>Lv.1</small></li><li><strong>烽烟四起</strong><small>Lv.2</small></li><li><strong>雷阵</strong><small>Lv.2</small></li><li><strong>绊雷</strong><small>Lv.9</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.9</small></li><li class="is-ascend"><strong>崩天</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「透甲」Lv.17、「重装药」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1315</b></span><span>生命 <b>5306</b></span><span>护甲 <b>317</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-artillery-0" data-toc-label="枪炮师 · 过热轰击配置" tabindex="-1">枪炮师 · 过热轰击</h3>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 117 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 26.8 L189.4 9.9 L215.3 30.5 L241.2 17.4 L267.1 32.4 L293.0 41.8 L318.9 30.5 L344.8 34.3 L370.7 73.6 L396.6 53.0 L422.5 84.9 L448.4 96.1 L474.3 92.4 L500.2 98.0 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 26.8 L189.4 9.9 L215.3 30.5 L241.2 17.4 L267.1 32.4 L293.0 41.8 L318.9 30.5 L344.8 34.3 L370.7 73.6 L396.6 53.0 L422.5 84.9 L448.4 96.1 L474.3 92.4 L500.2 98.0 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.7</small></li><li><strong>震天雷</strong><small>Lv.18</small></li><li><strong>贯穿弹</strong><small>Lv.2</small></li><li><strong>赤热炮</strong><small>Lv.9</small></li><li><strong>天轨炮</strong><small>Lv.6</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.1</small></li><li class="is-ascend"><strong>万炮</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「架炮」Lv.17、「密集火力」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1306</b></span><span>生命 <b>4551</b></span><span>护甲 <b>307</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-munitions-0" data-toc-label="弹药师 · 弹幕压制配置" tabindex="-1">弹药师 · 弹幕压制</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 114 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 11.7 L137.6 8.0 L163.5 15.5 L189.4 15.5 L215.3 23.0 L241.2 13.6 L267.1 28.6 L293.0 41.8 L318.9 43.6 L344.8 58.6 L370.7 66.1 L396.6 66.1 L422.5 94.3 L448.4 86.8 L474.3 96.1 L500.2 92.4 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 11.7 L137.6 8.0 L163.5 15.5 L189.4 15.5 L215.3 23.0 L241.2 13.6 L267.1 28.6 L293.0 41.8 L318.9 43.6 L344.8 58.6 L370.7 66.1 L396.6 66.1 L422.5 94.3 L448.4 86.8 L474.3 96.1 L500.2 92.4 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.13</small></li><li><strong>枪林弹雨</strong><small>Lv.1</small></li><li><strong>跳弹</strong><small>Lv.9</small></li><li><strong>弹链</strong><small>Lv.2</small></li><li><strong>弹暴</strong><small>Lv.3</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.9</small></li><li class="is-ascend"><strong>万弹</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「特种装药」Lv.17、「精工弹药」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>敏捷</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1684</b></span><span>生命 <b>4165</b></span><span>护甲 <b>442</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-munitions-1" data-toc-label="弹药师 · 猎首狙杀配置" tabindex="-1">弹药师 · 猎首狙杀</h3>
+<span class="build-score"><span>等效第 <strong>116</strong> 层</span><small>过半至第 114 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 15.5 L137.6 8.0 L163.5 19.3 L189.4 11.7 L215.3 28.6 L241.2 11.7 L267.1 41.8 L293.0 47.4 L318.9 47.4 L344.8 41.8 L370.7 79.3 L396.6 53.0 L422.5 90.5 L448.4 88.6 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 15.5 L137.6 8.0 L163.5 19.3 L189.4 11.7 L215.3 28.6 L241.2 11.7 L267.1 41.8 L293.0 47.4 L318.9 47.4 L344.8 41.8 L370.7 79.3 L396.6 53.0 L422.5 90.5 L448.4 88.6 L474.3 98.0 L500.2 92.4 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.20</small></li><li><strong>加农炮</strong><small>Lv.19</small></li><li><strong>枪林弹雨</strong><small>Lv.1</small></li><li><strong>斩首弹</strong><small>Lv.1</small></li><li><strong>决胜弹</strong><small>Lv.4</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.1</small></li><li class="is-ascend"><strong>万弹</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「特种装药」Lv.17、「精工弹药」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 2 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1729</b></span><span>生命 <b>3719</b></span><span>护甲 <b>526</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-demolition-1" data-toc-label="爆破师 · 连环引爆配置" tabindex="-1">爆破师 · 连环引爆</h3>
+<span class="build-score"><span>等效第 <strong>115</strong> 层</span><small>过半至第 114 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 15.5 L137.6 8.0 L163.5 21.1 L189.4 9.9 L215.3 38.0 L241.2 21.1 L267.1 45.5 L293.0 43.6 L318.9 45.5 L344.8 60.5 L370.7 86.8 L396.6 41.8 L422.5 96.1 L448.4 92.4 L474.3 96.1 L500.2 98.0 L526.1 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 15.5 L137.6 8.0 L163.5 21.1 L189.4 9.9 L215.3 38.0 L241.2 21.1 L267.1 45.5 L293.0 43.6 L318.9 45.5 L344.8 60.5 L370.7 86.8 L396.6 41.8 L422.5 96.1 L448.4 92.4 L474.3 96.1 L500.2 98.0 L526.1 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.12</small></li><li><strong>加农炮</strong><small>Lv.20</small></li><li><strong>烽烟四起</strong><small>Lv.1</small></li><li><strong>轰天</strong><small>Lv.1</small></li><li><strong>火药桶</strong><small>Lv.1</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.8</small></li><li class="is-ascend"><strong>崩天</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「透甲」Lv.17、「重装药」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>生存</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1619</b></span><span>生命 <b>4017</b></span><span>护甲 <b>370</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-artillery-1" data-toc-label="枪炮师 · 阵地固守配置" tabindex="-1">枪炮师 · 阵地固守</h3>
+<span class="build-score"><span>等效第 <strong>114</strong> 层</span><small>过半至第 111 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 15.5 L189.4 11.7 L215.3 34.3 L241.2 21.1 L267.1 34.3 L293.0 64.3 L318.9 47.4 L344.8 62.4 L370.7 71.8 L396.6 75.5 L422.5 96.1 L448.4 94.3 L474.3 98.0 L500.2 96.1 L526.1 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L59.9 8.0 L85.8 8.0 L111.7 8.0 L137.6 8.0 L163.5 15.5 L189.4 11.7 L215.3 34.3 L241.2 21.1 L267.1 34.3 L293.0 64.3 L318.9 47.4 L344.8 62.4 L370.7 71.8 L396.6 75.5 L422.5 96.1 L448.4 94.3 L474.3 98.0 L500.2 96.1 L526.1 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">81</text><text x="137.6" y="114" text-anchor="middle">93</text><text x="241.2" y="114" text-anchor="middle">105</text><text x="344.8" y="114" text-anchor="middle">117</text><text x="448.4" y="114" text-anchor="middle">129</text><text x="552.0" y="114" text-anchor="middle">141</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.10</small></li><li><strong>炮火连天</strong><small>Lv.13</small></li><li><strong>魔导光炮</strong><small>Lv.14</small></li><li><strong>筑垒</strong><small>Lv.1</small></li><li><strong>拒马</strong><small>Lv.1</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.1</small></li><li class="is-ascend"><strong>万炮</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.20、「从容装填」Lv.20、「架炮」Lv.17、「密集火力」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>手炮</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1291</b></span><span>生命 <b>4614</b></span><span>护甲 <b>304</b></span></dd></div>
+</dl>
+</section>
+<details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
+<p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
+<p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0 计算。</p>
+</details></article>
+    <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-necromancer.html"><small>上一篇</small><span>死灵法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="rules.html"><small>下一篇</small><span>属性与规则<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+  </main>
+</div>
+<script src="search-index.js" defer></script>
+<script>/* 渐进增强：锚点、页面导航、表格与折叠内容均有原生 HTML 回退。 */
+(() => {
+  const menus = [...document.querySelectorAll('.site-nav, .page-toc')];
+  const mobile = window.matchMedia('(max-width: 1000px)');
+  const toc = document.querySelector('.page-toc');
+  const links = [...document.querySelectorAll('[data-toc-id]')];
+  const sections = links.map(link => ({ link, heading: document.getElementById(link.dataset.tocId) })).filter(item => item.heading);
+  const currentLabel = document.querySelector('.toc-current');
+  let currentId = '';
+  let scheduled = false;
+
+  function updateCurrent() {
+    scheduled = false;
+    const offset = mobile.matches ? 142 : 110;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.heading.getBoundingClientRect().top > offset) break;
+      current = section;
+    }
+    if (!current) return;
+    if (currentId !== current.heading.id) {
+      currentId = current.heading.id;
+      for (const { link } of sections) {
+        if (link === current.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+      if (currentLabel) currentLabel.textContent = current.link.textContent.trim();
+    }
+    // 只滚动目录自身，避免目录定位带动正文跳动。
+    const panel = toc?.querySelector('.toc-panel');
+    if (panel && toc.open) {
+      const itemRect = current.link.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      if (itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom) {
+        panel.scrollTop += itemRect.top - panelRect.top - panel.clientHeight / 3;
+      }
+    }
+  }
+
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrent);
+  }
+
+  function fitMenus() {
+    for (const menu of menus) menu.open = !mobile.matches;
+    scheduleUpdate();
+  }
+  fitMenus();
+  mobile.addEventListener('change', fitMenus);
+  for (const menu of menus) {
+    menu.addEventListener('toggle', () => {
+      if (mobile.matches && menu.open) {
+        for (const other of menus) if (other !== menu) other.open = false;
+      }
+    });
+  }
+  document.addEventListener('click', event => {
+    if (mobile.matches && !menus.some(menu => menu.contains(event.target))) {
+      for (const menu of menus) menu.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobile.matches) return;
+    const open = menus.find(menu => menu.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+    }
+  });
+
+  function revealHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
+    target.scrollIntoView({ block: 'start' });
+    if (target.hasAttribute('tabindex')) target.focus({ preventScroll: true });
+    scheduleUpdate();
+  }
+  for (const link of document.querySelectorAll('.page-toc a, .tier-link, .class-link')) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (mobile.matches) for (const menu of menus) menu.open = false;
+      // 保留浏览器原生 hash 历史；重复点击当前锚点也能重新定位。
+      requestAnimationFrame(revealHash);
+    });
+  }
+  window.addEventListener('hashchange', revealHash);
+  window.addEventListener('load', () => { if (location.hash) revealHash(); else scheduleUpdate(); });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  document.addEventListener('toggle', scheduleUpdate, true);
+  scheduleUpdate();
+})();
+
+/* 全站搜索：索引在 search-index.js（window.GUIDE_SEARCH），按名称与所属做子串匹配；没有索引时搜索框什么也不做。 */
+(() => {
+  const input = document.querySelector('#guide-search');
+  const panel = document.querySelector('#guide-search-results');
+  if (!input || !panel) return;
+  const entries = () => window.GUIDE_SEARCH ?? [];
+  const escape = text => String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const mark = (text, query) => {
+    const at = text.toLowerCase().indexOf(query);
+    return at < 0 ? escape(text) : `${escape(text.slice(0, at))}<mark>${escape(text.slice(at, at + query.length))}</mark>${escape(text.slice(at + query.length))}`;
+  };
+  let results = [];
+  let active = -1;
+
+  function close() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    active = -1;
+  }
+  function highlight(index) {
+    active = index;
+    [...panel.querySelectorAll('a')].forEach((link, i) => link.setAttribute('aria-selected', String(i === index)));
+    panel.querySelectorAll('a')[index]?.scrollIntoView({ block: 'nearest' });
+  }
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { close(); return; }
+    // 名称开头匹配排最前，其次名称包含，再次只有所属匹配。
+    const score = entry => {
+      const name = entry.n.toLowerCase();
+      if (name.startsWith(query)) return 0;
+      if (name.includes(query)) return 1;
+      return `${entry.c} ${entry.k}`.toLowerCase().includes(query) ? 2 : -1;
+    };
+    results = entries().map(entry => ({ entry, rank: score(entry) })).filter(item => item.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entry.n.length - b.entry.n.length).slice(0, 12).map(item => item.entry);
+    panel.innerHTML = results.length
+      ? results.map((entry, i) => `<a href="${escape(entry.u)}" role="option" id="guide-search-${i}" aria-selected="false"><strong>${mark(entry.n, query)}</strong>${entry.c ? `<small>${escape(entry.c)}</small>` : ''}<span class="kind">${escape(entry.k)}</span></a>`).join('')
+      : '<p class="search-empty">没有找到相关条目。</p>';
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(results.length ? 0 : -1);
+  }
+  input.addEventListener('input', render);
+  input.addEventListener('focus', () => { if (input.value.trim()) render(); });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      if (!results.length) return;
+      event.preventDefault();
+      highlight((active + (event.key === 'ArrowDown' ? 1 : results.length - 1)) % results.length);
+    } else if (event.key === 'Enter' && results[active]) {
+      event.preventDefault();
+      location.href = results[active].u;
+      close();
+    } else if (event.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+  panel.addEventListener('click', () => close());
+  document.addEventListener('click', event => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== input) close();
+  });
+  // 按 / 聚焦搜索框（输入框里除外）。
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    event.preventDefault();
+    input.focus();
+  });
+})();
+
+/* 技能等级滑块：拖到几级，就写出这一级的开放等级、百分比数值的累计提高与固定伤害（算法同引擎的 skillLevelInfo），并标出到这一级为止的整数提升。没有脚本时停在最高级。 */
+(() => {
+  if (!document.querySelector('.level-slider')) return;
+  for (const box of document.querySelectorAll('.skill-levels')) {
+    const slider = box.querySelector('.level-slider');
+    const output = box.querySelector('.level-value');
+    const total = box.querySelector('.level-total');
+    const rate = Number(box.dataset.rate) || 0, open = Number(box.dataset.open) || 1, step = Number(box.dataset.step) || 5, fixedK = Number(box.dataset.fixed) || 0;
+    const scaling = box.dataset.scaling || '伤害', desc = box.closest('.skill-card')?.querySelector('.skill-desc');
+    const update = () => {
+      const level = Number(slider.value);
+      output.textContent = `Lv.${level}`;
+      for (const item of box.querySelectorAll('.level-gains li')) item.classList.toggle('is-locked', Number(item.dataset.level) > level);
+      const opensAt = open + step * (level - 1), pct = Math.round(rate * 1000 * (level - 1)) / 10, fixed = Math.round(fixedK * opensAt);
+      // 说明里的模板按这一级填数：{d200} 写成「百分比 + 固定伤害」，{p15} 只按百分比成长（同引擎的 fillSkillTemplate）。
+      if (desc?.dataset.template) {
+        const mul = 1 + rate * (level - 1), num = x => { const r = Math.round(x * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+        desc.textContent = desc.dataset.template
+          .replace(/\{d(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%${fixed ? ` + ${Math.round(n / 100 * fixed)}` : ''}`)
+          .replace(/\{p(\d+(?:\.\d+)?)\}/g, (_, n) => `${num(n * mul)}%`);
+      }
+      total.textContent = `Lv.${level}（角色 ${opensAt} 级开放）：${[pct ? `${scaling}提高 ${pct}%` : null, fixed ? `每 100% 倍率另加 ${fixed} 点固定伤害` : null].filter(Boolean).join('，') || '效果不变'}`;
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
+})();
+</script>
+</body>
+</html>
