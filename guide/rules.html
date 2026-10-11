@@ -434,7 +434,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
     <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#attributes" data-toc-id="attributes" title="属性收益"><span>属性收益</span></a></li><li class="toc-level-2"><a href="#formulas" data-toc-id="formulas" title="减伤、闪避与暴击"><span>减伤、闪避与暴击</span></a></li><li class="toc-level-2"><a href="#armor-materials" data-toc-id="armor-materials" title="护甲材质"><span>护甲材质</span></a></li><li class="toc-level-2"><a href="#skill-rules" data-toc-id="skill-rules" title="技能与技能点（SP）"><span>技能与技能点（SP）</span></a></li><li class="toc-level-2"><a href="#spec-rules" data-toc-id="spec-rules" title="转职与觉醒"><span>转职与觉醒</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
-    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.8.0-ota2</span><span>与游戏版本同步更新</span></div></header>
+    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.8.0-ota3</span><span>与游戏版本同步更新</span></div></header>
     <article class="guide-article"><h2 id="attributes" tabindex="-1">属性收益</h2>
 <p class="lead">主属性每点提供较多攻击，其余三项属性也有少量贡献。每次升级获得 3 点属性点，可以自由分配。</p>
 <div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">属性</th><th scope="col">每点收益</th></tr></thead><tbody role="rowgroup">
@@ -462,18 +462,19 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <ul class="rule-list">
 <li>每个职业有 8 个职业技能，按 1、5、10、15 级依次开放；20 级以后的技能在转职的技能线上开放。学习技能消耗技能点（SP），开放越晚的技能越贵：1～19 级开放的技能学习需 10 SP，20～39 级的需 15 SP，40 级起的需 20 SP，觉醒技需 30 SP。</li>
 <li>携带栏 3 个起步，10 级和 25 级各增加 1 个，最多携带 5 个技能。</li>
-<li>已学技能可以逐级升级：技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级。每升一级，技能的百分比数值随之提高；造成伤害的技能另有固定伤害，等级越高，固定伤害越多。回合、次数等整数效果只在 Lv.2～Lv.5 提高。每升一级的价格：1～19 级开放的技能 10 SP，20～39 级的 12 SP，40 级起的 14 SP，觉醒技 16 SP。</li>
-<li>职业被动 5 级起可以学习，每项 10 SP。被动分职业通用被动与转职被动：转职以后还能学习本转职的转职被动，被动不限个数，只受 SP 限制。已学的被动可以逐级升级：学会时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，每升一级 2 SP。遗忘技能、退还被动时，花费的 SP 全部退还。</li>
+<li>已学技能可以逐级升级：技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级；只有回合、次数等整数效果的辅助技能（如「闪现」「烟雾弹」）最高 Lv.5。每升一级，技能的百分比数值随之提高；造成伤害的技能另有固定伤害，等级越高，固定伤害越多。回合、次数等整数效果只在 Lv.2～Lv.5 提高。每升一级的价格：1～19 级开放的技能 10 SP，20～39 级的 12 SP，40 级起的 14 SP，觉醒技 16 SP。</li>
+<li>职业被动 5 级起可以学习，每项 10 SP。被动分职业通用被动与转职被动：转职以后还能学习本转职的转职被动，被动不限个数，只受 SP 限制。已学的被动可以逐级升级：学会时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，每升一级 2 SP；只能取整数的被动（如「扩充弹匣」）最高 Lv.5，每级都有提升。遗忘技能、退还被动时，花费的 SP 全部退还。</li>
 <li>每次升级都获得 SP：1～10 级每级 10 SP，11～60 级每级 4 SP，61～100 级每级 11 SP（10 级累计 100 SP、40 级累计 220 SP、60 级累计 300 SP、80 级累计 520 SP、100 级累计 740 SP）。</li>
 </ul>
 <h2 id="spec-rules" tabindex="-1">转职与觉醒</h2>
 <ul class="rule-list">
 <li>20 级起可以转职，每个职业有三个转职方向。转职不消耗技能点，战斗外可以随时免费更换；更换时会遗忘原转职的专属技能与转职被动，并退还花费的技能点，觉醒也随之重置，条件仍满足时可以立即再次觉醒。更换后，按新转职的技能线自动学习已开放且技能点足够的专属技能。如需保留原转职的配置，可以新建一套配置方案。</li>
 <li>每个转职有一条转职特性和一条技能线：20～95 级每 5 级开放一个专属技能（60 级除外），共 15 个；转职还会强化若干本职业技能。每个转职分两套打法，专属技能有的属于其中一套，有的两套通用。每个转职另有 2 个转职被动，只有选择该转职才能学习。</li>
-<li>60 级且深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放觉醒技与 60 级起的专属技能，觉醒之前无法学习这些技能。觉醒技单独占用觉醒栏，不占用常规携带栏。100 级且深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并开放二觉技，占用第二个觉醒栏。</li>
+<li>60 级，且完成觉醒任务或无尽深渊到达第 60 层后可以觉醒：转职特性随之提升，并开放觉醒技与 60 级起的专属技能，觉醒之前无法学习这些技能。觉醒技单独占用觉醒栏，不占用常规携带栏。100 级，且完成二次觉醒任务或无尽深渊到达第 100 层后可以第二次觉醒：转职特性再次提升，并开放二觉技，占用第二个觉醒栏。</li>
+<li>觉醒任务在主线卷三，共三步：通关卷三「溯风」、在卷三达成 20 项关卡挑战、通过「觉醒试炼」；二次觉醒任务在卷六，步骤相同。试炼在前两步完成后开放，依次迎战三卷的卷末首领，三波之间不休整，不获得经验、金币与装备，失利后可以反复挑战。</li>
 </ul></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-gunner.html"><small>上一篇</small><span>火枪手<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="gear.html"><small>下一篇</small><span>装备<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota2）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota3）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
