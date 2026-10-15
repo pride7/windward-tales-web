@@ -246,6 +246,11 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.skill-link { margin: 0; padding-left: 10px; border-left: 2px solid var(--gold-mid, var(--line-mid)); font-size: 12.5px; }
+.skill-link p { margin: 2px 0; }
+.skill-link .tag { margin-right: 6px; }
+.skill-link small { color: var(--ink-muted); }
+.skill-link-leads { color: var(--ink-muted); }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -431,13 +436,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-elementalist" data-toc-id="spec-elementalist" title="元素师"><span>元素师</span></a></li><li class="toc-level-3"><a href="#spec-conjurer" data-toc-id="spec-conjurer" title="召唤师"><span>召唤师</span></a></li><li class="toc-level-3"><a href="#spec-arcanist" data-toc-id="spec-arcanist" title="奥术师"><span>奥术师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-elementalist" data-toc-id="skills-elementalist" title="元素师专属"><span>元素师专属</span></a></li><li class="toc-level-3"><a href="#skills-conjurer" data-toc-id="skills-conjurer" title="召唤师专属"><span>召唤师专属</span></a></li><li class="toc-level-3"><a href="#skills-arcanist" data-toc-id="skills-arcanist" title="奥术师专属"><span>奥术师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-arcanist-0" data-toc-id="build-arcanist-0" title="奥术师 · 时序加速配置"><span>奥术师 · 时序加速配置</span></a></li><li class="toc-level-3"><a href="#build-elementalist-0" data-toc-id="build-elementalist-0" title="元素师 · 控场配置"><span>元素师 · 控场配置</span></a></li><li class="toc-level-3"><a href="#build-arcanist-1" data-toc-id="build-arcanist-1" title="奥术师 · 引力坍缩配置"><span>奥术师 · 引力坍缩配置</span></a></li><li class="toc-level-3"><a href="#build-conjurer-1" data-toc-id="build-conjurer-1" title="召唤师 · 巨像镇守配置"><span>召唤师 · 巨像镇守配置</span></a></li><li class="toc-level-3"><a href="#build-conjurer-0" data-toc-id="build-conjurer-0" title="召唤师 · 群灵围攻配置"><span>召唤师 · 群灵围攻配置</span></a></li><li class="toc-level-3"><a href="#build-elementalist-1" data-toc-id="build-elementalist-1" title="元素师 · 爆发配置"><span>元素师 · 爆发配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-elementalist" data-toc-id="spec-elementalist" title="元素师"><span>元素师</span></a></li><li class="toc-level-3"><a href="#spec-conjurer" data-toc-id="spec-conjurer" title="召唤师"><span>召唤师</span></a></li><li class="toc-level-3"><a href="#spec-arcanist" data-toc-id="spec-arcanist" title="奥术师"><span>奥术师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-elementalist" data-toc-id="skills-elementalist" title="元素师专属"><span>元素师专属</span></a></li><li class="toc-level-3"><a href="#skills-conjurer" data-toc-id="skills-conjurer" title="召唤师专属"><span>召唤师专属</span></a></li><li class="toc-level-3"><a href="#skills-arcanist" data-toc-id="skills-arcanist" title="奥术师专属"><span>奥术师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-arcanist-0" data-toc-id="build-arcanist-0" title="奥术师 · 时序加速配置"><span>奥术师 · 时序加速配置</span></a></li><li class="toc-level-3"><a href="#build-conjurer-1" data-toc-id="build-conjurer-1" title="召唤师 · 巨像镇守配置"><span>召唤师 · 巨像镇守配置</span></a></li><li class="toc-level-3"><a href="#build-arcanist-1" data-toc-id="build-arcanist-1" title="奥术师 · 引力坍缩配置"><span>奥术师 · 引力坍缩配置</span></a></li><li class="toc-level-3"><a href="#build-elementalist-1" data-toc-id="build-elementalist-1" title="元素师 · 爆发配置"><span>元素师 · 爆发配置</span></a></li><li class="toc-level-3"><a href="#build-elementalist-0" data-toc-id="build-elementalist-0" title="元素师 · 控场配置"><span>元素师 · 控场配置</span></a></li><li class="toc-level-3"><a href="#build-conjurer-0" data-toc-id="build-conjurer-0" title="召唤师 · 群灵围攻配置"><span>召唤师 · 群灵围攻配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/mage.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.8.0-ota5</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0-ota6</p>
 <h1>法师</h1>
 <p class="page-description">远程 2 格。以智力提高技能伤害并缩短冷却，敌人越密集，法术的收效越大。</p>
 <p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-elementalist">元素师</a><a class="tag tag-link" href="#spec-conjurer">召唤师</a><a class="tag tag-link" href="#spec-arcanist">奥术师</a></p>
@@ -455,7 +460,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-elementalist" data-toc-label="元素师" tabindex="-1">元素师<small>觉醒后称「元素主宰」</small></h3>
 <p class="spec-pitch">交替施放冰、火、雷三种元素，叠加燃烧，再一次引爆。</p>
-<a class="spec-strength" href="#build-elementalist-0">终局参考 · 等效第 <strong>118</strong> 层</a>
+<a class="spec-strength" href="#build-elementalist-1">终局参考 · 等效第 <strong>118</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>技能分冰、火、雷三种元素，奥术技能与不造成伤害的技能不算。元素技能与上一个元素技能的元素不同时，该次伤害提高 25%；双元素、三元素技能按组合计算，组合不同即为不同。燃烧可以叠层，上限 3 层，重新施加时增加 1 层并刷新回合数。最大生命提高 40%。</dd></div>
 <div><dt>觉醒提升</dt><dd>交替的增伤由 25% 提高至 40%，燃烧层数上限由 3 层提高至 5 层。</dd></div>
@@ -470,7 +475,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-conjurer" data-toc-label="召唤师" tabindex="-1">召唤师<small>觉醒后称「万灵之主」</small></h3>
 <p class="spec-pitch">召唤物先为敌人留下灵痕，你的法术随后跟上。</p>
-<a class="spec-strength" href="#build-conjurer-1">终局参考 · 等效第 <strong>117</strong> 层</a>
+<a class="spec-strength" href="#build-conjurer-1">终局参考 · 等效第 <strong>121</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>召唤物上限增加 1。召唤物攻击过的敌人带上灵痕，持续 2 回合；你的技能命中灵痕目标时，伤害提高 30%。</dd></div>
 <div><dt>觉醒提升</dt><dd>灵痕的增伤由 30% 提高至 45%。</dd></div>
@@ -485,7 +490,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-arcanist" data-toc-label="奥术师" tabindex="-1">奥术师<small>觉醒后称「大奥术师」</small></h3>
 <p class="spec-pitch">操纵时间与空间：加快施法、多行动，或把敌人拉到一起一次打中。</p>
-<a class="spec-strength" href="#build-arcanist-0">终局参考 · 等效第 <strong>125</strong> 层</a>
+<a class="spec-strength" href="#build-arcanist-0">终局参考 · 等效第 <strong>127</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>每施放 4 次技能，本回合立即再行动一次，每回合至多一次；再行动之前，其余技能（觉醒技除外）的剩余冷却各缩短 1 回合。瞬发技也计数，「奥术飞弹」「虚空射线」「星陨」一次计为 2 次。最大生命提高 15%。</dd></div>
 <div><dt>觉醒提升</dt><dd>加速所需的施放次数由 4 次减为 3 次。</dd></div>
@@ -505,6 +510,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">易伤</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人及其相邻敌人各造成 {d160} 伤害，并使其易伤 2 回合，期间受到的所有伤害提高 30%。">对射程内一名敌人及其相邻敌人各造成 224% + 938 伤害，并使其易伤 2 回合，期间受到的所有伤害提高 30%。</p>
 <p class="skill-synergy">先以「火球术」施加易伤，再使用「闪电链」或普通攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">灼盾</span><strong>接在「奥术护盾」之后施放</strong>：之后 2 回合，护盾每挡下一次攻击，使攻击者燃烧 3 回合。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>元素师</strong>：命中必定燃烧 1 层；已燃烧的目标再增加 1 层。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="火球术的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -517,6 +523,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
 <p class="skill-desc" data-template="对 3 格内所有敌人造成 {d110} 伤害并使其冻结，跳过 1 次行动。冻结标记保留 2 回合，可被「闪电链」或「碎冰」消耗。相邻敌人还会被击退 1 格，若撞上岩石、场地边缘或其他敌人，将受到撞击伤害。">对 3 格内所有敌人造成 162.8% + 645 伤害并使其冻结，跳过 1 次行动。冻结标记保留 2 回合，可被「闪电链」或「碎冰」消耗。相邻敌人还会被击退 1 格，若撞上岩石、场地边缘或其他敌人，将受到撞击伤害。</p>
 <p class="skill-synergy">先以「冰霜新星」冻结敌人，再以「闪电链」或「碎冰」消耗冻结标记。将敌人击退至浅水，还可延长其行动受限的时间。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">寒雾</span><strong>接在「闪现」之后施放</strong>：之后 2 回合，走进你 2 格内的敌人带上冻结标记。</p><p class="skill-link-leads">之后接着施放：「碎冰」（冰溅）、「闪现」（冰遁）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>奥术师</strong>：相邻敌人不再被击退，改为命中的敌人向其中敌人最密集的一处拉近 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="冰霜新星的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -529,6 +536,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">防护</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="获得相当于 {p35} 最大生命的护盾，持续至护盾被击破。">获得相当于 56% 最大生命的护盾，持续至护盾被击破。</p>
 <p class="skill-synergy">施放「冰霜新星」前先获得护盾，可减少近距离作战的风险。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">碎晶</span><strong>接在「吸魂」之后施放</strong>：这层护盾被击破时，2 格内的敌人被冻结 1 次行动。</p><p class="skill-link-leads">之后接着施放：「火球术」（灼盾）、「吸魂」（汲盾）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>召唤师</strong>：所有召唤物同时获得一半的护盾。</li></ul></div>
 <div class="skill-levels" data-rate="0.031578947368421054" data-scaling="护盾" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="奥术护盾的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -541,6 +549,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连跳</span><span class="tag">导电</span></p>
 <p class="skill-desc" data-template="依次击中最多 3 名相互靠近的敌人，分别造成 {d140}、{d110}、{d80} 伤害。命中带有冻结标记的敌人时，伤害提高 50%，并消耗该标记。">依次击中最多 3 名相互靠近的敌人，分别造成 196% + 820、154% + 645、112% + 469 伤害。命中带有冻结标记的敌人时，伤害提高 50%，并消耗该标记。</p>
 <p class="skill-synergy">先以「冰霜新星」施加冻结标记，再以「闪电链」攻击，可提高每次命中的伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">冰导</span><strong>命中冻结的敌人时</strong>：冰导电：闪电链多跳 2 次，每跳造成 80% 伤害。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>元素师</strong>：导电时不再消耗冻结标记。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="闪电链的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -553,6 +562,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">碎冰</span></p>
 <p class="skill-desc" data-template="对 2 格内所有带有冻结标记的敌人造成 {d240} 伤害，并消耗冻结标记。">对 2 格内所有带有冻结标记的敌人造成 355.2% + 1464 伤害，并消耗冻结标记。</p>
 <p class="skill-synergy">先以「冰霜新星」为多名敌人施加冻结标记，再以「碎冰」同时攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">冰溅</span><strong>接在「冰霜新星」之后施放</strong>：被碎的敌人相邻的敌人带上冻结标记 2 回合。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>元素师</strong>：冷却时间由 4 回合缩短为 3 回合，范围由 2 格扩大至 3 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="碎冰的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -565,6 +575,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">位移</span><span class="tag">专注</span></p>
 <p class="skill-desc">向远离敌人的方向移动最多 3 格，并获得专注，使下一次技能攻击必定暴击。</p>
 <p class="skill-synergy">相邻敌人较多时，以「闪现」拉开距离，再施放「火球术」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">冰遁</span><strong>接在「冰霜新星」之后施放</strong>：在原来站的位置留下一块冰岩，挡住追来的敌人，保留 2 回合。</p><p class="skill-link-leads">之后接着施放：「冰霜新星」（寒雾）、「奥术弹」（趁隙）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>奥术师</strong>：闪现后本回合立即再行动一次，与加速共用每回合至多一次的限制。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="10" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="闪现的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -577,6 +588,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">增伤</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d130} 伤害，冷却时间为 1 回合。目标处于冻结或易伤状态时，伤害提高 40%。">对射程内一名敌人造成 171.6% + 793 伤害，冷却时间为 1 回合。目标处于冻结或易伤状态时，伤害提高 40%。</p>
 <p class="skill-synergy">「奥术弹」冷却时间较短，可频繁触发「术式屏障」「星火回响」和「过载」的效果。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">趁隙</span><strong>接在「闪现」之后施放</strong>：射出之后立即再行动一次。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>召唤师</strong>：场上每有一个召唤物，伤害提高 20%。</li><li><strong>奥术师</strong>：在再行动时施放，伤害提高 60%。</li></ul></div>
 <div class="skill-levels" data-rate="0.018823529411764708" data-scaling="伤害" data-open="15" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="奥术弹的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -589,6 +601,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
 <p class="skill-desc" data-template="对射程内生命最高的敌人造成 {d140} 伤害，并回复相当于造成伤害 50% 的生命。">对射程内生命最高的敌人造成 207.2% + 854 伤害，并回复相当于造成伤害 50% 的生命。</p>
 <p class="skill-synergy">以「吸魂」攻击生命较高的敌人，可在造成伤害的同时回复生命。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">汲盾</span><strong>接在「奥术护盾」之后施放</strong>：回复溢出的部分转为护盾。</p><p class="skill-link-leads">之后接着施放：「奥术护盾」（碎晶）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>元素师</strong>：对燃烧目标的回复比例提高 20 个百分点。</li><li><strong>召唤师</strong>：所有召唤物各回复 15% 最大生命。</li></ul></div>
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害 / 回复" data-open="15" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="吸魂的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -602,6 +615,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">冰火</span><span class="tag">引燃</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人及其相邻敌人各造成 {d170} 伤害。若目标带有冻结标记，则伤害额外提高 50%，消耗该标记，并使其燃烧 3 回合；其他目标被冻结 1 次行动。">对射程内一名敌人及其相邻敌人各造成 251.6% + 1037 伤害。若目标带有冻结标记，则伤害额外提高 50%，消耗该标记，并使其燃烧 3 回合；其他目标被冻结 1 次行动。</p>
 <p class="skill-synergy">首次施放「霜火」可冻结敌人，再次施放可消耗冻结标记并施加燃烧。「冰霜新星」也可提前施加冻结标记。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中冻结的敌人时</strong>：则伤害额外提高 50%，消耗该标记，并使其燃烧 3 回合；其他目标被冻结 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.03" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="霜火的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -614,6 +628,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">冻结</span><span class="tag">瞬发</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。对射程内一名敌人造成 {d120} 伤害，使其冻结 2 次行动，并带上冻结标记 3 回合。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。对射程内一名敌人造成 177.6% + 732 伤害，使其冻结 2 次行动，并带上冻结标记 3 回合。</p>
 <p class="skill-synergy">先以「冰牢」按住最危险的敌人，再以「碎冰」「陨石」或「雷殛」消耗冻结标记。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「冰甲」（霜镜）、「绝对零度」（凝冬）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="伤害" data-open="25" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="冰牢的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -626,6 +641,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">冻结</span></p>
 <p class="skill-desc" data-template="获得 {p30} 最大生命的护盾；之后 3 回合，攻击你的敌人被冻结 1 次行动。">获得 44.4% 最大生命的护盾；之后 3 回合，攻击你的敌人被冻结 1 次行动。</p>
 <p class="skill-synergy">元素师的防护手段：每一次被攻击都会留下冻结标记，交给碎冰与闪电链。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">霜镜</span><strong>接在「冰牢」之后施放</strong>：冰甲期间，攻击你的敌人被冻结时，它相邻的敌人一并冻结 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="护盾" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="冰甲的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -638,6 +654,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">碎裂</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d220} 伤害；命中带有冻结标记的敌人时，伤害额外提高 50%，并消耗该标记；对燃烧的敌人伤害再提高 50%，与冻结标记的加成分别计算。">对 2 格内所有敌人造成 352% + 1342 伤害；命中带有冻结标记的敌人时，伤害额外提高 50%，并消耗该标记；对燃烧的敌人伤害再提高 50%，与冻结标记的加成分别计算。</p>
 <p class="skill-synergy">先以「冰霜新星」冻结敌人，再施放「陨石」造成额外伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">陨火</span><strong>命中燃烧的敌人时</strong>：燃烧的敌人被砸中时，火势蔓延：它相邻的敌人叠加 1 层燃烧。</p></div>
 
 <div class="skill-levels" data-rate="0.04615384615384615" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="陨石的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -650,6 +667,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">冻结</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程外扩 2 格范围内的所有敌人各造成 {d200} 伤害，使其冻结 1 次行动并燃烧 3 回合；同时获得相当于 {p50} 最大生命的护盾。">射程内有敌人时可施放：对射程外扩 2 格范围内的所有敌人各造成 320% + 1220 伤害，使其冻结 1 次行动并燃烧 3 回合；同时获得相当于 80% 最大生命的护盾。</p>
 <p class="skill-synergy">「元素风暴」可同时造成范围伤害、限制敌人行动并提供护盾。其冻结标记还能与「闪电链」「碎冰」「霜火」配合。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">风眼</span><strong>接在「极寒领域」之后施放</strong>：之后 2 回合，你每次行动前，2 格内的敌人叠加 1 层燃烧。</p><p class="skill-link-leads">之后接着施放：「红莲」（劫火）</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 燃烧 / 护盾" data-open="40" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="元素风暴的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -662,6 +680,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d260} 伤害，并使其叠加 2 层燃烧。">对 2 格内所有敌人造成 384.8% + 1586 伤害，并使其叠加 2 层燃烧。</p>
 <p class="skill-synergy">爆发打法先以「焚城」叠加燃烧，再以「焚心」或「红莲」一次结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">融城</span><strong>命中冻结的敌人时</strong>：消耗它的冻结标记，多叠加 1 层燃烧。</p><p class="skill-link-leads">之后接着施放：「极寒领域」（冰锁）、「焚心」（连焚）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害 / 燃烧" data-open="45" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="焚城的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -674,6 +693,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群控</span><span class="tag">冻结</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d100} 伤害，使其冻结 2 次行动，并带上冻结标记 3 回合。">对 2 格内所有敌人造成 148% + 610 伤害，使其冻结 2 次行动，并带上冻结标记 3 回合。</p>
 <p class="skill-synergy">控场打法的核心：冻住一圈之后，以「碎冰」「雷殛」逐个消耗冻结标记。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">冰锁</span><strong>接在「焚城」之后施放</strong>：被冻结的敌人醒来后的下一次行动不能移动。</p><p class="skill-link-leads">之后接着施放：「元素风暴」（风眼）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害 / 控制" data-open="50" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="极寒领域的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -686,6 +706,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">眩晕</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d300} 伤害，并使其与相邻的敌人眩晕 1 次行动；目标带有冻结标记时，伤害提高 50%，眩晕延长至 2 次行动，不消耗标记。">对射程内一名敌人造成 444% + 1830 伤害，并使其与相邻的敌人眩晕 1 次行动；目标带有冻结标记时，伤害提高 50%，眩晕延长至 2 次行动，不消耗标记。</p>
 <p class="skill-synergy">先以「冰牢」或「极寒领域」留下冻结标记，再以「雷殛」重击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中冻结的敌人时</strong>：伤害提高 50%，眩晕延长至 2 次行动，不消耗标记。</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="雷殛的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -698,6 +719,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">回复</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="场上每有 1 层燃烧，回复 {p3} 最大生命（至多 {p30}），并获得 {p30} 最大生命的护盾。">场上每有 1 层燃烧，回复 4.4% 最大生命（至多 44.4%），并获得 44.4% 最大生命的护盾。</p>
 <p class="skill-synergy">燃烧铺得越多，回复越多；火球术、霜火、元素风暴都能留下燃烧。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">不熄</span><strong>接在「焚心」之后施放</strong>：场上所有敌人的燃烧延长 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="回复 / 护盾" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="余烬护体的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -710,6 +732,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">燃烧</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害并使其眩晕 1 次行动，对其相邻的敌人造成 {d130} 伤害并叠加 1 层燃烧；若目标带有冻结标记，消耗标记，「陨石」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1586 伤害并使其眩晕 1 次行动，对其相邻的敌人造成 192.4% + 793 伤害并叠加 1 层燃烧；若目标带有冻结标记，消耗标记，「陨石」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「陨石」配成两拍循环：以冰系技能留下冻结标记，「炎雷」消耗标记、催快「陨石」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中冻结的敌人时</strong>：消耗标记，「陨石」的剩余冷却缩短 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="炎雷的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -722,6 +745,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群控</span><span class="tag">冰封</span></p>
 <p class="skill-desc" data-template="使场上所有敌人冻结 2 次行动；之后 3 回合，被冻结的敌人受到的伤害提高 {p50}。">使场上所有敌人冻结 2 次行动；之后 3 回合，被冻结的敌人受到的伤害提高 80%。</p>
 <p class="skill-synergy">控场打法冻住全场之后集中输出，趁敌人无法行动时结束战斗。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">凝冬</span><strong>接在「冰牢」之后施放</strong>：被冻结的敌人醒来时再带上冻结标记 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="冻结增伤" data-open="75" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="绝对零度的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -734,6 +758,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">引燃</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d200} 伤害，消耗其全部燃烧，每层使本次伤害提高 50%；其相邻的敌人各叠加同样层数的燃烧。">对射程内一名敌人造成 296% + 1220 伤害，消耗其全部燃烧，每层使本次伤害提高 50%；其相邻的敌人各叠加同样层数的燃烧。</p>
 <p class="skill-synergy">爆发打法对付首领的手段：先以「焚城」「红莲」叠满燃烧，再以「焚心」一次打出。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连焚</span><strong>接在「焚城」之后施放</strong>：若击杀目标，它相邻的敌人各叠加 2 层燃烧。</p><p class="skill-link-leads">之后接着施放：「余烬护体」（不熄）</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="焚心的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -746,6 +771,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">引燃</span></p>
 <p class="skill-desc">立即以 150% 的比例结算场上所有燃烧伤害；随后使所有敌人叠加 3 层燃烧。</p>
 <p class="skill-synergy">敌人积累较多燃烧层数后施放「红莲」，可结算伤害并再次施加燃烧。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">劫火</span><strong>接在「元素风暴」之后施放</strong>：这次造成伤害的 30% 转为你的护盾。<small>（Lv.10 时 45%，Lv.20 时 60%）</small></p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="燃烧" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="红莲的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -758,6 +784,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害，并使其冻结 1 次行动；带有冻结标记的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1952 伤害，并使其冻结 1 次行动；带有冻结标记的敌人改为受到 720% + 2745 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「元素风暴」错开施放；先以「冰牢」「极寒领域」留下冻结标记，再以「霜雷」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">雷锁</span><strong>命中冻结的敌人时</strong>：被冻住的敌人多冻结 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="霜雷的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -771,6 +798,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，每次施放技能都自动追加一次 3 跳的闪电链，分别造成 {p140}、{p110}、{p80} 伤害。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，每次施放技能都自动追加一次 3 跳的闪电链，分别造成 224%、176%、128% 伤害。</p>
 <p class="skill-synergy">之后连续施放短冷却的技能，每一次都带出一道闪电链；追加的闪电链不计入交替。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="伤害" data-open="95" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="雷神的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 610 点固定伤害</p>
@@ -782,6 +810,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">三元素</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，使其冻结 1 次行动，并叠加 2 层燃烧；之后 4 回合，施放的元素技能都按交替计算，交替的增伤翻倍。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3660 伤害，使其冻结 1 次行动，并叠加 2 层燃烧；之后 4 回合，施放的元素技能都按交替计算，交替的增伤翻倍。</p>
 <p class="skill-synergy">元素师的觉醒技：控场打法拿到全场冻结，爆发打法拿到燃烧层数，之后 4 回合是一段爆发窗口。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="元素天灾的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -795,6 +824,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">近战</span></p>
 <p class="skill-desc">召唤 1 只灵狼作战，持续 8 回合。灵狼进行近战攻击，其生命与攻击按你的属性计算。</p>
 <p class="skill-synergy">由灵狼在前方承受攻击，你可保持距离施放法术。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">扑袭</span><strong>接在「献祭」之后施放</strong>：灵狼直接出现在最近的敌人身边，并立即攻击一次。</p><p class="skill-link-leads">之后接着施放：「石守」（坠守）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="召唤物生命 / 攻击" data-open="20" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="唤狼的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -807,6 +837,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">远程</span></p>
 <p class="skill-desc">召唤 1 只精怪作战，持续 8 回合。精怪生命较低，可攻击 2 格外的敌人。</p>
 <p class="skill-synergy">精怪可在远处持续攻击敌人，为你的法术留下灵痕。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">双灵</span><strong>接在「统御」之后施放</strong>：再召唤一只精怪。</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="召唤物生命 / 攻击" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="唤灵的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -819,6 +850,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">嘲讽</span></p>
 <p class="skill-desc" data-template="召唤 1 尊石守卫作战，不占召唤物上限，持续到被击倒为止，至多同时存在 2 尊。石守卫的生命相当于你最大生命的 75%，攻击较低；位于你身前、或比你远 1 格以内时可吸引敌人的攻击；它受到的伤害有 {p20} 转化为你的护盾。">召唤 1 尊石守卫作战，不占召唤物上限，持续到被击倒为止，至多同时存在 2 尊。石守卫的生命相当于你最大生命的 75%，攻击较低；位于你身前、或比你远 1 格以内时可吸引敌人的攻击；它受到的伤害有 29.6% 转化为你的护盾。</p>
 <p class="skill-synergy">将石守卫布置在身前承受攻击，它挨的打会变成你的护盾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">坠守</span><strong>接在「唤狼」之后施放</strong>：石守落地时把相邻的敌人震退 1 格。</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="召唤物生命 / 护盾" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="石守的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -831,6 +863,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">催动</span></p>
 <p class="skill-desc">所有召唤物立即额外行动 1 次，此次行动造成的伤害随技能等级提高。</p>
 <p class="skill-synergy">场上召唤物较多时施放「附能」，可增加它们的攻击次数。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">狂驱</span><strong>接在「统御」之后施放</strong>：召唤物再额外行动 1 次。</p><p class="skill-link-leads">之后接着施放：「群召」（合围）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="召唤物这一击的伤害" data-open="35" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="附能的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -843,6 +876,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">强化</span></p>
 <p class="skill-desc" data-template="使所有召唤物回复至最大生命，持续时间增加 6 回合，并在之后 3 回合使其攻击提高 {p50}；场上每有一个召唤物，你获得相当于 {p8} 最大生命的护盾。">使所有召唤物回复至最大生命，持续时间增加 6 回合，并在之后 3 回合使其攻击提高 80%；场上每有一个召唤物，你获得相当于 12.8% 最大生命的护盾。</p>
 <p class="skill-synergy">场上召唤物较多时施放「统御」，可同时恢复召唤物、延长其持续时间并获得更多护盾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">遗爆</span><strong>接在「群召」之后施放</strong>：之后 3 回合，召唤物倒下时，对它 2 格内的敌人造成相当于它最大生命 50% 的伤害。<small>（Lv.10 时 75%，Lv.20 时 100%）</small></p><p class="skill-link-leads">之后接着施放：「唤灵」（双灵）、「附能」（狂驱）、「灵体降临」（神临）</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="召唤物增伤 / 护盾" data-open="40" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="统御的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -855,6 +889,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
 <p class="skill-desc">召唤 2 只灵狼和 1 只精怪作战，持续 6 回合。</p>
 <p class="skill-synergy">战斗开始时或击败一波敌人后施放「群召」，可迅速补充召唤物。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">合围</span><strong>接在「附能」之后施放</strong>：召出的灵狼与精怪分散落在敌人身边。</p><p class="skill-link-leads">之后接着施放：「统御」（遗爆）、「献祭」（殉爆）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="召唤物生命 / 攻击" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="群召的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -867,6 +902,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">嘲讽</span></p>
 <p class="skill-desc" data-template="石守与你各获得 {p30} 最大生命的护盾；之后 3 回合，石守在比你远 3 格以内时仍能吸引敌人的攻击。">石守与你各获得 44.4% 最大生命的护盾；之后 3 回合，石守在比你远 3 格以内时仍能吸引敌人的攻击。</p>
 <p class="skill-synergy">让石守把远处的敌人也拉过去，同时给自己和石守加上护盾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">同心</span><strong>接在「巨像践踏」之后施放</strong>：之后 3 回合，石守受到的伤害转为你护盾的比例由 20% 提高至 50%。</p><p class="skill-link-leads">之后接着施放：「巨像践踏」（引踏）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="护盾" data-open="50" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="岩肤的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -879,6 +915,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="引爆生命最低的召唤物，对其 2 格内所有敌人造成相当于该召唤物当前生命 {p150} 的伤害；引爆的是灵狼时，召回一只持续 3 回合的灵狼。">引爆生命最低的召唤物，对其 2 格内所有敌人造成相当于该召唤物当前生命 210% 的伤害；引爆的是灵狼时，召回一只持续 3 回合的灵狼。</p>
 <p class="skill-synergy">敌人集中在召唤物附近时施放「献祭」；召唤物的当前生命越高，造成的伤害越高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">殉爆</span><strong>接在「群召」之后施放</strong>：再引爆一只召唤物。</p><p class="skill-link-leads">之后接着施放：「唤狼」（扑袭）</p></div>
 
 <div class="skill-levels" data-rate="0.044444444444444446" data-scaling="爆炸伤害" data-open="55" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="献祭的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -891,6 +928,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">眩晕</span></p>
 <p class="skill-desc" data-template="石守对其 2 格内所有敌人造成 {d250} 伤害，并使其眩晕 2 次行动。场上没有石守时，先召唤一尊。">石守对其 2 格内所有敌人造成 370% + 1525 伤害，并使其眩晕 2 次行动。场上没有石守时，先召唤一尊。</p>
 <p class="skill-synergy">石守站在敌群中间时收益最高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">引踏</span><strong>接在「岩肤」之后施放</strong>：践踏之前，先把石守 3 格内的敌人向它拉近 1 格。</p><p class="skill-link-leads">之后接着施放：「岩肤」（同心）</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="巨像践踏的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -903,6 +941,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">集火</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害并使其眩晕 1 次行动；之后 3 回合，所有召唤物优先攻击该敌人，对它造成的伤害提高 {p40}。若目标带有灵痕，「附能」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1586 伤害并使其眩晕 1 次行动；之后 3 回合，所有召唤物优先攻击该敌人，对它造成的伤害提高 59.2%。若目标带有灵痕，「附能」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「附能」配成两拍循环：召唤物先打上灵痕，「魂链」锁住目标、催快「附能」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中带灵痕的敌人时</strong>：「附能」的剩余冷却缩短 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="魂链的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -915,6 +954,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">集火</span><span class="tag">围猎</span></p>
 <p class="skill-desc" data-template="所有灵狼立即攻击同一名敌人 1 次，伤害为平时的 {p150}；目标身边每有另一个召唤物，再提高 15%，至多 45%。">所有灵狼立即攻击同一名敌人 1 次，伤害为平时的 222%；目标身边每有另一个召唤物，再提高 15%，至多 45%。</p>
 <p class="skill-synergy">灵狼围住同一名敌人时施放「群狼猎杀」，可集中造成伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">循迹</span><strong>命中带灵痕的敌人时</strong>：若目标倒下，灵狼立即扑向下一名敌人再咬一次，一次为限。</p><p class="skill-link-leads">之后接着施放：「月狼」（狼月）</p></div>
 
 <div class="skill-levels" data-rate="0.096" data-scaling="召唤物这一击的伤害" data-open="75" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="群狼猎杀的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -927,6 +967,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">终结</span></p>
 <p class="skill-desc">召唤 1 尊灵体作战，持续 12 回合，灵体的生命与攻击接近你的对应属性；场上的石守生命补满，12 回合内攻击提高至你本人的 100%。</p>
 <p class="skill-synergy">面对首领时施放「灵体降临」，增加一名战斗能力较强的召唤物，石守也一并强化。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">神临</span><strong>接在「统御」之后施放</strong>：灵体降临时，场上所有召唤物立即行动一次。</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="召唤物生命 / 攻击" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="灵体降临的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -939,6 +980,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">带动</span></p>
 <p class="skill-desc">召唤一只月狼，持续 12 回合，生命接近你本人，攻击与你相同，不占召唤物上限；月狼每次攻击，都让相邻的其他召唤物额外行动一次。</p>
 <p class="skill-synergy">月狼冲进狼群中间，带着身边的召唤物一起出手。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">狼月</span><strong>接在「群狼猎杀」之后施放</strong>：月狼长嚎：2 格内的敌人陷入畏惧，下一次行动改为后退，不攻击。</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="召唤物生命 / 攻击" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="月狼的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -951,6 +993,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害，带灵痕的敌人改为受到 {d450} 伤害；所有召唤物回复至最大生命，你获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1952 伤害，带灵痕的敌人改为受到 720% + 2745 伤害；所有召唤物回复至最大生命，你获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「统御」错开施放；召唤物满场时，它们已经替你铺好灵痕。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">众唱</span><strong>命中带灵痕的敌人时</strong>：每命中一名带灵痕的敌人，召唤一只持续 3 回合的精怪，至多 3 只。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="万灵齐鸣的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -964,6 +1007,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。石守化身泰坦 7 回合：生命补满，攻击翻倍，每次攻击波及目标周围 1 格。场上没有石守时，先召唤一尊。</p>
 <p class="skill-synergy">石守化身泰坦，前排同时成为主要输出。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="召唤物生命 / 攻击" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="泰坦的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：召唤物生命 / 攻击提高 60%</p>
@@ -975,6 +1019,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">齐攻</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d400} 伤害，并使其带上灵痕 3 回合；召唤石守卫、灵狼和精怪各 1 只，持续 12 回合，不占召唤物上限；随后场上所有召唤物立即行动 1 次，此次伤害提高 100%。">射程内有敌人时可施放：对射程内所有敌人造成 640% + 2440 伤害，并使其带上灵痕 3 回合；召唤石守卫、灵狼和精怪各 1 只，持续 12 回合，不占召唤物上限；随后场上所有召唤物立即行动 1 次，此次伤害提高 100%。</p>
 <p class="skill-synergy">召唤师的觉醒技：即使召唤物已达到上限，「灵界之门」仍可额外召唤 3 只，适合在面对首领或大量敌人时施放。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害 / 召唤物生命 / 攻击" data-open="60" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="灵界之门的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -988,6 +1033,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连射</span><span class="tag">加速</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人连续射出 3 枚飞弹，每枚造成 {d70} 伤害；目标倒下时，余下的飞弹转向最近的敌人。这次施放计为 2 次，计入加速。">对射程内一名敌人连续射出 3 枚飞弹，每枚造成 98% + 427 伤害；目标倒下时，余下的飞弹转向最近的敌人。这次施放计为 2 次，计入加速。</p>
 <p class="skill-synergy">转职后最先学到的加速手段：两次「奥术飞弹」再施放一个技能，就能再行动一次。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">分光</span><strong>接在「时滞」之后施放</strong>：三枚飞弹分别射向不同的敌人。</p><p class="skill-link-leads">之后接着施放：「奥术冲击」（回震）、「时爆」（催时）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="奥术飞弹的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -1000,6 +1046,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">破甲</span></p>
 <p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。使 2 格内所有敌人眩晕，跳过 1 次行动，并使其破甲 2 回合、获得持续 2 回合的冻结标记。</p>
 <p class="skill-synergy">受到包围时，先以「时滞」限制敌人行动，再以「霜火」「闪电链」或「碎冰」消耗冻结标记。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「奥术飞弹」（分光）、「虚空射线」（穿空）</p></div>
 
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="时滞的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -1012,6 +1059,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">回复</span><span class="tag">净化</span></p>
 <p class="skill-desc" data-template="若 2 回合前的生命高于当前生命，回复至该值；移除身上的负面状态，并获得 {p15} 最大生命的护盾。">若 2 回合前的生命高于当前生命，回复至该值；移除身上的负面状态，并获得 24% 最大生命的护盾。</p>
 <p class="skill-synergy">挨了一轮重击之后施放「回溯」，把这两回合受的伤一次拿回来。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">溯回</span><strong>接在「虚空射线」之后施放</strong>：「虚空射线」的冷却立即结束。</p></div>
 
 <div class="skill-levels" data-rate="0.04285714285714286" data-scaling="护盾" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="回溯的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -1024,6 +1072,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">再行动</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人及其 1 格内的敌人造成 {d240} 伤害；在再行动时施放，伤害提高 50%。">对射程内一名敌人及其 1 格内的敌人造成 355.2% + 1464 伤害；在再行动时施放，伤害提高 50%。</p>
 <p class="skill-synergy">两套打法共用的核心：攒够加速在再行动时施放，或先把敌人拉到一起再施放。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">回震</span><strong>接在「奥术飞弹」之后施放</strong>：你下一次行动前，同一处再爆一次，对 1 格内的敌人造成 120% 攻击的伤害。<small>（Lv.10 时 180%，Lv.20 时 240%）</small></p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="奥术冲击的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -1036,6 +1085,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">拉近</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d250} 伤害，并把它们向其中敌人最密集的一处拉近 1 格；获得 {p40} 最大生命的护盾；之后 3 回合，加速所需的施放次数减为 2 次。">射程内有敌人时可施放：对射程内所有敌人造成 400% + 1525 伤害，并把它们向其中敌人最密集的一处拉近 1 格；获得 64% 最大生命的护盾；之后 3 回合，加速所需的施放次数减为 2 次。</p>
 <p class="skill-synergy">施放「时空裂隙」之后连续施法，几乎每回合都能再行动一次。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">封隙</span><strong>接在「坍缩」之后施放</strong>：被拉近的敌人下一次行动不能移动。</p><p class="skill-link-leads">之后接着施放：「坍缩」（连坍）、「引力场」（滞重）</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="时空裂隙的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -1049,6 +1099,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。其余技能的剩余冷却各缩短 2 回合，觉醒技除外；获得 {p10} 最大生命的护盾。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。其余技能的剩余冷却各缩短 2 回合，觉醒技除外；获得 14.8% 最大生命的护盾。</p>
 <p class="skill-synergy">刚施放完冷却较长的技能后施放「时流」，让它早两回合回来。</p>
 
+
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="护盾" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="时流的技能等级" /></label><output class="level-value">Lv.12</output></div>
 <p class="level-total">Lv.12（角色 100 级开放）：护盾提高 48%</p>
@@ -1060,6 +1111,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">拉近</span><span class="tag">持续</span></p>
 <p class="skill-desc" data-template="在射程内敌人最密集处制造引力井，持续 3 回合：每回合开始时，把 2 格内的敌人向中心拉近 1 格，并造成 {d80} 伤害。">在射程内敌人最密集处制造引力井，持续 3 回合：每回合开始时，把 2 格内的敌人向中心拉近 1 格，并造成 118.4% + 488 伤害。</p>
 <p class="skill-synergy">引力坍缩打法的起手：先以「引力井」把散开的敌人收拢，再以「坍缩」收尾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">回引</span><strong>接在「斥力」之后施放</strong>：引力井落下时立即先拉一次，并造成一次伤害。</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="引力井的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -1072,6 +1124,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">聚拢</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人及其 1 格内的所有敌人造成 {d200} 伤害；目标 1 格内每有一名其他敌人，伤害提高 25%，至多 100%。">对射程内一名敌人及其 1 格内的所有敌人造成 296% + 1220 伤害；目标 1 格内每有一名其他敌人，伤害提高 25%，至多 100%。</p>
 <p class="skill-synergy">先以「引力井」「时空裂隙」把敌人拉到一起，再以「坍缩」收尾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连坍</span><strong>接在「时空裂隙」之后施放</strong>：若击杀目标，在下一名敌人处再坍缩一次，一次为限。</p><p class="skill-link-leads">之后接着施放：「时空裂隙」（封隙）、「斥力」（斥甲）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="坍缩的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -1084,6 +1137,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">延爆</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d180} 伤害，并留下时间印记 2 回合；印记结束时爆炸，对它造成 {d250} 伤害，期间你每施放一次技能，爆炸伤害提高 25%。">对射程内一名敌人造成 266.4% + 1098 伤害，并留下时间印记 2 回合；印记结束时爆炸，对它造成 370% + 1525 伤害，期间你每施放一次技能，爆炸伤害提高 25%。</p>
 <p class="skill-synergy">留下「时爆」之后连续施法，施放越密，爆炸越重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">催时</span><strong>接在「奥术飞弹」之后施放</strong>：时间印记提前 1 回合爆炸。</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="时爆的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -1096,6 +1150,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">加速</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害并使其眩晕 1 次行动；这次施放计为 2 次，计入加速。若在再行动时施放，「奥术冲击」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1586 伤害并使其眩晕 1 次行动；这次施放计为 2 次，计入加速。若在再行动时施放，「奥术冲击」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「奥术冲击」配成两拍循环：「虚空射线」攒加速、催快「奥术冲击」，再在再行动时施放「奥术冲击」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">穿空</span><strong>接在「时滞」之后施放</strong>：射线贯穿：目标身后一条直线上的敌人都受到同样的伤害。</p><p class="skill-link-leads">之后接着施放：「回溯」（溯回）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="虚空射线的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -1108,6 +1163,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">击退</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d150} 伤害并将其击退 2 格，撞上岩石、场地边缘或其他敌人时额外受到撞击伤害；获得 {p30} 最大生命的护盾。">对 2 格内所有敌人造成 222% + 915 伤害并将其击退 2 格，撞上岩石、场地边缘或其他敌人时额外受到撞击伤害；获得 44.4% 最大生命的护盾。</p>
 <p class="skill-synergy">敌人贴身时以「斥力」推开，把它们挤到一起，再以「坍缩」收尾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">斥甲</span><strong>接在「坍缩」之后施放</strong>：之后 2 回合，敌人走到你身边时被推开 1 格。</p><p class="skill-link-leads">之后接着施放：「引力井」（回引）</p></div>
 
 <div class="skill-levels" data-rate="0.096" data-scaling="伤害 / 护盾" data-open="75" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="斥力的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -1121,6 +1177,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 2 回合，每回合第一个造成伤害的技能重复施放一次，重复的那一次伤害为 {p60}，不计入加速。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 2 回合，每回合第一个造成伤害的技能重复施放一次，重复的那一次伤害为 96%，不计入加速。</p>
 <p class="skill-synergy">先施放「双重咏唱」，再施放「奥术冲击」或「时爆」这类伤害高的技能。</p>
 
+
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="双重咏唱的技能等级" /></label><output class="level-value">Lv.5</output></div>
 <p class="level-total">Lv.5（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 610 点固定伤害</p>
@@ -1132,6 +1189,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">增伤</span><span class="tag">破甲</span></p>
 <p class="skill-desc" data-template="使射程内所有敌人带上引力 3 回合：破甲，且 1 格内每有另一名敌人，受到的伤害提高 {p10}，至多 {p40}。">使射程内所有敌人带上引力 3 回合：破甲，且 1 格内每有另一名敌人，受到的伤害提高 16%，至多 64%。</p>
 <p class="skill-synergy">把敌人拉到一起之后施放「引力场」，所有范围技能都吃得到增伤。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">滞重</span><strong>接在「时空裂隙」之后施放</strong>：之后 3 回合，带引力的敌人每次行动最多移动 1 格。</p><p class="skill-link-leads">之后接着施放：「星陨」（星引）</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="增伤" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="引力场的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -1144,6 +1202,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害，并使其眩晕 1 次行动；1 格内有其他敌人的敌人改为受到 {d420} 伤害。获得 {p40} 最大生命的护盾；这次施放计为 2 次，计入加速。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1952 伤害，并使其眩晕 1 次行动；1 格内有其他敌人的敌人改为受到 672% + 2562 伤害。获得 64% 最大生命的护盾；这次施放计为 2 次，计入加速。</p>
 <p class="skill-synergy">与「时空裂隙」错开施放；先把敌人拉到一起，再以「星陨」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">星引</span><strong>接在「引力场」之后施放</strong>：星陨落下之前，先把射程内的敌人向最密集处拉近 1 格。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="星陨的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -1157,6 +1216,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，加速不再计数，改为每回合都再行动一次；期间技能造成的伤害提高 {p15}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，加速不再计数，改为每回合都再行动一次；期间技能造成的伤害提高 24%。</p>
 <p class="skill-synergy">施放「刹那」之后每回合都行动两次，同样的回合里放出更多技能。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="刹那的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -1168,6 +1228,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">停止</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程外扩 2 格内的所有敌人造成 {d400} 伤害，并使其停止 2 次行动；停止期间它们受到的伤害累计，停止结束时再结算累计量的 {p40}。">射程内有敌人时可施放：对射程外扩 2 格内的所有敌人造成 640% + 2440 伤害，并使其停止 2 次行动；停止期间它们受到的伤害累计，停止结束时再结算累计量的 64%。</p>
 <p class="skill-synergy">奥术师的觉醒技：趁敌人停住时多施放几轮技能，或把它们拉到一起；停止结束时还会再结算一截伤害。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.1">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="时停的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -1210,80 +1271,120 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">奥术师转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 80～146 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～148 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-arcanist-0" data-toc-label="奥术师 · 时序加速配置" tabindex="-1">奥术师 · 时序加速</h3>
-<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 125 层</small></span>
+<span class="build-score"><span>等效第 <strong>127</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 9.9 L222.4 21.1 L245.9 26.8 L269.5 13.6 L293.0 17.4 L316.5 30.5 L340.1 49.3 L363.6 39.9 L387.2 54.9 L410.7 54.9 L434.3 71.8 L457.8 86.8 L481.4 94.3 L504.9 94.3 L528.5 90.5 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 9.9 L222.4 21.1 L245.9 26.8 L269.5 13.6 L293.0 17.4 L316.5 30.5 L340.1 49.3 L363.6 39.9 L387.2 54.9 L410.7 54.9 L434.3 71.8 L457.8 86.8 L481.4 94.3 L504.9 94.3 L528.5 90.5 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 13.6 L146.6 8.0 L169.1 9.9 L191.7 26.8 L214.2 8.0 L236.7 15.5 L259.2 36.1 L281.7 21.1 L304.3 32.4 L326.8 11.7 L349.3 23.0 L371.8 56.8 L394.3 53.0 L416.9 73.6 L439.4 60.5 L461.9 64.3 L484.4 96.1 L507.0 84.9 L529.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 13.6 L146.6 8.0 L169.1 9.9 L191.7 26.8 L214.2 8.0 L236.7 15.5 L259.2 36.1 L281.7 21.1 L304.3 32.4 L326.8 11.7 L349.3 23.0 L371.8 56.8 L394.3 53.0 L416.9 73.6 L439.4 60.5 L461.9 64.3 L484.4 96.1 L507.0 84.9 L529.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>冰霜新星</strong><small>Lv.20</small></li><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>时流</strong><small>Lv.12</small></li><li><strong>星陨</strong><small>Lv.3</small></li><li><strong>刹那</strong><small>Lv.2</small></li><li class="is-ascend"><strong>时停</strong><small>Lv.2</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>时流</strong><small>Lv.12</small></li><li><strong>冰霜新星</strong><small>Lv.11</small></li><li><strong>星陨</strong><small>Lv.3</small></li><li><strong>刹那</strong><small>Lv.1</small></li><li class="is-ascend"><strong>时停</strong><small>Lv.9</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「时隙」Lv.17、「重力」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>全部体质</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>伤害吸血</dd></div>
 <div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1295</b></span><span>生命 <b>5326</b></span><span>护甲 <b>88</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-elementalist-0" data-toc-label="元素师 · 控场配置" tabindex="-1">元素师 · 控场</h3>
-<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 116 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 9.9 L81.1 9.9 L104.6 23.0 L128.2 11.7 L151.7 24.9 L175.3 8.0 L198.8 30.5 L222.4 26.8 L245.9 39.9 L269.5 9.9 L293.0 41.8 L316.5 43.6 L340.1 60.5 L363.6 68.0 L387.2 86.8 L410.7 51.1 L434.3 71.8 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 9.9 L81.1 9.9 L104.6 23.0 L128.2 11.7 L151.7 24.9 L175.3 8.0 L198.8 30.5 L222.4 26.8 L245.9 39.9 L269.5 9.9 L293.0 41.8 L316.5 43.6 L340.1 60.5 L363.6 68.0 L387.2 86.8 L410.7 51.1 L434.3 71.8 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>吸魂</strong><small>Lv.18</small></li><li><strong>元素风暴</strong><small>Lv.13</small></li><li><strong>极寒领域</strong><small>Lv.5</small></li><li><strong>绝对零度</strong><small>Lv.2</small></li><li class="is-ascend"><strong>元素天灾</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「冻脉」Lv.17、「引燃」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1337</b></span><span>生命 <b>5487</b></span><span>护甲 <b>206</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-arcanist-1" data-toc-label="奥术师 · 引力坍缩配置" tabindex="-1">奥术师 · 引力坍缩</h3>
-<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 116 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 11.7 L104.6 8.0 L128.2 13.6 L151.7 13.6 L175.3 9.9 L198.8 38.0 L222.4 28.6 L245.9 34.3 L269.5 8.0 L293.0 41.8 L316.5 45.5 L340.1 69.9 L363.6 86.8 L387.2 81.1 L410.7 56.8 L434.3 75.5 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 11.7 L104.6 8.0 L128.2 13.6 L151.7 13.6 L175.3 9.9 L198.8 38.0 L222.4 28.6 L245.9 34.3 L269.5 8.0 L293.0 41.8 L316.5 45.5 L340.1 69.9 L363.6 86.8 L387.2 81.1 L410.7 56.8 L434.3 75.5 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>时空裂隙</strong><small>Lv.13</small></li><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>引力井</strong><small>Lv.11</small></li><li><strong>虚空射线</strong><small>Lv.2</small></li><li><strong>斥力</strong><small>Lv.6</small></li><li class="is-ascend"><strong>时停</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「时隙」Lv.17、「重力」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>全部体质</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魔杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1269</b></span><span>生命 <b>5617</b></span><span>护甲 <b>206</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1328</b></span><span>生命 <b>5520</b></span><span>护甲 <b>85</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-conjurer-1" data-toc-label="召唤师 · 巨像镇守配置" tabindex="-1">召唤师 · 巨像镇守</h3>
-<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 113 层</small></span>
+<span class="build-score"><span>等效第 <strong>121</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 11.7 L175.3 8.0 L198.8 21.1 L222.4 17.4 L245.9 38.0 L269.5 19.3 L293.0 26.8 L316.5 60.5 L340.1 73.6 L363.6 73.6 L387.2 86.8 L410.7 88.6 L434.3 96.1 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 11.7 L175.3 8.0 L198.8 21.1 L222.4 17.4 L245.9 38.0 L269.5 19.3 L293.0 26.8 L316.5 60.5 L340.1 73.6 L363.6 73.6 L387.2 86.8 L410.7 88.6 L434.3 96.1 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 15.5 L191.7 9.9 L214.2 8.0 L236.7 21.1 L259.2 41.8 L281.7 15.5 L304.3 79.3 L326.8 21.1 L349.3 43.6 L371.8 71.8 L394.3 62.4 L416.9 96.1 L439.4 75.5 L461.9 96.1 L484.4 92.4 L507.0 96.1 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 15.5 L191.7 9.9 L214.2 8.0 L236.7 21.1 L259.2 41.8 L281.7 15.5 L304.3 79.3 L326.8 21.1 L349.3 43.6 L371.8 71.8 L394.3 62.4 L416.9 96.1 L439.4 75.5 L461.9 96.1 L484.4 92.4 L507.0 96.1 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>冰霜新星</strong><small>Lv.20</small></li><li><strong>石守</strong><small>Lv.1</small></li><li><strong>巨像践踏</strong><small>Lv.8</small></li><li><strong>灵体降临</strong><small>Lv.1</small></li><li><strong>万灵齐鸣</strong><small>Lv.3</small></li><li class="is-ascend"><strong>灵界之门</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>巨像践踏</strong><small>Lv.8</small></li><li><strong>魂链</strong><small>Lv.7</small></li><li><strong>灵体降临</strong><small>Lv.5</small></li><li><strong>万灵齐鸣</strong><small>Lv.3</small></li><li class="is-ascend"><strong>灵界之门</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「铸魂」Lv.17、「血契」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1318</b></span><span>生命 <b>4710</b></span><span>护甲 <b>208</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-arcanist-1" data-toc-label="奥术师 · 引力坍缩配置" tabindex="-1">奥术师 · 引力坍缩</h3>
+<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 17.4 L191.7 15.5 L214.2 17.4 L236.7 47.4 L259.2 51.1 L281.7 26.8 L304.3 60.5 L326.8 26.8 L349.3 64.3 L371.8 68.0 L394.3 60.5 L416.9 81.1 L439.4 68.0 L461.9 92.4 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 17.4 L191.7 15.5 L214.2 17.4 L236.7 47.4 L259.2 51.1 L281.7 26.8 L304.3 60.5 L326.8 26.8 L349.3 64.3 L371.8 68.0 L394.3 60.5 L416.9 81.1 L439.4 68.0 L461.9 92.4 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>星陨</strong><small>Lv.3</small></li><li><strong>引力井</strong><small>Lv.11</small></li><li><strong>坍缩</strong><small>Lv.10</small></li><li><strong>虚空射线</strong><small>Lv.7</small></li><li class="is-ascend"><strong>时停</strong><small>Lv.2</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「时隙」Lv.17、「重力」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1368</b></span><span>生命 <b>4820</b></span><span>护甲 <b>206</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-elementalist-1" data-toc-label="元素师 · 爆发配置" tabindex="-1">元素师 · 爆发</h3>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 118 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 13.6 L191.7 26.8 L214.2 11.7 L236.7 34.3 L259.2 45.5 L281.7 30.5 L304.3 51.1 L326.8 32.4 L349.3 73.6 L371.8 79.3 L394.3 84.9 L416.9 96.1 L439.4 73.6 L461.9 96.1 L484.4 98.0 L507.0 94.3 L529.5 96.1 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 13.6 L191.7 26.8 L214.2 11.7 L236.7 34.3 L259.2 45.5 L281.7 30.5 L304.3 51.1 L326.8 32.4 L349.3 73.6 L371.8 79.3 L394.3 84.9 L416.9 96.1 L439.4 73.6 L461.9 96.1 L484.4 98.0 L507.0 94.3 L529.5 96.1 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>冰霜新星</strong><small>Lv.11</small></li><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>霜雷</strong><small>Lv.3</small></li><li><strong>焚城</strong><small>Lv.12</small></li><li><strong>雷神</strong><small>Lv.2</small></li><li class="is-ascend"><strong>元素天灾</strong><small>Lv.8</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「冻脉」Lv.17、「引燃」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1374</b></span><span>生命 <b>5075</b></span><span>护甲 <b>85</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-elementalist-0" data-toc-label="元素师 · 控场配置" tabindex="-1">元素师 · 控场</h3>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 15.5 L56.5 15.5 L79.0 11.7 L101.6 9.9 L124.1 26.8 L146.6 9.9 L169.1 24.9 L191.7 34.3 L214.2 11.7 L236.7 51.1 L259.2 62.4 L281.7 38.0 L304.3 54.9 L326.8 28.6 L349.3 64.3 L371.8 66.1 L394.3 64.3 L416.9 92.4 L439.4 64.3 L461.9 86.8 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 15.5 L56.5 15.5 L79.0 11.7 L101.6 9.9 L124.1 26.8 L146.6 9.9 L169.1 24.9 L191.7 34.3 L214.2 11.7 L236.7 51.1 L259.2 62.4 L281.7 38.0 L304.3 54.9 L326.8 28.6 L349.3 64.3 L371.8 66.1 L394.3 64.3 L416.9 92.4 L439.4 64.3 L461.9 86.8 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>闪现</strong><small>Lv.5</small></li><li><strong>吸魂</strong><small>Lv.12</small></li><li><strong>元素风暴</strong><small>Lv.13</small></li><li><strong>极寒领域</strong><small>Lv.1</small></li><li><strong>绝对零度</strong><small>Lv.1</small></li><li class="is-ascend"><strong>元素天灾</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「冻脉」Lv.17、「引燃」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1643</b></span><span>生命 <b>5134</b></span><span>护甲 <b>206</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-conjurer-0" data-toc-label="召唤师 · 群灵围攻配置" tabindex="-1">召唤师 · 群灵围攻</h3>
+<span class="build-score"><span>等效第 <strong>114</strong> 层</span><small>过半至第 109 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 9.9 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 30.5 L259.2 51.1 L281.7 41.8 L304.3 94.3 L326.8 51.1 L349.3 90.5 L371.8 96.1 L394.3 94.3 L416.9 98.0 L439.4 94.3 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 9.9 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 30.5 L259.2 51.1 L281.7 41.8 L304.3 94.3 L326.8 51.1 L349.3 90.5 L371.8 96.1 L394.3 94.3 L416.9 98.0 L439.4 94.3 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>万灵齐鸣</strong><small>Lv.3</small></li><li><strong>统御</strong><small>Lv.13</small></li><li><strong>魂链</strong><small>Lv.7</small></li><li><strong>群召</strong><small>Lv.8</small></li><li><strong>月狼</strong><small>Lv.4</small></li><li class="is-ascend"><strong>灵界之门</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「铸魂」Lv.17、「血契」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>全部体质</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魔杖</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
@@ -1292,53 +1393,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1216</b></span><span>生命 <b>4503</b></span><span>护甲 <b>206</b></span></dd></div>
 </dl>
 </section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-conjurer-0" data-toc-label="召唤师 · 群灵围攻配置" tabindex="-1">召唤师 · 群灵围攻</h3>
-<span class="build-score"><span>等效第 <strong>114</strong> 层</span><small>过半至第 113 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 30.5 L222.4 32.4 L245.9 38.0 L269.5 43.6 L293.0 26.8 L316.5 53.0 L340.1 94.3 L363.6 88.6 L387.2 98.0 L410.7 86.8 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 30.5 L222.4 32.4 L245.9 38.0 L269.5 43.6 L293.0 26.8 L316.5 53.0 L340.1 94.3 L363.6 88.6 L387.2 98.0 L410.7 86.8 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>奥术弹</strong><small>Lv.18</small></li><li><strong>唤灵</strong><small>Lv.7</small></li><li><strong>万灵齐鸣</strong><small>Lv.3</small></li><li><strong>群召</strong><small>Lv.1</small></li><li><strong>月狼</strong><small>Lv.4</small></li><li class="is-ascend"><strong>灵界之门</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「铸魂」Lv.17、「血契」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>全部体质</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魔杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1269</b></span><span>生命 <b>4765</b></span><span>护甲 <b>206</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-elementalist-1" data-toc-label="元素师 · 爆发配置" tabindex="-1">元素师 · 爆发</h3>
-<span class="build-score"><span>等效第 <strong>111</strong> 层</span><small>过半至第 110 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 11.7 L175.3 13.6 L198.8 47.4 L222.4 36.1 L245.9 56.8 L269.5 68.0 L293.0 21.1 L316.5 81.1 L340.1 86.8 L363.6 84.9 L387.2 96.1 L410.7 98.0 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 11.7 L175.3 13.6 L198.8 47.4 L222.4 36.1 L245.9 56.8 L269.5 68.0 L293.0 21.1 L316.5 81.1 L340.1 86.8 L363.6 84.9 L387.2 96.1 L410.7 98.0 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>冰霜新星</strong><small>Lv.1</small></li><li><strong>闪电链</strong><small>Lv.1</small></li><li><strong>冰甲</strong><small>Lv.14</small></li><li><strong>焚城</strong><small>Lv.12</small></li><li><strong>焚心</strong><small>Lv.2</small></li><li class="is-ascend"><strong>元素天灾</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「术式屏障」Lv.20、「法力涌动」Lv.20、「冻脉」Lv.17、「引燃」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>全部体质</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>法杖</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1309</b></span><span>生命 <b>6416</b></span><span>护甲 <b>85</b></span></dd></div>
-</dl>
-</section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota5 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota6 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-ranger.html"><small>上一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-assassin.html"><small>下一篇</small><span>刺客<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota5）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota6）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

@@ -246,6 +246,11 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.skill-link { margin: 0; padding-left: 10px; border-left: 2px solid var(--gold-mid, var(--line-mid)); font-size: 12.5px; }
+.skill-link p { margin: 2px 0; }
+.skill-link .tag { margin-right: 6px; }
+.skill-link small { color: var(--ink-muted); }
+.skill-link-leads { color: var(--ink-muted); }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -431,13 +436,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-netherlord" data-toc-id="spec-netherlord" title="冥王"><span>冥王</span></a></li><li class="toc-level-3"><a href="#spec-soulcaster" data-toc-id="spec-soulcaster" title="魂术师"><span>魂术师</span></a></li><li class="toc-level-3"><a href="#spec-psion" data-toc-id="spec-psion" title="念动师"><span>念动师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-netherlord" data-toc-id="skills-netherlord" title="冥王专属"><span>冥王专属</span></a></li><li class="toc-level-3"><a href="#skills-soulcaster" data-toc-id="skills-soulcaster" title="魂术师专属"><span>魂术师专属</span></a></li><li class="toc-level-3"><a href="#skills-psion" data-toc-id="skills-psion" title="念动师专属"><span>念动师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-netherlord-1" data-toc-id="build-netherlord-1" title="冥王 · 亡者不息配置"><span>冥王 · 亡者不息配置</span></a></li><li class="toc-level-3"><a href="#build-netherlord-0" data-toc-id="build-netherlord-0" title="冥王 · 影海配置"><span>冥王 · 影海配置</span></a></li><li class="toc-level-3"><a href="#build-soulcaster-1" data-toc-id="build-soulcaster-1" title="魂术师 · 魂力狙杀配置"><span>魂术师 · 魂力狙杀配置</span></a></li><li class="toc-level-3"><a href="#build-psion-0" data-toc-id="build-psion-0" title="念动师 · 念力冲击配置"><span>念动师 · 念力冲击配置</span></a></li><li class="toc-level-3"><a href="#build-psion-1" data-toc-id="build-psion-1" title="念动师 · 精神禁锢配置"><span>念动师 · 精神禁锢配置</span></a></li><li class="toc-level-3"><a href="#build-soulcaster-0" data-toc-id="build-soulcaster-0" title="魂术师 · 魂爆连锁配置"><span>魂术师 · 魂爆连锁配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-netherlord" data-toc-id="spec-netherlord" title="冥王"><span>冥王</span></a></li><li class="toc-level-3"><a href="#spec-soulcaster" data-toc-id="spec-soulcaster" title="魂术师"><span>魂术师</span></a></li><li class="toc-level-3"><a href="#spec-psion" data-toc-id="spec-psion" title="念动师"><span>念动师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-netherlord" data-toc-id="skills-netherlord" title="冥王专属"><span>冥王专属</span></a></li><li class="toc-level-3"><a href="#skills-soulcaster" data-toc-id="skills-soulcaster" title="魂术师专属"><span>魂术师专属</span></a></li><li class="toc-level-3"><a href="#skills-psion" data-toc-id="skills-psion" title="念动师专属"><span>念动师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-netherlord-0" data-toc-id="build-netherlord-0" title="冥王 · 影海配置"><span>冥王 · 影海配置</span></a></li><li class="toc-level-3"><a href="#build-psion-0" data-toc-id="build-psion-0" title="念动师 · 念力冲击配置"><span>念动师 · 念力冲击配置</span></a></li><li class="toc-level-3"><a href="#build-netherlord-1" data-toc-id="build-netherlord-1" title="冥王 · 亡者不息配置"><span>冥王 · 亡者不息配置</span></a></li><li class="toc-level-3"><a href="#build-soulcaster-1" data-toc-id="build-soulcaster-1" title="魂术师 · 魂力狙杀配置"><span>魂术师 · 魂力狙杀配置</span></a></li><li class="toc-level-3"><a href="#build-psion-1" data-toc-id="build-psion-1" title="念动师 · 精神禁锢配置"><span>念动师 · 精神禁锢配置</span></a></li><li class="toc-level-3"><a href="#build-soulcaster-0" data-toc-id="build-soulcaster-0" title="魂术师 · 魂爆连锁配置"><span>魂术师 · 魂爆连锁配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/necromancer.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.8.0-ota5</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0-ota6</p>
 <h1>死灵法师</h1>
 <p class="page-description">远程 2 格。本体是所有职业中最弱的，依靠将击倒的敌人提取为影子、收入影子池逐步壮大；影子越多、阶位越高，你的战力越强。</p>
 <p class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span><a class="tag tag-link" href="#spec-netherlord">冥王</a><a class="tag tag-link" href="#spec-soulcaster">魂术师</a><a class="tag tag-link" href="#spec-psion">念动师</a></p>
@@ -455,7 +460,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-netherlord" data-toc-label="冥王" tabindex="-1">冥王<small>觉醒后称「暗影君王」</small></h3>
 <p class="spec-pitch">影子铺满战场，倒下的影子不断重新站起。</p>
-<a class="spec-strength" href="#build-netherlord-1">终局参考 · 等效第 <strong>122</strong> 层</a>
+<a class="spec-strength" href="#build-netherlord-0">终局参考 · 等效第 <strong>122</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>影子上限增加 1 个，暗影召唤的冷却时间由 3 回合缩短为 2 回合。</dd></div>
 <div><dt>觉醒提升</dt><dd>暗影召唤的冷却时间由 2 回合缩短为 1 回合。</dd></div>
@@ -470,7 +475,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-soulcaster" data-toc-label="魂术师" tabindex="-1">魂术师<small>觉醒后称「噬魂者」</small></h3>
 <p class="spec-pitch">以影子为燃料，本体以暗蚀箭输出。</p>
-<a class="spec-strength" href="#build-soulcaster-1">终局参考 · 等效第 <strong>120</strong> 层</a>
+<a class="spec-strength" href="#build-soulcaster-1">终局参考 · 等效第 <strong>119</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>影子倒下或被吞噬时，获得 1 层魂力（上限 3 层），并回复 5% 最大生命。暗蚀箭消耗全部魂力，每层伤害提高 60%。最大生命提高 35%。</dd></div>
 <div><dt>觉醒提升</dt><dd>每层魂力的增伤由 60% 提高至 100%。</dd></div>
@@ -485,7 +490,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-psion" data-toc-label="念动师" tabindex="-1">念动师<small>觉醒后称「心灵主宰」</small></h3>
 <p class="spec-pitch">以念力击退敌人，撞墙与眩晕为影子创造机会。</p>
-<a class="spec-strength" href="#build-psion-0">终局参考 · 等效第 <strong>119</strong> 层</a>
+<a class="spec-strength" href="#build-psion-0">终局参考 · 等效第 <strong>120</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>撞击伤害提高 100%。被眩晕的敌人受到影子的伤害提高 30%。最大生命提高 25%，敌人的荆棘与棘刺反弹到你身上的伤害降低 50%。</dd></div>
 <div><dt>觉醒提升</dt><dd>撞击伤害的加成由 100% 提高至 200%。</dd></div>
@@ -505,6 +510,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">影子</span></p>
 <p class="skill-desc">按影子池的顺序召唤 1 个尚未上场的影子，持续作战至被击倒。若影子池为空，或其中的影子均已上场，则召唤 1 个无名之影。</p>
 <p class="skill-synergy">战斗开始时施放「暗影召唤」，可尽早让影子参与作战；影子池中的影子越强，收益越高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">寻印</span><strong>接在「暗蚀箭」之后施放</strong>：召出的影子落在带君王印记的敌人身边，并立即对它出手一次；没有带印记的敌人时，落在最近的敌人身边。</p><p class="skill-link-leads">之后接着施放：「吞噬」（饲影）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：影子池已全部在场时，召出的无名之影生命提高 50%。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="影子生命 / 攻击" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="暗影召唤的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -517,6 +523,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">尸骸</span></p>
 <p class="skill-desc">使本场战斗中倒下的最多 2 名敌人化作普通阶影子，持续作战至本场战斗结束或影子被击倒。这些敌人在战后被提取为影子的概率翻倍。</p>
 <p class="skill-synergy">先击倒敌人，再施放「起来」召唤影子；影子池为空时，也可借此获得作战单位。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">骤起</span><strong>接在「吞噬」之后施放</strong>：起身的影子立即行动一次。</p><p class="skill-link-leads">之后接着施放：「君王领域」（烙魂）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：拉起的影子攻击提高 20%。</li><li><strong>魂术师</strong>：拉起的影子 3 回合后自爆，对 2 格内的敌人造成相当于其当前生命的伤害；自爆视为倒下，触发转职特性。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="影子生命 / 攻击" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="起来的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -529,6 +536,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">印记</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d150} 伤害，回复相当于造成伤害 40% 的生命，并施加持续 2 回合的君王印记；影子攻击该目标时，伤害提高 30%。">对射程内一名敌人造成 198% + 720 伤害，回复相当于造成伤害 40% 的生命，并施加持续 2 回合的君王印记；影子攻击该目标时，伤害提高 30%。</p>
 <p class="skill-synergy">优先以「暗蚀箭」标记需要集火的敌人，可提高影子对其造成的伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">勾魂</span><strong>命中眩晕的敌人时</strong>：之后 2 回合，所有影子优先朝它移动、优先攻击它。</p><p class="skill-link-leads">之后接着施放：「暗影召唤」（寻印）、「魂狱」（魂弦）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魂术师</strong>：对带君王印记的目标伤害提高 40%。</li></ul></div>
 <div class="skill-levels" data-rate="0.016842105263157894" data-scaling="伤害" data-open="1" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="暗蚀箭的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -541,6 +549,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">换位</span><span class="tag">替身</span></p>
 <p class="skill-desc">与敌人相邻时可施放：与距离敌人最远的影子交换位置，并闪避下一次攻击；交换位置的影子嘲讽敌人 1 回合。</p>
 <p class="skill-synergy">受到围攻时施放「影子交换」，可脱离近处敌人，并由影子吸引攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">缚影</span><strong>接在「隐匿」之后施放</strong>：换到你原位的影子缠住身边的敌人：与它相邻的敌人下一次行动不能移动。</p><p class="skill-link-leads">之后接着施放：「隐匿」（影噬）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：换位后，把新位置相邻的敌人击退 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="影子交换的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -553,6 +562,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d180} 伤害，并将其击退 2 格。目标撞上岩石或场地边缘时，受到撞击伤害并眩晕；撞上其他敌人时，双方均受到伤害。">对射程内一名敌人造成 266.4% + 900 伤害，并将其击退 2 格。目标撞上岩石或场地边缘时，受到撞击伤害并眩晕；撞上其他敌人时，双方均受到伤害。</p>
 <p class="skill-synergy">以「统治者之手」击退靠近的敌人，可使其撞上障碍物，或进入熔岩等危险地形。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">牵魂</span><strong>命中带君王印记的敌人时</strong>：目标不在你身边时，不再击退，改为把它拉到离它最近的影子身边；场上没有影子或无法拉动时照常击退。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：冷却时间由 4 回合缩短为 3 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="统治者之手的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -565,6 +575,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">影子</span><span class="tag">强化</span></p>
 <p class="skill-desc" data-template="之后 3 回合，所有影子造成的伤害提高 {p30}，并在每回合回复 {p8} 最大生命。">之后 3 回合，所有影子造成的伤害提高 44.4%，并在每回合回复 11.8% 最大生命。</p>
 <p class="skill-synergy">场上影子较多时施放「君王领域」，可同时提高它们的伤害并恢复生命。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">烙魂</span><strong>接在「起来」之后施放</strong>：之后 3 回合，攻击影子的敌人被打上君王印记 2 回合。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>念动师</strong>：领域持续期间，撞墙造成的眩晕延长至 2 次行动。</li></ul></div>
 <div class="skill-levels" data-rate="0.026666666666666665" data-scaling="影子增伤 / 回复" data-open="10" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="君王领域的技能等级" /></label><output class="level-value">Lv.19</output></div>
@@ -577,6 +588,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">回复</span><span class="tag">吞噬</span></p>
 <p class="skill-desc" data-template="消耗生命比例最低的一个影子，回复相当于其当前生命 {p80} 的生命。">消耗生命比例最低的一个影子，回复相当于其当前生命 118.4% 的生命。</p>
 <p class="skill-synergy">需要回复生命时，可施放「吞噬」消耗一名影子，再召唤新的影子。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">饲影</span><strong>接在「暗影召唤」之后施放</strong>：其余每个影子各回复 20% 最大生命。<small>（Lv.10 时 30%，Lv.20 时 40%）</small></p><p class="skill-link-leads">之后接着施放：「起来」（骤起）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魂术师</strong>：冷却时间由 5 回合缩短为 3 回合，吞噬后暗蚀箭的冷却立即结束。</li></ul></div>
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="回复" data-open="15" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="吞噬的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -589,6 +601,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">隐匿</span><span class="tag">闪避</span></p>
 <p class="skill-desc">之后 2 回合，若敌人的攻击范围内有影子，则敌人只会攻击影子；同时闪避下一次攻击。</p>
 <p class="skill-synergy">影子位于敌人的攻击范围内时施放「隐匿」，可减少自身受到的攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">影噬</span><strong>接在「影子交换」之后施放</strong>：之后 2 回合，你闪避攻击时，离攻击者最近的影子立即对它出手一次。</p><p class="skill-link-leads">之后接着施放：「影子交换」（缚影）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>冥王</strong>：隐匿期间，影子受到的伤害降低 30%。</li><li><strong>魂术师</strong>：隐匿期间，暗蚀箭命中后弹射到另一名敌人，造成 50% 伤害。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="15" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="隐匿的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -602,6 +615,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">影子</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d160} 伤害；场上每有一个影子，伤害提高 10%，至多 50%。">对射程内一名敌人造成 224% + 800 伤害；场上每有一个影子，伤害提高 10%，至多 50%。</p>
 <p class="skill-synergy">转职后最先学到的输出手段：影子越多，这一矛越重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">透骨</span><strong>命中带君王印记的敌人时</strong>：骨矛贯穿：目标身后一条直线上的敌人都受到同样的伤害。</p><p class="skill-link-leads">之后接着施放：「冥刺」（冥汲）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="骨矛的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -614,6 +628,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">影子</span><span class="tag">齐攻</span></p>
 <p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。所有影子立即额外行动 1 次，此次行动造成的伤害随技能等级提高。</p>
 <p class="skill-synergy">场上影子较多时施放「军令」，可增加它们的攻击次数。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「百鬼」（鬼哭）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="影子这一击的伤害" data-open="25" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="军令的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -626,6 +641,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">影子</span></p>
 <p class="skill-desc" data-template="获得相当于场上影子数量 × {p8} 最大生命的护盾（至少 {p15}）。">获得相当于场上影子数量 × 11.8% 最大生命的护盾（至少 22.2%）。</p>
 <p class="skill-synergy">冥王的保命手段：影子铺得越满，护盾越厚。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">骸墙</span><strong>接在「影替」之后施放</strong>：在你与最近一名尚未贴身的敌人之间立起两块骸墙，挡住来路，保留 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="护盾" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="骸甲的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -638,6 +654,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
 <p class="skill-desc">按影子池顺序召唤影子至数量上限；影子池不足时，以无名之影补足。召出的影子立即行动 1 次。</p>
 <p class="skill-synergy">冥王场上影子较少时施放「万骸」，可一次补足空缺的召唤位置。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">困魂</span><strong>接在「冥刺」之后施放</strong>：召出的影子行动之后，被 2 个以上影子围住的敌人眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「影怒」（嗜魂）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="影子生命 / 攻击" data-open="35" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="万骸的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -650,6 +667,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">增伤</span><span class="tag">复生</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：立即获得相当于 {p30} 最大生命的护盾。之后 4 回合，你和所有影子造成的伤害提高 {p50}，所有影子立即额外行动 1 次；期间倒下的影子立即以 50% 生命重新站起，每个影子限 2 次。期间倒下的敌人会化作普通阶影子，受影子数量上限约束。">射程内有敌人时可施放：立即获得相当于 48% 最大生命的护盾。之后 4 回合，你和所有影子造成的伤害提高 80%，所有影子立即额外行动 1 次；期间倒下的影子立即以 50% 生命重新站起，每个影子限 2 次。期间倒下的敌人会化作普通阶影子，受影子数量上限约束。</p>
 <p class="skill-synergy">面对首领或大量敌人时施放「影之君王」，可提高影子伤害并维持其作战能力。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">群起</span><strong>接在「冥约」之后施放</strong>：降临时，场上的尸骸全部化作普通阶影子，受影子数量上限约束。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="护盾 / 增伤" data-open="40" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="影之君王的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -662,6 +680,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">影子</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，影子造成的伤害提高 {p30}；施放时影子数量已达上限，改为提高 {p50}。">之后 3 回合，影子造成的伤害提高 48%；施放时影子数量已达上限，改为提高 80%。</p>
 <p class="skill-synergy">影海打法的增益：先铺满影子再施放。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">嗜魂</span><strong>接在「万骸」之后施放</strong>：之后 3 回合，影子击倒敌人时立即再行动一次，每个影子每回合一次。</p><p class="skill-link-leads">之后接着施放：「万爪」（扑魂）</p></div>
 
 <div class="skill-levels" data-rate="0.05454545454545454" data-scaling="影子增伤" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="影怒的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -674,6 +693,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">复生</span><span class="tag">影子</span></p>
 <p class="skill-desc" data-template="之后 3 回合，倒下的影子以 {p50} 生命重新站起，每个影子 1 次。">之后 3 回合，倒下的影子以 80% 生命重新站起，每个影子 1 次。</p>
 <p class="skill-synergy">亡者不息打法的起手：影子倒下也不怕。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">惊尸</span><strong>接在「骸盾」之后施放</strong>：之后 3 回合，影子重新站起时，与它相邻的敌人陷入畏惧：下一次行动改为后退，不攻击。</p><p class="skill-link-leads">之后接着施放：「骸盾」（棘骨）、「冥府」（回煞）</p></div>
 
 <div class="skill-levels" data-rate="0.06" data-scaling="站起时的生命" data-open="50" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="回魂的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -686,6 +706,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">影子</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="每个影子立即对其相邻的每名敌人各出手一次，伤害为平时的 {p150}。">每个影子立即对其相邻的每名敌人各出手一次，伤害为平时的 222%。</p>
 <p class="skill-synergy">影海打法的爆发：影子越多、围得越紧，打出的伤害越高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">扑魂</span><strong>接在「影怒」之后施放</strong>：出手之前，身边没有敌人的影子先扑到离它最近的敌人身边。</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="影子这一击的伤害" data-open="55" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="万爪的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -698,6 +719,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">减伤</span></p>
 <p class="skill-desc" data-template="所有影子获得相当于自身最大生命 {p40} 的护盾；之后 3 回合，影子受到的伤害降低 30%。">所有影子获得相当于自身最大生命 64% 的护盾；之后 3 回合，影子受到的伤害降低 30%。</p>
 <p class="skill-synergy">亡者不息打法的保护：首领出手前给影子套上护盾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">棘骨</span><strong>接在「回魂」之后施放</strong>：之后 3 回合，影子的护盾每挡下一次攻击，攻击者受到相当于 60% 攻击的伤害。<small>（Lv.10 时 90%，Lv.20 时 120%）</small></p><p class="skill-link-leads">之后接着施放：「回魂」（惊尸）、「影替」（影偿）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="影子护盾" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="骸盾的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -710,6 +732,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">印记</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害并施加君王印记；所有影子立即对它出手一次；「万骸」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1300 伤害并施加君王印记；所有影子立即对它出手一次；「万骸」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「万骸」配成两拍循环：「冥刺」点名集火、催快「万骸」，再以「万骸」把影子补满。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">冥汲</span><strong>接在「骨矛」之后施放</strong>：这次你与影子造成伤害的 20% 转为你的护盾。<small>（Lv.10 时 30%，Lv.20 时 40%）</small></p><p class="skill-link-leads">之后接着施放：「万骸」（困魂）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="冥刺的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -722,6 +745,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">复生</span><span class="tag">增伤</span></p>
 <p class="skill-desc">之后 5 回合，倒下的影子立即以最大生命重新站起，影子造成的伤害提高 10%。</p>
 <p class="skill-synergy">冥王在影子较多时施放「冥府」，可让倒下的影子继续作战。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">回煞</span><strong>接在「回魂」之后施放</strong>：之后 5 回合，影子重新站起时，立即对身边生命最低的敌人出手一次。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="影子增伤" data-open="75" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="冥府的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -734,6 +758,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
 <p class="skill-desc">召唤 3 个无名之影，不受影子上限约束，3 回合后消散。</p>
 <p class="skill-synergy">影海打法的大招：影子上限已满时再补上一批。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">鬼哭</span><strong>接在「军令」之后施放</strong>：百鬼齐哭：2 格内的敌人陷入畏惧，下一次行动改为后退，不攻击。</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="影子生命 / 攻击" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="百鬼的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -746,6 +771,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">分担</span></p>
 <p class="skill-desc" data-template="获得 {p15} 最大生命的护盾；之后 3 回合，你受到的伤害有 40% 转由生命最高的影子承受（影子不会因此倒下）。">获得 24% 最大生命的护盾；之后 3 回合，你受到的伤害有 40% 转由生命最高的影子承受（影子不会因此倒下）。</p>
 <p class="skill-synergy">亡者不息打法的保命手段：影子替你挡下一部分伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">影偿</span><strong>接在「骸盾」之后施放</strong>：之后 3 回合，影子每替你承受一次伤害，立即对攻击者出手一次。</p><p class="skill-link-leads">之后接着施放：「骸甲」（骸墙）</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="护盾" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="影替的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -758,6 +784,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">印记</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；带君王印记的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1600 伤害；带君王印记的敌人改为受到 720% + 2250 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「影之君王」错开施放；先以「冥刺」「暗蚀箭」打上君王印记，再以「冥潮」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">沉渊</span><strong>命中带君王印记的敌人时</strong>：带君王印记的敌人被拖入冥潮：眩晕，跳过 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="冥潮的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -770,6 +797,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，影子造成的伤害提高 {p60}；「暗影召唤」施放后冷却立即结束。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，影子造成的伤害提高 96%；「暗影召唤」施放后冷却立即结束。</p>
 <p class="skill-synergy">施放后连续召唤，这几回合里影子越召越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「影之君王」（群起）</p></div>
 
 <div class="skill-levels" data-rate="0.6" data-scaling="影子增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="冥约的技能等级" /></label><output class="level-value">Lv.2</output></div>
@@ -783,6 +811,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d450} 伤害；随后召唤影子至上限，所有影子立即行动一次。">射程内有敌人时可施放：对射程内所有敌人造成 720% + 2250 伤害；随后召唤影子至上限，所有影子立即行动一次。</p>
 <p class="skill-synergy">冥王的觉醒技：一次打满全场，再把影子补满出手。</p>
 
+
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="冥河的技能等级" /></label><output class="level-value">Lv.9</output></div>
 <p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 500 点固定伤害</p>
@@ -795,6 +824,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">冷却</span></p>
 <p class="skill-desc">召唤 1 个影子，并使「暗蚀箭」的冷却立即结束。</p>
 <p class="skill-synergy">转职后最先学到的补影手段：影子补上，暗蚀箭再放一次。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">诱魂</span><strong>接在「魂焰」之后施放</strong>：召出的影子落在最近的敌人身边，并嘲讽敌人 1 回合。</p><p class="skill-link-leads">之后接着施放：「魂焰」（续焰）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="影子生命 / 攻击" data-open="20" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="魂引的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -807,6 +837,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="获得 {p25} 最大生命的护盾；护盾存在期间，每有一个影子倒下，护盾增加 8% 最大生命。">获得 37% 最大生命的护盾；护盾存在期间，每有一个影子倒下，护盾增加 8% 最大生命。</p>
 <p class="skill-synergy">魂术师的保命手段：影子倒下时护盾随之加厚。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">守魄</span><strong>接在「祭魂」之后施放</strong>：这层护盾被击破时，召出一个无名之影挡在你身边，嘲讽敌人 1 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="护盾" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="灵魂护壁的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -819,6 +850,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="引爆场上所有影子，每个影子对其 2 格内的敌人造成相当于自身当前生命 {p120} 的伤害；每个倒下的影子都会触发转职特性。">引爆场上所有影子，每个影子对其 2 格内的敌人造成相当于自身当前生命 177.6% 的伤害；每个倒下的影子都会触发转职特性。</p>
 <p class="skill-synergy">魂术师在场上影子较多时施放「魂爆」，可造成大量范围伤害，再以「暗蚀箭」攻击剩余敌人。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">交爆</span><strong>接在「冥火」之后施放</strong>：同时被两个以上影子的爆炸波及的敌人眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「尸爆」（连殁）、「暗影军团」（环伺）</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="爆炸伤害" data-open="30" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="魂爆的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -831,6 +863,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">召唤</span><span class="tag">铺场</span></p>
 <p class="skill-desc" data-template="场上原有的影子各回复 30% 生命，再按影子池顺序召唤最多 4 个尚未上场的影子，受影子数量上限约束；影子池不足时，以无名之影补足。随后场上每有一个影子，你获得相当于 {p5} 最大生命的护盾。">场上原有的影子各回复 30% 生命，再按影子池顺序召唤最多 4 个尚未上场的影子，受影子数量上限约束；影子池不足时，以无名之影补足。随后场上每有一个影子，你获得相当于 7.4% 最大生命的护盾。</p>
 <p class="skill-synergy">场上影子较少时施放「暗影军团」可补充影子；影子较多时施放则可恢复其生命并获得护盾。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">环伺</span><strong>接在「魂爆」之后施放</strong>：新召出的影子分散落在敌人身边。</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="影子生命 / 攻击 / 护盾" data-open="35" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="暗影军团的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -843,6 +876,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">增伤</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：获得 {p30} 最大生命的护盾。之后 4 回合，你和所有影子造成的伤害提高 {p50}，所有影子立即额外行动 1 次；期间暗蚀箭每次弹射到 2 名敌人，倒下的敌人会化作普通阶影子，受影子数量上限约束。">射程内有敌人时可施放：获得 48% 最大生命的护盾。之后 4 回合，你和所有影子造成的伤害提高 80%，所有影子立即额外行动 1 次；期间暗蚀箭每次弹射到 2 名敌人，倒下的敌人会化作普通阶影子，受影子数量上限约束。</p>
 <p class="skill-synergy">魂术师的招牌技：期间暗蚀箭一次打中三名敌人。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">众印</span><strong>接在「魂溢」之后施放</strong>：降临时，射程内的所有敌人被打上君王印记 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="护盾 / 增伤" data-open="40" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="魂主降临的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -855,6 +889,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">引爆</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="引爆生命比例最低的一个影子，对其 2 格内的敌人造成相当于它最大生命 {p150} 的伤害（触发转职特性）；随后召唤 1 个影子。">引爆生命比例最低的一个影子，对其 2 格内的敌人造成相当于它最大生命 222% 的伤害（触发转职特性）；随后召唤 1 个影子。</p>
 <p class="skill-synergy">魂爆连锁打法的主力：一引一召，魂力不断。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">续焰</span><strong>接在「魂引」之后施放</strong>：再施放一次：引爆下一个生命比例最低的影子，并再召唤 1 个影子。</p><p class="skill-link-leads">之后接着施放：「魂引」（诱魂）、「祭魂」（还影）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="爆炸伤害" data-open="45" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="魂焰的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -867,6 +902,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">魂力</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d220} 伤害；消耗全部魂力，每层伤害按暗蚀箭的比例提高。">对射程内一名敌人造成 325.6% + 1100 伤害；消耗全部魂力，每层伤害按暗蚀箭的比例提高。</p>
 <p class="skill-synergy">魂力狙杀打法的第二支箭：暗蚀箭在冷却时，用它把魂力打出去。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">留魄</span><strong>接在「魂狱」之后施放</strong>：消耗的魂力返还一半，向下取整。</p><p class="skill-link-leads">之后接着施放：「吞魂」（续矢）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="魂矢的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -879,6 +915,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">献祭</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="献祭所有生命低于 50% 的影子（每个都触发转职特性），每献祭一个，回复 {p5} 最大生命。">献祭所有生命低于 50% 的影子（每个都触发转职特性），每献祭一个，回复 7.4% 最大生命。</p>
 <p class="skill-synergy">魂爆连锁打法的续航：快倒下的影子换成魂力和生命。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">还影</span><strong>接在「魂焰」之后施放</strong>：每献祭一个影子，召出一个无名之影，受影子数量上限约束。</p><p class="skill-link-leads">之后接着施放：「灵魂护壁」（守魄）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="回复" data-open="55" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="祭魂的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -891,6 +928,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">吞噬</span><span class="tag">魂力</span></p>
 <p class="skill-desc" data-template="吞噬生命最高的一个影子，魂力叠满，并回复相当于它当前生命 {p50} 的生命。">吞噬生命最高的一个影子，魂力叠满，并回复相当于它当前生命 80% 的生命。</p>
 <p class="skill-synergy">魂力狙杀打法的蓄力：吞下一个影子，下一箭就是满层魂力。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">续矢</span><strong>接在「魂矢」之后施放</strong>：「魂矢」的冷却立即结束。</p><p class="skill-link-leads">之后接着施放：「冥火」（凝魄）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="回复" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="吞魂的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -903,6 +941,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">叠魂</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害，并获得 1 层魂力；魂力满层时，「魂爆」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1300 伤害，并获得 1 层魂力；魂力满层时，「魂爆」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「魂爆」配成两拍循环：「冥火」攒魂力、催快「魂爆」，再以「魂爆」引爆影子。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">凝魄</span><strong>接在「吞魂」之后施放</strong>：魂力已满时，这一层魂力转为相当于 10% 最大生命的护盾。<small>（Lv.10 时 15%，Lv.20 时 20%）</small></p><p class="skill-link-leads">之后接着施放：「魂爆」（交爆）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="冥火的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -915,6 +954,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连射</span><span class="tag">魂力</span></p>
 <p class="skill-desc">之后 4 回合，暗蚀箭不进入冷却，每次命中都召出一个无名之影。</p>
 <p class="skill-synergy">魂力狙杀打法的大招：边射边补影子，影子倒下又为下一箭蓄力。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">焚魄</span><strong>接在「魂溢」之后施放</strong>：之后 4 回合，暗蚀箭召出的无名之影 2 回合后自爆，对 2 格内的敌人造成相当于其当前生命的伤害，并触发转职特性。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="魂潮的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -927,6 +967,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">引爆</span><span class="tag">尸骸</span></p>
 <p class="skill-desc" data-template="引爆场上所有尸骸，每具尸骸对其 2 格内的敌人造成 {d200} 伤害；被引爆的尸骸不能再被拉起。">引爆场上所有尸骸，每具尸骸对其 2 格内的敌人造成 320% + 1000 伤害；被引爆的尸骸不能再被拉起。</p>
 <p class="skill-synergy">魂爆连锁打法的大招：敌人倒得越多，下一轮炸得越狠。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连殁</span><strong>接在「魂爆」之后施放</strong>：被尸爆击倒的敌人，尸骸随即一同炸开，连锁到不再有敌人倒下为止。</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害" data-open="80" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="尸爆的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -939,6 +980,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">回复</span><span class="tag">叠魂</span></p>
 <p class="skill-desc" data-template="回复 {p10} 最大生命；之后 3 回合，暗蚀箭、魂矢每次命中额外获得 1 层魂力。">回复 16% 最大生命；之后 3 回合，暗蚀箭、魂矢每次命中额外获得 1 层魂力。</p>
 <p class="skill-synergy">魂力狙杀打法的增益：每一箭都为下一箭攒魂力。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">魂弦</span><strong>接在「暗蚀箭」之后施放</strong>：施放之后立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「魂矢」（留魄）</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="回复" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="魂狱的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -951,6 +993,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；带君王印记的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1600 伤害；带君王印记的敌人改为受到 720% + 2250 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「魂主降临」错开施放；先以暗蚀箭打上君王印记，再以「魂暴」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">摄魄</span><strong>命中带君王印记的敌人时</strong>：每命中一名带君王印记的敌人，获得 1 层魂力。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="魂暴的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -963,6 +1006,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">魂力</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。回复 {p20} 最大生命，并立即获得 2 层魂力；之后 4 回合，影子倒下时获得 2 层魂力，魂力上限提高 2 层。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。回复 32% 最大生命，并立即获得 2 层魂力；之后 4 回合，影子倒下时获得 2 层魂力，魂力上限提高 2 层。</p>
 <p class="skill-synergy">施放后引爆影子，这几回合里魂力攒得更快、更多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「魂潮」（焚魄）、「魂主降临」（众印）</p></div>
 
 <div class="skill-levels" data-rate="0.6" data-scaling="回复" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="魂溢的技能等级" /></label><output class="level-value">Lv.2</output></div>
@@ -976,6 +1020,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d450} 伤害，场上每有一个影子，伤害提高 10%，至多 50%；随后召唤影子至上限。">射程内有敌人时可施放：对射程内所有敌人造成 720% + 2250 伤害，场上每有一个影子，伤害提高 10%，至多 50%；随后召唤影子至上限。</p>
 <p class="skill-synergy">魂术师的觉醒技：影子越多打得越重，打完再把影子补满当燃料。</p>
 
+
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="魂葬的技能等级" /></label><output class="level-value">Lv.9</output></div>
 <p class="level-total">Lv.9（角色 100 级开放）：伤害提高 60%，每 100% 倍率另加 500 点固定伤害</p>
@@ -988,6 +1033,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d160} 伤害，并将其击退 1 格。">对射程内一名敌人造成 224% + 800 伤害，并将其击退 1 格。</p>
 <p class="skill-synergy">转职后最先学到的击退手段：把敌人推向岩石或别的敌人。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">伺影</span><strong>命中眩晕的敌人时</strong>：离它最近的影子扑到它身边，立即对它出手一次。</p><p class="skill-link-leads">之后接着施放：「念爆」（传撞）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="念击的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -1000,6 +1046,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="获得相当于 {p25} 最大生命的护盾，并将所有相邻敌人击退 2 格。">获得相当于 37% 最大生命的护盾，并将所有相邻敌人击退 2 格。</p>
 <p class="skill-synergy">念动师与敌人相邻时施放「念力屏障」，可获得护盾并击退敌人；敌人撞上障碍物时还会受到伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">障裂</span><strong>接在「念力风暴」之后施放</strong>：这层护盾被击破时炸开，把 2 格内的敌人击退 2 格。</p><p class="skill-link-leads">之后接着施放：「龙之恐惧」（龙慑）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="护盾" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="念力屏障的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -1012,6 +1059,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群控</span><span class="tag">易伤</span></p>
 <p class="skill-desc">使 3 格内所有敌人眩晕，跳过 1 次行动并将其击退 1 格，并易伤 2 回合，期间受到的所有伤害提高 30%，包括影子造成的伤害。</p>
 <p class="skill-synergy">受到包围时，以「龙之恐惧」限制敌人行动并施加易伤，再由影子攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">龙慑</span><strong>接在「念力屏障」之后施放</strong>：被眩晕的敌人同时陷入畏惧：醒来后的第一次行动改为后退，不攻击。</p></div>
 
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="龙之恐惧的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -1024,6 +1072,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群控</span><span class="tag">击退</span></p>
 <p class="skill-desc">把 2 格内所有敌人击退 2 格，并使其眩晕 1 次行动。</p>
 <p class="skill-synergy">念动师的控场手段：敌人靠墙时撞击伤害最高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">卷涡</span><strong>接在「念刃」之后施放</strong>：击退之前，先把 3 格处的敌人向你拉近 1 格，一并卷入风暴。</p><p class="skill-link-leads">之后接着施放：「念力屏障」（障裂）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="撞击伤害" data-open="35" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="念力风暴的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -1036,6 +1085,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">增伤</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：获得 {p30} 最大生命的护盾，并把 2 格内所有敌人击退 2 格。之后 4 回合，你和所有影子造成的伤害提高 {p50}，所有影子立即额外行动 1 次；倒下的敌人会化作普通阶影子，受影子数量上限约束。">射程内有敌人时可施放：获得 48% 最大生命的护盾，并把 2 格内所有敌人击退 2 格。之后 4 回合，你和所有影子造成的伤害提高 80%，所有影子立即额外行动 1 次；倒下的敌人会化作普通阶影子，受影子数量上限约束。</p>
 <p class="skill-synergy">念动师的招牌技：先把敌人推开，再让影子带着增伤出手。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">排山</span><strong>接在「控心」之后施放</strong>：降临时的击退改为一路推到撞上障碍为止。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="护盾 / 增伤" data-open="40" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="念力君临的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -1048,6 +1098,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人及其相邻敌人各造成 {d140} 伤害，并将其击退 2 格。">对射程内一名敌人及其相邻敌人各造成 207.2% + 700 伤害，并将其击退 2 格。</p>
 <p class="skill-synergy">念力冲击打法的主力：一次把一群敌人推向岩石。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">传撞</span><strong>接在「念击」之后施放</strong>：被击退的敌人撞上其他敌人时，被撞的敌人也被推出 1 格；它再撞上障碍或其他敌人时照常结算撞击。</p><p class="skill-link-leads">之后接着施放：「挤压」（聚压）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="念爆的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -1060,6 +1111,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">易伤</span></p>
 <p class="skill-desc" data-template="使射程内一名敌人眩晕 2 次行动并易伤 3 回合；所有影子立即对它出手一次，伤害为平时的 {p150}。">使射程内一名敌人眩晕 2 次行动并易伤 3 回合；所有影子立即对它出手一次，伤害为平时的 222%。</p>
 <p class="skill-synergy">精神禁锢打法的起手：锁住首领，让影子集火。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">株连</span><strong>接在「囚心」之后施放</strong>：与它相邻的敌人一并眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「震魂」（魄盾）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="影子这一击的伤害" data-open="50" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="心锁的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -1072,6 +1124,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">挤压</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d220} 伤害；它相邻每有一名敌人，伤害提高 30%，至多 90%。">对射程内一名敌人造成 325.6% + 1100 伤害；它相邻每有一名敌人，伤害提高 30%，至多 90%。</p>
 <p class="skill-synergy">念力冲击打法的收尾：先把敌人推到一起，再一并挤压。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">聚压</span><strong>接在「念爆」之后施放</strong>：挤压之前，先把它 2 格处的敌人向它拉近 1 格。</p><p class="skill-link-leads">之后接着施放：「念掷」（夺神）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="挤压的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -1084,6 +1137,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="射程内所有被眩晕的敌人眩晕延长 1 次行动，并受到 {d260} 伤害。">射程内所有被眩晕的敌人眩晕延长 1 次行动，并受到 384.8% + 1300 伤害。</p>
 <p class="skill-synergy">精神禁锢打法的连锁：眩晕的敌人越多，打得越多、控得越久。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">魄盾</span><strong>接在「心锁」之后施放</strong>：每震到一名敌人，获得相当于 5% 最大生命的护盾。<small>（Lv.10 时 7.5%，Lv.20 时 10%）</small></p><p class="skill-link-leads">之后接着施放：「囚心」（汲念）</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="震魂的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -1096,6 +1150,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">眩晕</span></p>
 <p class="skill-desc" data-template="对射程内一名敌人造成 {d260} 伤害并使其眩晕 1 次行动；「念力风暴」的剩余冷却缩短 2 回合。">对射程内一名敌人造成 384.8% + 1300 伤害并使其眩晕 1 次行动；「念力风暴」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「念力风暴」配成两拍循环：「念刃」控住一名敌人、催快「念力风暴」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">剖甲</span><strong>命中眩晕的敌人时</strong>：剖开它的护甲：护甲永久减半，每名敌人一次。</p><p class="skill-link-leads">之后接着施放：「念力风暴」（卷涡）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="念刃的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -1108,6 +1163,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">摔击</span><span class="tag">群攻</span></p>
 <p class="skill-desc">攫住射程内生命最高的敌人连续摔击 4 次，每次按撞墙结算，撞击伤害翻倍。</p>
 <p class="skill-synergy">念力冲击打法的大招：专门对付首领与最危险的敌人。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">远掷</span><strong>接在「念掷」之后施放</strong>：摔击之后把它掷出：击退 3 格，撞上障碍或其他敌人时照常结算撞击。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="撞击伤害" data-open="75" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="天罚之握的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -1120,6 +1176,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，被眩晕的敌人受到你与影子的伤害提高 {p30}。">之后 3 回合，被眩晕的敌人受到你与影子的伤害提高 48%。</p>
 <p class="skill-synergy">精神禁锢打法的增益：先控住敌人，再集中输出。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">汲念</span><strong>接在「震魂」之后施放</strong>：之后 3 回合，被眩晕的敌人每跳过一次行动，你回复 2% 最大生命。<small>（Lv.10 时 3%，Lv.20 时 4%）</small></p><p class="skill-link-leads">之后接着施放：「心锁」（株连）</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="增伤" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="囚心的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -1132,6 +1189,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">摔击</span><span class="tag">撞击</span></p>
 <p class="skill-desc">举起射程内生命最高的敌人，砸向离它最近的另一名敌人，两者各受到两次撞击伤害。</p>
 <p class="skill-synergy">念力冲击打法的大招：对付首领与身边的护卫。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">夺神</span><strong>接在「挤压」之后施放</strong>：被举起的敌人与被砸中的敌人都眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「天罚之握」（远掷）</p></div>
 
 <div class="skill-levels" data-rate="0.16" data-scaling="撞击伤害" data-open="85" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="念掷的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -1144,6 +1202,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">眩晕</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；被眩晕的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 1600 伤害；被眩晕的敌人改为受到 720% + 2250 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「念力君临」错开施放；先以「念力风暴」「龙之恐惧」眩晕敌人，再以「念暴」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">狂澜</span><strong>命中眩晕的敌人时</strong>：被眩晕的敌人被念暴击退 2 格，撞上障碍或其他敌人时照常结算撞击。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="念暴的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -1156,6 +1215,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">撞击</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，你施加的眩晕多持续 1 次行动，撞击伤害提高 {p100}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，你施加的眩晕多持续 1 次行动，撞击伤害提高 160%。</p>
 <p class="skill-synergy">施放后接连击退、眩晕，这几回合里控得更久、撞得更重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「念力君临」（排山）</p></div>
 
 <div class="skill-levels" data-rate="0.6" data-scaling="撞击增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="控心的技能等级" /></label><output class="level-value">Lv.2</output></div>
@@ -1168,6 +1228,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">念崩</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d450} 伤害，将其击退 2 格并眩晕 1 次行动。">射程内有敌人时可施放：对射程内所有敌人造成 720% + 2250 伤害，将其击退 2 格并眩晕 1 次行动。</p>
 <p class="skill-synergy">念动师的觉醒技：一次推开全场、控住所有敌人。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="5">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="念崩的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -1210,135 +1271,135 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">职业通用</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 80～146 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～148 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 <div class="note"><p><strong>影子池：</strong>推荐配置按 24 种影子测试（元帅 9 种、精英 6 种、将领 9 种），场上最多同时存在 5 个影子。影子池由战斗积累，不属于可调整的配置；影子池较薄时，实际强度会低于这里的数据。</p></div>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-netherlord-1" data-toc-label="冥王 · 亡者不息配置" tabindex="-1">冥王 · 亡者不息</h3>
-<span class="build-score"><span>等效第 <strong>122</strong> 层</span><small>过半至第 119 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 13.6 L222.4 15.5 L245.9 23.0 L269.5 13.6 L293.0 28.6 L316.5 38.0 L340.1 62.4 L363.6 51.1 L387.2 64.3 L410.7 69.9 L434.3 88.6 L457.8 84.9 L481.4 98.0 L504.9 98.0 L528.5 90.5 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 13.6 L222.4 15.5 L245.9 23.0 L269.5 13.6 L293.0 28.6 L316.5 38.0 L340.1 62.4 L363.6 51.1 L387.2 64.3 L410.7 69.9 L434.3 88.6 L457.8 84.9 L481.4 98.0 L504.9 98.0 L528.5 90.5 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>万骸</strong><small>Lv.14</small></li><li><strong>影之君王</strong><small>Lv.9</small></li><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>冥府</strong><small>Lv.6</small></li><li><strong>骸盾</strong><small>Lv.5</small></li><li class="is-ascend"><strong>冥河</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「君王之影」Lv.20、「军势」Lv.17、「骨海」Lv.17、「亡者低语」Lv.20</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>冥灯</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>生存</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1210</b></span><span>生命 <b>3630</b></span><span>护甲 <b>87</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
 <h3 id="build-netherlord-0" data-toc-label="冥王 · 影海配置" tabindex="-1">冥王 · 影海</h3>
-<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 116 层</small></span>
+<span class="build-score"><span>等效第 <strong>122</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 9.9 L57.5 8.0 L81.1 8.0 L104.6 11.7 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 13.6 L222.4 11.7 L245.9 32.4 L269.5 15.5 L293.0 21.1 L316.5 47.4 L340.1 54.9 L363.6 73.6 L387.2 81.1 L410.7 68.0 L434.3 92.4 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 94.3 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 9.9 L57.5 8.0 L81.1 8.0 L104.6 11.7 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 13.6 L222.4 11.7 L245.9 32.4 L269.5 15.5 L293.0 21.1 L316.5 47.4 L340.1 54.9 L363.6 73.6 L387.2 81.1 L410.7 68.0 L434.3 92.4 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 94.3 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 9.9 L236.7 13.6 L259.2 19.3 L281.7 13.6 L304.3 56.8 L326.8 23.0 L349.3 32.4 L371.8 79.3 L394.3 75.5 L416.9 92.4 L439.4 75.5 L461.9 96.1 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 9.9 L236.7 13.6 L259.2 19.3 L281.7 13.6 L304.3 56.8 L326.8 23.0 L349.3 32.4 L371.8 79.3 L394.3 75.5 L416.9 92.4 L439.4 75.5 L461.9 96.1 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>暗影召唤</strong><small>Lv.18</small></li><li><strong>影之君王</strong><small>Lv.9</small></li><li><strong>百鬼</strong><small>Lv.1</small></li><li><strong>万爪</strong><small>Lv.1</small></li><li class="is-ascend"><strong>冥河</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>暗影召唤</strong><small>Lv.16</small></li><li><strong>影之君王</strong><small>Lv.9</small></li><li><strong>百鬼</strong><small>Lv.2</small></li><li><strong>万爪</strong><small>Lv.1</small></li><li class="is-ascend"><strong>冥河</strong><small>Lv.9</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「君王之影」Lv.20、「军势」Lv.17、「骨海」Lv.17、「亡者低语」Lv.20</dd></div>
 <div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
 <div><dt>自动战斗打法</dt><dd>稳健</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1262</b></span><span>生命 <b>3916</b></span><span>护甲 <b>208</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-soulcaster-1" data-toc-label="魂术师 · 魂力狙杀配置" tabindex="-1">魂术师 · 魂力狙杀</h3>
-<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 116 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 15.5 L222.4 17.4 L245.9 19.3 L269.5 13.6 L293.0 24.9 L316.5 39.9 L340.1 69.9 L363.6 73.6 L387.2 79.3 L410.7 60.5 L434.3 94.3 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 96.1 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 15.5 L222.4 17.4 L245.9 19.3 L269.5 13.6 L293.0 24.9 L316.5 39.9 L340.1 69.9 L363.6 73.6 L387.2 79.3 L410.7 60.5 L434.3 94.3 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 96.1 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗蚀箭</strong><small>Lv.13</small></li><li><strong>魂主降临</strong><small>Lv.13</small></li><li><strong>暗影军团</strong><small>Lv.14</small></li><li><strong>吞魂</strong><small>Lv.1</small></li><li><strong>魂狱</strong><small>Lv.1</small></li><li class="is-ascend"><strong>魂葬</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「君王之影」Lv.20、「暗影再生」Lv.17、「收割」Lv.17、「亡者低语」Lv.20</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1290</b></span><span>生命 <b>4861</b></span><span>护甲 <b>206</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1260</b></span><span>生命 <b>3874</b></span><span>护甲 <b>85</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-psion-0" data-toc-label="念动师 · 念力冲击配置" tabindex="-1">念动师 · 念力冲击</h3>
-<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 116 层</small></span>
+<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 9.9 L57.5 8.0 L81.1 13.6 L104.6 19.3 L128.2 8.0 L151.7 24.9 L175.3 8.0 L198.8 32.4 L222.4 34.3 L245.9 23.0 L269.5 11.7 L293.0 30.5 L316.5 43.6 L340.1 47.4 L363.6 77.4 L387.2 73.6 L410.7 47.4 L434.3 92.4 L457.8 92.4 L481.4 98.0 L504.9 96.1 L528.5 90.5 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 9.9 L57.5 8.0 L81.1 13.6 L104.6 19.3 L128.2 8.0 L151.7 24.9 L175.3 8.0 L198.8 32.4 L222.4 34.3 L245.9 23.0 L269.5 11.7 L293.0 30.5 L316.5 43.6 L340.1 47.4 L363.6 77.4 L387.2 73.6 L410.7 47.4 L434.3 92.4 L457.8 92.4 L481.4 98.0 L504.9 96.1 L528.5 90.5 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 11.7 L191.7 23.0 L214.2 9.9 L236.7 28.6 L259.2 49.3 L281.7 26.8 L304.3 75.5 L326.8 23.0 L349.3 39.9 L371.8 86.8 L394.3 54.9 L416.9 98.0 L439.4 71.8 L461.9 92.4 L484.4 96.1 L507.0 94.3 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 11.7 L191.7 23.0 L214.2 9.9 L236.7 28.6 L259.2 49.3 L281.7 26.8 L304.3 75.5 L326.8 23.0 L349.3 39.9 L371.8 86.8 L394.3 54.9 L416.9 98.0 L439.4 71.8 L461.9 92.4 L484.4 96.1 L507.0 94.3 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗影召唤</strong><small>Lv.20</small></li><li><strong>龙之恐惧</strong><small>Lv.5</small></li><li><strong>念力君临</strong><small>Lv.13</small></li><li><strong>念爆</strong><small>Lv.3</small></li><li><strong>念掷</strong><small>Lv.1</small></li><li class="is-ascend"><strong>念崩</strong><small>Lv.1</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗影召唤</strong><small>Lv.20</small></li><li><strong>念力屏障</strong><small>Lv.16</small></li><li><strong>龙之恐惧</strong><small>Lv.5</small></li><li><strong>念爆</strong><small>Lv.2</small></li><li><strong>天罚之握</strong><small>Lv.1</small></li><li class="is-ascend"><strong>念崩</strong><small>Lv.2</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「君王之影」Lv.20、「影之壁垒」Lv.17、「重念」Lv.17、「亡者低语」Lv.20</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
 <div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1449</b></span><span>生命 <b>4073</b></span><span>护甲 <b>206</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1197</b></span><span>生命 <b>5630</b></span><span>护甲 <b>206</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-netherlord-1" data-toc-label="冥王 · 亡者不息配置" tabindex="-1">冥王 · 亡者不息</h3>
+<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 115 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 11.7 L236.7 38.0 L259.2 24.9 L281.7 26.8 L304.3 88.6 L326.8 34.3 L349.3 62.4 L371.8 86.8 L394.3 69.9 L416.9 88.6 L439.4 75.5 L461.9 96.1 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 11.7 L236.7 38.0 L259.2 24.9 L281.7 26.8 L304.3 88.6 L326.8 34.3 L349.3 62.4 L371.8 86.8 L394.3 69.9 L416.9 88.6 L439.4 75.5 L461.9 96.1 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗影召唤</strong><small>Lv.20</small></li><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>影之君王</strong><small>Lv.12</small></li><li><strong>冥府</strong><small>Lv.5</small></li><li><strong>影替</strong><small>Lv.1</small></li><li class="is-ascend"><strong>冥河</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「君王之影」Lv.20、「军势」Lv.17、「骨海」Lv.17、「亡者低语」Lv.20</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1446</b></span><span>生命 <b>3440</b></span><span>护甲 <b>209</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-soulcaster-1" data-toc-label="魂术师 · 魂力狙杀配置" tabindex="-1">魂术师 · 魂力狙杀</h3>
+<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 115 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 15.5 L259.2 24.9 L281.7 15.5 L304.3 90.5 L326.8 24.9 L349.3 54.9 L371.8 86.8 L394.3 81.1 L416.9 98.0 L439.4 84.9 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 15.5 L259.2 24.9 L281.7 15.5 L304.3 90.5 L326.8 24.9 L349.3 54.9 L371.8 86.8 L394.3 81.1 L416.9 98.0 L439.4 84.9 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗蚀箭</strong><small>Lv.14</small></li><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>暗影军团</strong><small>Lv.14</small></li><li><strong>魂矢</strong><small>Lv.2</small></li><li><strong>魂潮</strong><small>Lv.1</small></li><li class="is-ascend"><strong>魂葬</strong><small>Lv.8</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「君王之影」Lv.20、「暗影再生」Lv.17、「收割」Lv.17、「亡者低语」Lv.20</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>冥灯</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1368</b></span><span>生命 <b>4551</b></span><span>护甲 <b>206</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-psion-1" data-toc-label="念动师 · 精神禁锢配置" tabindex="-1">念动师 · 精神禁锢</h3>
-<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 116 层</small></span>
+<span class="build-score"><span>等效第 <strong>117</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 11.7 L104.6 19.3 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 24.9 L222.4 30.5 L245.9 30.5 L269.5 13.6 L293.0 26.8 L316.5 39.9 L340.1 58.6 L363.6 77.4 L387.2 79.3 L410.7 60.5 L434.3 94.3 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 92.4 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 11.7 L104.6 19.3 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 24.9 L222.4 30.5 L245.9 30.5 L269.5 13.6 L293.0 26.8 L316.5 39.9 L340.1 58.6 L363.6 77.4 L387.2 79.3 L410.7 60.5 L434.3 94.3 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 92.4 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 11.7 L101.6 9.9 L124.1 13.6 L146.6 9.9 L169.1 17.4 L191.7 28.6 L214.2 8.0 L236.7 39.9 L259.2 45.5 L281.7 36.1 L304.3 75.5 L326.8 30.5 L349.3 47.4 L371.8 75.5 L394.3 77.4 L416.9 98.0 L439.4 75.5 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 11.7 L101.6 9.9 L124.1 13.6 L146.6 9.9 L169.1 17.4 L191.7 28.6 L214.2 8.0 L236.7 39.9 L259.2 45.5 L281.7 36.1 L304.3 75.5 L326.8 30.5 L349.3 47.4 L371.8 75.5 L394.3 77.4 L416.9 98.0 L439.4 75.5 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗影召唤</strong><small>Lv.15</small></li><li><strong>念力君临</strong><small>Lv.13</small></li><li><strong>心锁</strong><small>Lv.1</small></li><li><strong>震魂</strong><small>Lv.8</small></li><li><strong>念暴</strong><small>Lv.3</small></li><li class="is-ascend"><strong>念崩</strong><small>Lv.1</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗影召唤</strong><small>Lv.20</small></li><li><strong>念力屏障</strong><small>Lv.16</small></li><li><strong>震魂</strong><small>Lv.3</small></li><li><strong>囚心</strong><small>Lv.1</small></li><li><strong>龙之恐惧</strong><small>Lv.5</small></li><li class="is-ascend"><strong>念崩</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「君王之影」Lv.20、「影之壁垒」Lv.17、「重念」Lv.17、「亡者低语」Lv.20</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>冥灯</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>布甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>布制头饰</li><li><small>护甲</small>布甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1192</b></span><span>生命 <b>5036</b></span><span>护甲 <b>206</b></span></dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1438</b></span><span>生命 <b>4081</b></span><span>护甲 <b>206</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-soulcaster-0" data-toc-label="魂术师 · 魂爆连锁配置" tabindex="-1">魂术师 · 魂爆连锁</h3>
-<span class="build-score"><span>等效第 <strong>115</strong> 层</span><small>过半至第 113 层</small></span>
+<span class="build-score"><span>等效第 <strong>115</strong> 层</span><small>过半至第 109 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 17.4 L151.7 8.0 L175.3 8.0 L198.8 23.0 L222.4 11.7 L245.9 49.3 L269.5 26.8 L293.0 34.3 L316.5 56.8 L340.1 88.6 L363.6 83.0 L387.2 96.1 L410.7 77.4 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 17.4 L151.7 8.0 L175.3 8.0 L198.8 23.0 L222.4 11.7 L245.9 49.3 L269.5 26.8 L293.0 34.3 L316.5 56.8 L340.1 88.6 L363.6 83.0 L387.2 96.1 L410.7 77.4 L434.3 98.0 L457.8 98.0 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 9.9 L214.2 13.6 L236.7 19.3 L259.2 38.0 L281.7 34.3 L304.3 98.0 L326.8 45.5 L349.3 90.5 L371.8 96.1 L394.3 98.0 L416.9 98.0 L439.4 96.1 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 9.9 L214.2 13.6 L236.7 19.3 L259.2 38.0 L281.7 34.3 L304.3 98.0 L326.8 45.5 L349.3 90.5 L371.8 96.1 L394.3 98.0 L416.9 98.0 L439.4 96.1 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>暗蚀箭</strong><small>Lv.18</small></li><li><strong>影子交换</strong><small>Lv.1</small></li><li><strong>暗影军团</strong><small>Lv.14</small></li><li><strong>魂焰</strong><small>Lv.1</small></li><li><strong>尸爆</strong><small>Lv.1</small></li><li class="is-ascend"><strong>魂葬</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>魂暴</strong><small>Lv.3</small></li><li><strong>隐匿</strong><small>Lv.5</small></li><li><strong>暗影军团</strong><small>Lv.14</small></li><li><strong>魂焰</strong><small>Lv.12</small></li><li><strong>祭魂</strong><small>Lv.5</small></li><li class="is-ascend"><strong>魂葬</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「君王之影」Lv.20、「暗影再生」Lv.17、「收割」Lv.17、「亡者低语」Lv.20</dd></div>
 <div><dt>属性加点</dt><dd>全部体质</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>魂杖</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>生存</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1190</b></span><span>生命 <b>6043</b></span><span>护甲 <b>206</b></span></dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1172</b></span><span>生命 <b>6222</b></span><span>护甲 <b>206</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota5 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota6 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-druid.html"><small>上一篇</small><span>德鲁伊<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-gunner.html"><small>下一篇</small><span>火枪手<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota5）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota6）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

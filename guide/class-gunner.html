@@ -246,6 +246,11 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.skill-link { margin: 0; padding-left: 10px; border-left: 2px solid var(--gold-mid, var(--line-mid)); font-size: 12.5px; }
+.skill-link p { margin: 2px 0; }
+.skill-link .tag { margin-right: 6px; }
+.skill-link small { color: var(--ink-muted); }
+.skill-link-leads { color: var(--ink-muted); }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -431,13 +436,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-artillery" data-toc-id="spec-artillery" title="枪炮师"><span>枪炮师</span></a></li><li class="toc-level-3"><a href="#spec-munitions" data-toc-id="spec-munitions" title="弹药师"><span>弹药师</span></a></li><li class="toc-level-3"><a href="#spec-demolition" data-toc-id="spec-demolition" title="爆破师"><span>爆破师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-artillery" data-toc-id="skills-artillery" title="枪炮师专属"><span>枪炮师专属</span></a></li><li class="toc-level-3"><a href="#skills-munitions" data-toc-id="skills-munitions" title="弹药师专属"><span>弹药师专属</span></a></li><li class="toc-level-3"><a href="#skills-demolition" data-toc-id="skills-demolition" title="爆破师专属"><span>爆破师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-0" data-toc-id="build-artillery-0" title="枪炮师 · 过热轰击配置"><span>枪炮师 · 过热轰击配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-0" data-toc-id="build-munitions-0" title="弹药师 · 弹幕压制配置"><span>弹药师 · 弹幕压制配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-1" data-toc-id="build-artillery-1" title="枪炮师 · 阵地固守配置"><span>枪炮师 · 阵地固守配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-1" data-toc-id="build-demolition-1" title="爆破师 · 连环引爆配置"><span>爆破师 · 连环引爆配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-1" data-toc-id="build-munitions-1" title="弹药师 · 猎首狙杀配置"><span>弹药师 · 猎首狙杀配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-0" data-toc-id="build-demolition-0" title="爆破师 · 雷区布设配置"><span>爆破师 · 雷区布设配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-artillery" data-toc-id="spec-artillery" title="枪炮师"><span>枪炮师</span></a></li><li class="toc-level-3"><a href="#spec-munitions" data-toc-id="spec-munitions" title="弹药师"><span>弹药师</span></a></li><li class="toc-level-3"><a href="#spec-demolition" data-toc-id="spec-demolition" title="爆破师"><span>爆破师</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-artillery" data-toc-id="skills-artillery" title="枪炮师专属"><span>枪炮师专属</span></a></li><li class="toc-level-3"><a href="#skills-munitions" data-toc-id="skills-munitions" title="弹药师专属"><span>弹药师专属</span></a></li><li class="toc-level-3"><a href="#skills-demolition" data-toc-id="skills-demolition" title="爆破师专属"><span>爆破师专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-1" data-toc-id="build-artillery-1" title="枪炮师 · 阵地固守配置"><span>枪炮师 · 阵地固守配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-1" data-toc-id="build-demolition-1" title="爆破师 · 连环引爆配置"><span>爆破师 · 连环引爆配置</span></a></li><li class="toc-level-3"><a href="#build-artillery-0" data-toc-id="build-artillery-0" title="枪炮师 · 过热轰击配置"><span>枪炮师 · 过热轰击配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-0" data-toc-id="build-munitions-0" title="弹药师 · 弹幕压制配置"><span>弹药师 · 弹幕压制配置</span></a></li><li class="toc-level-3"><a href="#build-demolition-0" data-toc-id="build-demolition-0" title="爆破师 · 雷区布设配置"><span>爆破师 · 雷区布设配置</span></a></li><li class="toc-level-3"><a href="#build-munitions-1" data-toc-id="build-munitions-1" title="弹药师 · 猎首狙杀配置"><span>弹药师 · 猎首狙杀配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/gunner.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.8.0-ota5</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0-ota6</p>
 <h1>火枪手</h1>
 <p class="page-description">远程 3 格。以力量驾驭火铳与火炮，用榴弹、贯穿弹与炮击压制成群的敌人，并以击退与牵制将敌人阻挡在射程边缘。</p>
 <p class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 3 格</span><a class="tag tag-link" href="#spec-artillery">枪炮师</a><a class="tag tag-link" href="#spec-munitions">弹药师</a><a class="tag tag-link" href="#spec-demolition">爆破师</a></p>
@@ -456,7 +461,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-artillery" data-toc-label="枪炮师" tabindex="-1">枪炮师<small>觉醒后称「炮火宗师」</small></h3>
 <p class="spec-pitch">连续开火积累热量，热量叠满时打出一发过热的重炮。</p>
-<a class="spec-strength" href="#build-artillery-0">终局参考 · 等效第 <strong>127</strong> 层</a>
+<a class="spec-strength" href="#build-artillery-1">终局参考 · 等效第 <strong>127</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>每施放一次消耗 2 发以上弹药的技能，获得 1 层热量，上限 5 层，每层使技能伤害提高 8%。热量叠满后，下一次消耗弹药的技能进入过热：落点与扇面的范围扩大 1 格，直线的射程增加 1 格，伤害再提高 50%；施放后热量清零，你受到 5% 最大生命的反冲伤害。热量越高，炮盾越厚：每获得一层热量，获得相当于热量层数 × 4% 最大生命的护盾（与已有护盾取较高值）。</dd></div>
 <div><dt>觉醒提升</dt><dd>热量每层的增伤由 8% 提高至 10%，过热不再造成反冲伤害。</dd></div>
@@ -471,7 +476,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-munitions" data-toc-label="弹药师" tabindex="-1">弹药师<small>觉醒后称「万弹之主」</small></h3>
 <p class="spec-pitch">按敌情装填特种弹，每一次命中都附带弹种的效果。</p>
-<a class="spec-strength" href="#build-munitions-0">终局参考 · 等效第 <strong>126</strong> 层</a>
+<a class="spec-strength" href="#build-munitions-0">终局参考 · 等效第 <strong>125</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>装填时装上一种特种弹，之后普通攻击与技能的每次命中都附带它的效果，直到下一次装填。「爆裂弹」：对目标相邻的敌人造成该次伤害 30% 的溅射伤害；「穿甲弹」：无视目标的护甲，并使其破甲 2 回合；「银弹」：必定命中，对首领的伤害提高 25%。规则中的「装填」可以指定弹种；未指定时按局势选择：首领在场时装填银弹，场上有 3 名以上敌人时装填爆裂弹，其余情况装填穿甲弹。每场战斗开始时同样按局势装好一种。附带弹种效果的命中回复造成伤害 10% 的生命。最大生命提高 15%。</dd></div>
 <div><dt>觉醒提升</dt><dd>可以同时装填两种特种弹：规则指定的弹种为主，另一种按局势选择。</dd></div>
@@ -486,7 +491,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-demolition" data-toc-label="爆破师" tabindex="-1">爆破师<small>觉醒后称「爆破宗匠」</small></h3>
 <p class="spec-pitch">在落点埋下炸药，等敌人踩响，或把敌人轰进去。</p>
-<a class="spec-strength" href="#build-demolition-1">终局参考 · 等效第 <strong>124</strong> 层</a>
+<a class="spec-strength" href="#build-demolition-1">终局参考 · 等效第 <strong>127</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>「榴弹」「燃烧弹」「震天雷」「炮击」「破城弹」命中后，在落点埋下炸药，场上至多 3 处，再埋下的顶替最早的一处。敌人进入或离开炸药所在的格子、技能的范围覆盖炸药，或者炸药埋下满 3 回合时，炸药爆炸：对该格及相邻的敌人造成 120% 伤害并使其破甲 2 回合，波及的其他炸药一同爆炸。被炸药波及的敌人朝远离你的方向被炸退 1 格。最大生命提高 15%。</dd></div>
 <div><dt>觉醒提升</dt><dd>炸药上限由 3 处提高至 5 处，爆炸伤害由 120% 提高至 160%。</dd></div>
@@ -506,6 +511,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。向射程内一名敌人投出榴弹，对其及相邻敌人各造成 {d140} 伤害，并使其破甲 2 回合，期间护甲视为 0。">消耗 2 发弹药。向射程内一名敌人投出榴弹，对其及相邻敌人各造成 196% + 860 伤害，并使其破甲 2 回合，期间护甲视为 0。</p>
 <p class="skill-synergy">先以「榴弹」施加破甲，再以「破城弹」引爆，或以「贯穿弹」集火。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连震</span><strong>接在「震天雷」之后施放</strong>：已被眩晕的敌人再多眩晕 1 次行动。</p><p class="skill-link-leads">之后接着施放：「燃烧弹」（火障）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>弹药师</strong>：装填爆裂弹时，范围扩大 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="榴弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -518,6 +524,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">贯穿</span><span class="tag">穿甲</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。朝射程内一名敌人射出贯穿弹，沿直线贯穿至射程尽头，对路线上的所有敌人各造成 {d150} 伤害，无视护甲；岩石会阻挡子弹。">消耗 2 发弹药。朝射程内一名敌人射出贯穿弹，沿直线贯穿至射程尽头，对路线上的所有敌人各造成 210% + 921 伤害，无视护甲；岩石会阻挡子弹。</p>
 <p class="skill-synergy">敌人排成一列时施放「贯穿弹」收益最高，也可以越过前排直接命中后排。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">钉射</span><strong>命中破甲的敌人时</strong>：把它钉在原地：下一次行动不能移动。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：命中 3 名以上敌人时，额外获得 1 层热量。</li><li><strong>弹药师</strong>：装填穿甲弹时，伤害提高 40%。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="贯穿弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -530,6 +537,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="筑起掩体，获得相当于 {p35} 最大生命的护盾，并将相邻的敌人击退 1 格。">筑起掩体，获得相当于 51.8% 最大生命的护盾，并将相邻的敌人击退 1 格。</p>
 <p class="skill-synergy">敌人贴近时施放「掩体」，可以拉开距离并承受接下来的攻击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">拒垒</span><strong>接在「加农炮」之后施放</strong>：之后 3 回合，护盾挡下相邻敌人的攻击时，把它击退 1 格。</p><p class="skill-link-leads">之后接着施放：「霰弹」（震散）、「战地急救」（疾装）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆破师</strong>：在被击退的敌人原来所在的格子埋下炸药。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="护盾" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="掩体的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -542,6 +550,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
 <p class="skill-desc" data-template="消耗 1 发弹药。向射程内一名敌人投出燃烧弹，对其及相邻敌人各造成 {d70} 伤害，并使其燃烧 3 回合：每回合受到 {p45} 攻击的伤害，每次递增 50%。">消耗 1 发弹药。向射程内一名敌人投出燃烧弹，对其及相邻敌人各造成 103.6% + 430 伤害，并使其燃烧 3 回合：每回合受到 66.6% 攻击的伤害，每次递增 50%。</p>
 <p class="skill-synergy">先以「燃烧弹」点燃聚集的敌人，再以「榴弹」或「炮击」造成范围伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">火障</span><strong>接在「榴弹」之后施放</strong>：炸到的敌人脚下燃起火焰，保留 2 回合：未燃烧的敌人走进或停在火焰上时燃烧 3 回合，每回合受到 30% 攻击的伤害。<small>（Lv.10 时 45%，Lv.20 时 60%）</small></p></div>
 
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害 / 燃烧" data-open="1" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="燃烧弹的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -554,6 +563,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人造成 {d260} 伤害，其相邻敌人各受到 {d100} 伤害；目标被击退 2 格，撞上岩石、场地边缘或其他敌人时受到撞击伤害并眩晕。开火后你后退 1 格。">消耗 3 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，其相邻敌人各受到 148% + 640 伤害；目标被击退 2 格，撞上岩石、场地边缘或其他敌人时受到撞击伤害并眩晕。开火后你后退 1 格。</p>
 <p class="skill-synergy">把敌人轰向岩石或场地边缘可以造成额外的撞击伤害并使其眩晕；后坐也能让你和敌人拉开距离。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">长轰</span><strong>接在「霰弹」之后施放</strong>：目标被一路轰退，直到撞上岩石、场地边缘或其他敌人为止。</p><p class="skill-link-leads">之后接着施放：「掩体」（拒垒）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：后坐距离由 1 格增加至 2 格，目标的击退距离增加 1 格。</li><li><strong>弹药师</strong>：装填银弹时，对首领的伤害再提高 30%。</li><li><strong>爆破师</strong>：被击退的目标进入炸药所在的格子时，这次爆炸的伤害提高 50%。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="加农炮的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -566,6 +576,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群控</span><span class="tag">眩晕</span></p>
 <p class="skill-desc" data-template="消耗 1 发弹药。向射程内一名敌人投出震天雷，对其及相邻敌人各造成 {d80} 伤害，并使其眩晕，跳过 2 次行动。">消耗 1 发弹药。向射程内一名敌人投出震天雷，对其及相邻敌人各造成 118.4% + 512 伤害，并使其眩晕，跳过 2 次行动。</p>
 <p class="skill-synergy">以「震天雷」限制成群的敌人，再以「炮击」或「霰弹」集中输出。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">迸火</span><strong>命中燃烧的敌人时</strong>：火星迸散：它相邻的敌人燃烧 3 回合，每回合受到 30% 攻击的伤害。</p><p class="skill-link-leads">之后接着施放：「榴弹」（连震）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>爆破师</strong>：范围覆盖炸药时，被这次爆炸波及的敌人眩晕 1 次行动。</li></ul></div>
 <div class="skill-levels" data-rate="0.026666666666666665" data-scaling="伤害" data-open="10" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="震天雷的技能等级" /></label><output class="level-value">Lv.19</output></div>
@@ -578,6 +589,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">扇面</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。朝 2 格内一名敌人的方向扇形射出霰弹，扇面上 2 格内的敌人各受到 {d120} 伤害；相邻的敌人被击退 1 格。">消耗 2 发弹药。朝 2 格内一名敌人的方向扇形射出霰弹，扇面上 2 格内的敌人各受到 168% + 768 伤害；相邻的敌人被击退 1 格。</p>
 <p class="skill-synergy">敌人贴近时以「霰弹」击退前排，再以其他技能在远处输出。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">震散</span><strong>接在「掩体」之后施放</strong>：扇面上的敌人再被震退 1 格；被身后的敌人挡住时，那名敌人眩晕。</p><p class="skill-link-leads">之后接着施放：「加农炮」（长轰）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>枪炮师</strong>：扇面延伸 1 格。</li></ul></div>
 <div class="skill-levels" data-rate="0.023529411764705882" data-scaling="伤害" data-open="15" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="霰弹的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -590,6 +602,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">回复</span><span class="tag">装填</span></p>
 <p class="skill-desc" data-template="回复 {p20} 最大生命，并装填 3 发弹药。">回复 29.6% 最大生命，并装填 3 发弹药。</p>
 <p class="skill-synergy">把「战地急救」的施放规则排在使用药水之前，可以同时回复生命与补充弹药。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">疾装</span><strong>接在「掩体」之后施放</strong>：包扎完毕，立即再行动一次。</p></div>
 
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="治疗" data-open="15" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="战地急救的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -603,6 +616,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d170} 伤害，并将其击退 1 格。">消耗 2 发弹药。对射程内一名敌人造成 238% + 1088 伤害，并将其击退 1 格。</p>
 <p class="skill-synergy">转职后最先学到的输出手段：耗弹 2 发，稳定积累热量。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">铅坠</span><strong>接在「筑垒」之后施放</strong>：之后 2 回合，它每次行动都被牵制，少移动 1 格，不再间隔一次。</p><p class="skill-link-leads">之后接着施放：「炮击」（封锁）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="重弹的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -615,6 +629,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">散热</span></p>
 <p class="skill-desc" data-template="消耗全部热量，每层获得相当于 {p8} 最大生命的护盾，并回复 {p4} 最大生命；没有热量时，获得相当于 {p15} 最大生命的护盾。">消耗全部热量，每层获得相当于 11.8% 最大生命的护盾，并回复 5.9% 最大生命；没有热量时，获得相当于 22.2% 最大生命的护盾。</p>
 <p class="skill-synergy">枪炮师的保命手段：热量越高，护盾与回复越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">炽浪</span><strong>接在「赤热炮」之后施放</strong>：散出的热浪把 2 格内的敌人推开 1 格。</p><p class="skill-link-leads">之后接着施放：「炮火连天」（续炮）、「升温」（趁热）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="护盾 / 回复" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="散热护盾的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -627,6 +642,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。射程增加 1 格，以一名敌人为中心呼叫炮击，对其 2 格内的所有敌人各造成 {d260} 伤害，并使其破甲 2 回合。">消耗 3 发弹药。射程增加 1 格，以一名敌人为中心呼叫炮击，对其 2 格内的所有敌人各造成 384.8% + 1664 伤害，并使其破甲 2 回合。</p>
 <p class="skill-synergy">敌人聚集时施放「炮击」，再以「破城弹」引爆破甲，弹药也会随之返还。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">封锁</span><strong>接在「重弹」之后施放</strong>：炸到的敌人下一次行动不能移动。</p><p class="skill-link-leads">之后接着施放：「火力网」（熔甲）</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="炮击的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -639,6 +655,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">光束</span><span class="tag">穿甲</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。朝射程内一名敌人发射魔导光束，贯穿至射程尽头，光束宽 3 格（路线及其两侧），对其中所有敌人各造成 {d350} 伤害，无视护甲；每层热量使伤害再提高 10%，不消耗热量。">消耗 3 发弹药。朝射程内一名敌人发射魔导光束，贯穿至射程尽头，光束宽 3 格（路线及其两侧），对其中所有敌人各造成 518% + 2240 伤害，无视护甲；每层热量使伤害再提高 10%，不消耗热量。</p>
 <p class="skill-synergy">枪炮师的收尾手段：热量越高，光束越强。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">斥光</span><strong>接在「破阵炮」之后施放</strong>：被光束扫中的敌人向后推开 1 格。</p><p class="skill-link-leads">之后接着施放：「破阵炮」（穿阵）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="魔导光炮的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -651,6 +668,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">装填</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，装满弹匣，热量直接叠满。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 48% 最大生命的护盾，装满弹匣，热量直接叠满。不消耗弹药。</p>
 <p class="skill-synergy">「炮火连天」施放后弹匣装满、热量叠满，可以接着施放「魔导光炮」「炮击」等耗弹多的技能，打出过热的一发。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">续炮</span><strong>接在「散热护盾」之后施放</strong>：「魔导光炮」的冷却立即结束。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="炮火连天的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -663,6 +681,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">热量</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="获得 2 层热量；之后 3 回合，技能伤害提高 {p20}。">获得 2 层热量；之后 3 回合，技能伤害提高 32%。</p>
 <p class="skill-synergy">过热轰击打法的起手：热量一口气攒上去，紧接着打出过热的一发。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">趁热</span><strong>接在「散热护盾」之后施放</strong>：热量攒起之后，立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「连珠炮」（逐退）</p></div>
 
 <div class="skill-levels" data-rate="0.05454545454545454" data-scaling="增伤" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="升温的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -675,6 +694,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="获得 {p25} 最大生命的护盾，并将 2 格内的敌人击退 2 格。">获得 37% 最大生命的护盾，并将 2 格内的敌人击退 2 格。</p>
 <p class="skill-synergy">阵地固守打法的保命手段：敌人逼近时把它们推回射界之外。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">溃退</span><strong>接在「据守」之后施放</strong>：被推开的敌人陷入畏惧：下一次行动改为后退，不攻击。</p><p class="skill-link-leads">之后接着施放：「重弹」（铅坠）、「拒马」（连营）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="护盾" data-open="50" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="筑垒的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -687,6 +707,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">过热</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人及其相邻敌人造成 {d220} 伤害；这一发过热时，伤害再提高 50%。">消耗 3 发弹药。对射程内一名敌人及其相邻敌人造成 325.6% + 1408 伤害；这一发过热时，伤害再提高 50%。</p>
 <p class="skill-synergy">过热轰击打法的重炮：留到热量叠满再施放。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">余炽</span><strong>接在「连珠炮」之后施放</strong>：这一发过热时，热量保留 2 层，不再清零。</p><p class="skill-link-leads">之后接着施放：「散热护盾」（炽浪）、「天轨炮」（天坠）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="赤热炮的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -699,6 +720,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">拒敌</span><span class="tag">击退</span></p>
 <p class="skill-desc" data-template="对相邻的敌人造成 {d100} 伤害并将其击退 2 格；之后 3 回合，敌人移动到与你相邻的格子时，同样受到伤害并被击退。">对相邻的敌人造成 160% + 640 伤害并将其击退 2 格；之后 3 回合，敌人移动到与你相邻的格子时，同样受到伤害并被击退。</p>
 <p class="skill-synergy">阵地固守打法的拒敌手段：贴上来的敌人会被推回射界之外。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连营</span><strong>接在「筑垒」之后施放</strong>：这一次立起的「拒马」多保留 2 回合。</p><p class="skill-link-leads">之后接着施放：「据守」（还击）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="伤害" data-open="65" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="拒马的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -711,6 +733,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">热量</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害并获得 1 层热量；「魔导光炮」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害并获得 1 层热量；「魔导光炮」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「魔导光炮」配成两拍循环：「破阵炮」积累热量、催快「魔导光炮」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">穿阵</span><strong>接在「魔导光炮」之后施放</strong>：炮弹穿过目标：身后一格的敌人受到同样的伤害。</p><p class="skill-link-leads">之后接着施放：「魔导光炮」（斥光）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="破阵炮的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -723,6 +746,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">轰炸</span></p>
 <p class="skill-desc" data-template="施放前热量叠满，这一击按过热结算。以射程内敌人最密集处为中心，从高空降下魔导炮击，对 3 格内的所有敌人各造成 {d320} 伤害，无视护甲。">施放前热量叠满，这一击按过热结算。以射程内敌人最密集处为中心，从高空降下魔导炮击，对 3 格内的所有敌人各造成 512% + 2048 伤害，无视护甲。</p>
 <p class="skill-synergy">过热轰击打法的大招：在敌人聚集时施放，可以一次覆盖大半个战场。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">天坠</span><strong>接在「赤热炮」之后施放</strong>：落点 1 格内的敌人眩晕，跳过 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="天轨炮的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -735,6 +759,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连射</span><span class="tag">热量</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人连续开火 3 次，每次造成 {d120} 伤害；每次命中获得 1 层热量。">消耗 3 发弹药。对射程内一名敌人连续开火 3 次，每次造成 177.6% + 768 伤害；每次命中获得 1 层热量。</p>
 <p class="skill-synergy">过热轰击打法的连射：一次施放就把热量攒满。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">逐退</span><strong>接在「升温」之后施放</strong>：每一发命中都把目标击退 1 格。</p><p class="skill-link-leads">之后接着施放：「赤热炮」（余炽）</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="连珠炮的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -747,6 +772,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">持续</span></p>
 <p class="skill-desc" data-template="之后 3 回合，每施放一次消耗弹药的技能，获得相当于 {p8} 最大生命的护盾。">之后 3 回合，每施放一次消耗弹药的技能，获得相当于 12.8% 最大生命的护盾。</p>
 <p class="skill-synergy">阵地固守打法的续航：站定开火，每一发都加固防线。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">还击</span><strong>接在「拒马」之后施放</strong>：之后 3 回合，护盾每挡下一次攻击，对攻击者开一枪，造成 80% 攻击的伤害。<small>（Lv.10 时 120%，Lv.20 时 160%）</small></p><p class="skill-link-leads">之后接着施放：「筑垒」（溃退）</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="护盾" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="据守的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -759,6 +785,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；破甲的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；破甲的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「炮火连天」错开施放；先以「炮击」「榴弹」施加破甲，再以「火力网」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">熔甲</span><strong>接在「炮击」之后施放</strong>：命中的敌人护甲永久减半，每名敌人一次。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="火力网的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -772,6 +799,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，技能伤害提高 {p30}，消耗弹药的技能少消耗 1 发（至少消耗 1 发）。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，技能伤害提高 48%，消耗弹药的技能少消耗 1 发（至少消耗 1 发）。</p>
 <p class="skill-synergy">施放后连续开火，这几回合里打得更重，弹药也更耐用。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="火力全开的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -783,6 +811,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">贯天</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害并将其击退 1 格；施放后热量叠满。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害并将其击退 1 格；施放后热量叠满。</p>
 <p class="skill-synergy">枪炮师的觉醒技：一次轰开全场，再以过热的一发接上。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="贯天炮的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -796,6 +825,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">弹种</span></p>
 <p class="skill-desc" data-template="消耗 1 发弹药。对射程内一名敌人造成 {d170} 伤害。">消耗 1 发弹药。对射程内一名敌人造成 238% + 1088 伤害。</p>
 <p class="skill-synergy">转职后最先学到的输出手段：耗弹少，每一发都附带弹种的效果。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">抢射</span><strong>接在「标靶」之后施放</strong>：这一枪之后立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「汲能弹」（溢能）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="点射的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -809,6 +839,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。立即装满弹匣并上膛，使下一次消耗弹药的技能伤害提高 30%。</p>
 <p class="skill-synergy">弹药不足时施放「快速装填」，同一回合即可接着施放「加农炮」或「炮击」。</p>
 
+
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="快速装填的技能等级" /></label><output class="level-value">Lv.5</output></div>
 <p class="level-total">Lv.5（角色 45 级开放）：效果不变</p>
@@ -820,6 +851,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
 <p class="skill-desc" data-template="消耗 1 发弹药。对射程内生命最高的敌人造成 {d160} 伤害，回复造成伤害 50% 的生命，并装填 4 发当前弹种的弹药。">消耗 1 发弹药。对射程内生命最高的敌人造成 236.8% + 1024 伤害，回复造成伤害 50% 的生命，并装填 4 发当前弹种的弹药。</p>
 <p class="skill-synergy">弹药师的保命手段：伤害越高，回复越多，弹药也随之补充。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">溢能</span><strong>接在「点射」之后施放</strong>：生命回满后，溢出的回复转为护盾。</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害 / 回复" data-open="30" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="汲能弹的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -832,6 +864,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连射</span><span class="tag">弹种</span></p>
 <p class="skill-desc" data-template="弹匣中至少有 3 发弹药时可施放：射出弹匣中剩余的全部弹药，每发射向射程内随机一名敌人，造成 {d80} 伤害并附带当前弹种的效果；射完后装满弹匣。">弹匣中至少有 3 发弹药时可施放：射出弹匣中剩余的全部弹药，每发射向射程内随机一名敌人，造成 118.4% + 512 伤害并附带当前弹种的效果；射完后装满弹匣。</p>
 <p class="skill-synergy">弹药师的收尾手段：弹匣越满，射出的弹药越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">逼退</span><strong>接在「钨芯弹」之后施放</strong>：命中的敌人各被逼退 1 格。</p><p class="skill-link-leads">之后接着施放：「钨芯弹」（贯列）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="弹雨的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -844,6 +877,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">上膛</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，装满弹匣并上膛。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合；随后你后退 1 格，获得相当于 48% 最大生命的护盾，装满弹匣并上膛。不消耗弹药。</p>
 <p class="skill-synergy">「排枪齐射」施放后弹匣装满并上膛，可以接着施放「弹雨」或耗弹多的技能。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">惊阵</span><strong>接在「扫射」之后施放</strong>：齐射的声势震慑身边：2 格内的敌人陷入畏惧，下一次行动改为后退，不攻击。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="排枪齐射的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -856,6 +890,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">扇面</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。朝 3 格内一名敌人的方向扇形扫射，扇面上 3 格内的敌人各受到 {d140} 伤害。">消耗 3 发弹药。朝 3 格内一名敌人的方向扇形扫射，扇面上 3 格内的敌人各受到 207.2% + 896 伤害。</p>
 <p class="skill-synergy">弹幕压制打法的主力：装填爆裂弹时，溅射一并铺开。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">弹压</span><strong>接在「折射弹」之后施放</strong>：之后 2 回合，扇面上的敌人每次行动都被牵制，少移动 1 格，不再间隔一次。</p><p class="skill-link-leads">之后接着施放：「排枪齐射」（惊阵）、「折射弹」（跳弹）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="扫射的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -868,6 +903,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">首领</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内生命最高的敌人造成 {d220} 伤害；目标为首领时，伤害再提高 40%。">消耗 2 发弹药。对射程内生命最高的敌人造成 325.6% + 1408 伤害；目标为首领时，伤害再提高 40%。</p>
 <p class="skill-synergy">猎首狙杀打法的主力：装填银弹时，对首领的伤害更高。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">截杀</span><strong>接在「标靶」之后施放</strong>：若它下一次行动是大招，打断它：眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「决胜弹」（补枪）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="斩首弹的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -880,6 +916,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">弹射</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d150} 伤害，随后弹向离它最近的 2 名敌人，各造成同样的伤害。">消耗 2 发弹药。对射程内一名敌人造成 222% + 960 伤害，随后弹向离它最近的 2 名敌人，各造成同样的伤害。</p>
 <p class="skill-synergy">弹幕压制打法的连射：敌人越聚集，折射弹越容易命中。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">跳弹</span><strong>接在「扫射」之后施放</strong>：再多弹向 2 名敌人：共弹向离它最近的 4 名敌人。</p><p class="skill-link-leads">之后接着施放：「扫射」（弹压）、「弹链」（续链）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="折射弹的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -892,6 +929,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">标记</span><span class="tag">增伤</span></p>
 <p class="skill-desc" data-template="给射程内生命最高的敌人挂上标靶 3 回合，你对它造成的伤害提高 {p30}。">给射程内生命最高的敌人挂上标靶 3 回合，你对它造成的伤害提高 48%。</p>
 <p class="skill-synergy">猎首狙杀打法的起手：先挂上标靶，再以「斩首弹」「决胜弹」集火。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">转靶</span><strong>接在「决胜弹」之后施放</strong>：标靶期间，带标靶的敌人倒下时，标靶转到射程内生命最高的敌人身上。</p><p class="skill-link-leads">之后接着施放：「点射」（抢射）、「斩首弹」（截杀）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="增伤" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="标靶的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -904,6 +942,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">穿甲</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害，无视护甲；「弹雨」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，无视护甲；「弹雨」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「弹雨」配成两拍循环：「钨芯弹」穿透护甲、催快「弹雨」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">贯列</span><strong>接在「弹雨」之后施放</strong>：钨芯穿透：目标身后一条直线上的敌人都受到同样的伤害。</p><p class="skill-link-leads">之后接着施放：「弹雨」（逼退）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="钨芯弹的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -916,6 +955,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">齐射</span></p>
 <p class="skill-desc" data-template="向射程内的所有敌人各射出 3 发特种弹，依次为爆裂弹、穿甲弹与银弹，每发造成 {d100} 伤害并附带对应弹种的效果。">向射程内的所有敌人各射出 3 发特种弹，依次为爆裂弹、穿甲弹与银弹，每发造成 160% + 640 伤害并附带对应弹种的效果。</p>
 <p class="skill-synergy">弹幕压制打法的大招：敌人越多，射出的弹药越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">混装</span><strong>接在「弹链」之后施放</strong>：三种特种弹留在弹匣里：直到下一次装填，每次命中同时附带爆裂弹、穿甲弹与银弹的效果。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="全弹齐发的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -928,6 +968,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">连射</span></p>
 <p class="skill-desc" data-template="消耗 4 发弹药。对射程内所有敌人各射出 2 发子弹，每发造成 {d80} 伤害。">消耗 4 发弹药。对射程内所有敌人各射出 2 发子弹，每发造成 118.4% + 512 伤害。</p>
 <p class="skill-synergy">弹幕压制打法的大招：敌人越多，射出的子弹越多，弹种的效果也铺得越开。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">续链</span><strong>接在「折射弹」之后施放</strong>：弹链自行续上：这次不消耗弹药。</p><p class="skill-link-leads">之后接着施放：「全弹齐发」（混装）</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="弹链的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -940,6 +981,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">斩杀</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。对射程内生命最高的敌人造成 {d260} 伤害；目标每损失 10% 生命，伤害提高 10%。">消耗 3 发弹药。对射程内生命最高的敌人造成 384.8% + 1664 伤害；目标每损失 10% 生命，伤害提高 10%。</p>
 <p class="skill-synergy">猎首狙杀打法的收尾：首领的生命越低，这一发越重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">补枪</span><strong>接在「斩首弹」之后施放</strong>：若击杀目标，立即对射程内生命最高的敌人再施放一次，不消耗弹药，一次为限。</p><p class="skill-link-leads">之后接着施放：「标靶」（转靶）、「弹暴」（满匣）</p></div>
 
 <div class="skill-levels" data-rate="0.16" data-scaling="伤害" data-open="85" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="决胜弹的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -952,6 +994,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">首领</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；首领和带标靶的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；首领和带标靶的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「排枪齐射」错开施放；先以「标靶」标记敌人，再以「弹暴」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">满匣</span><strong>接在「决胜弹」之后施放</strong>：施放之后装满弹匣。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="弹暴的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -965,6 +1008,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，消耗弹药的技能不消耗弹药，伤害提高 {p40}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，消耗弹药的技能不消耗弹药，伤害提高 64%。</p>
 <p class="skill-synergy">施放后连续开火，这几回合里不必装填。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="无尽弹匣的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -976,6 +1020,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">弹幕</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害；随后装满弹匣并上膛。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害；随后装满弹匣并上膛。</p>
 <p class="skill-synergy">弹药师的觉醒技：一次扫过全场，弹匣随之装满。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="弹幕的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -989,6 +1034,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">埋雷</span></p>
 <p class="skill-desc" data-template="消耗 1 发弹药。对射程内一名敌人造成 {d150} 伤害，并在其脚下埋下炸药。">消耗 1 发弹药。对射程内一名敌人造成 210% + 960 伤害，并在其脚下埋下炸药。</p>
 <p class="skill-synergy">转职后最先学到的埋雷手段：敌人一挪步就会踩响。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">惊走</span><strong>命中眩晕的敌人时</strong>：它陷入畏惧：醒来后的第一次行动改为后退，不攻击，退开时踩响脚下的炸药。</p><p class="skill-link-leads">之后接着施放：「绊雷」（撤步）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="布雷的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -1001,6 +1047,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">引爆</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="引爆射程内的所有炸药，每引爆一处，回复 {p6} 最大生命，并获得相当于 {p6} 最大生命的护盾；射程内没有炸药时，在你相邻的空格埋下 2 处炸药。">引爆射程内的所有炸药，每引爆一处，回复 8.9% 最大生命，并获得相当于 8.9% 最大生命的护盾；射程内没有炸药时，在你相邻的空格埋下 2 处炸药。</p>
 <p class="skill-synergy">爆破师的保命手段：埋下的炸药越多，回复与护盾越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">回火</span><strong>接在「绊雷」之后施放</strong>：每引爆一处炸药，装填 1 发弹药。</p><p class="skill-link-leads">之后接着施放：「烽烟四起」（烟遁）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="护盾 / 回复" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="诱爆的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -1013,6 +1060,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">破甲</span><span class="tag">引爆</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人及其相邻敌人各造成 {d220} 伤害。已破甲的敌人被引爆：伤害额外提高 50%，被击退 1 格并消耗破甲，每引爆一名敌人返还 1 发弹药；未破甲的敌人破甲 2 回合。">消耗 2 发弹药。对射程内一名敌人及其相邻敌人各造成 325.6% + 1408 伤害。已破甲的敌人被引爆：伤害额外提高 50%，被击退 1 格并消耗破甲，每引爆一名敌人返还 1 发弹药；未破甲的敌人破甲 2 回合。</p>
 <p class="skill-synergy">先以「榴弹」或「炮击」施加破甲，再以「破城弹」引爆；第一发施加破甲，第二发引爆，弹药也会随之返还。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中破甲的敌人时</strong>：被引爆：伤害额外提高 50%，被击退 1 格并消耗破甲，每引爆一名敌人返还 1 发弹药；未破甲的敌人破甲 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="破城弹的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -1025,6 +1073,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连爆</span><span class="tag">群攻</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。在射程内敌人最密集处埋下炸药，随即引爆场上的所有炸药，每处爆炸造成 {d280} 伤害；同一名敌人每多被一处爆炸波及，这一次的伤害再提高 40%。">消耗 2 发弹药。在射程内敌人最密集处埋下炸药，随即引爆场上的所有炸药，每处爆炸造成 414.4% + 1792 伤害；同一名敌人每多被一处爆炸波及，这一次的伤害再提高 40%。</p>
 <p class="skill-synergy">爆破师的收尾手段：先埋下多处炸药，再一次引爆。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">余燃</span><strong>接在「定向爆破」之后施放</strong>：被炸到的敌人脚下燃起火焰，保留 2 回合：未燃烧的敌人走进或停在火焰上时燃烧 3 回合，每回合受到 30% 攻击的伤害。<small>（Lv.10 时 45%，Lv.20 时 60%）</small></p><p class="skill-link-leads">之后接着施放：「定向爆破」（崩退）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="连锁爆破的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -1037,6 +1086,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">埋雷</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 {d280} 伤害并使其破甲 2 回合，命中的敌人脚下各埋下一处炸药（不受数量上限，下一回合开始时爆炸）；随后你后退 1 格，获得相当于 {p30} 最大生命的护盾，并装满弹匣。不消耗弹药。">射程内有敌人时可施放：射程增加 2 格，对其中所有敌人各造成 448% + 1792 伤害并使其破甲 2 回合，命中的敌人脚下各埋下一处炸药（不受数量上限，下一回合开始时爆炸）；随后你后退 1 格，获得相当于 48% 最大生命的护盾，并装满弹匣。不消耗弹药。</p>
 <p class="skill-synergy">「烽烟四起」在敌人脚下埋满炸药，下一回合一并爆炸，可以再以「连锁爆破」提前引爆。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">烟遁</span><strong>接在「诱爆」之后施放</strong>：烽烟遮住身形：闪避接下来的 2 次攻击。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害 / 护盾" data-open="40" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="烽烟四起的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -1049,6 +1099,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">埋雷</span><span class="tag">增伤</span></p>
 <p class="skill-desc" data-template="在你周围 2 格内的 3 处空格埋下炸药，不受数量上限限制，这几处炸药爆炸的伤害提高 {p30}；优先埋在靠近敌人的格子。">在你周围 2 格内的 3 处空格埋下炸药，不受数量上限限制，这几处炸药爆炸的伤害提高 44.4%；优先埋在靠近敌人的格子。</p>
 <p class="skill-synergy">雷区布设打法的起手：在身边铺下雷区，贴近的敌人会先踩响。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">复雷</span><strong>接在「绊雷」之后施放</strong>：这几处炸药爆炸后，在原处重新埋下一次。</p><p class="skill-link-leads">之后接着施放：「地火」（暗火）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="炸药增伤" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="雷阵的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -1061,6 +1112,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">引爆</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人及其相邻敌人造成 {d160} 伤害；落点 1 格内每有一处炸药，伤害提高 30%，并把这些炸药一并引爆。">消耗 2 发弹药。对射程内一名敌人及其相邻敌人造成 236.8% + 1024 伤害；落点 1 格内每有一处炸药，伤害提高 30%，并把这些炸药一并引爆。</p>
 <p class="skill-synergy">连环引爆打法的主力：先埋炸药，再把集束弹砸进雷区。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">子母</span><strong>接在「烈性炸药」之后施放</strong>：子弹散落：落点旁的 2 处空格埋下炸药，不受数量上限限制。</p><p class="skill-link-leads">之后接着施放：「火药桶」（聚爆）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="集束弹的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -1073,6 +1125,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">护盾</span><span class="tag">埋雷</span></p>
 <p class="skill-desc" data-template="获得 {p15} 最大生命的护盾，并在你相邻的所有空格埋下炸药，不受数量上限限制。">获得 22.2% 最大生命的护盾，并在你相邻的所有空格埋下炸药，不受数量上限限制。</p>
 <p class="skill-synergy">雷区布设打法的保命手段：贴近的敌人一踩就炸，炸完被推开。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">撤步</span><strong>接在「布雷」之后施放</strong>：埋好之后立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「雷阵」（复雷）、「诱爆」（回火）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="护盾" data-open="55" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="绊雷的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -1085,6 +1138,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">炸药</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，炸药爆炸的伤害提高 {p40}。">之后 3 回合，炸药爆炸的伤害提高 64%。</p>
 <p class="skill-synergy">连环引爆打法的增益：施放后再以「连锁爆破」一次引爆。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">扩爆</span><strong>接在「火药桶」之后施放</strong>：「烈性炸药」期间，炸药爆炸波及 2 格内的敌人。</p><p class="skill-link-leads">之后接着施放：「集束弹」（子母）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="增伤" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="烈性炸药的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -1097,6 +1151,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">埋雷</span></p>
 <p class="skill-desc" data-template="消耗 2 发弹药。对射程内一名敌人造成 {d260} 伤害，并在其脚下埋下炸药；「连锁爆破」的剩余冷却缩短 2 回合。">消耗 2 发弹药。对射程内一名敌人造成 384.8% + 1664 伤害，并在其脚下埋下炸药；「连锁爆破」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「连锁爆破」配成两拍循环：「定向爆破」埋下炸药、催快「连锁爆破」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">崩退</span><strong>接在「连锁爆破」之后施放</strong>：把目标轰退 2 格；它离开脚下的炸药时，炸药随即爆炸。</p><p class="skill-link-leads">之后接着施放：「连锁爆破」（余燃）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="定向爆破的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -1109,6 +1164,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">爆破</span></p>
 <p class="skill-desc" data-template="在射程内生命最高的 3 名敌人脚下各埋下一处炸药并立即全部引爆，每处爆炸对该格及相邻的敌人造成 {d260} 伤害。">在射程内生命最高的 3 名敌人脚下各埋下一处炸药并立即全部引爆，每处爆炸对该格及相邻的敌人造成 416% + 1664 伤害。</p>
 <p class="skill-synergy">连环引爆打法的大招：先挑出最强的几名敌人，一次炸开它们和身边的敌人。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">震野</span><strong>接在「火药桶」之后施放</strong>：被炸到的敌人眩晕，跳过 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="伤害" data-open="75" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="轰天的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -1121,6 +1177,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">埋雷</span></p>
 <p class="skill-desc" data-template="对射程内所有敌人造成 {d100} 伤害，并在其脚下各埋下一处炸药，不受数量上限限制，下一回合开始时爆炸。">对射程内所有敌人造成 160% + 640 伤害，并在其脚下各埋下一处炸药，不受数量上限限制，下一回合开始时爆炸。</p>
 <p class="skill-synergy">雷区布设打法的大招：敌人越多，下一回合炸得越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">暗火</span><strong>接在「雷阵」之后施放</strong>：这些炸药不在下一回合自行爆炸，改为留在原地，等敌人进出或埋下满 3 回合时再爆炸。</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="伤害" data-open="80" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="地火的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -1133,6 +1190,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">燃烧</span></p>
 <p class="skill-desc" data-template="消耗 3 发弹药。对射程内一名敌人及其 2 格内的敌人造成 {d200} 伤害并使其燃烧 3 回合，随后引爆 2 格内的所有炸药。">消耗 3 发弹药。对射程内一名敌人及其 2 格内的敌人造成 296% + 1280 伤害并使其燃烧 3 回合，随后引爆 2 格内的所有炸药。</p>
 <p class="skill-synergy">连环引爆打法的重炮：砸进雷区中央，炸药与燃烧一并结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">聚爆</span><strong>接在「集束弹」之后施放</strong>：落地之前，射程内的敌人先被拉向最密集处 1 格。</p><p class="skill-link-leads">之后接着施放：「烈性炸药」（扩爆）、「轰天」（震野）</p></div>
 
 <div class="skill-levels" data-rate="0.16" data-scaling="伤害" data-open="85" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="火药桶的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -1145,6 +1203,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">破甲</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d320} 伤害；破甲的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">射程内有敌人时可施放：对射程内所有敌人造成 512% + 2048 伤害；破甲的敌人改为受到 720% + 2880 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「烽烟四起」错开施放；先以炸药、「破城弹」施加破甲，再以「震爆」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">震溃</span><strong>命中破甲的敌人时</strong>：消耗它的破甲，使其眩晕，跳过 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="震爆的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -1158,6 +1217,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，你的技能命中后在目标脚下埋下炸药，炸药爆炸的伤害提高 {p50}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，你的技能命中后在目标脚下埋下炸药，炸药爆炸的伤害提高 80%。</p>
 <p class="skill-synergy">施放后连续开火，每一发都在敌人脚下留下炸药。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="火药库的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -1169,6 +1229,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">火海</span></p>
 <p class="skill-desc" data-template="射程内有敌人时可施放：对射程内所有敌人造成 {d600} 伤害，并在其中生命最高的 3 名敌人脚下埋下炸药。">射程内有敌人时可施放：对射程内所有敌人造成 960% + 3840 伤害，并在其中生命最高的 3 名敌人脚下埋下炸药。</p>
 <p class="skill-synergy">爆破师的觉醒技：一次炸遍全场，再给最强的几名敌人留下炸药。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="6.4">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="火海的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -1211,135 +1272,135 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">弹药师转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 80～146 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～148 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-artillery-0" data-toc-label="枪炮师 · 过热轰击配置" tabindex="-1">枪炮师 · 过热轰击</h3>
-<span class="build-score"><span>等效第 <strong>127</strong> 层</span><small>过半至第 125 层</small></span>
+<h3 id="build-artillery-1" data-toc-label="枪炮师 · 阵地固守配置" tabindex="-1">枪炮师 · 阵地固守</h3>
+<span class="build-score"><span>等效第 <strong>127</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 23.0 L222.4 15.5 L245.9 17.4 L269.5 30.5 L293.0 9.9 L316.5 19.3 L340.1 21.1 L363.6 30.5 L387.2 58.6 L410.7 54.9 L434.3 69.9 L457.8 71.8 L481.4 83.0 L504.9 98.0 L528.5 86.8 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 23.0 L222.4 15.5 L245.9 17.4 L269.5 30.5 L293.0 9.9 L316.5 19.3 L340.1 21.1 L363.6 30.5 L387.2 58.6 L410.7 54.9 L434.3 69.9 L457.8 71.8 L481.4 83.0 L504.9 98.0 L528.5 86.8 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 8.0 L191.7 28.6 L214.2 8.0 L236.7 8.0 L259.2 19.3 L281.7 13.6 L304.3 23.0 L326.8 11.7 L349.3 39.9 L371.8 53.0 L394.3 54.9 L416.9 98.0 L439.4 54.9 L461.9 92.4 L484.4 71.8 L507.0 83.0 L529.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 8.0 L191.7 28.6 L214.2 8.0 L236.7 8.0 L259.2 19.3 L281.7 13.6 L304.3 23.0 L326.8 11.7 L349.3 39.9 L371.8 53.0 L394.3 54.9 L416.9 98.0 L439.4 54.9 L461.9 92.4 L484.4 71.8 L507.0 83.0 L529.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.12</small></li><li><strong>魔导光炮</strong><small>Lv.1</small></li><li><strong>炮火连天</strong><small>Lv.13</small></li><li><strong>赤热炮</strong><small>Lv.10</small></li><li><strong>天轨炮</strong><small>Lv.6</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.1</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>炮击</strong><small>Lv.15</small></li><li><strong>炮火连天</strong><small>Lv.10</small></li><li><strong>筑垒</strong><small>Lv.10</small></li><li><strong>拒马</strong><small>Lv.2</small></li><li><strong>火力网</strong><small>Lv.3</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「架炮」Lv.17、「密集火力」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
 <div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1405</b></span><span>生命 <b>3279</b></span><span>护甲 <b>338</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-munitions-0" data-toc-label="弹药师 · 弹幕压制配置" tabindex="-1">弹药师 · 弹幕压制</h3>
-<span class="build-score"><span>等效第 <strong>126</strong> 层</span><small>过半至第 125 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 11.7 L151.7 8.0 L175.3 9.9 L198.8 26.8 L222.4 8.0 L245.9 17.4 L269.5 24.9 L293.0 9.9 L316.5 21.1 L340.1 23.0 L363.6 26.8 L387.2 45.5 L410.7 75.5 L434.3 79.3 L457.8 90.5 L481.4 88.6 L504.9 98.0 L528.5 92.4 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 11.7 L151.7 8.0 L175.3 9.9 L198.8 26.8 L222.4 8.0 L245.9 17.4 L269.5 24.9 L293.0 9.9 L316.5 21.1 L340.1 23.0 L363.6 26.8 L387.2 45.5 L410.7 75.5 L434.3 79.3 L457.8 90.5 L481.4 88.6 L504.9 98.0 L528.5 92.4 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>排枪齐射</strong><small>Lv.13</small></li><li><strong>加农炮</strong><small>Lv.1</small></li><li><strong>震天雷</strong><small>Lv.2</small></li><li><strong>折射弹</strong><small>Lv.10</small></li><li><strong>弹链</strong><small>Lv.4</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「特种装药」Lv.17、「精工弹药」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 2 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>手炮</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>暴击伤害</dd></div>
-<div><dt>自动战斗打法</dt><dd>生存</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1381</b></span><span>生命 <b>3771</b></span><span>护甲 <b>325</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-artillery-1" data-toc-label="枪炮师 · 阵地固守配置" tabindex="-1">枪炮师 · 阵地固守</h3>
-<span class="build-score"><span>等效第 <strong>124</strong> 层</span><small>过半至第 122 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 9.9 L245.9 9.9 L269.5 21.1 L293.0 11.7 L316.5 26.8 L340.1 32.4 L363.6 49.3 L387.2 64.3 L410.7 77.4 L434.3 88.6 L457.8 90.5 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 9.9 L245.9 9.9 L269.5 21.1 L293.0 11.7 L316.5 26.8 L340.1 32.4 L363.6 49.3 L387.2 64.3 L410.7 77.4 L434.3 88.6 L457.8 90.5 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.5</small></li><li><strong>震天雷</strong><small>Lv.1</small></li><li><strong>炮火连天</strong><small>Lv.13</small></li><li><strong>筑垒</strong><small>Lv.11</small></li><li><strong>拒马</strong><small>Lv.1</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「架炮」Lv.17、「密集火力」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>力量 1 : 敏捷 1 : 智力 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>手炮</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1523</b></span><span>生命 <b>3104</b></span><span>护甲 <b>377</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
 <h3 id="build-demolition-1" data-toc-label="爆破师 · 连环引爆配置" tabindex="-1">爆破师 · 连环引爆</h3>
-<span class="build-score"><span>等效第 <strong>124</strong> 层</span><small>过半至第 122 层</small></span>
+<span class="build-score"><span>等效第 <strong>127</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 8.0 L245.9 17.4 L269.5 30.5 L293.0 11.7 L316.5 38.0 L340.1 39.9 L363.6 34.3 L387.2 53.0 L410.7 73.6 L434.3 88.6 L457.8 86.8 L481.4 86.8 L504.9 98.0 L528.5 94.3 L552.0 94.3 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 8.0 L245.9 17.4 L269.5 30.5 L293.0 11.7 L316.5 38.0 L340.1 39.9 L363.6 34.3 L387.2 53.0 L410.7 73.6 L434.3 88.6 L457.8 86.8 L481.4 86.8 L504.9 98.0 L528.5 94.3 L552.0 94.3" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 13.6 L259.2 15.5 L281.7 13.6 L304.3 26.8 L326.8 28.6 L349.3 36.1 L371.8 32.4 L394.3 49.3 L416.9 92.4 L439.4 64.3 L461.9 96.1 L484.4 84.9 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 13.6 L259.2 15.5 L281.7 13.6 L304.3 26.8 L326.8 28.6 L349.3 36.1 L371.8 32.4 L394.3 49.3 L416.9 92.4 L439.4 64.3 L461.9 96.1 L484.4 84.9 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.11</small></li><li><strong>破城弹</strong><small>Lv.15</small></li><li><strong>轰天</strong><small>Lv.6</small></li><li><strong>火药桶</strong><small>Lv.1</small></li><li><strong>火药库</strong><small>Lv.1</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.19</small></li><li><strong>震天雷</strong><small>Lv.19</small></li><li><strong>破城弹</strong><small>Lv.10</small></li><li><strong>集束弹</strong><small>Lv.1</small></li><li><strong>轰天</strong><small>Lv.2</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「透甲」Lv.17、「重装药」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>力量 1 : 敏捷 1 : 体质 1</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
 <div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1584</b></span><span>生命 <b>3771</b></span><span>护甲 <b>408</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-munitions-1" data-toc-label="弹药师 · 猎首狙杀配置" tabindex="-1">弹药师 · 猎首狙杀</h3>
-<span class="build-score"><span>等效第 <strong>123</strong> 层</span><small>过半至第 122 层</small></span>
+<h3 id="build-artillery-0" data-toc-label="枪炮师 · 过热轰击配置" tabindex="-1">枪炮师 · 过热轰击</h3>
+<span class="build-score"><span>等效第 <strong>126</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 19.3 L222.4 9.9 L245.9 11.7 L269.5 26.8 L293.0 11.7 L316.5 38.0 L340.1 36.1 L363.6 39.9 L387.2 68.0 L410.7 81.1 L434.3 90.5 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 19.3 L222.4 9.9 L245.9 11.7 L269.5 26.8 L293.0 11.7 L316.5 38.0 L340.1 36.1 L363.6 39.9 L387.2 68.0 L410.7 81.1 L434.3 90.5 L457.8 96.1 L481.4 98.0 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 17.4 L259.2 15.5 L281.7 11.7 L304.3 45.5 L326.8 26.8 L349.3 32.4 L371.8 49.3 L394.3 56.8 L416.9 96.1 L439.4 69.9 L461.9 88.6 L484.4 68.0 L507.0 88.6 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 17.4 L259.2 15.5 L281.7 11.7 L304.3 45.5 L326.8 26.8 L349.3 32.4 L371.8 49.3 L394.3 56.8 L416.9 96.1 L439.4 69.9 L461.9 88.6 L484.4 68.0 L507.0 88.6 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.20</small></li><li><strong>排枪齐射</strong><small>Lv.4</small></li><li><strong>斩首弹</strong><small>Lv.1</small></li><li><strong>弹雨</strong><small>Lv.10</small></li><li><strong>决胜弹</strong><small>Lv.1</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.12</small></li><li><strong>加农炮</strong><small>Lv.1</small></li><li><strong>炮火连天</strong><small>Lv.13</small></li><li><strong>赤热炮</strong><small>Lv.10</small></li><li><strong>天轨炮</strong><small>Lv.6</small></li><li class="is-ascend"><strong>贯天炮</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「架炮」Lv.17、「密集火力」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1375</b></span><span>生命 <b>3571</b></span><span>护甲 <b>317</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-munitions-0" data-toc-label="弹药师 · 弹幕压制配置" tabindex="-1">弹药师 · 弹幕压制</h3>
+<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 124 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 9.9 L259.2 15.5 L281.7 13.6 L304.3 9.9 L326.8 34.3 L349.3 49.3 L371.8 28.6 L394.3 62.4 L416.9 98.0 L439.4 90.5 L461.9 96.1 L484.4 81.1 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 9.9 L259.2 15.5 L281.7 13.6 L304.3 9.9 L326.8 34.3 L349.3 49.3 L371.8 28.6 L394.3 62.4 L416.9 98.0 L439.4 90.5 L461.9 96.1 L484.4 81.1 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.15</small></li><li><strong>震天雷</strong><small>Lv.18</small></li><li><strong>排枪齐射</strong><small>Lv.13</small></li><li><strong>折射弹</strong><small>Lv.1</small></li><li><strong>扫射</strong><small>Lv.1</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「特种装药」Lv.17、「精工弹药」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>敏捷</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1684</b></span><span>生命 <b>4165</b></span><span>护甲 <b>442</b></span></dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>自动战斗打法</dt><dd>生存</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1366</b></span><span>生命 <b>4664</b></span><span>护甲 <b>459</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-demolition-0" data-toc-label="爆破师 · 雷区布设配置" tabindex="-1">爆破师 · 雷区布设</h3>
-<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 119 层</small></span>
+<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 30.5 L222.4 17.4 L245.9 17.4 L269.5 45.5 L293.0 15.5 L316.5 41.8 L340.1 41.8 L363.6 56.8 L387.2 69.9 L410.7 77.4 L434.3 94.3 L457.8 94.3 L481.4 98.0 L504.9 98.0 L528.5 90.5 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 30.5 L222.4 17.4 L245.9 17.4 L269.5 45.5 L293.0 15.5 L316.5 41.8 L340.1 41.8 L363.6 56.8 L387.2 69.9 L410.7 77.4 L434.3 94.3 L457.8 94.3 L481.4 98.0 L504.9 98.0 L528.5 90.5 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 9.9 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 13.6 L259.2 21.1 L281.7 19.3 L304.3 38.0 L326.8 23.0 L349.3 47.4 L371.8 32.4 L394.3 66.1 L416.9 96.1 L439.4 73.6 L461.9 94.3 L484.4 71.8 L507.0 86.8 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 9.9 L169.1 8.0 L191.7 11.7 L214.2 8.0 L236.7 13.6 L259.2 21.1 L281.7 19.3 L304.3 38.0 L326.8 23.0 L349.3 47.4 L371.8 32.4 L394.3 66.1 L416.9 96.1 L439.4 73.6 L461.9 94.3 L484.4 71.8 L507.0 86.8 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>震天雷</strong><small>Lv.19</small></li><li><strong>破城弹</strong><small>Lv.15</small></li><li><strong>烽烟四起</strong><small>Lv.6</small></li><li><strong>绊雷</strong><small>Lv.1</small></li><li><strong>雷阵</strong><small>Lv.5</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.1</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>榴弹</strong><small>Lv.20</small></li><li><strong>破城弹</strong><small>Lv.10</small></li><li><strong>烽烟四起</strong><small>Lv.13</small></li><li><strong>雷阵</strong><small>Lv.1</small></li><li><strong>地火</strong><small>Lv.1</small></li><li class="is-ascend"><strong>火海</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「透甲」Lv.17、「重装药」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>火铳</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1375</b></span><span>生命 <b>4107</b></span><span>护甲 <b>317</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-munitions-1" data-toc-label="弹药师 · 猎首狙杀配置" tabindex="-1">弹药师 · 猎首狙杀</h3>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 115 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 15.5 L146.6 9.9 L169.1 9.9 L191.7 13.6 L214.2 9.9 L236.7 32.4 L259.2 32.4 L281.7 21.1 L304.3 45.5 L326.8 53.0 L349.3 81.1 L371.8 69.9 L394.3 83.0 L416.9 94.3 L439.4 96.1 L461.9 98.0 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 15.5 L146.6 9.9 L169.1 9.9 L191.7 13.6 L214.2 9.9 L236.7 32.4 L259.2 32.4 L281.7 21.1 L304.3 45.5 L326.8 53.0 L349.3 81.1 L371.8 69.9 L394.3 83.0 L416.9 94.3 L439.4 96.1 L461.9 98.0 L484.4 96.1 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>加农炮</strong><small>Lv.19</small></li><li><strong>弹雨</strong><small>Lv.10</small></li><li><strong>排枪齐射</strong><small>Lv.13</small></li><li><strong>斩首弹</strong><small>Lv.1</small></li><li><strong>决胜弹</strong><small>Lv.1</small></li><li class="is-ascend"><strong>弹幕</strong><small>Lv.2</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「扩充弹匣」Lv.5、「从容装填」Lv.20、「特种装药」Lv.17、「精工弹药」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>手炮</li><li><small>头盔</small>鳞甲头盔</li><li><small>护甲</small>鳞甲</li><li><small>靴子</small>鳞甲靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>敏捷</dd></div>
 <div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1619</b></span><span>生命 <b>4017</b></span><span>护甲 <b>370</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1659</b></span><span>生命 <b>4165</b></span><span>护甲 <b>429</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota5 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota6 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-necromancer.html"><small>上一篇</small><span>死灵法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="rules.html"><small>下一篇</small><span>属性与规则<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota5）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota6）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

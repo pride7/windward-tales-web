@@ -246,6 +246,11 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 .skill-meta { color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
 .skill-desc { margin: 0; font-size: 13.5px; }
 .skill-synergy { margin: 0; padding-left: 10px; border-left: 2px solid var(--line-mid); color: var(--ink-muted); font-size: 12.5px; }
+.skill-link { margin: 0; padding-left: 10px; border-left: 2px solid var(--gold-mid, var(--line-mid)); font-size: 12.5px; }
+.skill-link p { margin: 2px 0; }
+.skill-link .tag { margin-right: 6px; }
+.skill-link small { color: var(--ink-muted); }
+.skill-link-leads { color: var(--ink-muted); }
 .rewrites ul { margin: 0; padding-left: 16px; color: var(--ink-muted); font-size: 12.5px; }
 .rewrites strong { color: var(--accent-deep); }
 .skill-levels { padding-top: 10px; border-top: 1px dashed var(--line-mid); }
@@ -431,13 +436,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-owl" data-toc-id="spec-owl" title="夜枭"><span>夜枭</span></a></li><li class="toc-level-3"><a href="#spec-bleeder" data-toc-id="spec-bleeder" title="血刃"><span>血刃</span></a></li><li class="toc-level-3"><a href="#spec-phantom" data-toc-id="spec-phantom" title="魅影"><span>魅影</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-owl" data-toc-id="skills-owl" title="夜枭专属"><span>夜枭专属</span></a></li><li class="toc-level-3"><a href="#skills-bleeder" data-toc-id="skills-bleeder" title="血刃专属"><span>血刃专属</span></a></li><li class="toc-level-3"><a href="#skills-phantom" data-toc-id="skills-phantom" title="魅影专属"><span>魅影专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-bleeder-1" data-toc-id="build-bleeder-1" title="血刃 · 血雨横流配置"><span>血刃 · 血雨横流配置</span></a></li><li class="toc-level-3"><a href="#build-owl-1" data-toc-id="build-owl-1" title="夜枭 · 连环收割配置"><span>夜枭 · 连环收割配置</span></a></li><li class="toc-level-3"><a href="#build-bleeder-0" data-toc-id="build-bleeder-0" title="血刃 · 放血狩猎配置"><span>血刃 · 放血狩猎配置</span></a></li><li class="toc-level-3"><a href="#build-phantom-1" data-toc-id="build-phantom-1" title="魅影 · 闪避反击配置"><span>魅影 · 闪避反击配置</span></a></li><li class="toc-level-3"><a href="#build-phantom-0" data-toc-id="build-phantom-0" title="魅影 · 残影连斩配置"><span>魅影 · 残影连斩配置</span></a></li><li class="toc-level-3"><a href="#build-owl-0" data-toc-id="build-owl-0" title="夜枭 · 潜伏刺杀配置"><span>夜枭 · 潜伏刺杀配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-owl" data-toc-id="spec-owl" title="夜枭"><span>夜枭</span></a></li><li class="toc-level-3"><a href="#spec-bleeder" data-toc-id="spec-bleeder" title="血刃"><span>血刃</span></a></li><li class="toc-level-3"><a href="#spec-phantom" data-toc-id="spec-phantom" title="魅影"><span>魅影</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-owl" data-toc-id="skills-owl" title="夜枭专属"><span>夜枭专属</span></a></li><li class="toc-level-3"><a href="#skills-bleeder" data-toc-id="skills-bleeder" title="血刃专属"><span>血刃专属</span></a></li><li class="toc-level-3"><a href="#skills-phantom" data-toc-id="skills-phantom" title="魅影专属"><span>魅影专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-owl-1" data-toc-id="build-owl-1" title="夜枭 · 连环收割配置"><span>夜枭 · 连环收割配置</span></a></li><li class="toc-level-3"><a href="#build-phantom-1" data-toc-id="build-phantom-1" title="魅影 · 闪避反击配置"><span>魅影 · 闪避反击配置</span></a></li><li class="toc-level-3"><a href="#build-bleeder-1" data-toc-id="build-bleeder-1" title="血刃 · 血雨横流配置"><span>血刃 · 血雨横流配置</span></a></li><li class="toc-level-3"><a href="#build-bleeder-0" data-toc-id="build-bleeder-0" title="血刃 · 放血狩猎配置"><span>血刃 · 放血狩猎配置</span></a></li><li class="toc-level-3"><a href="#build-owl-0" data-toc-id="build-owl-0" title="夜枭 · 潜伏刺杀配置"><span>夜枭 · 潜伏刺杀配置</span></a></li><li class="toc-level-3"><a href="#build-phantom-0" data-toc-id="build-phantom-0" title="魅影 · 残影连斩配置"><span>魅影 · 残影连斩配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/assassin.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.8.0-ota5</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0-ota6</p>
 <h1>刺客</h1>
 <p class="page-description">近战 1 格。生存能力较弱，最忌陷入包围；以偷袭生命全满的目标开局，叠加流血累积伤害，再将流血引爆，击倒残敌。</p>
 <p class="tags"><span class="tag">主属性 敏捷</span><span class="tag">射程 1 格</span><a class="tag tag-link" href="#spec-owl">夜枭</a><a class="tag tag-link" href="#spec-bleeder">血刃</a><a class="tag tag-link" href="#spec-phantom">魅影</a></p>
@@ -455,7 +460,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-owl" data-toc-label="夜枭" tabindex="-1">夜枭<small>觉醒后称「永夜之枭」</small></h3>
 <p class="spec-pitch">击杀后隐身，下一击视同偷袭，以击杀链维持攻势。</p>
-<a class="spec-strength" href="#build-owl-1">终局参考 · 等效第 <strong>125</strong> 层</a>
+<a class="spec-strength" href="#build-owl-1">终局参考 · 等效第 <strong>130</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>击杀敌人后进入隐身：回复 5% 最大生命，闪避下一次攻击；下一次技能对任何目标都按偷袭（满血目标）结算，且伤害提高 30%。</dd></div>
 <div><dt>觉醒提升</dt><dd>隐身状态下施放的下一次技能，增伤由 30% 提高至 45%。</dd></div>
@@ -470,7 +475,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-bleeder" data-toc-label="血刃" tabindex="-1">血刃<small>觉醒后称「猩红刃主」</small></h3>
 <p class="spec-pitch">叠加流血再一次结清，以结清的伤害回复生命。</p>
-<a class="spec-strength" href="#build-bleeder-1">终局参考 · 等效第 <strong>126</strong> 层</a>
+<a class="spec-strength" href="#build-bleeder-1">终局参考 · 等效第 <strong>123</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>你施加的流血伤害提高 30%。流血的敌人死亡时，剩余流血转移至相邻的一名敌人。每次结清流血，回复结清伤害 25% 的生命。最大生命提高 20%。</dd></div>
 <div><dt>觉醒提升</dt><dd>结清流血的回复比例由 25% 提高至 35%。</dd></div>
@@ -485,7 +490,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-phantom" data-toc-label="魅影" tabindex="-1">魅影<small>觉醒后称「万象魅影」</small></h3>
 <p class="spec-pitch">以闪避代替承伤，每次闪避都转化为反击。</p>
-<a class="spec-strength" href="#build-phantom-1">终局参考 · 等效第 <strong>123</strong> 层</a>
+<a class="spec-strength" href="#build-phantom-1">终局参考 · 等效第 <strong>125</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>每躲开一次攻击，对攻击者造成 50% 攻击的反击伤害，并获得 1 层残影（上限 4 层，每层使伤害提高 8%）。受到攻击时残影减半。</dd></div>
 <div><dt>觉醒提升</dt><dd>反击伤害由 50% 提高至 75% 攻击。</dd></div>
@@ -505,6 +510,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">偷袭</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d180} 伤害；目标生命已满时按偷袭结算，伤害提高至 {d260}。">对相邻一名敌人造成 252% + 830 伤害；目标生命已满时按偷袭结算，伤害提高至 364% + 1199。</p>
 <p class="skill-synergy">每波战斗开始时先以「背袭」攻击生命已满的敌人，再以「裂伤」使其流血。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">影随</span><strong>接在「影袭」之后施放</strong>：刺中之后立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「烟雾弹」（伺隙）、「夜葬」（传兆）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>夜枭</strong>：偷袭时必定暴击。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害" data-open="1" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="背袭的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -517,6 +523,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d140} 伤害并使其流血；目标已流血时，按当前攻击重新计算流血伤害。">对相邻一名敌人造成 196% + 645 伤害并使其流血；目标已流血时，按当前攻击重新计算流血伤害。</p>
 <p class="skill-synergy">先以「裂伤」使敌人流血，再施放「剜心」或「刺杀」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">挑筋</span><strong>接在「刀扇」之后施放</strong>：挑断它的筋腱：3 回合内攻击力降低 30%。</p><p class="skill-link-leads">之后接着施放：「剜心」（移创）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>血刃</strong>：同时命中另一名相邻敌人，并使其流血。</li></ul></div>
 <div class="skill-levels" data-rate="0.021052631578947368" data-scaling="伤害 / 流血" data-open="1" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="裂伤的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -529,6 +536,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">闪避</span><span class="tag">易伤</span></p>
 <p class="skill-desc">闪避接下来 3 次攻击，并使相邻敌人易伤 2 回合。</p>
 <p class="skill-synergy">受到围攻时施放「烟雾弹」，可闪避攻击并提高相邻敌人受到的伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">伺隙</span><strong>接在「背袭」之后施放</strong>：之后 2 回合，你每闪避一次攻击，「影袭」的冷却立即结束。</p><p class="skill-link-leads">之后接着施放：「影袭」（脱影）、「刀扇」（蒺藜）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魅影</strong>：冷却时间由 5 回合缩短为 4 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="1" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="烟雾弹的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -541,6 +549,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d90} 伤害并使其流血。">对 2 格内所有敌人造成 133.2% + 415 伤害并使其流血。</p>
 <p class="skill-synergy">受到包围时施放「刀扇」，可使周围多名敌人流血。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">蒺藜</span><strong>接在「烟雾弹」之后施放</strong>：之后 2 回合，你身边散落飞刀：敌人走到你身边时流血 3 回合。</p><p class="skill-link-leads">之后接着施放：「裂伤」（挑筋）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>魅影</strong>：携带时，躲开攻击会自动甩出一次，对 2 格内的敌人造成 60% 攻击的伤害，每回合至多 1 次，不占用行动。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害 / 流血" data-open="1" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="刀扇的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -553,6 +562,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">位移</span><span class="tag">接近</span></p>
 <p class="skill-desc" data-template="移动至场上生命最低的敌人身旁，并对其造成 {d220} 伤害。">移动至场上生命最低的敌人身旁，并对其造成 325.6% + 1056 伤害。</p>
 <p class="skill-synergy">「影袭」可用于接近远处的敌人，也可通过改变位置脱离包围。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">脱影</span><strong>接在「烟雾弹」之后施放</strong>：原来围在你身边的敌人扑了个空：下一次行动不能移动。</p><p class="skill-link-leads">之后接着施放：「背袭」（影随）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>夜枭</strong>：改为闪至场上生命比例最高的敌人身旁。</li></ul></div>
 <div class="skill-levels" data-rate="0.02526315789473684" data-scaling="伤害" data-open="5" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="20" value="20" step="1" aria-label="影袭的技能等级" /></label><output class="level-value">Lv.20</output></div>
@@ -565,6 +575,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">血爆</span><span class="tag">收割</span></p>
 <p class="skill-desc" data-template="对相邻一名流血的敌人造成 {d120} 伤害，并立即结算其剩余的全部流血伤害。">对相邻一名流血的敌人造成 177.6% + 576 伤害，并立即结算其剩余的全部流血伤害。</p>
 <p class="skill-synergy">先以「裂伤」或「刀扇」使敌人流血，再以「剜心」结算剩余伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">移创</span><strong>接在「裂伤」之后施放</strong>：结清的流血不会消失：原样转给它相邻的一名敌人，优先未流血的。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>血刃</strong>：冷却时间由 5 回合缩短为 4 回合。</li></ul></div>
 <div class="skill-levels" data-rate="0.026666666666666665" data-scaling="伤害" data-open="10" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="19" value="19" step="1" aria-label="剜心的技能等级" /></label><output class="level-value">Lv.19</output></div>
@@ -577,6 +588,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d130} 伤害，使其流血，并令其跳过 1 次行动。">对相邻一名敌人造成 192.4% + 624 伤害，使其流血，并令其跳过 1 次行动。</p>
 <p class="skill-synergy">优先以「锁喉」限制攻击较高的敌人，再处理其他目标。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">噤声</span><strong>接在「放血」之后施放</strong>：被勒住的敌人醒来后陷入畏惧：第一次行动改为后退，不攻击。</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>夜枭</strong>：按偷袭结算时，跳过行动由 1 次增加至 2 次。</li><li><strong>血刃</strong>：流血持续时间翻倍。</li><li><strong>魅影</strong>：被锁喉的目标，下一次攻击必定落空，视为你躲开。</li></ul></div>
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害 / 流血" data-open="15" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="锁喉的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -589,6 +601,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">吸血</span></p>
 <p class="skill-desc" data-template="对相邻一名流血的敌人造成 {d260} 伤害，并回复相当于造成伤害 30% 的生命。">对相邻一名流血的敌人造成 384.8% + 1248 伤害，并回复相当于造成伤害 30% 的生命。</p>
 <p class="skill-synergy">生命较低时，以「放血」攻击流血的敌人，可同时回复生命。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">昏厥</span><strong>命中眩晕的敌人时</strong>：失血使它昏沉：眩晕延长 1 次行动。</p><p class="skill-link-leads">之后接着施放：「锁喉」（噤声）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>血刃</strong>：目标剩余流血在 3 回合以上时，伤害提高 40%。</li></ul></div>
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害 / 回复" data-open="15" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="放血的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -602,6 +615,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">补刀</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d170} 伤害；目标生命低于 30% 时伤害翻倍。">对相邻一名敌人造成 238% + 816 伤害；目标生命低于 30% 时伤害翻倍。</p>
 <p class="skill-synergy">转职后最先学到的补刀手段：击杀后进入隐身，下一击按偷袭结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">寻喉</span><strong>接在「环刃」之后施放</strong>：若击杀目标，闪至 2 格内生命比例最低的敌人身旁。</p><p class="skill-link-leads">之后接着施放：「掠杀」（连掠）、「夜猎」（猎铠）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="影刺的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -614,6 +628,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群体</span><span class="tag">易伤</span></p>
 <p class="skill-desc">使场上所有敌人易伤 2 回合，获得专注，闪避下一次攻击，并进入隐身。</p>
 <p class="skill-synergy">战斗开始时施放「夜幕」，可提高后续攻击对所有敌人造成的伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">潜踪</span><strong>接在「遁影」之后施放</strong>：借着夜色闪至场上生命最高的敌人身旁。</p><p class="skill-link-leads">之后接着施放：「暗夜」（夜帷）</p></div>
 
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="夜幕的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -626,6 +641,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">隐身</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="立即进入隐身，并回复 {p20} 最大生命。">立即进入隐身，并回复 29.6% 最大生命。</p>
 <p class="skill-synergy">夜枭的续航手段：击杀链中断时用遁影重新进入隐身，下一击仍按偷袭结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">匿迹</span><strong>接在「掠杀」之后施放</strong>：相邻的敌人失去你的踪迹：下一次攻击必定落空。</p><p class="skill-link-leads">之后接着施放：「夜幕」（潜踪）</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="回复" data-open="30" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="遁影的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -638,6 +654,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">偷袭</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d350} 伤害；按偷袭结算时提高至 {d600}。若因此击杀目标，冷却立即结束。">对相邻一名敌人造成 518% + 1680 伤害；按偷袭结算时提高至 888% + 2880。若因此击杀目标，冷却立即结束。</p>
 <p class="skill-synergy">宜在隐身时施放，击杀后再次进入隐身，接续下一击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">续魂</span><strong>接在「夺魂」之后施放</strong>：「夺魂」的冷却立即结束。</p><p class="skill-link-leads">之后接着施放：「夺魂」（慑魂）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害" data-open="35" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="断喉的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -650,6 +667,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">死兆</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d450} 伤害，对 2 格内其他敌人各造成 {d300} 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害翻倍。施放后闪避下一次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命并再获得一次闪避，「背袭」的冷却立即结束。">对相邻一名敌人造成 720% + 2160 伤害，对 2 格内其他敌人各造成 480% + 1440 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害翻倍。施放后闪避下一次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命并再获得一次闪避，「背袭」的冷却立即结束。</p>
 <p class="skill-synergy">夜枭的招牌技：一次打中一片，倒下的敌人让你进入隐身、重置「背袭」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">传兆</span><strong>接在「背袭」之后施放</strong>：之后 3 回合，带「死兆」的敌人倒下时，死兆转到离它最近、没有死兆的敌人身上。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害" data-open="40" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="夜葬的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -662,6 +680,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">隐身</span><span class="tag">瞬发</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。进入隐身（不回复生命），获得 {p10} 最大生命的护盾，并闪避下一次攻击。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。进入隐身（不回复生命），获得 14.8% 最大生命的护盾，并闪避下一次攻击。</p>
 <p class="skill-synergy">潜伏刺杀打法的起手：不靠击杀也能隐身，同一回合接「断喉」或「穿心」就按偷袭结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「穿心」（匿锋）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="护盾" data-open="45" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="潜影的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -674,6 +693,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">突进</span><span class="tag">收割</span></p>
 <p class="skill-desc" data-template="闪至 2 格内生命比例最低的敌人身旁，造成 {d260} 伤害；若击杀目标，冷却立即结束。">闪至 2 格内生命比例最低的敌人身旁，造成 384.8% + 1248 伤害；若击杀目标，冷却立即结束。</p>
 <p class="skill-synergy">连环收割打法的主力：专挑残血的敌人下手，击杀后进入隐身，冷却立即结束。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连掠</span><strong>接在「影刺」之后施放</strong>：若击杀目标，立即再掠杀一次，一次为限。</p><p class="skill-link-leads">之后接着施放：「遁影」（匿迹）、「环刃」（乘夜）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="掠杀的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -686,6 +706,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">偷袭</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d240} 伤害，并使其眩晕 1 次行动；按偷袭结算时改为 {d400} 伤害，眩晕 2 次行动。">对相邻一名敌人造成 355.2% + 1152 伤害，并使其眩晕 1 次行动；按偷袭结算时改为 592% + 1920 伤害，眩晕 2 次行动。</p>
 <p class="skill-synergy">潜伏刺杀打法对付首领的控制：隐身时出手更重、控得更久。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">缠影</span><strong>接在「穿心」之后施放</strong>：影子缠住它的身旁：与它相邻的其他敌人一并眩晕 1 次行动。</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="伤害" data-open="55" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="影缚的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -698,6 +719,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">收割</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d200} 伤害，生命低于 40% 的敌人改为 {d400}；每击杀一名敌人，回复 {p5} 最大生命。">对 2 格内所有敌人造成 296% + 960 伤害，生命低于 40% 的敌人改为 592% + 1920；每击杀一名敌人，回复 7.4% 最大生命。</p>
 <p class="skill-synergy">连环收割打法的范围收割：残血的敌人一并清掉，击杀后进入隐身。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">乘夜</span><strong>接在「掠杀」之后施放</strong>：若击倒了敌人，立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「影刺」（寻喉）</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害 / 回复" data-open="65" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="环刃的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -710,6 +732,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">易伤</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d260} 伤害，必定命中，并使其易伤 2 回合；若未击杀目标，「断喉」的剩余冷却缩短 2 回合。">对相邻一名敌人造成 384.8% + 1248 伤害，必定命中，并使其易伤 2 回合；若未击杀目标，「断喉」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「断喉」配成两拍循环：「夺魂」击杀则进入隐身，未击杀则催快「断喉」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">慑魂</span><strong>接在「断喉」之后施放</strong>：若它下一次行动是大招，打断它：眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「断喉」（续魂）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="夺魂的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -722,6 +745,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">偷袭</span><span class="tag">增益</span></p>
 <p class="skill-desc">之后 4 回合，所有敌人都视为满血，偷袭条件始终成立；并立即进入隐身。</p>
 <p class="skill-synergy">潜伏刺杀打法的大招：宜在敌人较多的波次开启，连续偷袭以维持击杀链。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">夜帷</span><strong>接在「夜幕」之后施放</strong>：暗夜期间，每回合开始时若没有可用的闪避，获得 1 次闪避。</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="暗夜期间伤害" data-open="75" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="暗夜的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -734,6 +758,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">收割</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，每击杀一名敌人，其余技能（觉醒技除外）的剩余冷却各缩短 2 回合；期间技能伤害提高 {p15}。">之后 3 回合，每击杀一名敌人，其余技能（觉醒技除外）的剩余冷却各缩短 2 回合；期间技能伤害提高 24%。</p>
 <p class="skill-synergy">连环收割打法的增益：敌人越多，连续出手越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">猎铠</span><strong>接在「影刺」之后施放</strong>：夜猎期间，每击杀一名敌人，获得相当于 6% 最大生命的护盾。<small>（Lv.10 时 9%，Lv.20 时 12%）</small></p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="增伤" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="夜猎的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -746,6 +771,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">偷袭</span><span class="tag">暴击</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d320} 伤害，必定暴击；按偷袭结算时改为 {d550}。">对相邻一名敌人造成 473.6% + 1536 伤害，必定暴击；按偷袭结算时改为 814% + 2640。</p>
 <p class="skill-synergy">潜伏刺杀打法的大招：先以「潜影」或「暗夜」使下一击按偷袭结算，再以「穿心」一击定局。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">匿锋</span><strong>接在「潜影」之后施放</strong>：一击之后重新隐入暗影：进入隐身（不回复生命），闪避下一次攻击，下一个技能仍按偷袭结算。</p><p class="skill-link-leads">之后接着施放：「影缚」（缠影）</p></div>
 
 <div class="skill-levels" data-rate="0.16" data-scaling="伤害" data-open="85" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="穿心的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -758,6 +784,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：对 2 格内所有敌人造成 {d320} 伤害；处于易伤状态的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">2 格内有敌人时可施放：对 2 格内所有敌人造成 512% + 1536 伤害；处于易伤状态的敌人改为受到 720% + 2160 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「夜葬」错开施放；先以「夜幕」使全场易伤，再以「月蚀」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">蚀魄</span><strong>命中易伤的敌人时</strong>：易伤的敌人在月蚀中心生畏惧：下一次行动改为后退，不攻击。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="月蚀的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -771,6 +798,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，每次施放技能后重新进入隐身（不回复生命、不闪避），下一次技能仍按偷袭结算；期间技能伤害提高 {p15}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，每次施放技能后重新进入隐身（不回复生命、不闪避），下一次技能仍按偷袭结算；期间技能伤害提高 24%。</p>
 <p class="skill-synergy">施放后连续出手，每一个技能都按偷袭结算。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="隐杀的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -782,6 +810,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">偷袭</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：依次闪至 2 格内每一名敌人身旁（至多 5 名），各造成 {d400} 伤害，全部按偷袭结算；之后进入隐身。">2 格内有敌人时可施放：依次闪至 2 格内每一名敌人身旁（至多 5 名），各造成 640% + 1920 伤害，全部按偷袭结算；之后进入隐身。</p>
 <p class="skill-synergy">夜枭的觉醒技：一次偷袭打满全场，宜留给首领所在的波次。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="枭袭的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -795,6 +824,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d160} 伤害，并使其流血 3 回合；目标已流血时，改为使流血延长 1 回合，并立即结算 1 回合流血。">对相邻一名敌人造成 224% + 768 伤害，并使其流血 3 回合；目标已流血时，改为使流血延长 1 回合，并立即结算 1 回合流血。</p>
 <p class="skill-synergy">转职后最先学到的叠血手段：先使目标流血，再次命中时立即结算。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中流血的敌人时</strong>：改为使流血延长 1 回合，并立即结算 1 回合流血。</p><p class="skill-link-leads">之后接着施放：「深割」（饮创）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害 / 流血" data-open="20" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="割裂的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -807,6 +837,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">血爆</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="立即结算 2 格内所有敌人剩余的流血伤害，并回复相当于结算伤害 {p50} 的生命。">立即结算 2 格内所有敌人剩余的流血伤害，并回复相当于结算伤害 74% 的生命。</p>
 <p class="skill-synergy">血刃可先以「裂伤」「刀扇」使多名敌人流血，再以「嗜痕」结算伤害并回复生命。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">血痂</span><strong>接在「血雨」之后施放</strong>：这次结清伤害的 30% 转为你的护盾。<small>（Lv.10 时 45%，Lv.20 时 60%）</small></p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="回复" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="嗜痕的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -819,6 +850,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">终结</span><span class="tag">重置</span></p>
 <p class="skill-desc" data-template="对相邻一名流血的敌人造成 {d430} 伤害；目标生命低于 50% 时，伤害额外提高 50%。施放后闪避下一次攻击；若击杀目标，冷却立即结束。">对相邻一名流血的敌人造成 636.4% + 2064 伤害；目标生命低于 50% 时，伤害额外提高 50%。施放后闪避下一次攻击；若击杀目标，冷却立即结束。</p>
 <p class="skill-synergy">先使敌人流血，再以「刺杀」攻击生命较低的目标。击杀后可立即再次施放。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">断势</span><strong>接在「深割」之后施放</strong>：若它下一次行动是大招，打断它：眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「凝血」（凝脉）</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="刺杀的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -831,6 +863,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">流血</span></p>
 <p class="skill-desc">使 3 格内所有敌人流血 3 回合；已流血的敌人先结算其剩余流血伤害的 50%。</p>
 <p class="skill-synergy">血刃可用「血雨」结算部分流血伤害并再次施加流血，再以「嗜痕」或「剜心」结算剩余伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中流血的敌人时</strong>：先结算其剩余流血伤害的 50%。</p><p class="skill-link-leads">之后接着施放：「嗜痕」（血痂）、「死兆」（血殃）</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害 / 流血" data-open="35" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="血雨的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -843,6 +876,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">印记</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d450} 伤害，对 2 格内其他敌人各造成 {d300} 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害变为 3 倍。施放后闪避下一次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命，并再获得一次闪避。">对相邻一名敌人造成 720% + 2160 伤害，对 2 格内其他敌人各造成 480% + 1440 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害变为 3 倍。施放后闪避下一次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命，并再获得一次闪避。</p>
 <p class="skill-synergy">面对首领时，先以「死兆」提高后续攻击和流血伤害，再施放「裂伤」或「刺杀」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">血殃</span><strong>接在「血雨」之后施放</strong>：之后 3 回合，带「死兆」的敌人倒下时，它的流血传给 2 格内的所有敌人。</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害" data-open="40" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="死兆的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -855,6 +889,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d150} 伤害，并使其流血 3 回合；已流血的敌人改为流血延长 2 回合。">对 2 格内所有敌人造成 222% + 720 伤害，并使其流血 3 回合；已流血的敌人改为流血延长 2 回合。</p>
 <p class="skill-synergy">血雨横流打法的起手：一次让周围的敌人都流血。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中流血的敌人时</strong>：改为流血延长 2 回合。</p><p class="skill-link-leads">之后接着施放：「溅血」（迷血）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害 / 流血" data-open="45" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="血雾的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -867,6 +902,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">流血</span><span class="tag">加深</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d200} 伤害；它的流血按当前攻击重新计算，伤害提高 50%（至多为初次流血的 3 倍），并延长 2 回合；未流血时使其流血 3 回合。">对相邻一名敌人造成 296% + 960 伤害；它的流血按当前攻击重新计算，伤害提高 50%（至多为初次流血的 3 倍），并延长 2 回合；未流血时使其流血 3 回合。</p>
 <p class="skill-synergy">放血狩猎打法的主力：在一名敌人身上叠出又深又长的流血。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">饮创</span><strong>接在「割裂」之后施放</strong>：之后 3 回合，它的流血每造成一次伤害，你回复相当于该伤害 50% 的生命。<small>（Lv.10 时 75%，Lv.20 时 100%）</small></p><p class="skill-link-leads">之后接着施放：「刺杀」（断势）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害 / 流血" data-open="50" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="深割的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -879,6 +915,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">结清</span><span class="tag">传递</span></p>
 <p class="skill-desc" data-template="结清相邻一名敌人的全部流血，并使它 2 格内的其他敌人各流血 3 回合，每回合伤害为它结清前的 {p100}。">结清相邻一名敌人的全部流血，并使它 2 格内的其他敌人各流血 3 回合，每回合伤害为它结清前的 148%。</p>
 <p class="skill-synergy">血雨横流打法的传递手段：把一名敌人身上养好的流血分给周围。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">迷血</span><strong>接在「血雾」之后施放</strong>：溅起的血迷住双眼：被溅上流血的敌人下一次攻击必定落空。</p><p class="skill-link-leads">之后接着施放：「血月」（滞血）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="流血" data-open="55" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="溅血的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -891,6 +928,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">结清</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d300} 伤害；它的流血每剩 1 回合，伤害提高 25%，至多提高 150%；随后结清其流血。">对相邻一名敌人造成 444% + 1440 伤害；它的流血每剩 1 回合，伤害提高 25%，至多提高 150%；随后结清其流血。</p>
 <p class="skill-synergy">放血狩猎打法对付首领的收尾：流血养得越久，这一击越重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">凝脉</span><strong>接在「刺杀」之后施放</strong>：结清之后，它的血脉凝滞：眩晕 1 次行动。</p><p class="skill-link-leads">之后接着施放：「刺骨」（抽身）</p></div>
 
 <div class="skill-levels" data-rate="0.06857142857142857" data-scaling="伤害" data-open="65" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="凝血的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -901,8 +939,9 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <article class="skill-card" id="skill-crimsonEdge">
 <header><h4>绯刃</h4><span class="skill-meta">70 级、觉醒后开放 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">单体</span><span class="tag">流血</span></p>
-<p class="skill-desc" data-template="对相邻一名敌人造成 {d260} 伤害，必定命中；目标已流血时，立即结算 2 回合流血，「血雨」的剩余冷却缩短 2 回合；未流血时使其流血 3 回合。">对相邻一名敌人造成 384.8% + 1248 伤害，必定命中；目标已流血时，立即结算 2 回合流血，「血雨」的剩余冷却缩短 2 回合；未流血时使其流血 3 回合。</p>
+<p class="skill-desc" data-template="对相邻一名敌人造成 {d260} 伤害，必定命中；未流血时使其流血 3 回合。目标已流血时，立即结算 2 回合流血，「血雨」的剩余冷却缩短 2 回合。">对相邻一名敌人造成 384.8% + 1248 伤害，必定命中；未流血时使其流血 3 回合。目标已流血时，立即结算 2 回合流血，「血雨」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「血雨」配成两拍循环：「绯刃」结算流血、催快「血雨」，再以「血雨」重新铺开。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中流血的敌人时</strong>：立即结算 2 回合流血，「血雨」的剩余冷却缩短 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害 / 流血" data-open="70" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="绯刃的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -915,6 +954,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">流血</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="使射程内所有敌人流血 3 回合；之后 3 回合，所有流血伤害变为 3 倍，每次流血造成伤害时回复 {p3} 最大生命。">使射程内所有敌人流血 3 回合；之后 3 回合，所有流血伤害变为 3 倍，每次流血造成伤害时回复 4.8% 最大生命。</p>
 <p class="skill-synergy">血刃可在多名敌人流血时施放「血月」，并配合「死兆」进一步提高流血伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">滞血</span><strong>接在「溅血」之后施放</strong>：血月期间，流血的敌人每次行动最多移动 1 格。</p><p class="skill-link-leads">之后接着施放：「赤潮」（满潮）</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="流血 / 回复" data-open="75" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="血月的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -927,6 +967,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">流血</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，流血的敌人受到你的技能伤害提高 {p40}；你的技能每命中一名流血的敌人，使其流血延长 1 回合。">之后 3 回合，流血的敌人受到你的技能伤害提高 64%；你的技能每命中一名流血的敌人，使其流血延长 1 回合。</p>
 <p class="skill-synergy">放血狩猎打法的增益：期间流血不会断，每一击都更重。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">抽身</span><strong>接在「凝血」之后施放</strong>：刺骨期间，你每结清一名敌人的流血，获得 1 次闪避，至多 2 次。</p></div>
 
 <div class="skill-levels" data-rate="0.15" data-scaling="增伤" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="刺骨的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -939,6 +980,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">结清</span><span class="tag">续血</span></p>
 <p class="skill-desc" data-template="结清 2 格内所有流血敌人剩余流血的 {p150}，随后使其重新流血 3 回合。">结清 2 格内所有流血敌人剩余流血的 240%，随后使其重新流血 3 回合。</p>
 <p class="skill-synergy">血雨横流打法的收尾：结清之后流血立即补上，可以接着再结清。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">满潮</span><strong>接在「血月」之后施放</strong>：「血月」的效果延长 2 回合。</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="流血" data-open="85" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="赤潮的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -951,6 +993,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：对 2 格内所有敌人造成 {d320} 伤害；流血的敌人改为受到 {d450} 伤害。获得 {p40} 最大生命的护盾。">2 格内有敌人时可施放：对 2 格内所有敌人造成 512% + 1536 伤害；流血的敌人改为受到 720% + 2160 伤害。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「死兆」错开施放；先以「血雨」「血雾」铺开流血，再以「血旋」造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">血涡</span><strong>命中流血的敌人时</strong>：流血的敌人被卷进血旋：拉到你身边。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="血旋的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -964,6 +1007,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，结清流血时不清除流血，被结清的敌人照常流血至期满；期间流血与结清的伤害提高 {p15}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，结清流血时不清除流血，被结清的敌人照常流血至期满；期间流血与结清的伤害提高 24%。</p>
 <p class="skill-synergy">流血铺开以后施放「血涌」，之后每一次结清之后流血都还在，可以接着再结清。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="流血" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="血涌的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：流血提高 60%</p>
@@ -975,6 +1019,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">传血</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：对 2 格内所有敌人造成 {d600} 伤害，并使其流血 5 回合；之后 4 回合，流血的敌人倒下时，剩余流血传给 2 格内所有未流血的敌人。">2 格内有敌人时可施放：对 2 格内所有敌人造成 960% + 2880 伤害，并使其流血 5 回合；之后 4 回合，流血的敌人倒下时，剩余流血传给 2 格内所有未流血的敌人。</p>
 <p class="skill-synergy">血刃的觉醒技：把流血铺满，之后敌人一个接一个倒下，流血也跟着传开。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害 / 流血" data-open="60" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="血渊的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -988,6 +1033,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">闪避</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d160} 伤害，并闪避下一次攻击。">对相邻一名敌人造成 224% + 768 伤害，并闪避下一次攻击。</p>
 <p class="skill-synergy">转职后最先学到的闪避手段：躲开的攻击都会触发反击、叠加残影。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">晃影</span><strong>接在「诱影」之后施放</strong>：虚晃一招：它下一次攻击必定落空。</p><p class="skill-link-leads">之后接着施放：「残像」（勾影）</p></div>
 
 <div class="skill-levels" data-rate="0.025" data-scaling="伤害" data-open="20" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="17" value="17" step="1" aria-label="虚闪的技能等级" /></label><output class="level-value">Lv.17</output></div>
@@ -1000,6 +1046,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">闪避</span><span class="tag">回复</span></p>
 <p class="skill-desc" data-template="闪避接下来 4 次攻击，并回复 {p10} 最大生命。">闪避接下来 4 次攻击，并回复 14.8% 最大生命。</p>
 <p class="skill-synergy">魅影每次闪避都能反击并获得残影；受到围攻时施放「残像」，可触发更多次效果。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">勾影</span><strong>接在「虚闪」之后施放</strong>：之后 2 回合，躲开远处打来的攻击时，把攻击者拉到你身边。</p><p class="skill-link-leads">之后接着施放：「水月」（叠影）</p></div>
 
 <div class="skill-levels" data-rate="0.032" data-scaling="回复" data-open="25" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="16" value="16" step="1" aria-label="残像的技能等级" /></label><output class="level-value">Lv.16</output></div>
@@ -1012,6 +1059,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连斩</span><span class="tag">残影</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人连续斩击（残影层数 + 2）次，每次造成 {d60} 伤害；不消耗残影。">对相邻一名敌人连续斩击（残影层数 + 2）次，每次造成 88.8% + 288 伤害；不消耗残影。</p>
 <p class="skill-synergy">魅影积累的残影层数越高，「千影斩」的斩击次数越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">游刃</span><strong>接在「凝影」之后施放</strong>：每斩中 3 次，获得 1 次闪避，至多 2 次。</p><p class="skill-link-leads">之后接着施放：「乱舞」（接斩）</p></div>
 
 <div class="skill-levels" data-rate="0.03428571428571429" data-scaling="伤害" data-open="30" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="15" value="15" step="1" aria-label="千影斩的技能等级" /></label><output class="level-value">Lv.15</output></div>
@@ -1024,6 +1072,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连击</span><span class="tag">流血</span></p>
 <p class="skill-desc" data-template="依次攻击 2 格内最多 3 名敌人，各造成 {d150} 伤害，每闪击一名敌人获得 1 层残影。未流血的目标会流血；已流血的目标立即结算剩余流血伤害。施放后停留在其中生命最低的敌人身旁，并闪避下一次攻击。">依次攻击 2 格内最多 3 名敌人，各造成 222% + 720 伤害，每闪击一名敌人获得 1 层残影。未流血的目标会流血；已流血的目标立即结算剩余流血伤害。施放后停留在其中生命最低的敌人身旁，并闪避下一次攻击。</p>
 <p class="skill-synergy">先以「刀扇」使多名敌人流血，再施放「连影」，可同时结算这些敌人的剩余流血伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><strong>命中流血的敌人时</strong>：立即结算剩余流血伤害。</p></div>
 
 <div class="skill-levels" data-rate="0.03692307692307692" data-scaling="伤害 / 流血" data-open="35" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="14" value="14" step="1" aria-label="连影的技能等级" /></label><output class="level-value">Lv.14</output></div>
@@ -1036,6 +1085,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">死兆</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d450} 伤害，对 2 格内其他敌人各造成 {d300} 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害翻倍。施放后闪避接下来 3 次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命，并再获得一次闪避。">对相邻一名敌人造成 720% + 2160 伤害，对 2 格内其他敌人各造成 480% + 1440 伤害。命中的敌人获得持续 3 回合的「死兆」：受到你的攻击伤害提高 40%，流血伤害翻倍。施放后闪避接下来 3 次攻击；带有「死兆」的敌人倒下时，你回复 20% 最大生命，并再获得一次闪避。</p>
 <p class="skill-synergy">魅影的招牌技：打中一片，接着连续躲开三次攻击，每一次都触发反击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">收魂</span><strong>接在「影锋」之后施放</strong>：之后 3 回合，带「死兆」的敌人倒下时，你的残影立即叠满。</p><p class="skill-link-leads">之后接着施放：「幻灭」（化影）</p></div>
 
 <div class="skill-levels" data-rate="0.049999999999999996" data-scaling="伤害" data-open="40" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="13" value="13" step="1" aria-label="幻杀的技能等级" /></label><output class="level-value">Lv.13</output></div>
@@ -1048,6 +1098,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">拉近</span><span class="tag">闪避</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人造成 {d120} 伤害，并把其中不相邻的敌人向你拉近 1 格；闪避接下来 2 次攻击。">对 2 格内所有敌人造成 177.6% + 576 伤害，并把其中不相邻的敌人向你拉近 1 格；闪避接下来 2 次攻击。</p>
 <p class="skill-synergy">闪避反击打法的起手：把敌人拉到身边，每一次落空都是一次反击。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">收线</span><strong>接在「回锋」之后施放</strong>：不相邻的敌人改为一路拉到你身边。</p><p class="skill-link-leads">之后接着施放：「虚闪」（晃影）</p></div>
 
 <div class="skill-levels" data-rate="0.04363636363636363" data-scaling="伤害" data-open="45" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="12" value="12" step="1" aria-label="诱影的技能等级" /></label><output class="level-value">Lv.12</output></div>
@@ -1060,6 +1111,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">连斩</span><span class="tag">残影</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人连续斩击 4 次，每次造成 {d70} 伤害；残影满层时改为 6 次。">对相邻一名敌人连续斩击 4 次，每次造成 103.6% + 336 伤害；残影满层时改为 6 次。</p>
 <p class="skill-synergy">残影连斩打法的主力：残影叠满以后每次多斩 2 刀。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">接斩</span><strong>接在「千影斩」之后施放</strong>：「千影斩」的冷却立即结束。</p><p class="skill-link-leads">之后接着施放：「影锋」（复影）</p></div>
 
 <div class="skill-levels" data-rate="0.048" data-scaling="伤害" data-open="50" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="11" value="11" step="1" aria-label="乱舞的技能等级" /></label><output class="level-value">Lv.11</output></div>
@@ -1072,6 +1124,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">残影</span><span class="tag">瞬发</span></p>
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得 2 层残影；本回合下一次技能伤害提高 {p30}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。获得 2 层残影；本回合下一次技能伤害提高 44.4%。</p>
 <p class="skill-synergy">先以「凝影」叠满残影，再接「乱舞」「千影斩」。</p>
+<div class="skill-link"><p class="block-label">连携</p><p class="skill-link-leads">之后接着施放：「千影斩」（游刃）、「影分身」（影动）</p></div>
 
 <div class="skill-levels" data-rate="0.05333333333333333" data-scaling="增伤" data-open="55" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="10" value="10" step="1" aria-label="凝影的技能等级" /></label><output class="level-value">Lv.10</output></div>
@@ -1084,6 +1137,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">反击</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 3 回合，反击伤害提高 {p100}，每次反击回复 2% 最大生命。">之后 3 回合，反击伤害提高 160%，每次反击回复 2% 最大生命。</p>
 <p class="skill-synergy">闪避反击打法的增益：躲开得越多，打得越重、回得越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">截锋</span><strong>接在「水月」之后施放</strong>：回锋期间，反击打中的敌人若下一次行动是大招，打断它：眩晕，跳过 1 次行动。</p><p class="skill-link-leads">之后接着施放：「诱影」（收线）</p></div>
 
 <div class="skill-levels" data-rate="0.08571428571428572" data-scaling="反击增伤" data-open="65" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="8" value="8" step="1" aria-label="回锋的技能等级" /></label><output class="level-value">Lv.8</output></div>
@@ -1096,6 +1150,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">单体</span><span class="tag">残影</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d260} 伤害，必定命中，并获得 2 层残影；残影满层时，「连影」的剩余冷却缩短 2 回合。">对相邻一名敌人造成 384.8% + 1248 伤害，必定命中，并获得 2 层残影；残影满层时，「连影」的剩余冷却缩短 2 回合。</p>
 <p class="skill-synergy">与「连影」配成两拍循环：「影锋」叠满残影、催快「连影」，再以「连影」打出。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">复影</span><strong>接在「乱舞」之后施放</strong>：「凝影」的冷却立即结束。</p><p class="skill-link-leads">之后接着施放：「幻杀」（收魂）</p></div>
 
 <div class="skill-levels" data-rate="0.08" data-scaling="伤害" data-open="70" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="7" value="7" step="1" aria-label="影锋的技能等级" /></label><output class="level-value">Lv.7</output></div>
@@ -1108,6 +1163,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">追击</span><span class="tag">增益</span></p>
 <p class="skill-desc" data-template="之后 5 回合，每次反击造成 2 次伤害，每次攻击追加一次 {p50} 攻击的残影追击。">之后 5 回合，每次反击造成 2 次伤害，每次攻击追加一次 80% 攻击的残影追击。</p>
 <p class="skill-synergy">残影连斩打法的大招：配合残像与烟雾弹叠加闪避，反击与追击同时生效。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">影动</span><strong>接在「凝影」之后施放</strong>：分身现形的同时，你立即再行动一次。</p><p class="skill-link-leads">之后接着施放：「碎影」（聚影）</p></div>
 
 <div class="skill-levels" data-rate="0.12" data-scaling="追击" data-open="75" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="影分身的技能等级" /></label><output class="level-value">Lv.6</output></div>
@@ -1120,6 +1176,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">闪避</span><span class="tag">反击</span></p>
 <p class="skill-desc">闪避接下来 3 次攻击；之后 3 回合，反击同时波及攻击者相邻的敌人。</p>
 <p class="skill-synergy">被围攻时施放「水月」，每一次反击都打中一片。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">叠影</span><strong>接在「残像」之后施放</strong>：水月的闪避次数叠加在剩余的闪避次数上，不取较高值。</p><p class="skill-link-leads">之后接着施放：「回锋」（截锋）</p></div>
 
 <div class="skill-levels" data-rate="0" data-scaling="伤害" data-open="80" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="5" value="5" step="1" aria-label="水月的技能等级" /></label><output class="level-value">Lv.5</output></div>
@@ -1132,6 +1189,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">连斩</span></p>
 <p class="skill-desc" data-template="对 2 格内所有敌人各斩击（残影层数 + 1）次，每次造成 {d80} 伤害；不消耗残影。">对 2 格内所有敌人各斩击（残影层数 + 1）次，每次造成 128% + 384 伤害；不消耗残影。</p>
 <p class="skill-synergy">残影连斩打法的范围大招：残影越多，每名敌人挨的刀越多。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">聚影</span><strong>接在「影分身」之后施放</strong>：每命中一名敌人，获得 1 层残影。</p></div>
 
 <div class="skill-levels" data-rate="0.19999999999999998" data-scaling="伤害" data-open="85" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="4" value="4" step="1" aria-label="碎影的技能等级" /></label><output class="level-value">Lv.4</output></div>
@@ -1144,6 +1202,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">群攻</span><span class="tag">护盾</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：对 2 格内所有敌人造成 {d320} 伤害；残影满层时改为 {d450}。获得 {p40} 最大生命的护盾。">2 格内有敌人时可施放：对 2 格内所有敌人造成 512% + 1536 伤害；残影满层时改为 720% + 2160。获得 64% 最大生命的护盾。</p>
 <p class="skill-synergy">与「幻杀」错开施放；残影叠满以后施放「幻灭」，造成更高伤害。</p>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">化影</span><strong>接在「幻杀」之后施放</strong>：幻影散作身法：消耗全部残影，每层获得 1 次闪避。</p></div>
 
 <div class="skill-levels" data-rate="0.3" data-scaling="伤害 / 护盾" data-open="90" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="3" value="3" step="1" aria-label="幻灭的技能等级" /></label><output class="level-value">Lv.3</output></div>
@@ -1157,6 +1216,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="skill-desc" data-template="瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，受到攻击时残影不再减半，残影每层的增伤翻倍；期间技能伤害提高 {p15}。">瞬发：施放后仍可继续行动，每回合只能施放一个瞬发技。之后 4 回合，受到攻击时残影不再减半，残影每层的增伤翻倍；期间技能伤害提高 24%。</p>
 <p class="skill-synergy">残影叠满后施放「无相」，这几回合里残影不掉、增伤翻倍。</p>
 
+
 <div class="skill-levels" data-rate="0.6" data-scaling="增伤" data-open="95" data-step="5" data-fixed="0">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="2" value="2" step="1" aria-label="无相的技能等级" /></label><output class="level-value">Lv.2</output></div>
 <p class="level-total">Lv.2（角色 100 级开放）：增伤提高 60%</p>
@@ -1168,6 +1228,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag tag-gold">觉醒技</span><span class="tag">觉醒</span><span class="tag">反击</span></p>
 <p class="skill-desc" data-template="2 格内有敌人时可施放：对 2 格内所有敌人造成 {d600} 伤害，并叠满残影；之后 3 回合，反击伤害翻倍。">2 格内有敌人时可施放：对 2 格内所有敌人造成 960% + 2880 伤害，并叠满残影；之后 3 回合，反击伤害翻倍。</p>
 <p class="skill-synergy">魅影的觉醒技：叠满残影、加重反击，宜留给首领所在的波次。</p>
+
 
 <div class="skill-levels" data-rate="0.075" data-scaling="伤害" data-open="60" data-step="5" data-fixed="4.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="9" value="9" step="1" aria-label="幻阵的技能等级" /></label><output class="level-value">Lv.9</output></div>
@@ -1210,135 +1271,135 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">魅影转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 80～146 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～148 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-bleeder-1" data-toc-label="血刃 · 血雨横流配置" tabindex="-1">血刃 · 血雨横流</h3>
-<span class="build-score"><span>等效第 <strong>126</strong> 层</span><small>过半至第 125 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 9.9 L245.9 19.3 L269.5 13.6 L293.0 15.5 L316.5 17.4 L340.1 38.0 L363.6 49.3 L387.2 56.8 L410.7 43.6 L434.3 73.6 L457.8 86.8 L481.4 94.3 L504.9 98.0 L528.5 94.3 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 11.7 L222.4 9.9 L245.9 19.3 L269.5 13.6 L293.0 15.5 L316.5 17.4 L340.1 38.0 L363.6 49.3 L387.2 56.8 L410.7 43.6 L434.3 73.6 L457.8 86.8 L481.4 94.3 L504.9 98.0 L528.5 94.3 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>血雨</strong><small>Lv.14</small></li><li><strong>血月</strong><small>Lv.6</small></li><li><strong>赤潮</strong><small>Lv.4</small></li><li><strong>血旋</strong><small>Lv.3</small></li><li><strong>放血</strong><small>Lv.3</small></li><li class="is-ascend"><strong>血渊</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「深创」Lv.17、「血嗅」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>布制靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1395</b></span><span>生命 <b>4586</b></span><span>护甲 <b>252</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
 <h3 id="build-owl-1" data-toc-label="夜枭 · 连环收割配置" tabindex="-1">夜枭 · 连环收割</h3>
-<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 125 层</small></span>
+<span class="build-score"><span>等效第 <strong>130</strong> 层</span><small>过半至第 127 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 11.7 L222.4 13.6 L245.9 9.9 L269.5 13.6 L293.0 11.7 L316.5 19.3 L340.1 47.4 L363.6 53.0 L387.2 69.9 L410.7 36.1 L434.3 96.1 L457.8 92.4 L481.4 96.1 L504.9 96.1 L528.5 92.4 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 8.0 L151.7 9.9 L175.3 8.0 L198.8 11.7 L222.4 13.6 L245.9 9.9 L269.5 13.6 L293.0 11.7 L316.5 19.3 L340.1 47.4 L363.6 53.0 L387.2 69.9 L410.7 36.1 L434.3 96.1 L457.8 92.4 L481.4 96.1 L504.9 96.1 L528.5 92.4 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 9.9 L214.2 8.0 L236.7 9.9 L259.2 9.9 L281.7 8.0 L304.3 32.4 L326.8 9.9 L349.3 19.3 L371.8 38.0 L394.3 39.9 L416.9 66.1 L439.4 62.4 L461.9 83.0 L484.4 83.0 L507.0 90.5 L529.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 9.9 L214.2 8.0 L236.7 9.9 L259.2 9.9 L281.7 8.0 L304.3 32.4 L326.8 9.9 L349.3 19.3 L371.8 38.0 L394.3 39.9 L416.9 66.1 L439.4 62.4 L461.9 83.0 L484.4 83.0 L507.0 90.5 L529.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>夜幕</strong><small>Lv.5</small></li><li><strong>掠杀</strong><small>Lv.11</small></li><li><strong>环刃</strong><small>Lv.8</small></li><li><strong>烟雾弹</strong><small>Lv.4</small></li><li><strong>月蚀</strong><small>Lv.3</small></li><li class="is-ascend"><strong>枭袭</strong><small>Lv.7</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>夜葬</strong><small>Lv.6</small></li><li><strong>夜幕</strong><small>Lv.5</small></li><li><strong>环刃</strong><small>Lv.8</small></li><li><strong>夜猎</strong><small>Lv.5</small></li><li><strong>月蚀</strong><small>Lv.3</small></li><li class="is-ascend"><strong>枭袭</strong><small>Lv.9</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「伺机」Lv.17、「潜息」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>智力 2 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>短刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1367</b></span><span>生命 <b>3141</b></span><span>护甲 <b>261</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-bleeder-0" data-toc-label="血刃 · 放血狩猎配置" tabindex="-1">血刃 · 放血狩猎</h3>
-<span class="build-score"><span>等效第 <strong>124</strong> 层</span><small>过半至第 119 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 9.9 L222.4 13.6 L245.9 15.5 L269.5 26.8 L293.0 21.1 L316.5 21.1 L340.1 56.8 L363.6 49.3 L387.2 64.3 L410.7 49.3 L434.3 86.8 L457.8 92.4 L481.4 96.1 L504.9 96.1 L528.5 88.6 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 8.0 L128.2 8.0 L151.7 8.0 L175.3 8.0 L198.8 9.9 L222.4 13.6 L245.9 15.5 L269.5 26.8 L293.0 21.1 L316.5 21.1 L340.1 56.8 L363.6 49.3 L387.2 64.3 L410.7 49.3 L434.3 86.8 L457.8 92.4 L481.4 96.1 L504.9 96.1 L528.5 88.6 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>血雨</strong><small>Lv.14</small></li><li><strong>死兆</strong><small>Lv.2</small></li><li><strong>深割</strong><small>Lv.1</small></li><li><strong>刺杀</strong><small>Lv.10</small></li><li><strong>血旋</strong><small>Lv.3</small></li><li class="is-ascend"><strong>血渊</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「深创」Lv.17、「血嗅」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
 <div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1636</b></span><span>生命 <b>3769</b></span><span>护甲 <b>261</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1351</b></span><span>生命 <b>3834</b></span><span>护甲 <b>261</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-phantom-1" data-toc-label="魅影 · 闪避反击配置" tabindex="-1">魅影 · 闪避反击</h3>
-<span class="build-score"><span>等效第 <strong>123</strong> 层</span><small>过半至第 125 层</small></span>
+<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 13.6 L151.7 19.3 L175.3 8.0 L198.8 36.1 L222.4 19.3 L245.9 30.5 L269.5 13.6 L293.0 17.4 L316.5 30.5 L340.1 64.3 L363.6 38.0 L387.2 62.4 L410.7 36.1 L434.3 84.9 L457.8 86.8 L481.4 94.3 L504.9 96.1 L528.5 94.3 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 9.9 L128.2 13.6 L151.7 19.3 L175.3 8.0 L198.8 36.1 L222.4 19.3 L245.9 30.5 L269.5 13.6 L293.0 17.4 L316.5 30.5 L340.1 64.3 L363.6 38.0 L387.2 62.4 L410.7 36.1 L434.3 84.9 L457.8 86.8 L481.4 94.3 L504.9 96.1 L528.5 94.3 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 8.0 L191.7 8.0 L214.2 8.0 L236.7 28.6 L259.2 17.4 L281.7 11.7 L304.3 51.1 L326.8 21.1 L349.3 43.6 L371.8 43.6 L394.3 51.1 L416.9 69.9 L439.4 86.8 L461.9 94.3 L484.4 98.0 L507.0 94.3 L529.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 9.9 L146.6 8.0 L169.1 8.0 L191.7 8.0 L214.2 8.0 L236.7 28.6 L259.2 17.4 L281.7 11.7 L304.3 51.1 L326.8 21.1 L349.3 43.6 L371.8 43.6 L394.3 51.1 L416.9 69.9 L439.4 86.8 L461.9 94.3 L484.4 98.0 L507.0 94.3 L529.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>幻灭</strong><small>Lv.3</small></li><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>幻杀</strong><small>Lv.12</small></li><li><strong>回锋</strong><small>Lv.3</small></li><li><strong>水月</strong><small>Lv.5</small></li><li class="is-ascend"><strong>幻阵</strong><small>Lv.9</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>幻杀</strong><small>Lv.13</small></li><li><strong>诱影</strong><small>Lv.6</small></li><li><strong>水月</strong><small>Lv.1</small></li><li><strong>幻灭</strong><small>Lv.3</small></li><li class="is-ascend"><strong>幻阵</strong><small>Lv.9</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「影舞」Lv.17、「幻身」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>短刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
 <div><dt>自动战斗打法</dt><dd>生存</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1327</b></span><span>生命 <b>3834</b></span><span>护甲 <b>261</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1311</b></span><span>生命 <b>4527</b></span><span>护甲 <b>261</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-phantom-0" data-toc-label="魅影 · 残影连斩配置" tabindex="-1">魅影 · 残影连斩</h3>
-<span class="build-score"><span>等效第 <strong>121</strong> 层</span><small>过半至第 119 层</small></span>
+<h3 id="build-bleeder-1" data-toc-label="血刃 · 血雨横流配置" tabindex="-1">血刃 · 血雨横流</h3>
+<span class="build-score"><span>等效第 <strong>123</strong> 层</span><small>过半至第 124 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 13.6 L128.2 8.0 L151.7 19.3 L175.3 9.9 L198.8 28.6 L222.4 13.6 L245.9 13.6 L269.5 13.6 L293.0 26.8 L316.5 30.5 L340.1 68.0 L363.6 58.6 L387.2 64.3 L410.7 60.5 L434.3 81.1 L457.8 90.5 L481.4 96.1 L504.9 96.1 L528.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 8.0 L104.6 13.6 L128.2 8.0 L151.7 19.3 L175.3 9.9 L198.8 28.6 L222.4 13.6 L245.9 13.6 L269.5 13.6 L293.0 26.8 L316.5 30.5 L340.1 68.0 L363.6 58.6 L387.2 64.3 L410.7 60.5 L434.3 81.1 L457.8 90.5 L481.4 96.1 L504.9 96.1 L528.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 11.7 L191.7 11.7 L214.2 13.6 L236.7 21.1 L259.2 30.5 L281.7 9.9 L304.3 49.3 L326.8 28.6 L349.3 39.9 L371.8 43.6 L394.3 68.0 L416.9 88.6 L439.4 83.0 L461.9 92.4 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 11.7 L191.7 11.7 L214.2 13.6 L236.7 21.1 L259.2 30.5 L281.7 9.9 L304.3 49.3 L326.8 28.6 L349.3 39.9 L371.8 43.6 L394.3 68.0 L416.9 88.6 L439.4 83.0 L461.9 92.4 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>幻灭</strong><small>Lv.3</small></li><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>幻杀</strong><small>Lv.13</small></li><li><strong>凝影</strong><small>Lv.9</small></li><li><strong>碎影</strong><small>Lv.4</small></li><li class="is-ascend"><strong>幻阵</strong><small>Lv.4</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「影舞」Lv.17、「幻身」Lv.17</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>血旋</strong><small>Lv.3</small></li><li><strong>影袭</strong><small>Lv.13</small></li><li><strong>锁喉</strong><small>Lv.18</small></li><li><strong>溅血</strong><small>Lv.1</small></li><li><strong>血月</strong><small>Lv.1</small></li><li class="is-ascend"><strong>血渊</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「深创」Lv.17、「血嗅」Lv.17</dd></div>
 <div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>短刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1327</b></span><span>生命 <b>3834</b></span><span>护甲 <b>261</b></span></dd></div>
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1393</b></span><span>生命 <b>4637</b></span><span>护甲 <b>252</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-bleeder-0" data-toc-label="血刃 · 放血狩猎配置" tabindex="-1">血刃 · 放血狩猎</h3>
+<span class="build-score"><span>等效第 <strong>121</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 9.9 L169.1 9.9 L191.7 8.0 L214.2 9.9 L236.7 21.1 L259.2 24.9 L281.7 15.5 L304.3 43.6 L326.8 30.5 L349.3 60.5 L371.8 56.8 L394.3 83.0 L416.9 96.1 L439.4 96.1 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 9.9 L169.1 9.9 L191.7 8.0 L214.2 9.9 L236.7 21.1 L259.2 24.9 L281.7 15.5 L304.3 43.6 L326.8 30.5 L349.3 60.5 L371.8 56.8 L394.3 83.0 L416.9 96.1 L439.4 96.1 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>影袭</strong><small>Lv.13</small></li><li><strong>刺杀</strong><small>Lv.1</small></li><li><strong>裂伤</strong><small>Lv.18</small></li><li><strong>凝血</strong><small>Lv.1</small></li><li><strong>血旋</strong><small>Lv.3</small></li><li class="is-ascend"><strong>血渊</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「深创」Lv.17、「血嗅」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1378</b></span><span>生命 <b>5332</b></span><span>护甲 <b>140</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-owl-0" data-toc-label="夜枭 · 潜伏刺杀配置" tabindex="-1">夜枭 · 潜伏刺杀</h3>
-<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 116 层</small></span>
+<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 9.9 L128.2 8.0 L151.7 19.3 L175.3 9.9 L198.8 15.5 L222.4 17.4 L245.9 30.5 L269.5 24.9 L293.0 24.9 L316.5 36.1 L340.1 75.5 L363.6 49.3 L387.2 83.0 L410.7 58.6 L434.3 90.5 L457.8 94.3 L481.4 96.1 L504.9 98.0 L528.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L57.5 8.0 L81.1 9.9 L104.6 9.9 L128.2 8.0 L151.7 19.3 L175.3 9.9 L198.8 15.5 L222.4 17.4 L245.9 30.5 L269.5 24.9 L293.0 24.9 L316.5 36.1 L340.1 75.5 L363.6 49.3 L387.2 83.0 L410.7 58.6 L434.3 90.5 L457.8 94.3 L481.4 96.1 L504.9 98.0 L528.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">80</text><text x="128.2" y="114" text-anchor="middle">92</text><text x="222.4" y="114" text-anchor="middle">104</text><text x="316.5" y="114" text-anchor="middle">116</text><text x="410.7" y="114" text-anchor="middle">128</text><text x="504.9" y="114" text-anchor="middle">140</text><text x="552.0" y="114" text-anchor="middle">146</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 9.9 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 9.9 L191.7 17.4 L214.2 8.0 L236.7 26.8 L259.2 32.4 L281.7 32.4 L304.3 47.4 L326.8 32.4 L349.3 51.1 L371.8 68.0 L394.3 81.1 L416.9 98.0 L439.4 92.4 L461.9 98.0 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 9.9 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 9.9 L191.7 17.4 L214.2 8.0 L236.7 26.8 L259.2 32.4 L281.7 32.4 L304.3 47.4 L326.8 32.4 L349.3 51.1 L371.8 68.0 L394.3 81.1 L416.9 98.0 L439.4 92.4 L461.9 98.0 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>影缚</strong><small>Lv.10</small></li><li><strong>夺魂</strong><small>Lv.7</small></li><li><strong>穿心</strong><small>Lv.4</small></li><li><strong>月蚀</strong><small>Lv.3</small></li><li class="is-ascend"><strong>枭袭</strong><small>Lv.8</small></li></ul></dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>背袭</strong><small>Lv.20</small></li><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>潜影</strong><small>Lv.11</small></li><li><strong>穿心</strong><small>Lv.4</small></li><li><strong>月蚀</strong><small>Lv.3</small></li><li class="is-ascend"><strong>枭袭</strong><small>Lv.1</small></li></ul></dd></div>
 <div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「伺机」Lv.17、「潜息」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
+<div><dt>属性加点</dt><dd>全部体质</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1569</b></span><span>生命 <b>3141</b></span><span>护甲 <b>261</b></span></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1311</b></span><span>生命 <b>4443</b></span><span>护甲 <b>140</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-phantom-0" data-toc-label="魅影 · 残影连斩配置" tabindex="-1">魅影 · 残影连斩</h3>
+<span class="build-score"><span>等效第 <strong>120</strong> 层</span><small>过半至第 121 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 9.9 L101.6 8.0 L124.1 21.1 L146.6 13.6 L169.1 19.3 L191.7 28.6 L214.2 17.4 L236.7 38.0 L259.2 39.9 L281.7 17.4 L304.3 49.3 L326.8 32.4 L349.3 56.8 L371.8 54.9 L394.3 69.9 L416.9 86.8 L439.4 81.1 L461.9 86.8 L484.4 94.3 L507.0 90.5 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 9.9 L101.6 8.0 L124.1 21.1 L146.6 13.6 L169.1 19.3 L191.7 28.6 L214.2 17.4 L236.7 38.0 L259.2 39.9 L281.7 17.4 L304.3 49.3 L326.8 32.4 L349.3 56.8 L371.8 54.9 L394.3 69.9 L416.9 86.8 L439.4 81.1 L461.9 86.8 L484.4 94.3 L507.0 90.5 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>烟雾弹</strong><small>Lv.5</small></li><li><strong>凝影</strong><small>Lv.10</small></li><li><strong>幻杀</strong><small>Lv.13</small></li><li><strong>碎影</strong><small>Lv.4</small></li><li><strong>幻灭</strong><small>Lv.3</small></li><li class="is-ascend"><strong>幻阵</strong><small>Lv.3</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「致命」Lv.20、「连杀」Lv.20、「影舞」Lv.17、「幻身」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 2 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>爪刃</li><li><small>头盔</small>轻型头盔</li><li><small>护甲</small>轻甲</li><li><small>靴子</small>轻型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1747</b></span><span>生命 <b>3057</b></span><span>护甲 <b>140</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota5 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota6 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-mage.html"><small>上一篇</small><span>法师<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-druid.html"><small>下一篇</small><span>德鲁伊<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota5）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota6）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
