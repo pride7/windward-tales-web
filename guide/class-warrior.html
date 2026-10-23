@@ -62,6 +62,30 @@
   --rarity-epic: #79549a;
   --rarity-legendary: #a8681c;
   --rarity-trophy: #b23a2e;
+  --card-ink: #ece3cb;
+  --card-muted: #a9a792;
+  --card-value: #f2dfa8;
+  --card-plus: #9fd6a4;
+  --card-minus: #f08f78;
+  --card-sheet-glow: #2c3a31;
+  --card-sheet-top: #212c25;
+  --card-sheet: #1a221d;
+  --card-legend-title: #f4b860;
+  --card-trophy-title: #f08a72;
+  --socket: #26342c;
+  --socket-deep: #1a241e;
+  --socket-light: #36493c;
+  --icon-halo: #f1e7cc;
+  --icon-ink-rose: #a65a44;
+  --icon-ink-frost: #4d7f8c;
+  --icon-ink-gold: #9a7838;
+  --icon-ink-forest: #4e7f58;
+  --icon-ink-arcane: #77689a;
+  --icon-ink-leather: #9c7150;
+  --icon-ink-poison: #7a8048;
+  --icon-fill-white: #efe5ca;
+  --icon-fill-cream: #e9dcbb;
+  --icon-fill-bone: #e8dcc2;
 }
 /* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
 * { box-sizing: border-box; }
@@ -436,13 +460,13 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-mountain" data-toc-id="spec-mountain" title="碎岳"><span>碎岳</span></a></li><li class="toc-level-3"><a href="#spec-rampart" data-toc-id="spec-rampart" title="盾魂"><span>盾魂</span></a></li><li class="toc-level-3"><a href="#spec-bloodwar" data-toc-id="spec-bloodwar" title="狂战士"><span>狂战士</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-mountain" data-toc-id="skills-mountain" title="碎岳专属"><span>碎岳专属</span></a></li><li class="toc-level-3"><a href="#skills-rampart" data-toc-id="skills-rampart" title="盾魂专属"><span>盾魂专属</span></a></li><li class="toc-level-3"><a href="#skills-bloodwar" data-toc-id="skills-bloodwar" title="狂战士专属"><span>狂战士专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-1" data-toc-id="build-rampart-1" title="盾魂 · 以盾为刃配置"><span>盾魂 · 以盾为刃配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-0" data-toc-id="build-rampart-0" title="盾魂 · 承伤反击配置"><span>盾魂 · 承伤反击配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-0" data-toc-id="build-bloodwar-0" title="狂战士 · 低血爆发配置"><span>狂战士 · 低血爆发配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-1" data-toc-id="build-mountain-1" title="碎岳 · 群体配置"><span>碎岳 · 群体配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-0" data-toc-id="build-mountain-0" title="碎岳 · 单体配置"><span>碎岳 · 单体配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-1" data-toc-id="build-bloodwar-1" title="狂战士 · 流血收割配置"><span>狂战士 · 流血收割配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#overview" data-toc-id="overview" title="概况"><span>概况</span></a></li><li class="toc-level-2"><a href="#specs" data-toc-id="specs" title="转职"><span>转职</span></a></li><li class="toc-level-3"><a href="#spec-mountain" data-toc-id="spec-mountain" title="碎岳"><span>碎岳</span></a></li><li class="toc-level-3"><a href="#spec-rampart" data-toc-id="spec-rampart" title="盾魂"><span>盾魂</span></a></li><li class="toc-level-3"><a href="#spec-bloodwar" data-toc-id="spec-bloodwar" title="狂战士"><span>狂战士</span></a></li><li class="toc-level-2"><a href="#skills" data-toc-id="skills" title="技能"><span>技能</span></a></li><li class="toc-level-3"><a href="#skills-class" data-toc-id="skills-class" title="职业技能"><span>职业技能</span></a></li><li class="toc-level-3"><a href="#skills-mountain" data-toc-id="skills-mountain" title="碎岳专属"><span>碎岳专属</span></a></li><li class="toc-level-3"><a href="#skills-rampart" data-toc-id="skills-rampart" title="盾魂专属"><span>盾魂专属</span></a></li><li class="toc-level-3"><a href="#skills-bloodwar" data-toc-id="skills-bloodwar" title="狂战士专属"><span>狂战士专属</span></a></li><li class="toc-level-2"><a href="#passives" data-toc-id="passives" title="职业被动"><span>职业被动</span></a></li><li class="toc-level-2"><a href="#builds" data-toc-id="builds" title="推荐配置"><span>推荐配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-0" data-toc-id="build-rampart-0" title="盾魂 · 承伤反击配置"><span>盾魂 · 承伤反击配置</span></a></li><li class="toc-level-3"><a href="#build-rampart-1" data-toc-id="build-rampart-1" title="盾魂 · 以盾为刃配置"><span>盾魂 · 以盾为刃配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-1" data-toc-id="build-mountain-1" title="碎岳 · 群体配置"><span>碎岳 · 群体配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-1" data-toc-id="build-bloodwar-1" title="狂战士 · 流血收割配置"><span>狂战士 · 流血收割配置</span></a></li><li class="toc-level-3"><a href="#build-mountain-0" data-toc-id="build-mountain-0" title="碎岳 · 单体配置"><span>碎岳 · 单体配置</span></a></li><li class="toc-level-3"><a href="#build-bloodwar-0" data-toc-id="build-bloodwar-0" title="狂战士 · 低血爆发配置"><span>狂战士 · 低血爆发配置</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="class-hero">
 <img class="class-hero-portrait" src="../portraits/warrior.png" alt="" width="132" height="132" />
 <div>
-<p class="eyebrow">职业 <span>/</span> v0.8.0-ota8</p>
+<p class="eyebrow">职业 <span>/</span> v0.8.0-ota9</p>
 <h1>战士</h1>
 <p class="page-description">近战 1 格。以力量与体质承受伤害，依托护盾坚守狭窄地形。</p>
 <p class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 1 格</span><a class="tag tag-link" href="#spec-mountain">碎岳</a><a class="tag tag-link" href="#spec-rampart">盾魂</a><a class="tag tag-link" href="#spec-bloodwar">狂战士</a></p>
@@ -460,7 +484,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div class="spec-grid"><section class="spec-card">
 <h3 id="spec-mountain" data-toc-label="碎岳" tabindex="-1">碎岳<small>觉醒后称「崩岳王」</small></h3>
 <p class="spec-pitch">以破甲与眩晕积累裂痕，再以重击一次释放。</p>
-<a class="spec-strength" href="#build-mountain-1">终局参考 · 等效第 <strong>123</strong> 层</a>
+<a class="spec-strength" href="#build-mountain-1">终局参考 · 等效第 <strong>107</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>技能命中处于破甲或眩晕状态的敌人时，获得 1 层裂痕，每次施放至多获得 1 层，上限 5 层。重击、山崩或裂野命中时消耗全部裂痕，每层使该次伤害提高 30%，并回复 3% 最大生命。最大生命提高 20%，荆棘与棘刺反弹到你身上的伤害降低 50%。</dd></div>
 <div><dt>觉醒提升</dt><dd>裂痕每层的增伤由 30% 提高至 45%。</dd></div>
@@ -475,14 +499,14 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-rampart" data-toc-label="盾魂" tabindex="-1">盾魂<small>觉醒后称「铁壁圣卫」</small></h3>
 <p class="spec-pitch">叠加护盾承受攻击，以盾击与破盾反震克敌。</p>
-<a class="spec-strength" href="#build-rampart-1">终局参考 · 等效第 <strong>131</strong> 层</a>
+<a class="spec-strength" href="#build-rampart-0">终局参考 · 等效第 <strong>118</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>护盾改为可叠加，上限为 80% 最大生命；受到的伤害降低 10%。每回合开始时获得 6% 最大生命的护盾，受破盾词缀影响时改为回复等量生命。拥有护盾时，每次攻击额外造成当前护盾值 6% 的伤害。护盾被击破时，对相邻敌人造成破盾前护盾值 100% 的伤害。</dd></div>
 <div><dt>觉醒提升</dt><dd>护盾上限由 80% 提高至 100% 最大生命，每回合获得的护盾由 6% 提高至 8%。</dd></div>
 
-<div><dt>两套打法</dt><dd>承伤反击：「坚守」「御锋」「重盾」；以盾为刃：「盾爆」「回旋盾」「碎城」「盾潮」</dd></div>
+<div><dt>两套打法</dt><dd>承伤反击：「坚守」「御锋」「重盾」；以盾为刃：「盾爆」「飞盾」「碎城」「盾潮」</dd></div>
 <div><dt>防具精通</dt><dd>重甲精通 · 最大生命</dd></div>
-<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-shieldPress"><small>20 级</small>盾压</a><a class="chip" href="#skill-braceShield"><small>25 级</small>架盾</a><a class="chip" href="#skill-holdFast"><small>30 级</small>坚守</a><a class="chip" href="#skill-breaker"><small>35 级</small>破军斩</a><a class="chip" href="#skill-citadel"><small>40 级</small>城塞</a><a class="chip" href="#skill-rushFormation"><small>45 级</small>冲阵</a><a class="chip" href="#skill-shieldBurst"><small>50 级</small>盾爆</a><a class="chip" href="#skill-parryEdge"><small>55 级</small>御锋</a><a class="chip" href="#skill-heavyShield"><small>65 级</small>重盾</a><a class="chip" href="#skill-quell"><small>70 级</small>镇压</a><a class="chip" href="#skill-shieldBoomerang"><small>75 级</small>回旋盾</a><a class="chip" href="#skill-sunderWall"><small>80 级</small>碎城</a><a class="chip" href="#skill-shieldTide"><small>85 级</small>盾潮</a><a class="chip" href="#skill-sanctuary"><small>90 级</small>圣域</a><a class="chip" href="#skill-layeredWall"><small>95 级</small>千重</a><a class="chip" href="#skill-fortress"><small>觉醒</small>不落城</a></dd></div>
+<div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-shieldPress"><small>20 级</small>盾压</a><a class="chip" href="#skill-braceShield"><small>25 级</small>架盾</a><a class="chip" href="#skill-holdFast"><small>30 级</small>坚守</a><a class="chip" href="#skill-breaker"><small>35 级</small>破军斩</a><a class="chip" href="#skill-citadel"><small>40 级</small>城塞</a><a class="chip" href="#skill-rushFormation"><small>45 级</small>冲阵</a><a class="chip" href="#skill-shieldBurst"><small>50 级</small>盾爆</a><a class="chip" href="#skill-parryEdge"><small>55 级</small>御锋</a><a class="chip" href="#skill-heavyShield"><small>65 级</small>重盾</a><a class="chip" href="#skill-quell"><small>70 级</small>镇压</a><a class="chip" href="#skill-shieldBoomerang"><small>75 级</small>飞盾</a><a class="chip" href="#skill-sunderWall"><small>80 级</small>碎城</a><a class="chip" href="#skill-shieldTide"><small>85 级</small>盾潮</a><a class="chip" href="#skill-sanctuary"><small>90 级</small>圣域</a><a class="chip" href="#skill-layeredWall"><small>95 级</small>千重</a><a class="chip" href="#skill-fortress"><small>觉醒</small>不落城</a></dd></div>
 <div><dt>推荐被动</dt><dd><a href="#passive-warrior-unmoved">「不动如山」</a>、<a href="#passive-warrior-edgeSurge">「盾势」</a></dd></div>
 </dl>
 <details class="spec-rewrites"><summary>技能强化（4 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-warcry">「战吼」</a>冷却时间由 6 回合缩短为 5 回合。</li><li><a href="#skill-charge">「冲锋」</a>接敌时获得 15% 最大生命的护盾。</li><li><a href="#skill-breaker">「破军斩」</a>获得的护盾超出上限时，超出部分转化为下一次攻击的额外伤害。</li><li><a href="#skill-shieldBash">「盾击」</a>护盾追加伤害的比例提高 20 个百分点，由 50% 提高至 70%。</li></ul></details>
@@ -490,7 +514,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <section class="spec-card">
 <h3 id="spec-bloodwar" data-toc-label="狂战士" tabindex="-1">狂战士<small>觉醒后称「血狱狂神」</small></h3>
 <p class="spec-pitch">生命越低伤害越高，以吸血与流血维持续战。</p>
-<a class="spec-strength" href="#build-bloodwar-0">终局参考 · 等效第 <strong>125</strong> 层</a>
+<a class="spec-strength" href="#build-bloodwar-1">终局参考 · 等效第 <strong>106</strong> 层</a>
 <dl class="spec-facts">
 <div><dt>转职特性</dt><dd>每损失 10% 生命，造成的伤害提高 5%，至多提高 40%。溢出的治疗转化为护盾，上限为 20% 最大生命。每场战斗一次，受到致命伤害时保留 1 点生命并进入「死斗」：之后 2 回合内生命不会低于 1 点，并回复造成伤害 30% 的生命。</dd></div>
 <div><dt>觉醒提升</dt><dd>每损失 10% 生命带来的增伤由 5% 提高至 7%，上限由 40% 提高至 55%。</dd></div>
@@ -498,7 +522,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <div><dt>两套打法</dt><dd>低血爆发：「燃血」「决死」「浴血」「搏命」；流血收割：「扑杀」「血祭」「割筋」「血浪」「屠戮」</dd></div>
 <div><dt>防具精通</dt><dd>重甲精通 · 力量（与职业默认相同）</dd></div>
 <div><dt>专属技能</dt><dd class="chips"><a class="chip" href="#skill-bloodGash"><small>20 级</small>血痕</a><a class="chip" href="#skill-bloodBurn"><small>25 级</small>燃血</a><a class="chip" href="#skill-lastStand"><small>30 级</small>不屈</a><a class="chip" href="#skill-bloodDrink"><small>35 级</small>噬血</a><a class="chip" href="#skill-warGod"><small>40 级</small>战神</a><a class="chip" href="#skill-pounce"><small>45 级</small>扑杀</a><a class="chip" href="#skill-bloodRite"><small>50 级</small>血祭</a><a class="chip" href="#skill-hamstring"><small>55 级</small>割筋</a><a class="chip" href="#skill-deathWish"><small>65 级</small>决死</a><a class="chip" href="#skill-frenzySlash"><small>70 级</small>狂斩</a><a class="chip" href="#skill-bloodWave"><small>75 级</small>血浪</a><a class="chip" href="#skill-bloodSoak"><small>80 级</small>浴血</a><a class="chip" href="#skill-massacre"><small>85 级</small>屠戮</a><a class="chip" href="#skill-bloodCollapse"><small>90 级</small>血崩</a><a class="chip" href="#skill-desperation"><small>95 级</small>搏命</a><a class="chip" href="#skill-bloodSea"><small>觉醒</small>血海</a></dd></div>
-<div><dt>推荐被动</dt><dd><a href="#passive-warrior-bloodRage">「血怒」</a>、<a href="#passive-warrior-bloodbath">「血战」</a></dd></div>
+<div><dt>推荐被动</dt><dd><a href="#passive-warrior-bloodRage">「斩获」</a>、<a href="#passive-warrior-bloodbath">「血战」</a></dd></div>
 </dl>
 <details class="spec-rewrites"><summary>技能强化（5 项）<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary><ul><li><a href="#skill-bloodlust">「嗜血斩」</a>对流血目标的回复比例变为原来的 2 倍。</li><li><a href="#skill-execute">「处决」</a>击杀流血目标时，其剩余的流血效果转移至距离最近的敌人。</li><li><a href="#skill-whirl">「旋风斩」</a>使命中的敌人流血 3 回合，每回合受到 45% 攻击的伤害。</li><li><a href="#skill-lastStand">「不屈」</a>生命低于 70% 时即可使用。</li><li><a href="#skill-warGod">「战神」</a>持续期间，每次攻击均使目标流血 2 回合。</li></ul></details>
 </section></div>
@@ -588,7 +612,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <p class="tags"><span class="tag">眩晕</span><span class="tag">盾伤</span></p>
 <p class="skill-desc" data-template="对相邻一名敌人造成 {d120} 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 {p50} 的伤害。目标撞上岩石或场地边缘时，额外受到 {p60} 攻击伤害；撞上其他敌人时，双方各受到 {p40} 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。">对相邻一名敌人造成 177.6% + 696 伤害，使其眩晕并跳过 1 次行动，随后将其击退 1 格。若自身有护盾，则消耗护盾，额外造成相当于护盾值 74% 的伤害。目标撞上岩石或场地边缘时，额外受到 88.8% 攻击伤害；撞上其他敌人时，双方各受到 59.2% 攻击伤害。被击退至浅水、熔岩或冰面的目标仍会受到地形效果影响。</p>
 <p class="skill-synergy">敌人靠近岩石或场地边缘时，以「盾击」将其击退，可造成额外伤害。</p>
-<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">盾反</span><strong>接在「战吼」之后施放</strong>：不消耗护盾；之后 2 回合，护盾每挡下一次攻击，对攻击者造成 100% 攻击的伤害。<small>（Lv.10 时 150%，Lv.20 时 200%）</small></p><p class="skill-link-leads">之后接着施放：「回旋盾」（连环）</p></div>
+<div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">盾反</span><strong>接在「战吼」之后施放</strong>：不消耗护盾；之后 2 回合，护盾每挡下一次攻击，对攻击者造成 100% 攻击的伤害。<small>（Lv.10 时 150%，Lv.20 时 200%）</small></p><p class="skill-link-leads">之后接着施放：「飞盾」（连环）</p></div>
 <div class="rewrites"><p class="block-label">转职强化</p><ul><li><strong>盾魂</strong>：护盾追加伤害的比例提高 20 个百分点，由 50% 提高至 70%。</li></ul></div>
 <div class="skill-levels" data-rate="0.028235294117647056" data-scaling="伤害" data-open="15" data-step="5" data-fixed="5.8">
 <div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="18" value="18" step="1" aria-label="盾击的技能等级" /></label><output class="level-value">Lv.18</output></div>
@@ -950,14 +974,14 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 </div>
 </article>
 <article class="skill-card" id="skill-shieldBoomerang">
-<header><h4>回旋盾</h4><span class="skill-meta">75 级、觉醒后开放 · 以盾为刃打法 · 冷却 4 回合</span></header>
+<header><h4>飞盾</h4><span class="skill-meta">75 级、觉醒后开放 · 以盾为刃打法 · 冷却 4 回合</span></header>
 <p class="tags"><span class="tag">弹跳</span><span class="tag">盾伤</span></p>
 <p class="skill-desc" data-template="射程增加 2 格。掷出盾牌，在至多 4 名敌人之间弹跳，各造成相当于当前护盾值 {p40} 的伤害，无视护甲，并将其击退 1 格；不消耗护盾。">射程增加 2 格。掷出盾牌，在至多 4 名敌人之间弹跳，各造成相当于当前护盾值 74% 的伤害，无视护甲，并将其击退 1 格；不消耗护盾。</p>
 <p class="skill-synergy">盾魂少有的远距离手段：护盾越厚，清理成群的敌人越快。</p>
 <div class="skill-link"><p class="block-label">连携</p><p><span class="tag tag-gold">连环</span><strong>接在「盾击」之后施放</strong>：弹跳不再有次数上限。</p></div>
 
 <div class="skill-levels" data-rate="0.17" data-scaling="伤害" data-open="75" data-step="5" data-fixed="5.8">
-<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="回旋盾的技能等级" /></label><output class="level-value">Lv.6</output></div>
+<div class="level-control"><label><span>技能等级</span><input class="level-slider" type="range" min="1" max="6" value="6" step="1" aria-label="飞盾的技能等级" /></label><output class="level-value">Lv.6</output></div>
 <p class="level-total">Lv.6（角色 100 级开放）：伤害提高 85%，每 100% 倍率另加 580 点固定伤害</p>
 
 </div>
@@ -1239,7 +1263,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <h2 id="passives" tabindex="-1">职业被动</h2>
 <p class="lead">职业通用被动 5 级起可以学习，转职被动在转职以后可以学习，每项 10 SP，不限个数，只受 SP 限制，随时可以退还。被动不占用技能携带栏。</p>
 <div class="passive-grid"><div class="passive-card" id="passive-warrior-bulwark">
-<h4>坚壁</h4><p>护盾未破时，你造成的伤害提高 25%。</p><p class="muted">战吼开场，贴身硬打。</p>
+<h4>恃盾</h4><p>护盾未破时，你造成的伤害提高 25%。</p><p class="muted">战吼开场，贴身硬打。</p>
 <span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-warrior-sunderCrit">
@@ -1247,7 +1271,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">职业通用</span>
 </div>
 <div class="passive-card" id="passive-warrior-bloodRage">
-<h4>血怒</h4><p>击杀敌人回复 8% 最大生命；处决击杀时再回复 8%。</p><p class="muted">处决收割流。</p>
+<h4>斩获</h4><p>击杀敌人回复 8% 最大生命；处决击杀时再回复 8%。</p><p class="muted">处决收割流。</p>
 <span class="tag">狂战士转职被动</span>
 </div>
 <div class="passive-card" id="passive-warrior-bloodbath">
@@ -1271,135 +1295,147 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <span class="tag">盾魂转职被动</span>
 </div></div>
 <h2 id="builds" tabindex="-1">推荐配置</h2>
-<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，四个部位穿戴前四只巨兽的专属传奇（不强化）。「等效层」按第 79～148 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
+<p class="lead">每个转职按两套打法分别搜索出的最优配置：100 级，技能与觉醒技全部升满，全身穿戴同等级史诗（不强化），另戴一枚勋章（培养 0 级）。「等效层」按第 61～133 层的胜率累计折算，越高表示能稳定推进得越深；「过半层」是胜率仍在一半以上的最深一层。</p>
 
 <section class="build-card">
 <header class="build-card-heading">
-<h3 id="build-rampart-1" data-toc-label="盾魂 · 以盾为刃配置" tabindex="-1">盾魂 · 以盾为刃</h3>
-<span class="build-score"><span>等效第 <strong>131</strong> 层</span><small>过半至第 133 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 11.7 L191.7 13.6 L214.2 8.0 L236.7 19.3 L259.2 41.8 L281.7 15.5 L304.3 39.9 L326.8 17.4 L349.3 24.9 L371.8 53.0 L394.3 32.4 L416.9 64.3 L439.4 26.8 L461.9 66.1 L484.4 69.9 L507.0 66.1 L529.5 90.5 L552.0 86.8 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 11.7 L191.7 13.6 L214.2 8.0 L236.7 19.3 L259.2 41.8 L281.7 15.5 L304.3 39.9 L326.8 17.4 L349.3 24.9 L371.8 53.0 L394.3 32.4 L416.9 64.3 L439.4 26.8 L461.9 66.1 L484.4 69.9 L507.0 66.1 L529.5 90.5 L552.0 86.8" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>破军斩</strong><small>Lv.14</small></li><li><strong>城塞</strong><small>Lv.11</small></li><li><strong>镇压</strong><small>Lv.7</small></li><li><strong>回旋盾</strong><small>Lv.1</small></li><li><strong>盾潮</strong><small>Lv.4</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1266</b></span><span>生命 <b>3863</b></span><span>护甲 <b>314</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
 <h3 id="build-rampart-0" data-toc-label="盾魂 · 承伤反击配置" tabindex="-1">盾魂 · 承伤反击</h3>
-<span class="build-score"><span>等效第 <strong>128</strong> 层</span><small>过半至第 130 层</small></span>
+<span class="build-score"><span>等效第 <strong>118</strong> 层</span><small>过半至第 121 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 15.5 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 23.0 L191.7 30.5 L214.2 8.0 L236.7 38.0 L259.2 51.1 L281.7 23.0 L304.3 39.9 L326.8 24.9 L349.3 23.0 L371.8 53.0 L394.3 38.0 L416.9 53.0 L439.4 39.9 L461.9 79.3 L484.4 56.8 L507.0 68.0 L529.5 86.8 L552.0 81.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 15.5 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 23.0 L191.7 30.5 L214.2 8.0 L236.7 38.0 L259.2 51.1 L281.7 23.0 L304.3 39.9 L326.8 24.9 L349.3 23.0 L371.8 53.0 L394.3 38.0 L416.9 53.0 L439.4 39.9 L461.9 79.3 L484.4 56.8 L507.0 68.0 L529.5 86.8 L552.0 81.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 11.7 L228.3 8.0 L249.8 19.3 L271.4 8.0 L293.0 36.1 L314.6 38.0 L336.2 8.0 L357.8 43.6 L379.3 53.0 L400.9 26.8 L422.5 43.6 L444.1 26.8 L465.7 51.1 L487.3 60.5 L508.8 62.4 L530.4 92.4 L552.0 86.8 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 11.7 L228.3 8.0 L249.8 19.3 L271.4 8.0 L293.0 36.1 L314.6 38.0 L336.2 8.0 L357.8 43.6 L379.3 53.0 L400.9 26.8 L422.5 43.6 L444.1 26.8 L465.7 51.1 L487.3 60.5 L508.8 62.4 L530.4 92.4 L552.0 86.8" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>千重</strong><small>Lv.2</small></li><li><strong>圣域</strong><small>Lv.3</small></li><li><strong>城塞</strong><small>Lv.13</small></li><li><strong>御锋</strong><small>Lv.7</small></li><li><strong>重盾</strong><small>Lv.1</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长剑</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1326</b></span><span>生命 <b>3863</b></span><span>护甲 <b>327</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-bloodwar-0" data-toc-label="狂战士 · 低血爆发配置" tabindex="-1">狂战士 · 低血爆发</h3>
-<span class="build-score"><span>等效第 <strong>125</strong> 层</span><small>过半至第 124 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 9.9 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 13.6 L236.7 19.3 L259.2 45.5 L281.7 21.1 L304.3 43.6 L326.8 23.0 L349.3 24.9 L371.8 60.5 L394.3 45.5 L416.9 84.9 L439.4 43.6 L461.9 90.5 L484.4 94.3 L507.0 96.1 L529.5 98.0 L552.0 96.1 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 9.9 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 15.5 L214.2 13.6 L236.7 19.3 L259.2 45.5 L281.7 21.1 L304.3 43.6 L326.8 23.0 L349.3 24.9 L371.8 60.5 L394.3 45.5 L416.9 84.9 L439.4 43.6 L461.9 90.5 L484.4 94.3 L507.0 96.1 L529.5 98.0 L552.0 96.1" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>噬血</strong><small>Lv.14</small></li><li><strong>战神</strong><small>Lv.13</small></li><li><strong>搏命</strong><small>Lv.2</small></li><li><strong>浴血</strong><small>Lv.5</small></li><li><strong>血崩</strong><small>Lv.3</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「血怒」Lv.17、「血战」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>盾压</strong><small>Lv.2</small></li><li><strong>坚守</strong><small>Lv.9</small></li><li><strong>城塞</strong><small>Lv.13</small></li><li><strong>御锋</strong><small>Lv.10</small></li><li><strong>圣域</strong><small>Lv.3</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>护甲</dd></div>
-<div><dt>自动战斗打法</dt><dd>连招</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1330</b></span><span>生命 <b>3630</b></span><span>护甲 <b>455</b></span></dd></div>
+<div><dt>勋章</dt><dd>母巢勋章 · 虫群壁垒</dd></div>
+
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>868</b></span><span>生命 <b>3984</b></span><span>护甲 <b>344</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-rampart-1" data-toc-label="盾魂 · 以盾为刃配置" tabindex="-1">盾魂 · 以盾为刃</h3>
+<span class="build-score"><span>等效第 <strong>110</strong> 层</span><small>过半至第 106 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 9.9 L206.7 19.3 L228.3 11.7 L249.8 38.0 L271.4 9.9 L293.0 36.1 L314.6 39.9 L336.2 8.0 L357.8 53.0 L379.3 71.8 L400.9 41.8 L422.5 75.5 L444.1 53.0 L465.7 92.4 L487.3 77.4 L508.8 96.1 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 9.9 L206.7 19.3 L228.3 11.7 L249.8 38.0 L271.4 9.9 L293.0 36.1 L314.6 39.9 L336.2 8.0 L357.8 53.0 L379.3 71.8 L400.9 41.8 L422.5 75.5 L444.1 53.0 L465.7 92.4 L487.3 77.4 L508.8 96.1 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>圣域</strong><small>Lv.3</small></li><li><strong>镇压</strong><small>Lv.7</small></li><li><strong>城塞</strong><small>Lv.13</small></li><li><strong>飞盾</strong><small>Lv.6</small></li><li><strong>盾潮</strong><small>Lv.4</small></li><li class="is-ascend"><strong>不落城</strong><small>Lv.3</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「不动如山」Lv.17、「盾势」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长剑</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>敏捷</dd></div>
+<div><dt>勋章</dt><dd>龙龟勋章 · 潮甲</dd></div>
+
+<div><dt>自动战斗打法</dt><dd>稳健</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>947</b></span><span>生命 <b>3955</b></span><span>护甲 <b>252</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-mountain-1" data-toc-label="碎岳 · 群体配置" tabindex="-1">碎岳 · 群体</h3>
-<span class="build-score"><span>等效第 <strong>123</strong> 层</span><small>过半至第 121 层</small></span>
+<span class="build-score"><span>等效第 <strong>107</strong> 层</span><small>过半至第 103 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 11.7 L259.2 41.8 L281.7 17.4 L304.3 38.0 L326.8 17.4 L349.3 56.8 L371.8 51.1 L394.3 75.5 L416.9 84.9 L439.4 88.6 L461.9 98.0 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 8.0 L146.6 8.0 L169.1 8.0 L191.7 13.6 L214.2 8.0 L236.7 11.7 L259.2 41.8 L281.7 17.4 L304.3 38.0 L326.8 17.4 L349.3 56.8 L371.8 51.1 L394.3 75.5 L416.9 84.9 L439.4 88.6 L461.9 98.0 L484.4 96.1 L507.0 96.1 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 9.9 L228.3 9.9 L249.8 15.5 L271.4 13.6 L293.0 19.3 L314.6 66.1 L336.2 19.3 L357.8 60.5 L379.3 81.1 L400.9 58.6 L422.5 96.1 L444.1 79.3 L465.7 94.3 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 8.0 L185.1 8.0 L206.7 9.9 L228.3 9.9 L249.8 15.5 L271.4 13.6 L293.0 19.3 L314.6 66.1 L336.2 19.3 L357.8 60.5 L379.3 81.1 L400.9 58.6 L422.5 96.1 L444.1 79.3 L465.7 94.3 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>震地</strong><small>Lv.19</small></li><li><strong>战意</strong><small>Lv.5</small></li><li><strong>撼岳</strong><small>Lv.7</small></li><li><strong>裂野</strong><small>Lv.1</small></li><li><strong>坠岩</strong><small>Lv.1</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
-<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>战斧</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
-<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1326</b></span><span>生命 <b>5087</b></span><span>护甲 <b>334</b></span></dd></div>
-</dl>
-</section>
-<section class="build-card">
-<header class="build-card-heading">
-<h3 id="build-mountain-0" data-toc-label="碎岳 · 单体配置" tabindex="-1">碎岳 · 单体</h3>
-<span class="build-score"><span>等效第 <strong>119</strong> 层</span><small>过半至第 115 层</small></span>
-</header>
-<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
-<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
-<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 9.9 L169.1 8.0 L191.7 26.8 L214.2 17.4 L236.7 19.3 L259.2 23.0 L281.7 26.8 L304.3 56.8 L326.8 34.3 L349.3 75.5 L371.8 75.5 L394.3 77.4 L416.9 98.0 L439.4 66.1 L461.9 98.0 L484.4 98.0 L507.0 96.1 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 9.9 L169.1 8.0 L191.7 26.8 L214.2 17.4 L236.7 19.3 L259.2 23.0 L281.7 26.8 L304.3 56.8 L326.8 34.3 L349.3 75.5 L371.8 75.5 L394.3 77.4 L416.9 98.0 L439.4 66.1 L461.9 98.0 L484.4 98.0 L507.0 96.1 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
-</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
-<dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>战意</strong><small>Lv.5</small></li><li><strong>山崩</strong><small>Lv.6</small></li><li><strong>撼岳</strong><small>Lv.13</small></li><li><strong>汲岳</strong><small>Lv.1</small></li><li><strong>裂穹</strong><small>Lv.3</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.9</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>力量 1 : 智力 1 : 体质 1</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>震地</strong><small>Lv.14</small></li><li><strong>撼岳</strong><small>Lv.13</small></li><li><strong>地动</strong><small>Lv.1</small></li><li><strong>坠岩</strong><small>Lv.1</small></li><li><strong>裂穹</strong><small>Lv.2</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 智力 1 : 体质 1</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
-<div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>优先词条</dt><dd>护甲</dd></div>
+<div><dt>勋章</dt><dd>龙龟勋章 · 潮甲</dd></div>
+
 <div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1508</b></span><span>生命 <b>4255</b></span><span>护甲 <b>403</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>965</b></span><span>生命 <b>3886</b></span><span>护甲 <b>322</b></span></dd></div>
 </dl>
 </section>
 <section class="build-card">
 <header class="build-card-heading">
 <h3 id="build-bloodwar-1" data-toc-label="狂战士 · 流血收割配置" tabindex="-1">狂战士 · 流血收割</h3>
-<span class="build-score"><span>等效第 <strong>115</strong> 层</span><small>过半至第 115 层</small></span>
+<span class="build-score"><span>等效第 <strong>106</strong> 层</span><small>过半至第 106 层</small></span>
 </header>
 <figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
 <line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
 <text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
-<path class="area" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 21.1 L191.7 24.9 L214.2 9.9 L236.7 47.4 L259.2 60.5 L281.7 23.0 L304.3 77.4 L326.8 39.9 L349.3 83.0 L371.8 73.6 L394.3 88.6 L416.9 98.0 L439.4 98.0 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L56.5 8.0 L79.0 8.0 L101.6 8.0 L124.1 11.7 L146.6 8.0 L169.1 21.1 L191.7 24.9 L214.2 9.9 L236.7 47.4 L259.2 60.5 L281.7 23.0 L304.3 77.4 L326.8 39.9 L349.3 83.0 L371.8 73.6 L394.3 88.6 L416.9 98.0 L439.4 98.0 L461.9 98.0 L484.4 98.0 L507.0 98.0 L529.5 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">79</text><text x="124.1" y="114" text-anchor="middle">91</text><text x="214.2" y="114" text-anchor="middle">103</text><text x="304.3" y="114" text-anchor="middle">115</text><text x="394.3" y="114" text-anchor="middle">127</text><text x="484.4" y="114" text-anchor="middle">139</text><text x="552.0" y="114" text-anchor="middle">148</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 9.9 L141.9 8.0 L163.5 19.3 L185.1 19.3 L206.7 23.0 L228.3 13.6 L249.8 36.1 L271.4 9.9 L293.0 38.0 L314.6 45.5 L336.2 9.9 L357.8 71.8 L379.3 71.8 L400.9 43.6 L422.5 94.3 L444.1 81.1 L465.7 98.0 L487.3 96.1 L508.8 96.1 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 9.9 L141.9 8.0 L163.5 19.3 L185.1 19.3 L206.7 23.0 L228.3 13.6 L249.8 36.1 L271.4 9.9 L293.0 38.0 L314.6 45.5 L336.2 9.9 L357.8 71.8 L379.3 71.8 L400.9 43.6 L422.5 94.3 L444.1 81.1 L465.7 98.0 L487.3 96.1 L508.8 96.1 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
 </svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
 <dl class="build-specs">
-<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>旋风斩</strong><small>Lv.20</small></li><li><strong>嗜血斩</strong><small>Lv.4</small></li><li><strong>血祭</strong><small>Lv.11</small></li><li><strong>狂斩</strong><small>Lv.7</small></li><li><strong>血浪</strong><small>Lv.1</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.1</small></li></ul></dd></div>
-<div><dt>职业被动</dt><dd>「坚壁」Lv.20、「碎甲」Lv.20、「血怒」Lv.17、「血战」Lv.17</dd></div>
-<div><dt>属性加点</dt><dd>力量 1 : 敏捷 1 : 智力 1</dd></div>
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>战吼</strong><small>Lv.7</small></li><li><strong>战神</strong><small>Lv.13</small></li><li><strong>血祭</strong><small>Lv.10</small></li><li><strong>血浪</strong><small>Lv.6</small></li><li><strong>狂斩</strong><small>Lv.2</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「斩获」Lv.17、「血战」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>智力 1 : 体质 2</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>勋章</dt><dd>母巢勋章 · 虫群壁垒</dd></div>
+
+<div><dt>自动战斗打法</dt><dd>进攻</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>925</b></span><span>生命 <b>3456</b></span><span>护甲 <b>299</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-mountain-0" data-toc-label="碎岳 · 单体配置" tabindex="-1">碎岳 · 单体</h3>
+<span class="build-score"><span>等效第 <strong>104</strong> 层</span><small>过半至第 100 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 11.7 L141.9 8.0 L163.5 8.0 L185.1 9.9 L206.7 23.0 L228.3 8.0 L249.8 26.8 L271.4 15.5 L293.0 23.0 L314.6 69.9 L336.2 39.9 L357.8 69.9 L379.3 81.1 L400.9 64.3 L422.5 96.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 11.7 L141.9 8.0 L163.5 8.0 L185.1 9.9 L206.7 23.0 L228.3 8.0 L249.8 26.8 L271.4 15.5 L293.0 23.0 L314.6 69.9 L336.2 39.9 L357.8 69.9 L379.3 81.1 L400.9 64.3 L422.5 96.1 L444.1 98.0 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>碎脊</strong><small>Lv.7</small></li><li><strong>战意</strong><small>Lv.5</small></li><li><strong>山崩</strong><small>Lv.8</small></li><li><strong>撼岳</strong><small>Lv.13</small></li><li><strong>汲岳</strong><small>Lv.5</small></li><li class="is-ascend"><strong>天崩</strong><small>Lv.1</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「压制」Lv.17、「岩甲」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>敏捷 1 : 体质 2</dd></div>
 <div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>战斧</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
 <div><dt>优先词条</dt><dd>伤害吸血</dd></div>
+<div><dt>勋章</dt><dd>母巢勋章 · 虫群壁垒</dd></div>
+
+<div><dt>自动战斗打法</dt><dd>连招</dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>954</b></span><span>生命 <b>4147</b></span><span>护甲 <b>299</b></span></dd></div>
+</dl>
+</section>
+<section class="build-card">
+<header class="build-card-heading">
+<h3 id="build-bloodwar-0" data-toc-label="狂战士 · 低血爆发配置" tabindex="-1">狂战士 · 低血爆发</h3>
+<span class="build-score"><span>等效第 <strong>104</strong> 层</span><small>过半至第 103 层</small></span>
+</header>
+<figure class="curve"><svg viewBox="0 0 560 120" role="img" aria-label="各层胜率曲线">
+<line class="grid" x1="34" x2="552" y1="8" y2="8" /><line class="half" x1="34" x2="552" y1="53" y2="53" /><line class="grid" x1="34" x2="552" y1="98" y2="98" />
+<text x="28" y="12" text-anchor="end">100%</text><text x="28" y="57" text-anchor="end">50%</text><text x="28" y="102" text-anchor="end">0</text>
+<path class="area" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 9.9 L185.1 9.9 L206.7 17.4 L228.3 8.0 L249.8 23.0 L271.4 9.9 L293.0 30.5 L314.6 66.1 L336.2 23.0 L357.8 68.0 L379.3 90.5 L400.9 66.1 L422.5 96.1 L444.1 90.5 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0 L552.0 98 L34.0 98 Z" /><path class="line" d="M34.0 8.0 L55.6 8.0 L77.2 8.0 L98.8 8.0 L120.3 8.0 L141.9 8.0 L163.5 9.9 L185.1 9.9 L206.7 17.4 L228.3 8.0 L249.8 23.0 L271.4 9.9 L293.0 30.5 L314.6 66.1 L336.2 23.0 L357.8 68.0 L379.3 90.5 L400.9 66.1 L422.5 96.1 L444.1 90.5 L465.7 98.0 L487.3 98.0 L508.8 98.0 L530.4 98.0 L552.0 98.0" /><text x="34.0" y="114" text-anchor="middle">61</text><text x="120.3" y="114" text-anchor="middle">73</text><text x="206.7" y="114" text-anchor="middle">85</text><text x="293.0" y="114" text-anchor="middle">97</text><text x="379.3" y="114" text-anchor="middle">109</text><text x="465.7" y="114" text-anchor="middle">121</text><text x="552.0" y="114" text-anchor="middle">133</text>
+</svg><figcaption>各层胜率（横轴为深渊层数）</figcaption></figure>
+<dl class="build-specs">
+<div class="wide"><dt>携带技能 · 精通 · 等级</dt><dd><ul class="skill-chips"><li><strong>血崩</strong><small>Lv.3</small></li><li><strong>噬血</strong><small>Lv.2</small></li><li><strong>战神</strong><small>Lv.13</small></li><li><strong>决死</strong><small>Lv.8</small></li><li><strong>浴血</strong><small>Lv.1</small></li><li class="is-ascend"><strong>血海</strong><small>Lv.9</small></li></ul></dd></div>
+<div><dt>职业被动</dt><dd>「恃盾」Lv.20、「碎甲」Lv.20、「斩获」Lv.17、「血战」Lv.17</dd></div>
+<div><dt>属性加点</dt><dd>力量 1 : 体质 1</dd></div>
+<div class="wide"><dt>装备</dt><dd><ul class="gear-list"><li><small>武器</small>长枪</li><li><small>头盔</small>重型头盔</li><li><small>护甲</small>重甲</li><li><small>靴子</small>重型靴子</li><li><small>戒指</small>戒指</li><li><small>项链</small>项链</li></ul></dd></div>
+<div><dt>优先词条</dt><dd>护盾与治疗</dd></div>
+<div><dt>勋章</dt><dd>母巢勋章 · 虫群壁垒</dd></div>
+
 <div><dt>自动战斗打法</dt><dd>进攻</dd></div>
-<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1583</b></span><span>生命 <b>2853</b></span><span>护甲 <b>403</b></span></dd></div>
+<div class="wide"><dt>面板</dt><dd class="stat-line"><span>攻击 <b>1211</b></span><span>生命 <b>3106</b></span><span>护甲 <b>403</b></span></dd></div>
 </dl>
 </section>
 <details class="method-note"><summary>模拟方法<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
 <p>配置由游戏的战斗模拟器搜索得出：依次比较加点、技能组合、被动、精通、技能点分配、装备类型、词条与自动战斗打法，反复调整直至不再变化，最后逐项替换单个选择进行局部搜索。搜索使用深渊种子 7、11、23。</p>
 <p>胜率曲线使用搜索时未出现过的深渊种子 31、37、41、43、47、53 测量，每个测试点 48 场。深渊每 5 层更换一只首领，相邻层的难度可能差别较大，因此曲线会有起伏，比较时请以等效层为准。</p>
-<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota8 计算。</p>
+<p>结果反映的是模拟条件下的取舍，实际表现会随装备词条、强化与战斗环境变化。数据按 v0.8.0-ota9 计算。</p>
 </details></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="index.html"><small>上一篇</small><span>图鉴首页<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="class-ranger.html"><small>下一篇</small><span>游侠<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota8）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota9）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
