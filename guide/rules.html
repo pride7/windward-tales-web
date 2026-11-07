@@ -45,6 +45,8 @@
   --gold-sand: #d7c495;
   --surface-cream: #faf0e6;
   --danger: #a34f3b;
+  --boss-ember: #d9722f;
+  --boss-blood: #c8324a;
   --clay-soft: #a1634d;
   --info: #3b6983;
   --info-soft: #507a89;
@@ -92,7 +94,6 @@
   --board-route: #f6e6b8;
   --board-str: #e4b860;
   --board-dex: #93c780;
-  --board-int: #b9a2e8;
   --board-vit: #ec8e72;
   --board-mid: #d9d2bd;
   --board-spec: #9fc6e6;
@@ -122,6 +123,18 @@
   --journey-glade-hi: #6b8460;
   --journey-glade: #556e4d;
   --journey-glade-deep: #2a3d2c;
+  --hex-void: #060a09;
+  --hex-fight: #e6b4ad;
+  --hex-elite: #ff8a75;
+  --hex-safe: #8fdcc2;
+  --hex-arcane: #bda8f5;
+  --hex-ice: #b9dcf2;
+  --hex-mist-dawn: #2f7d63;
+  --hex-mist-moss: #5d7f4a;
+  --hex-mist-fog: #2f7f8f;
+  --hex-mist-frost: #5b7fb8;
+  --hex-mist-ember: #b5502b;
+  --hex-mist-ruin: #6f58a8;
 }
 /* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
 * { box-sizing: border-box; }
@@ -491,37 +504,37 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   </details></aside>
   <aside class="toc-sidebar"><details class="page-toc" open>
     <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></svg><span>本页目录</span><span class="toc-current" aria-hidden="true"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></summary>
-    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#attributes" data-toc-id="attributes" title="属性收益"><span>属性收益</span></a></li><li class="toc-level-2"><a href="#formulas" data-toc-id="formulas" title="减伤、闪避与暴击"><span>减伤、闪避与暴击</span></a></li><li class="toc-level-2"><a href="#armor-materials" data-toc-id="armor-materials" title="护甲材质"><span>护甲材质</span></a></li><li class="toc-level-2"><a href="#skill-rules" data-toc-id="skill-rules" title="技能与技能点（SP）"><span>技能与技能点（SP）</span></a></li><li class="toc-level-2"><a href="#spec-rules" data-toc-id="spec-rules" title="转职与觉醒"><span>转职与觉醒</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
+    <div class="toc-panel"><nav aria-label="本页目录"><ol><li class="toc-level-2"><a href="#attributes" data-toc-id="attributes" title="命盘"><span>命盘</span></a></li><li class="toc-level-2"><a href="#formulas" data-toc-id="formulas" title="减伤、闪避与暴击"><span>减伤、闪避与暴击</span></a></li><li class="toc-level-2"><a href="#armor-materials" data-toc-id="armor-materials" title="护甲材质"><span>护甲材质</span></a></li><li class="toc-level-2"><a href="#skill-rules" data-toc-id="skill-rules" title="技能与技能点（SP）"><span>技能与技能点（SP）</span></a></li><li class="toc-level-2"><a href="#spec-rules" data-toc-id="spec-rules" title="转职与觉醒"><span>转职与觉醒</span></a></li></ol></nav><a class="toc-top" href="#guide-content">返回顶部 ↑</a></div>
   </details></aside>
   <main class="guide-main" id="guide-content" tabindex="-1">
-    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.8.0-ota13</span><span>与游戏版本同步更新</span></div></header>
-    <article class="guide-article"><h2 id="attributes" tabindex="-1">属性收益</h2>
-<p class="lead">主属性每点提供较多攻击，其余三项属性也有少量贡献。每次升级获得 3 点属性点，可以自由分配。</p>
-<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">属性</th><th scope="col">每点收益</th></tr></thead><tbody role="rowgroup">
-<tr class="" id="stat-str" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>力量</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+2.1 护甲（精通藤甲、轻甲的职业为 +1.05，精通布甲的职业为 +0.63）</div></td></tr>
-<tr class="" id="stat-dex" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>敏捷</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+2.1 闪避值（按递减曲线换算）、+2.5 生命，提高先攻，先攻到 65 移动 2 格</div></td></tr>
-<tr class="" id="stat-int" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>智力</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+3% 护盾量与治疗量、+1.5 生命</div></td></tr>
-<tr class="" id="stat-vit" role="row"><td data-label="属性" role="cell"><div class="cell-content"><strong>体质</strong></div></td><td data-label="每点收益" role="cell"><div class="cell-content">+7 生命，每 7 点每回合回复 1</div></td></tr>
+    <header class="guide-heading"><p class="eyebrow">风行物语图鉴 <span>/</span> 属性与规则</p><h1>属性与规则</h1><p class="page-description">属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</p><div class="page-meta"><span class="version-badge">v0.8.0-ota14</span><span>与游戏版本同步更新</span></div></header>
+    <article class="guide-article"><h2 id="attributes" tabindex="-1">命盘</h2>
+<p class="lead">每升一级获得 1 点命盘点，在命盘上点亮格子。命盘分护甲、闪避、护盾、生命四块，每块的普通格提供这一类效果，按转职折算；攻击、暴击与技能伤害随等级成长，不来自命盘。</p>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">四块</th><th scope="col">每格的效果</th></tr></thead><tbody role="rowgroup">
+<tr class="" id="stat-str" role="row"><td data-label="四块" role="cell"><div class="cell-content"><strong>护甲</strong></div></td><td data-label="每格的效果" role="cell"><div class="cell-content">护甲 +6.3（精通藤甲、轻甲的转职为 +3.15，精通布甲的转职为 +1.9）</div></td></tr>
+<tr class="" id="stat-dex" role="row"><td data-label="四块" role="cell"><div class="cell-content"><strong>闪避</strong></div></td><td data-label="每格的效果" role="cell"><div class="cell-content">闪避值 +6.3（按递减曲线换算为闪避率），并提高先攻；先攻到 65 时移动 2 格</div></td></tr>
+<tr class="" id="stat-int" role="row"><td data-label="四块" role="cell"><div class="cell-content"><strong>护盾</strong></div></td><td data-label="每格的效果" role="cell"><div class="cell-content">护盾量与治疗量 +9%</div></td></tr>
+<tr class="" id="stat-vit" role="row"><td data-label="四块" role="cell"><div class="cell-content"><strong>生命</strong></div></td><td data-label="每格的效果" role="cell"><div class="cell-content">生命 +21，每回合回复 +3</div></td></tr>
 </tbody></table></div>
 <h2 id="formulas" tabindex="-1">减伤、闪避与暴击</h2>
 <div class="formula-grid">
 <div class="formula"><strong>护甲减伤</strong><code>护甲 ÷ (护甲 + 40 + 等级)</code><p>分母随等级增长，同样的护甲值在高等级提供的减伤较低。减伤与生命相乘，若不随等级调整，职业之间的差距会随等级不断扩大。敌人的荆棘、棘刺等反弹伤害无法闪避，也不被护盾吸收，但同样受护甲减免。</p></div>
-<div class="formula"><strong>闪避率</strong><code>60 × 闪避值 ÷ (闪避值 + 80)</code><p>闪避值来自敏捷与装备，按递减曲线换算，越接近 60% 提升越少。部分敌人技能无法闪避，详见敌人资料。</p></div>
-<div class="formula"><strong>暴击率</strong><code>85 × 暴击值 ÷ (暴击值 + 85)</code><p>暴击值来自基础值、敏捷与装备，同样按递减曲线换算，上限接近 85%。</p></div>
+<div class="formula"><strong>闪避率</strong><code>60 × 闪避值 ÷ (闪避值 + 80)</code><p>闪避值来自命盘的闪避格与装备，按递减曲线换算，越接近 60% 提升越少。部分敌人技能无法闪避，详见敌人资料。</p></div>
+<div class="formula"><strong>暴击率</strong><code>85 × 暴击值 ÷ (暴击值 + 85)</code><p>暴击值随职业、转职与等级成长，装备另加，同样按递减曲线换算，上限接近 85%。</p></div>
 </div>
 <h2 id="armor-materials" tabindex="-1">护甲材质</h2>
-<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">材质</th><th scope="col">默认精通职业</th><th scope="col">材质精通</th><th scope="col">固有属性</th><th scope="col">说明</th></tr></thead><tbody role="rowgroup">
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">战士</div></td><td data-label="材质精通" role="cell"><div class="cell-content">最大生命</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲与生命最高，体质增强生存和回复。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>鳞甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">火枪手</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护甲</div></td><td data-label="固有属性" role="cell"><div class="cell-content">力量</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲较高、生命略高，力量提高攻击与护甲。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">游侠、刺客</div></td><td data-label="材质精通" role="cell"><div class="cell-content">闪避</div></td><td data-label="固有属性" role="cell"><div class="cell-content">敏捷</div></td><td data-label="说明" role="cell"><div class="cell-content">防护适中，敏捷提高暴击和闪避。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="材质精通" role="cell"><div class="cell-content">每回合回复</div></td><td data-label="固有属性" role="cell"><div class="cell-content">体质</div></td><td data-label="说明" role="cell"><div class="cell-content">生命很高、护甲偏低，体质提高攻击、生命与回复。</div></td></tr>
-<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">法师、死灵法师</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护盾与治疗</div></td><td data-label="固有属性" role="cell"><div class="cell-content">智力</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲最低，智力提高攻击、护盾与治疗。</div></td></tr>
+<div class="table-scroll" role="region" aria-label="资料表格，可横向滚动" tabindex="0"><table class="data-table table-cards" role="table"><thead role="rowgroup"><tr role="row"><th scope="col">材质</th><th scope="col">默认精通职业</th><th scope="col">材质精通</th><th scope="col">固有加成</th><th scope="col">说明</th></tr></thead><tbody role="rowgroup">
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>重甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">战士</div></td><td data-label="材质精通" role="cell"><div class="cell-content">最大生命</div></td><td data-label="固有加成" role="cell"><div class="cell-content">最大生命</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲与生命最高，另加生命。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>鳞甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">火枪手</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护甲</div></td><td data-label="固有加成" role="cell"><div class="cell-content">攻击</div></td><td data-label="说明" role="cell"><div class="cell-content">护甲较高、生命略高，另加攻击。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>轻甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">游侠、刺客</div></td><td data-label="材质精通" role="cell"><div class="cell-content">闪避</div></td><td data-label="固有加成" role="cell"><div class="cell-content">攻击</div></td><td data-label="说明" role="cell"><div class="cell-content">防护适中，另加攻击。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>藤甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">德鲁伊</div></td><td data-label="材质精通" role="cell"><div class="cell-content">每回合回复</div></td><td data-label="固有加成" role="cell"><div class="cell-content">攻击</div></td><td data-label="说明" role="cell"><div class="cell-content">生命很高、护甲偏低，另加攻击。</div></td></tr>
+<tr class="" role="row"><td data-label="材质" role="cell"><div class="cell-content"><strong>布甲</strong></div></td><td data-label="默认精通职业" role="cell"><div class="cell-content">法师、死灵法师</div></td><td data-label="材质精通" role="cell"><div class="cell-content">护盾与治疗</div></td><td data-label="固有加成" role="cell"><div class="cell-content">攻击</div></td><td data-label="说明" role="cell"><div class="cell-content">生命与护甲最低，另加攻击。</div></td></tr>
 </tbody></table></div>
 <div class="note">防具全职业可穿。穿戴精通材质时发挥完整的护甲与生命，并获得两条精通加成：一条随材质而定，一条随职业而定；穿戴其他材质时保留固有属性，但护甲与生命按布甲的底子计算。部分转职会改为精通其他材质，见各职业页的转职卡。头盔与护甲分别计算。</div>
 <h2 id="skill-rules" tabindex="-1">技能与技能点（SP）</h2>
 <ul class="rule-list">
 <li>每个职业有 8 个职业技能，按 1、5、10、15 级依次开放；20 级以后的技能在转职的技能线上开放。学习技能消耗技能点（SP），开放越晚的技能越贵：1～19 级开放的技能学习需 10 SP，20～39 级的需 15 SP，40 级起的需 20 SP，觉醒技需 30 SP。</li>
-<li>携带栏 3 个起步，10 级和 25 级各增加 1 个，最多携带 5 个技能。</li>
+<li>携带栏 5 个起步，10 级和 25 级各增加 1 个，最多携带 7 个技能。</li>
 <li>已学技能可以逐级升级：技能开放时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，不设最高等级；只有回合、次数等整数效果的辅助技能（如「闪现」「烟雾弹」）最高 Lv.5。每升一级，技能的百分比数值随之提高；造成伤害的技能另有固定伤害，等级越高，固定伤害越多。回合、次数等整数效果只在 Lv.2～Lv.5 提高。每升一级的价格：1～19 级开放的技能 10 SP，20～39 级的 12 SP，40 级起的 14 SP，觉醒技 16 SP。</li>
 <li>职业被动 5 级起可以学习，每项 10 SP。被动分职业通用被动与转职被动：转职以后还能学习本转职的转职被动，被动不限个数，只受 SP 限制。已学的被动可以逐级升级：学会时为 Lv.1，此后角色每升 5 级，等级上限提高 1 级，每升一级 2 SP；只能取整数的被动（如「扩充弹匣」）最高 Lv.5，每级都有提升。遗忘技能、退还被动时，花费的 SP 全部退还。</li>
 <li>每次升级都获得 SP：1～10 级每级 10 SP，11～60 级每级 4 SP，61～100 级每级 11 SP（10 级累计 100 SP、40 级累计 220 SP、60 级累计 300 SP、80 级累计 520 SP、100 级累计 740 SP）。</li>
@@ -534,7 +547,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <li>觉醒任务在主线卷三，共三步：通关卷三「溯风」、在卷三达成 20 项关卡挑战、通过「觉醒试炼」。试炼在前两步完成后开放，依次迎战三名首领，三波之间不休整，不获得经验、金币与装备，失利后可以反复挑战。</li>
 </ul></article>
     <nav class="page-pagination" aria-label="相邻页面"><a class="previous" href="class-gunner.html"><small>上一篇</small><span>火枪手<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a><a class="next" href="gear.html"><small>下一篇</small><span>装备<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota13）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota14）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>

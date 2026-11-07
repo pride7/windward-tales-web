@@ -45,6 +45,8 @@
   --gold-sand: #d7c495;
   --surface-cream: #faf0e6;
   --danger: #a34f3b;
+  --boss-ember: #d9722f;
+  --boss-blood: #c8324a;
   --clay-soft: #a1634d;
   --info: #3b6983;
   --info-soft: #507a89;
@@ -92,7 +94,6 @@
   --board-route: #f6e6b8;
   --board-str: #e4b860;
   --board-dex: #93c780;
-  --board-int: #b9a2e8;
   --board-vit: #ec8e72;
   --board-mid: #d9d2bd;
   --board-spec: #9fc6e6;
@@ -122,6 +123,18 @@
   --journey-glade-hi: #6b8460;
   --journey-glade: #556e4d;
   --journey-glade-deep: #2a3d2c;
+  --hex-void: #060a09;
+  --hex-fight: #e6b4ad;
+  --hex-elite: #ff8a75;
+  --hex-safe: #8fdcc2;
+  --hex-arcane: #bda8f5;
+  --hex-ice: #b9dcf2;
+  --hex-mist-dawn: #2f7d63;
+  --hex-mist-moss: #5d7f4a;
+  --hex-mist-fog: #2f7f8f;
+  --hex-mist-frost: #5b7fb8;
+  --hex-mist-ember: #b5502b;
+  --hex-mist-ruin: #6f58a8;
 }
 /* 图鉴站样式。配色全部取游戏定稿色板（:root 由 render.mjs 注入），正文保持纸面阅读感，颜色用于导航、分类与状态。 */
 * { box-sizing: border-box; }
@@ -496,7 +509,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
   <main class="guide-main" id="guide-content" tabindex="-1">
     <header class="home-hero">
 <div class="home-hero-text">
-<p class="eyebrow">图鉴与攻略 <span>/</span> v0.8.0-ota13</p>
+<p class="eyebrow">图鉴与攻略 <span>/</span> v0.8.0-ota14</p>
 <h1>风行物语图鉴</h1>
 <p class="page-description">七个职业、21 个转职的技能与搭配，装备、敌人与各项玩法的资料。全部内容由游戏数据生成，与游戏版本同步更新。</p>
 <p class="home-hint"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>在页面顶部输入技能、被动、装备或敌人的名称，即可直接跳转。</p>
@@ -509,8 +522,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/warrior.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>战士</strong>
-<span class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 1 格</span></span>
-<span class="class-card-intro">近战 1 格。以力量与体质承受伤害，依托护盾坚守狭窄地形。</span>
+<span class="tags"><span class="tag">射程 1 格</span></span>
+<span class="class-card-intro">近战 1 格。以护甲与生命承受伤害，依托护盾坚守狭窄地形。</span>
 <span class="spec-names"><span>碎岳</span><span>盾魂</span><span>狂战士</span></span>
 </span>
 </a>
@@ -518,8 +531,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/ranger.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>游侠</strong>
-<span class="tags"><span class="tag">主属性 敏捷</span><span class="tag">射程 3 格</span></span>
-<span class="class-card-intro">远程 3 格。以敏捷提高暴击与闪避，擅长在开阔地形中与敌人保持距离。</span>
+<span class="tags"><span class="tag">射程 3 格</span></span>
+<span class="class-card-intro">远程 3 格。暴击与闪避出众，擅长在开阔地形中与敌人保持距离。</span>
 <span class="spec-names"><span>神射手</span><span>毒王</span><span>疾风</span></span>
 </span>
 </a>
@@ -527,8 +540,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/mage.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>法师</strong>
-<span class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span></span>
-<span class="class-card-intro">远程 2 格。以智力提高技能伤害并缩短冷却，敌人越密集，法术的收效越大。</span>
+<span class="tags"><span class="tag">射程 2 格</span></span>
+<span class="class-card-intro">远程 2 格。技能伤害高、冷却短，敌人越密集，法术的收效越大。</span>
 <span class="spec-names"><span>元素师</span><span>召唤师</span><span>奥术师</span></span>
 </span>
 </a>
@@ -536,7 +549,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/assassin.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>刺客</strong>
-<span class="tags"><span class="tag">主属性 敏捷</span><span class="tag">射程 1 格</span></span>
+<span class="tags"><span class="tag">射程 1 格</span></span>
 <span class="class-card-intro">近战 1 格。生存能力较弱，最忌陷入包围；以偷袭生命全满的目标开局，叠加流血累积伤害，再将流血引爆，击倒残敌。</span>
 <span class="spec-names"><span>夜枭</span><span>血刃</span><span>魅影</span></span>
 </span>
@@ -545,8 +558,8 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/druid.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>德鲁伊</strong>
-<span class="tags"><span class="tag">主属性 体质</span><span class="tag">射程 2 格</span></span>
-<span class="class-card-intro">远程 2 格。唯一以体质为主属性的职业，以中毒、反伤与持续回复延长战斗，凭借持久力取胜，而非速战速决。</span>
+<span class="tags"><span class="tag">射程 2 格</span></span>
+<span class="class-card-intro">远程 2 格。以中毒、反伤与持续回复延长战斗，凭借持久力取胜，而非速战速决。</span>
 <span class="spec-names"><span>瘴巫</span><span>荆棘使</span><span>森灵</span></span>
 </span>
 </a>
@@ -554,7 +567,7 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/necromancer.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>死灵法师</strong>
-<span class="tags"><span class="tag">主属性 智力</span><span class="tag">射程 2 格</span></span>
+<span class="tags"><span class="tag">射程 2 格</span></span>
 <span class="class-card-intro">远程 2 格。本体是所有职业中最弱的，依靠将击倒的敌人提取为影子、收入影子池逐步壮大；影子越多、阶位越高，你的战力越强。</span>
 <span class="spec-names"><span>冥王</span><span>魂术师</span><span>念动师</span></span>
 </span>
@@ -563,46 +576,46 @@ code { padding: 2px 6px; border-radius: 5px; background: var(--surface-hollow); 
 <img src="../portraits/gunner.png" alt="" width="84" height="84" loading="lazy" />
 <span class="class-card-body">
 <strong>火枪手</strong>
-<span class="tags"><span class="tag">主属性 力量</span><span class="tag">射程 3 格</span></span>
-<span class="class-card-intro">远程 3 格。以力量驾驭火铳与火炮，用榴弹、贯穿弹与炮击压制成群的敌人，并以击退与牵制将敌人阻挡在射程边缘。</span>
+<span class="tags"><span class="tag">射程 3 格</span></span>
+<span class="class-card-intro">远程 3 格。以火铳与火炮上阵，用榴弹、贯穿弹与炮击压制成群的敌人，并以击退与牵制将敌人阻挡在射程边缘。</span>
 <span class="spec-names"><span>枪炮师</span><span>弹药师</span><span>爆破师</span></span>
 </span>
 </a></div>
 <h2 id="strength" tabindex="-1">终局强度参考</h2>
-<p class="lead">各转职的最优配置在无尽深渊中的表现（100 级，技能与觉醒技全部升满，全身穿戴同等级史诗（不强化），另戴一枚勋章（培养 0 级））。数值为「等效层」：在第 64～142 层之间每 3 层测试一次，按胜率累计折算得出，数值越高表示能稳定推进得越深。相差 3 层以内可视为同一水平。</p>
+<p class="lead">各转职的最优配置在无尽深渊中的表现（100 级，技能与觉醒技全部升满，全身穿戴同等级史诗（不强化），另戴一枚勋章（培养 0 级））。数值为「等效层」：在第 80～170 层之间每 3 层测试一次，按胜率累计折算得出，数值越高表示能稳定推进得越深。相差 3 层以内可视为同一水平。</p>
 <div class="strength-chart" role="img" aria-label="各转职终局强度对比"><div class="strength-group">
-<a class="strength-class" href="class-mage.html#builds"><img src="../portraits/mage.png" alt="" width="28" height="28" loading="lazy" /><span>法师</span></a>
-<ul class="strength-bars"><li><span class="strength-label">奥术师 · 时序加速</span><span class="strength-track"><span class="strength-fill" style="width:88.6%"></span></span><span class="strength-value">126</span></li><li><span class="strength-label">元素师 · 控场</span><span class="strength-track"><span class="strength-fill" style="width:71.4%"></span></span><span class="strength-value">120</span></li><li><span class="strength-label">元素师 · 爆发</span><span class="strength-track"><span class="strength-fill" style="width:51.4%"></span></span><span class="strength-value">113</span></li><li><span class="strength-label">召唤师 · 巨像镇守</span><span class="strength-track"><span class="strength-fill" style="width:51.4%"></span></span><span class="strength-value">113</span></li><li><span class="strength-label">奥术师 · 引力坍缩</span><span class="strength-track"><span class="strength-fill" style="width:51.4%"></span></span><span class="strength-value">113</span></li><li><span class="strength-label">召唤师 · 群灵围攻</span><span class="strength-track"><span class="strength-fill" style="width:22.9%"></span></span><span class="strength-value">103</span></li></ul>
-</div>
-<div class="strength-group">
-<a class="strength-class" href="class-assassin.html#builds"><img src="../portraits/assassin.png" alt="" width="28" height="28" loading="lazy" /><span>刺客</span></a>
-<ul class="strength-bars"><li><span class="strength-label">夜枭 · 连环收割</span><span class="strength-track"><span class="strength-fill" style="width:85.7%"></span></span><span class="strength-value">125</span></li><li><span class="strength-label">夜枭 · 潜伏刺杀</span><span class="strength-track"><span class="strength-fill" style="width:80.0%"></span></span><span class="strength-value">123</span></li><li><span class="strength-label">魅影 · 残影连斩</span><span class="strength-track"><span class="strength-fill" style="width:74.3%"></span></span><span class="strength-value">121</span></li><li><span class="strength-label">血刃 · 放血狩猎</span><span class="strength-track"><span class="strength-fill" style="width:68.6%"></span></span><span class="strength-value">119</span></li><li><span class="strength-label">血刃 · 血雨横流</span><span class="strength-track"><span class="strength-fill" style="width:62.9%"></span></span><span class="strength-value">117</span></li><li><span class="strength-label">魅影 · 闪避反击</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">116</span></li></ul>
-</div>
-<div class="strength-group">
 <a class="strength-class" href="class-gunner.html#builds"><img src="../portraits/gunner.png" alt="" width="28" height="28" loading="lazy" /><span>火枪手</span></a>
-<ul class="strength-bars"><li><span class="strength-label">爆破师 · 连环引爆</span><span class="strength-track"><span class="strength-fill" style="width:85.7%"></span></span><span class="strength-value">125</span></li><li><span class="strength-label">爆破师 · 雷区布设</span><span class="strength-track"><span class="strength-fill" style="width:82.9%"></span></span><span class="strength-value">124</span></li><li><span class="strength-label">枪炮师 · 过热轰击</span><span class="strength-track"><span class="strength-fill" style="width:74.3%"></span></span><span class="strength-value">121</span></li><li><span class="strength-label">弹药师 · 弹幕压制</span><span class="strength-track"><span class="strength-fill" style="width:65.7%"></span></span><span class="strength-value">118</span></li><li><span class="strength-label">枪炮师 · 阵地固守</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">116</span></li><li><span class="strength-label">弹药师 · 猎首狙杀</span><span class="strength-track"><span class="strength-fill" style="width:57.1%"></span></span><span class="strength-value">115</span></li></ul>
-</div>
-<div class="strength-group">
-<a class="strength-class" href="class-warrior.html#builds"><img src="../portraits/warrior.png" alt="" width="28" height="28" loading="lazy" /><span>战士</span></a>
-<ul class="strength-bars"><li><span class="strength-label">盾魂 · 以盾为刃</span><span class="strength-track"><span class="strength-fill" style="width:82.9%"></span></span><span class="strength-value">124</span></li><li><span class="strength-label">盾魂 · 承伤反击</span><span class="strength-track"><span class="strength-fill" style="width:80.0%"></span></span><span class="strength-value">123</span></li><li><span class="strength-label">狂战士 · 流血收割</span><span class="strength-track"><span class="strength-fill" style="width:77.1%"></span></span><span class="strength-value">122</span></li><li><span class="strength-label">狂战士 · 低血爆发</span><span class="strength-track"><span class="strength-fill" style="width:71.4%"></span></span><span class="strength-value">120</span></li><li><span class="strength-label">碎岳 · 群体</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">116</span></li><li><span class="strength-label">碎岳 · 单体</span><span class="strength-track"><span class="strength-fill" style="width:37.1%"></span></span><span class="strength-value">108</span></li></ul>
-</div>
-<div class="strength-group">
-<a class="strength-class" href="class-druid.html#builds"><img src="../portraits/druid.png" alt="" width="28" height="28" loading="lazy" /><span>德鲁伊</span></a>
-<ul class="strength-bars"><li><span class="strength-label">荆棘使 · 荆棘牢笼</span><span class="strength-track"><span class="strength-fill" style="width:68.6%"></span></span><span class="strength-value">119</span></li><li><span class="strength-label">瘴巫 · 衰败诅咒</span><span class="strength-track"><span class="strength-fill" style="width:57.1%"></span></span><span class="strength-value">115</span></li><li><span class="strength-label">森灵 · 木灵震怒</span><span class="strength-track"><span class="strength-fill" style="width:57.1%"></span></span><span class="strength-value">115</span></li><li><span class="strength-label">瘴巫 · 瘴气弥漫</span><span class="strength-track"><span class="strength-fill" style="width:48.6%"></span></span><span class="strength-value">112</span></li><li><span class="strength-label">荆棘使 · 反刺护身</span><span class="strength-track"><span class="strength-fill" style="width:45.7%"></span></span><span class="strength-value">111</span></li><li><span class="strength-label">森灵 · 年轮守护</span><span class="strength-track"><span class="strength-fill" style="width:42.9%"></span></span><span class="strength-value">110</span></li></ul>
+<ul class="strength-bars"><li><span class="strength-label">爆破师 · 雷区布设</span><span class="strength-track"><span class="strength-fill" style="width:94.0%"></span></span><span class="strength-value">152</span></li><li><span class="strength-label">弹药师 · 弹幕压制</span><span class="strength-track"><span class="strength-fill" style="width:84.0%"></span></span><span class="strength-value">147</span></li><li><span class="strength-label">爆破师 · 连环引爆</span><span class="strength-track"><span class="strength-fill" style="width:84.0%"></span></span><span class="strength-value">147</span></li><li><span class="strength-label">弹药师 · 猎首狙杀</span><span class="strength-track"><span class="strength-fill" style="width:70.0%"></span></span><span class="strength-value">140</span></li><li><span class="strength-label">枪炮师 · 过热轰击</span><span class="strength-track"><span class="strength-fill" style="width:68.0%"></span></span><span class="strength-value">139</span></li><li><span class="strength-label">枪炮师 · 阵地固守</span><span class="strength-track"><span class="strength-fill" style="width:56.0%"></span></span><span class="strength-value">133</span></li></ul>
 </div>
 <div class="strength-group">
 <a class="strength-class" href="class-ranger.html#builds"><img src="../portraits/ranger.png" alt="" width="28" height="28" loading="lazy" /><span>游侠</span></a>
-<ul class="strength-bars"><li><span class="strength-label">毒王 · 毒爆收割</span><span class="strength-track"><span class="strength-fill" style="width:65.7%"></span></span><span class="strength-value">118</span></li><li><span class="strength-label">神射手 · 定点狙杀</span><span class="strength-track"><span class="strength-fill" style="width:62.9%"></span></span><span class="strength-value">117</span></li><li><span class="strength-label">疾风 · 闪避游斗</span><span class="strength-track"><span class="strength-fill" style="width:62.9%"></span></span><span class="strength-value">117</span></li><li><span class="strength-label">神射手 · 一线贯穿</span><span class="strength-track"><span class="strength-fill" style="width:57.1%"></span></span><span class="strength-value">115</span></li><li><span class="strength-label">毒王 · 疫病蔓延</span><span class="strength-track"><span class="strength-fill" style="width:51.4%"></span></span><span class="strength-value">113</span></li><li><span class="strength-label">疾风 · 疾风连射</span><span class="strength-track"><span class="strength-fill" style="width:51.4%"></span></span><span class="strength-value">113</span></li></ul>
+<ul class="strength-bars"><li><span class="strength-label">疾风 · 闪避游斗</span><span class="strength-track"><span class="strength-fill" style="width:84.0%"></span></span><span class="strength-value">147</span></li><li><span class="strength-label">疾风 · 疾风连射</span><span class="strength-track"><span class="strength-fill" style="width:64.0%"></span></span><span class="strength-value">137</span></li><li><span class="strength-label">毒王 · 毒爆收割</span><span class="strength-track"><span class="strength-fill" style="width:54.0%"></span></span><span class="strength-value">132</span></li><li><span class="strength-label">神射手 · 定点狙杀</span><span class="strength-track"><span class="strength-fill" style="width:52.0%"></span></span><span class="strength-value">131</span></li><li><span class="strength-label">神射手 · 一线贯穿</span><span class="strength-track"><span class="strength-fill" style="width:52.0%"></span></span><span class="strength-value">131</span></li><li><span class="strength-label">毒王 · 疫病蔓延</span><span class="strength-track"><span class="strength-fill" style="width:46.0%"></span></span><span class="strength-value">128</span></li></ul>
+</div>
+<div class="strength-group">
+<a class="strength-class" href="class-warrior.html#builds"><img src="../portraits/warrior.png" alt="" width="28" height="28" loading="lazy" /><span>战士</span></a>
+<ul class="strength-bars"><li><span class="strength-label">盾魂 · 以盾为刃</span><span class="strength-track"><span class="strength-fill" style="width:72.0%"></span></span><span class="strength-value">141</span></li><li><span class="strength-label">盾魂 · 承伤反击</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">135</span></li><li><span class="strength-label">碎岳 · 群体</span><span class="strength-track"><span class="strength-fill" style="width:58.0%"></span></span><span class="strength-value">134</span></li><li><span class="strength-label">狂战士 · 低血爆发</span><span class="strength-track"><span class="strength-fill" style="width:58.0%"></span></span><span class="strength-value">134</span></li><li><span class="strength-label">狂战士 · 流血收割</span><span class="strength-track"><span class="strength-fill" style="width:52.0%"></span></span><span class="strength-value">131</span></li><li><span class="strength-label">碎岳 · 单体</span><span class="strength-track"><span class="strength-fill" style="width:48.0%"></span></span><span class="strength-value">129</span></li></ul>
+</div>
+<div class="strength-group">
+<a class="strength-class" href="class-assassin.html#builds"><img src="../portraits/assassin.png" alt="" width="28" height="28" loading="lazy" /><span>刺客</span></a>
+<ul class="strength-bars"><li><span class="strength-label">魅影 · 闪避反击</span><span class="strength-track"><span class="strength-fill" style="width:72.0%"></span></span><span class="strength-value">141</span></li><li><span class="strength-label">血刃 · 放血狩猎</span><span class="strength-track"><span class="strength-fill" style="width:70.0%"></span></span><span class="strength-value">140</span></li><li><span class="strength-label">血刃 · 血雨横流</span><span class="strength-track"><span class="strength-fill" style="width:66.0%"></span></span><span class="strength-value">138</span></li><li><span class="strength-label">夜枭 · 潜伏刺杀</span><span class="strength-track"><span class="strength-fill" style="width:64.0%"></span></span><span class="strength-value">137</span></li><li><span class="strength-label">夜枭 · 连环收割</span><span class="strength-track"><span class="strength-fill" style="width:62.0%"></span></span><span class="strength-value">136</span></li><li><span class="strength-label">魅影 · 残影连斩</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">135</span></li></ul>
 </div>
 <div class="strength-group">
 <a class="strength-class" href="class-necromancer.html#builds"><img src="../portraits/necromancer.png" alt="" width="28" height="28" loading="lazy" /><span>死灵法师</span></a>
-<ul class="strength-bars"><li><span class="strength-label">冥王 · 亡者不息</span><span class="strength-track"><span class="strength-fill" style="width:60.0%"></span></span><span class="strength-value">116</span></li><li><span class="strength-label">念动师 · 念力冲击</span><span class="strength-track"><span class="strength-fill" style="width:54.3%"></span></span><span class="strength-value">114</span></li><li><span class="strength-label">念动师 · 精神禁锢</span><span class="strength-track"><span class="strength-fill" style="width:54.3%"></span></span><span class="strength-value">114</span></li><li><span class="strength-label">冥王 · 影海</span><span class="strength-track"><span class="strength-fill" style="width:45.7%"></span></span><span class="strength-value">111</span></li><li><span class="strength-label">魂术师 · 魂爆连锁</span><span class="strength-track"><span class="strength-fill" style="width:37.1%"></span></span><span class="strength-value">108</span></li><li><span class="strength-label">魂术师 · 魂力狙杀</span><span class="strength-track"><span class="strength-fill" style="width:25.7%"></span></span><span class="strength-value">104</span></li></ul>
+<ul class="strength-bars"><li><span class="strength-label">冥王 · 亡者不息</span><span class="strength-track"><span class="strength-fill" style="width:70.0%"></span></span><span class="strength-value">140</span></li><li><span class="strength-label">冥王 · 影海</span><span class="strength-track"><span class="strength-fill" style="width:66.0%"></span></span><span class="strength-value">138</span></li><li><span class="strength-label">念动师 · 精神禁锢</span><span class="strength-track"><span class="strength-fill" style="width:66.0%"></span></span><span class="strength-value">138</span></li><li><span class="strength-label">念动师 · 念力冲击</span><span class="strength-track"><span class="strength-fill" style="width:56.0%"></span></span><span class="strength-value">133</span></li><li><span class="strength-label">魂术师 · 魂爆连锁</span><span class="strength-track"><span class="strength-fill" style="width:38.0%"></span></span><span class="strength-value">124</span></li><li><span class="strength-label">魂术师 · 魂力狙杀</span><span class="strength-track"><span class="strength-fill" style="width:30.0%"></span></span><span class="strength-value">120</span></li></ul>
+</div>
+<div class="strength-group">
+<a class="strength-class" href="class-mage.html#builds"><img src="../portraits/mage.png" alt="" width="28" height="28" loading="lazy" /><span>法师</span></a>
+<ul class="strength-bars"><li><span class="strength-label">元素师 · 控场</span><span class="strength-track"><span class="strength-fill" style="width:68.0%"></span></span><span class="strength-value">139</span></li><li><span class="strength-label">奥术师 · 时序加速</span><span class="strength-track"><span class="strength-fill" style="width:50.0%"></span></span><span class="strength-value">130</span></li><li><span class="strength-label">元素师 · 爆发</span><span class="strength-track"><span class="strength-fill" style="width:48.0%"></span></span><span class="strength-value">129</span></li><li><span class="strength-label">奥术师 · 引力坍缩</span><span class="strength-track"><span class="strength-fill" style="width:46.0%"></span></span><span class="strength-value">128</span></li><li><span class="strength-label">召唤师 · 巨像镇守</span><span class="strength-track"><span class="strength-fill" style="width:34.0%"></span></span><span class="strength-value">122</span></li><li><span class="strength-label">召唤师 · 群灵围攻</span><span class="strength-track"><span class="strength-fill" style="width:14.0%"></span></span><span class="strength-value">112</span></li></ul>
+</div>
+<div class="strength-group">
+<a class="strength-class" href="class-druid.html#builds"><img src="../portraits/druid.png" alt="" width="28" height="28" loading="lazy" /><span>德鲁伊</span></a>
+<ul class="strength-bars"><li><span class="strength-label">荆棘使 · 荆棘牢笼</span><span class="strength-track"><span class="strength-fill" style="width:56.0%"></span></span><span class="strength-value">133</span></li><li><span class="strength-label">瘴巫 · 衰败诅咒</span><span class="strength-track"><span class="strength-fill" style="width:52.0%"></span></span><span class="strength-value">131</span></li><li><span class="strength-label">荆棘使 · 反刺护身</span><span class="strength-track"><span class="strength-fill" style="width:46.0%"></span></span><span class="strength-value">128</span></li><li><span class="strength-label">森灵 · 木灵震怒</span><span class="strength-track"><span class="strength-fill" style="width:46.0%"></span></span><span class="strength-value">128</span></li><li><span class="strength-label">瘴巫 · 瘴气弥漫</span><span class="strength-track"><span class="strength-fill" style="width:42.0%"></span></span><span class="strength-value">126</span></li><li><span class="strength-label">森灵 · 年轮守护</span><span class="strength-track"><span class="strength-fill" style="width:34.0%"></span></span><span class="strength-value">122</span></li></ul>
 </div></div>
-<p class="axis-note">横轴从第 95 层开始。数据按 v0.8.0-ota12 计算。</p>
+<p class="axis-note">横轴从第 105 层开始。数据按 v0.8.0-ota14 计算。</p>
 <h2 id="section-资料" tabindex="-1">资料</h2>
 <div class="ref-grid"><a class="ref-card" href="rules.html"><strong>属性与规则</strong><span>属性收益、护甲与闪避的计算方式，以及技能、转职与觉醒的规则。</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a><a class="ref-card" href="gear.html"><strong>装备</strong><span>装备类型、品质、词条、套装与传奇规则词条。</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a><a class="ref-card" href="enemies.html"><strong>敌人与关卡</strong><span>敌人的能力与常规远征的关卡分布。</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a><a class="ref-card" href="endgame.html"><strong>远行 · 深渊 · 讨伐 · 大地</strong><span>秘境探险、无尽深渊与巨兽讨伐等长线玩法的规则。</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div></article>
     <nav class="page-pagination" aria-label="相邻页面"><span></span><a class="next" href="class-warrior.html"><small>下一篇</small><span>战士<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></a></nav>
-    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota13）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
+    <footer class="site-footer"><span>风行物语 · 图鉴与攻略</span><p>全部资料由游戏数据生成，随版本更新（v0.8.0-ota14）。推荐配置来自战斗模拟，用于了解搭配思路，实际表现会随装备与战斗环境变化。</p><a href="../">回到游戏<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></footer>
   </main>
 </div>
 <script src="search-index.js" defer></script>
